@@ -8,8 +8,6 @@ The purpose of this website is to provide a rough overview by focusing mainly on
 
 This project succeeds [bb](https://github.com/barbalex/bb) and [bb2](https://github.com/barbalex/bb2).
 
-# Rebuild
-
 It is being rebuilt from the ground up to:
 
 - Learn new, promising technologies.
