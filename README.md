@@ -7,7 +7,11 @@ a rough overview by focusing mainly on the Central Med and by covering both mari
 
 This project succeeds [bb](https://github.com/barbalex/bb) and [bb2](https://github.com/barbalex/bb2).
 
-It was deeply refactored to learn new, primising technologies and maximize maintainability.
+It rebuilt from the ground up to:
+
+- learn new, promising technologies
+- improve user experience
+- improve developer experience
 
 ## Used technologies:
 
