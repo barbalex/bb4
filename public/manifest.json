@@ -1,9 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#fff",
-  "description": "A Qwik project app."
+  "name": "mediterranean-migration.com",
+  "short_name": "Mediterranean Migration",
+  "description": "Overview over migration across the the blue borders of the Me­diterrane­an",
+  "background_color": "#222222",
+  "theme_color": "#222222",
+  "display": "minimal-ui",
+  "icons": [],
+  "categories": ["migration", "political-science", "refugees", "mediterranean"],
+  "screenshots": [],
+  "orientation": "portrait"
 }
