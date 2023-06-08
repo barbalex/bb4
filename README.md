@@ -1,7 +1,8 @@
 # Goal
 
-Most migrants and refugees arriving in Europe cross the Mediterranean. The purpose of this website is to provide
-a rough overview by focusing mainly on the Central Med and by covering both maritime and political events.
+Most migrants and refugees arriving in Europe cross the Mediterranean.
+
+The purpose of this website is to provide a rough overview by focusing mainly on the Central Mediterranean and by covering both maritime and political events.
 
 # History
 
@@ -11,16 +12,16 @@ This project succeeds [bb](https://github.com/barbalex/bb) and [bb2](https://git
 
 It is being rebuilt from the ground up to:
 
-- learn new, promising technologies
-- improve user experience
-- improve developer experience
+- Learn new, promising technologies.
+- Improve user experience.
+- Improve developer experience.
 
-# Technologies:
+# Technologies
 
-- [qwick](https://qwik.builder.io)
-  - instantly-interactive web app
-  - query and mutate data server side
-  - built-in signals for state management
-  - only render what is on screen
-- [tailwind css](https://tailwindcss.com)
-  a utility-first CSS framework
+- [Qwick](https://qwik.builder.io)
+  - Instantly-interactive web app.
+  - Query and mutate data server side.
+  - Built-in signals for state management.
+  - Only render what's on screen.
+- [Tailwind](https://tailwindcss.com)
+  A utility-first CSS framework.
