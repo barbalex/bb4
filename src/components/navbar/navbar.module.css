@@ -2,6 +2,7 @@
   background-image: url(../../../oceanDark.jpg);
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
 .a {
