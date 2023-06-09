@@ -1,44 +1,66 @@
 import { component$ } from '@builder.io/qwik'
+import { Link, useLocation } from '@builder.io/qwik-city'
 import styles from './navbar.module.css'
 
 export default component$(() => {
+  const location = useLocation()
+
   return (
     <nav class={[styles.nav, 'bg-white', 'shadow']}>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">
           <div class="flex">
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-              {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-              <a
-                href="#"
-                class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-50"
+              <Link
+                href="/"
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                  location.url.pathname === '/'
+                    ? ' border-white font-bold '
+                    : ' border-transparent font-medium '
+                }`}
               >
                 Events
-              </a>
-              <a
-                href="#"
-                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-50 hover:border-gray-300 hover:text-gray-700"
+              </Link>
+              <Link
+                href="/sar"
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                  location.url.pathname === '/sar/'
+                    ? ' border-white font-bold '
+                    : ' border-transparent font-medium '
+                }`}
               >
                 SAR NGOs
-              </a>
-              <a
-                href="#"
-                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-50 hover:border-gray-300 hover:text-gray-700"
+              </Link>
+              <Link
+                href="/publications"
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                  location.url.pathname === '/publications/'
+                    ? ' border-white font-bold '
+                    : ' border-transparent font-medium '
+                }`}
               >
                 Publications
-              </a>
-              <a
-                href="#"
-                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-50 hover:border-gray-300 hover:text-gray-700"
+              </Link>
+              <Link
+                href="/articles"
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                  location.url.pathname === '/articles/'
+                    ? ' border-white font-bold '
+                    : ' border-transparent font-medium '
+                }`}
               >
                 My Articles
-              </a>
-              <a
-                href="#"
-                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-50 hover:border-gray-300 hover:text-gray-700"
+              </Link>
+              <Link
+                href="/about"
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                  location.url.pathname === '/about/'
+                    ? ' border-white font-bold '
+                    : ' border-transparent font-medium '
+                }`}
               >
                 About us
-              </a>
+              </Link>
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -86,7 +108,7 @@ export default component$(() => {
             {/* Mobile menu button */}
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -145,19 +167,19 @@ export default component$(() => {
           </a>
           <a
             href="#"
-            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-white hover:border-gray-300 hover:bg-gray-100 hover:text-orange-200"
           >
             Team
           </a>
           <a
             href="#"
-            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-white hover:border-gray-300 hover:bg-gray-100 hover:text-orange-200"
           >
             Projects
           </a>
           <a
             href="#"
-            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+            class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-white hover:border-gray-300 hover:bg-gray-100 hover:text-orange-200"
           >
             Calendar
           </a>
@@ -173,13 +195,11 @@ export default component$(() => {
             </div>
             <div class="ml-3">
               <div class="text-base font-medium text-gray-800">Tom Cook</div>
-              <div class="text-sm font-medium text-gray-500">
-                tom@example.com
-              </div>
+              <div class="text-sm font-medium text-white">tom@example.com</div>
             </div>
             <button
               type="button"
-              class="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              class="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-orange-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <span class="sr-only">View notifications</span>
               <svg
@@ -201,19 +221,19 @@ export default component$(() => {
           <div class="mt-3 space-y-1">
             <a
               href="#"
-              class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+              class="block px-4 py-2 text-base font-medium text-white hover:bg-gray-100 hover:text-gray-800"
             >
               Your Profile
             </a>
             <a
               href="#"
-              class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+              class="block px-4 py-2 text-base font-medium text-white hover:bg-gray-100 hover:text-gray-800"
             >
               Settings
             </a>
             <a
               href="#"
-              class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+              class="block px-4 py-2 text-base font-medium text-white hover:bg-gray-100 hover:text-gray-800"
             >
               Sign out
             </a>
