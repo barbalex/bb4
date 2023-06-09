@@ -14,51 +14,123 @@
  *
  */
 
-:root {
-  --qwik-dark-blue: #006ce9;
-  --qwik-light-blue: #18b6f6;
-  --qwik-light-purple: #ac7ff4;
-  --qwik-dark-purple: #713fc2;
-  --qwik-dirty-black: #1d2033;
-  --qwik-dark-background: #151934;
-  --qwik-dark-text: #ffffff;
+/*
+ * without this setting something (the browser?) sets it to 10px
+ * which fucks up react-datepicker
+*/
+html {
+  font-size: 16px !important;
 }
 
-html {
-  line-height: 1;
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+/* prevent buttons from lying above the datepicker */
+.react-datepicker-popper {
+  z-index: 9;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  line-height: inherit;
+  margin-top: 52px;
+  hyphens: auto;
 }
 
+a,
+a:link {
+  cursor: pointer;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-color: rgba(0, 109, 255, 0.05) !important;
+}
+
+.col400,
+.col500 {
+  column-count: 1;
+  column-gap: 20px;
+}
+
+/*--------------------------------*\
+    3. #Events
+\*--------------------------------*/
 /**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
+ * unfortunately content does not seem to
+ * come over correctly in object literal
+ * so need to keep this here
  */
-html {
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+.events div.event-weather:before {
+  font-family: 'Glyphicons Halflings';
+  content: '\2601';
+  font-size: 1.4em;
+  position: absolute;
+  top: -3px;
+  left: -26px;
 }
 
-body {
-  padding: 0;
-  line-height: inherit;
+.events div.event-statistics:before,
+.events div.event-monthlyStatistics:before {
+  font-family: 'Glyphicons Halflings';
+  content: '\e185';
+  font-size: 1em;
+  position: absolute;
+  top: -2px;
+  left: -23px;
+}
+
+.events div.event-victims:before {
+  font-family: 'Glyphicons Halflings';
+  content: '\e101';
+  font-size: 1.3em;
+  position: absolute;
+  top: -4px;
+  left: -26px;
+}
+
+.events div.event-highlighted:before {
+  font-family: 'Glyphicons Halflings';
+  content: '\e006';
+  font-size: 1.3em;
+  position: absolute;
+  top: -5px;
+  left: -23px;
+}
+
+h4.modal-title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+@media (min-width: 786px) {
+  .col400 {
+    column-count: 2;
+  }
+
+  .modal-lg.modal-dialog {
+    width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .col400 {
+    column-count: 3;
+  }
+
+  .col500 {
+    column-count: 2;
+  }
+
+  .modal-lg.modal-dialog {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .modal-lg.modal-dialog {
+    width: 1000px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .modal-lg.modal-dialog {
+    width: 1100px;
+  }
 }

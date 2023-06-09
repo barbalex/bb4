@@ -1,0 +1,50 @@
+.sub-pate-title {
+  margin-top: -12px;
+}
+
+.f {
+  font-weight: bold;
+}
+
+.ngo-container {
+  outline: solid;
+  outline-color: #cecece;
+  outline-width: 2px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ngo-container:not(:first-of-type) {
+  margin-top: 20px;
+}
+
+.ngo-container:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.ship-title {
+  margin: 0;
+}
+
+.ship-title:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+.ship-title::before {
+  content: "'";
+}
+
+.ship-title::after {
+  content: "'";
+}
+
+.ngo-title {
+  margin: 0;
+}
+
+.ngo-title:not(:first-of-type) {
+  margin-top: 10px;
+}
