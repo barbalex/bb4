@@ -3,7 +3,7 @@ import { component$ } from '@builder.io/qwik'
 export default component$(() => {
   return (
     <>
-      <h2 class="text-center text-2xl font-bold text-2xl">
+      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
         Personal Motivation
       </h2>
       <p class="text-left">
@@ -26,7 +26,7 @@ export default component$(() => {
         Greece.&nbsp;
       </p>
       <p>&nbsp;</p>
-      <h2 class="text-center text-2xl font-bold text-2xl">
+      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
         Migratory Dynamics
       </h2>
       <p>
@@ -59,7 +59,7 @@ export default component$(() => {
         political.&nbsp;&nbsp;
       </p>
       <p>&nbsp;</p>
-      <h2 class="text-center text-2xl font-bold text-2xl">
+      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
         Maritime &amp; Political Events&nbsp;
       </h2>
       <p>
@@ -94,7 +94,6 @@ export default component$(() => {
         taken steps to gradually build a 'coalition of the willing' it will take
         time to arrive at effective solutions.
       </p>
-      <p>&nbsp;</p>
       <div class="overflow-hidden rounded-lg bg-white shadow my-3">
         <div class="px-4 py-5 sm:px-6">
           <h2 class="text-center text-2xl font-bold text-2xl">Editor</h2>
