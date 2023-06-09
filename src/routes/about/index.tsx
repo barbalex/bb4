@@ -3,7 +3,7 @@ import { component$ } from '@builder.io/qwik'
 export default component$(() => {
   return (
     <>
-      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
+      <h2 class="text-center text-2xl font-bold text-2xl my-3">
         Personal Motivation
       </h2>
       <p class="text-left">
@@ -25,8 +25,7 @@ export default component$(() => {
         others are active in the field, including 'hotspots' in Italy and
         Greece.&nbsp;
       </p>
-      <p>&nbsp;</p>
-      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
+      <h2 class="text-center text-2xl font-bold text-2xl my-3">
         Migratory Dynamics
       </h2>
       <p>
@@ -59,7 +58,7 @@ export default component$(() => {
         political.&nbsp;&nbsp;
       </p>
       <p>&nbsp;</p>
-      <h2 class="text-center text-2xl font-bold text-2xl mb-3">
+      <h2 class="text-center text-2xl font-bold text-2xl my-3">
         Maritime &amp; Political Events&nbsp;
       </h2>
       <p>
@@ -100,7 +99,7 @@ export default component$(() => {
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center w-96">
+            <div class="flex flex-col justify-center w-96">
               <p>Jürg Martin GABRIEL</p>
               <p>Professor Emeritus</p>
               <p>
@@ -129,7 +128,7 @@ export default component$(() => {
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center w-96">
+            <div class="flex flex-col justify-center w-96">
               <p>
                 Mediterranean Academy of Diplomatic Studies (
                 <a href="http://www.um.edu.mt/medac">MEDAC</a>)
@@ -155,17 +154,16 @@ export default component$(() => {
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center w-96">
+            <div class="flex flex-col justify-center w-96">
               <p>Gabriel Software</p>
               <p>079 372 51 64</p>
               <a href="mailto:">alex@gabriel-software.ch</a>
             </div>
-            <div>
+            <div class="w-96">
               <a
                 href="https://gabriel-software.ch"
                 target="_blank"
                 rel="noopener"
-                class="w-96"
               >
                 <img
                   src="https://ucarecdn.com/77eefaf8-e548-4dee-865d-dfc6bf603f53/gs.png"
