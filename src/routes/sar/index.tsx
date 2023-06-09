@@ -13,11 +13,17 @@ export default component$(() => {
         <span class={styles.f}>s</span>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles['ngo-title'],
+            'text-2xl text-blue-700 no-underline hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/SOS M%C3%A9diterran%C3%A9e"
             target="_blank"
             rel="noreferrer"
+            class={styles['title-a']}
           >
             SOS Mediterranée
           </a>

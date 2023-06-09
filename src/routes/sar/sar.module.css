@@ -48,3 +48,8 @@
 .ngo-title:not(:first-of-type) {
   margin-top: 10px;
 }
+
+.title-a {
+  /* color: #337ab7; */
+  /* text-decoration: none; */
+}
