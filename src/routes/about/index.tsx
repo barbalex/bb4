@@ -3,7 +3,9 @@ import { component$ } from '@builder.io/qwik'
 export default component$(() => {
   return (
     <>
-      <h2 class="text-center">Personal Motivation</h2>
+      <h2 class="text-center text-2xl font-bold text-2xl">
+        Personal Motivation
+      </h2>
       <p class="text-left">
         Some may wonder why this website should be edited by a Swiss living in a
         country with green borders only and no direct access to the
@@ -24,7 +26,9 @@ export default component$(() => {
         Greece.&nbsp;
       </p>
       <p>&nbsp;</p>
-      <h2 class="text-center">Migratory Dynamics</h2>
+      <h2 class="text-center text-2xl font-bold text-2xl">
+        Migratory Dynamics
+      </h2>
       <p>
         As mentioned, I started this website in 2011 with the advent of the Arab
         Spring and a focus on the <strong>Central Mediterranean</strong>. The
@@ -55,7 +59,9 @@ export default component$(() => {
         political.&nbsp;&nbsp;
       </p>
       <p>&nbsp;</p>
-      <h2 class="text-center">Maritime &amp; Political Events&nbsp;</h2>
+      <h2 class="text-center text-2xl font-bold text-2xl">
+        Maritime &amp; Political Events&nbsp;
+      </h2>
       <p>
         As a result of the new situation I decided, in 2015, to change the
         make-up of this website<strong>.</strong>The presentation is still
@@ -89,13 +95,13 @@ export default component$(() => {
         time to arrive at effective solutions.
       </p>
       <p>&nbsp;</p>
-      <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow my-3">
+      <div class="overflow-hidden rounded-lg bg-white shadow my-3">
         <div class="px-4 py-5 sm:px-6">
-          <h2 class="text-center">Editor</h2>
+          <h2 class="text-center text-2xl font-bold text-2xl">Editor</h2>
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center">
+            <div class="flex flex-col content-center justify-center w-96">
               <p>Jürg Martin GABRIEL</p>
               <p>Professor Emeritus</p>
               <p>
@@ -113,17 +119,18 @@ export default component$(() => {
               width={337}
               height={150}
               border={0}
+              class="w-96"
             />
           </div>
         </div>
       </div>
-      <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow my-3">
+      <div class="overflow-hidden rounded-lg bg-white shadow my-3">
         <div class="px-4 py-5 sm:px-6">
-          <h2 class="text-center">Affiliation</h2>
+          <h2 class="text-center text-2xl font-bold text-2xl">Affiliation</h2>
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center">
+            <div class="flex flex-col content-center justify-center w-96">
               <p>
                 Mediterranean Academy of Diplomatic Studies (
                 <a href="http://www.um.edu.mt/medac">MEDAC</a>)
@@ -138,17 +145,18 @@ export default component$(() => {
               width={337}
               height={150}
               border={0}
+              class="w-96"
             />
           </div>
         </div>
       </div>
-      <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow my-3">
+      <div class="overflow-hidden rounded-lg bg-white shadow my-3">
         <div class="px-4 py-5 sm:px-6">
-          <h2 class="text-center">IT - SUPPORT</h2>
+          <h2 class="text-center text-2xl font-bold text-2xl">IT - SUPPORT</h2>
         </div>
         <div class="px-4 py-5 sm:p-6">
           <div class="flex content-center justify-center gap-x-3">
-            <div class="flex flex-col content-center justify-center">
+            <div class="flex flex-col content-center justify-center w-96">
               <p>Gabriel Software</p>
               <p>079 372 51 64</p>
               <a href="mailto:">alex@gabriel-software.ch</a>
@@ -158,6 +166,7 @@ export default component$(() => {
                 href="https://gabriel-software.ch"
                 target="_blank"
                 rel="noopener"
+                class="w-96"
               >
                 <img
                   src="https://ucarecdn.com/77eefaf8-e548-4dee-865d-dfc6bf603f53/gs.png"
