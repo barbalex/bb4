@@ -1,5 +1,6 @@
-.sub-pate-title {
-  margin-top: -12px;
+.sub-page-title {
+  padding: 5px 0 10px 0;
+  text-align: center;
 }
 
 .ngo-container {
@@ -7,28 +8,4 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.ngo-container:not(:first-of-type) {
-  margin-top: 20px;
-}
-
-.ngo-container:not(:last-of-type) {
-  margin-bottom: 20px;
-}
-
-.ship-title {
-  margin-top: 10px;
-}
-
-.ship-title::before {
-  content: "⚓ '";
-}
-
-.ship-title::after {
-  content: "'";
-}
-
-.ngo::before {
-  /* content: '👥 '; */
 }
