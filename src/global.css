@@ -20,21 +20,26 @@
 */
 html {
   font-size: 16px !important;
-}
-
-/* prevent buttons from lying above the datepicker */
-.react-datepicker-popper {
-  z-index: 9;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 body {
-  /* margin-top: 52px; */
   hyphens: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 a,
 a:link {
   cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
 .btn-default:active,
@@ -47,6 +52,11 @@ a:link {
 .col500 {
   column-count: 1;
   column-gap: 20px;
+}
+
+/* prevent buttons from lying above the datepicker */
+.react-datepicker-popper {
+  z-index: 9;
 }
 
 /*--------------------------------*\
