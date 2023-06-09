@@ -28,8 +28,8 @@ export default component$(() => {
   useStyles$(styles)
   return (
     <>
-      <Navbar />
       <Header />
+      <Navbar />
       <main>
         <Slot />
       </main>

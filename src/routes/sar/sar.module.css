@@ -3,10 +3,6 @@
 }
 
 .ngo-container {
-  outline: solid;
-  outline-color: #cecece;
-  outline-width: 2px;
-  padding: 10px;
   width: 100%;
   display: flex;
   flex-direction: column;
