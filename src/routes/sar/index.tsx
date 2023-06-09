@@ -6,31 +6,42 @@ export default component$(() => {
     <div>
       <h1>SAR NGOs</h1>
       <div class={styles['sub-page-title']}>
-        <span class={styles.f}>S</span>earch <span class={styles.f}>A</span>nd{' '}
-        <span class={styles.f}>R</span>escue <span class={styles.f}>N</span>on-
-        <span class={styles.f}>G</span>overnmental{' '}
-        <span class={styles.f}>O</span>rganisation
-        <span class={styles.f}>s</span>
+        <span class="font-bold">S</span>earch <span class="font-bold">A</span>nd{' '}
+        <span class="font-bold">R</span>escue <span class="font-bold">N</span>
+        on-
+        <span class="font-bold">G</span>overnmental{' '}
+        <span class="font-bold">O</span>rganisation
+        <span class="font-bold">s</span>
       </div>
       <div class={styles['ngo-container']}>
         <h3
           class={[
-            styles['ngo-title'],
-            'text-2xl text-blue-700 no-underline hover:underline',
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
           ]}
         >
           <a
             href="https://de.wikipedia.org/wiki/SOS M%C3%A9diterran%C3%A9e"
             target="_blank"
             rel="noreferrer"
-            class={styles['title-a']}
           >
             SOS Mediterranée
           </a>
         </h3>
         <div>Internat. NGO, Marseille, 2015 –</div>
         <div>2019-2020 cooperation with MsF</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Ocean_Viking"
             target="_blank"
@@ -43,7 +54,15 @@ export default component$(() => {
         <div>8 SAR operations in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/M%C3%A9decins Sans Fronti%C3%A8res"
             target="_blank"
@@ -54,7 +73,15 @@ export default component$(() => {
         </h3>
         <div>International NGO, SAR 2015 –</div>
         <div>2019-2020 coop. with SOS Mediterranée</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Geo_Barents"
             target="_blank"
@@ -67,7 +94,15 @@ export default component$(() => {
         <div>6 SAR operations in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://sos-humanity.org/en/about-us/"
             target="_blank"
@@ -80,7 +115,15 @@ export default component$(() => {
         <div>{'2016-21 part of SOS Mediterranee Network'}</div>
         <div>{'with ‘Aquarius’ & ‘Ocean Viking’'}</div>
         <div>{'Now seeking EU coordination'}</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://sos-humanity.org/en/press/rescue-vessel-humanity-1-departed-for-central-mediterranean/"
             target="_blank"
@@ -93,7 +136,15 @@ export default component$(() => {
         <div>SAR operations start August 2022</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Sea-Watch"
             target="_blank"
@@ -105,7 +156,15 @@ export default component$(() => {
         <div>German NGO, 2015 –</div>
         <div>{'coop. with Open Arms & Mediterranea (MSH)'}</div>
         <div>use of airplanes</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Sea-Watch_3"
             target="_blank"
@@ -116,7 +175,15 @@ export default component$(() => {
         </h3>
         <div>German flag, 2017 –</div>
         <div>4 SAR operations in 2021</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Sea-Watch_4"
             target="_blank"
@@ -129,7 +196,15 @@ export default component$(() => {
         <div>4 SAR operations in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Mission_Lifeline"
             target="_blank"
@@ -139,7 +214,15 @@ export default component$(() => {
           </a>
         </h3>
         <div>German NGO, Dresden, 2016 -</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://mission-lifeline.de/das-jahr-der-rise-above"
             target="_blank"
@@ -153,7 +236,15 @@ export default component$(() => {
         <div>‘Lifeline’ 2016 –</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Emergency_(organization)#Italy"
             target="_blank"
@@ -163,7 +254,15 @@ export default component$(() => {
           </a>
         </h3>
         <div>International NGO, Milan, 1994 –</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://reliefweb.int/report/world/emergency-ngo-search-and-rescue-ship-life-support-embarks-inaugural-mission-central-mediterranean-sea"
             target="_blank"
@@ -176,7 +275,15 @@ export default component$(() => {
         <div>SAR December 2022 –</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Sea-Eye"
             target="_blank"
@@ -186,7 +293,15 @@ export default component$(() => {
           </a>
         </h3>
         <div>German NGO, 2015 –</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Sea-Eye_4"
             target="_blank"
@@ -199,7 +314,15 @@ export default component$(() => {
         <div>3 SAR operations in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Proactiva_Open_Arms"
             target="_blank"
@@ -210,7 +333,15 @@ export default component$(() => {
         </h3>
         <div>Spanish NGO, 2015 –</div>
         <div>coop. with Sea Watch and Mediterranea (MSH)</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://de.wikipedia.org/wiki/Open_Arms"
             target="_blank"
@@ -223,7 +354,15 @@ export default component$(() => {
         <div>3 SAR operations in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://www.infomigrants.net/en/post/26362/italian-migrant-rescue-boat-resqpeople-project-launched"
             target="_blank"
@@ -233,7 +372,15 @@ export default component$(() => {
           </a>
         </h3>
         <div>Italian NGO, 2020 –</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a href="https://resq.it/progetto" target="_blank" rel="noreferrer">
             ResQ People
           </a>
@@ -242,7 +389,15 @@ export default component$(() => {
         <div>1 SAR operation in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Salvamento_Mar%C3%ADtimo_Humanitario"
             target="_blank"
@@ -252,7 +407,15 @@ export default component$(() => {
           </a>
         </h3>
         <div>Spanish NGO, 2015 –</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Aita_Mari"
             target="_blank"
@@ -265,7 +428,15 @@ export default component$(() => {
         <div>1 SAR operation in 2021</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Louise_Michel_(ship)"
             target="_blank"
@@ -276,7 +447,15 @@ export default component$(() => {
         </h3>
         <div>British artist-activist, 2019/20 –</div>
         <div>{'coop. with Sea Watch & Mare Jonio'}</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Louise_Michel_(ship)"
             target="_blank"
@@ -290,7 +469,15 @@ export default component$(() => {
         <div>one in January 2022</div>
       </div>
       <div class={styles['ngo-container']}>
-        <h3 class={styles['ngo-title']}>
+        <h3
+          class={[
+            styles.ngo,
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Mediterranea_Saving_Humans"
             target="_blank"
@@ -301,7 +488,15 @@ export default component$(() => {
         </h3>
         <div>Italian NGO, 2018 –</div>
         <div>coop. with Sea Watch and Open Arms</div>
-        <h3 class={styles['ship-title']}>
+        <h3
+          class={[
+            styles['ship-title'],
+            'text-2xl',
+            'text-blue-700',
+            'no-underline',
+            'hover:underline',
+          ]}
+        >
           <a
             href="https://en.wikipedia.org/wiki/Mare_Jonio_(rescue_ship)"
             target="_blank"

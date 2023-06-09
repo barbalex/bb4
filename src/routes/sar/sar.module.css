@@ -2,10 +2,6 @@
   margin-top: -12px;
 }
 
-.f {
-  font-weight: bold;
-}
-
 .ngo-container {
   outline: solid;
   outline-color: #cecece;
@@ -26,30 +22,17 @@
 }
 
 .ship-title {
-  margin: 0;
-}
-
-.ship-title:not(:first-of-type) {
   margin-top: 10px;
 }
 
 .ship-title::before {
-  content: "'";
+  content: "⚓ '";
 }
 
 .ship-title::after {
   content: "'";
 }
 
-.ngo-title {
-  margin: 0;
-}
-
-.ngo-title:not(:first-of-type) {
-  margin-top: 10px;
-}
-
-.title-a {
-  /* color: #337ab7; */
-  /* text-decoration: none; */
+.ngo::before {
+  /* content: '👥 '; */
 }
