@@ -2,6 +2,8 @@ import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 
+import { styles } from './styles.css'
+
 // select all articles: id, title, draft
 const dataFetcher = server$(async (id) => {
   const isDev = process.env.NODE_ENV === 'development'
@@ -36,29 +38,20 @@ const dataFetcher = server$(async (id) => {
 
 export default component$(() => {
   const location = useLocation()
-  const id = location.params.article_id
-  console.log('article, id:', id)
-  const article = useResource$(async () => await dataFetcher(id))
-  // console.log('article:', article)
-  // TODO:
-  // error due to buffer not being serializable
-  // can it only be queried client side?
+  const article = useResource$(async ({ track }) => {
+    const id = track(() => location.params.article_id)
+
+    return await dataFetcher(id)
+  })
 
   return (
-    <>
-      <div>article id: {id}</div>
-
-      <Resource
-        value={article}
-        onPending={() => <div>Loading...</div>}
-        onRejected={(reason) => <div>Error: {reason}</div>}
-        onResolved={(article) => {
-          // console.log('article resolved:', article)
-          // if (!article) return <div>Article not found</div>
-
-          return <div dangerouslySetInnerHTML={article}></div>
-        }}
-      />
-    </>
+    <Resource
+      value={article}
+      onPending={() => <div>Loading...</div>}
+      onRejected={(reason) => <div>Error: {reason}</div>}
+      onResolved={(article) => (
+        <div class={styles} dangerouslySetInnerHTML={article}></div>
+      )}
+    />
   )
 })
