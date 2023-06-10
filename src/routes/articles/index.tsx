@@ -6,10 +6,12 @@ import styles from './articles.module.css'
 // TODO:
 // select all articles: id, title, draft
 const dataFetcher = server$(async () => {
+  const isDev = process.env.NODE_ENV === 'development'
   const options = {
-    connectionString: process.env.PGCONNECTIONSTRING,
+    connectionString: isDev
+      ? process.env.PG_CONNECTIONSTRING_DEV
+      : process.env.PG_CONNECTIONSTRING_PROD,
   }
-  console.log('db options from server:', options)
   const client = new Client(options)
   try {
     await client.connect()
