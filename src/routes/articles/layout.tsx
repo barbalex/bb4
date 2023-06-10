@@ -52,11 +52,11 @@ export default component$(() => {
                     <li key={a.id}>
                       <Link
                         href={`/articles/${a.id}`}
-                        // apply bg-gray-50 to current article
+                        // TODO: highlight current article
                         class={`${
                           location.params.article_id === a.id
-                            ? 'bg-gray-50'
-                            : ''
+                            ? 'bg-gray-200'
+                            : 'bg-gray-50'
                         } text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold`}
                       >
                         {a.title}
