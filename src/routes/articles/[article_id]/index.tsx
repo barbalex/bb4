@@ -1,13 +1,6 @@
-import {
-  component$,
-  useResource$,
-  Resource,
-  noSerialize,
-} from '@builder.io/qwik'
+import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
-
-import hex2a from '~/utils/hex2a'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async (id) => {
@@ -33,9 +26,12 @@ const dataFetcher = server$(async (id) => {
   }
   client.end()
 
-  console.log('article, dataFetcher, res:', res)
+  // console.log('article, dataFetcher, res:', res)
+  const content = res?.rows[0]?.content
+  if (!content) return null
+  const articleDecoded = content?.toString('utf-8')
 
-  return noSerialize(res?.rows[0]?.content)
+  return articleDecoded
 })
 
 export default component$(() => {
@@ -57,15 +53,10 @@ export default component$(() => {
         onPending={() => <div>Loading...</div>}
         onRejected={(reason) => <div>Error: {reason}</div>}
         onResolved={(article) => {
-          console.log('article resolved:', article)
+          // console.log('article resolved:', article)
           // if (!article) return <div>Article not found</div>
-          const articleDecoded = hex2a(article)
-          console.log('article decoded:', articleDecoded)
-          const createMarkup = () => ({ __html: articleDecoded })
-          const markup = createMarkup()
-          // console.log('article, markup:', markup)
 
-          return <div dangerouslySetInnerHTML={markup}></div>
+          return <div dangerouslySetInnerHTML={article}></div>
         }}
       />
     </>
