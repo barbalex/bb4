@@ -1,4 +1,4 @@
-import { component$, useTask$ } from '@builder.io/qwik'
+import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 import styles from './articles.module.css'
@@ -28,15 +28,17 @@ const dataFetcher = server$(async () => {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  console.log('articles from server:', res?.rows)
+  console.log('server articles', res?.rows)
   client.end()
 
   return res?.rows
 })
 
 export default component$(() => {
-  const articles = useTask$(async () => await dataFetcher())
-  console.log('articles from client:', articles)
+  const articles = useResource$(
+    async ({ track, cleanup }) => await dataFetcher(),
+  )
+  console.log('client articles', articles)
 
   return (
     <div class="flex min-h-full flex-col">
@@ -58,7 +60,21 @@ export default component$(() => {
             </ul>
           </nav>
         </div>
-        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">Main area</div>
+        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+          <>
+            Main area
+            <Resource
+              value={articles}
+              onPending={() => <div>Loading...</div>}
+              onRejected={(reason) => <div>Error: {reason}</div>}
+              onResolved={(data) => {
+                console.log('resolved', data)
+                const stringified = JSON.stringify(data)
+                return <div>{stringified}</div>
+              }}
+            />
+          </>
+        </div>
       </div>
     </div>
   )
