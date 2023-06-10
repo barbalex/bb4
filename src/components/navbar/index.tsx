@@ -1,12 +1,11 @@
 import { component$ } from '@builder.io/qwik'
 import { Link, useLocation } from '@builder.io/qwik-city'
-import styles from './navbar.module.css'
 
 export default component$(() => {
   const location = useLocation()
 
   return (
-    <nav class={[styles.nav, 'bg-white', 'shadow']}>
+    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">
           <div class="flex">
