@@ -1,5 +1,5 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$, Link } from '@builder.io/qwik-city'
+import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 import styles from './articles.module.css'
 
@@ -36,7 +36,7 @@ const dataFetcher = server$(async () => {
 
 export default component$(() => {
   const articles = useResource$(async () => await dataFetcher())
-  console.log('client articles', articles)
+  const location = useLocation()
 
   return (
     <div class="flex min-h-full flex-col">
@@ -52,12 +52,12 @@ export default component$(() => {
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
                 onResolved={(articles) =>
-                  (articles ?? []).map((a) => (
+                  articles.map((a) => (
                     <li key={a.id}>
                       <Link
                         href={`/articles/${a.id}`}
                         // TODO: apply bg-gray-50 only if current article
-                        class={`bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold`}
+                        class={`bg-gray-50 ${location.url.pathname === '/articles/'} text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold`}
                       >
                         {a.title}
                       </Link>
