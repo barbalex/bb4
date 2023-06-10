@@ -16,7 +16,7 @@ export default component$(() => {
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
                   location.url.pathname === '/'
                     ? ' border-white font-bold '
-                    : ' border-transparent font-medium '
+                    : ' border-transparent font-normal '
                 }`}
               >
                 Events
@@ -26,7 +26,7 @@ export default component$(() => {
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
                   location.url.pathname === '/sar/'
                     ? ' border-white font-bold '
-                    : ' border-transparent font-medium '
+                    : ' border-transparent font-normal '
                 }`}
               >
                 SAR NGOs
@@ -36,7 +36,7 @@ export default component$(() => {
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
                   location.url.pathname === '/publications/'
                     ? ' border-white font-bold '
-                    : ' border-transparent font-medium '
+                    : ' border-transparent font-normal '
                 }`}
               >
                 Publications
@@ -46,7 +46,7 @@ export default component$(() => {
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
                   location.url.pathname === '/articles/'
                     ? ' border-white font-bold '
-                    : ' border-transparent font-medium '
+                    : ' border-transparent font-normal '
                 }`}
               >
                 My Articles
@@ -56,7 +56,7 @@ export default component$(() => {
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
                   location.url.pathname === '/about/'
                     ? ' border-white font-bold '
-                    : ' border-transparent font-medium '
+                    : ' border-transparent font-normal '
                 }`}
               >
                 About us

@@ -93,7 +93,7 @@ export default component$(() => {
         taken steps to gradually build a 'coalition of the willing' it will take
         time to arrive at effective solutions.
       </p>
-      <div class="overflow-hidden rounded-lg bg-white shadow my-3">
+      <div class="overflow-hidden rounded-lg bg-white shadow my-6">
         <div class="px-4 py-5 sm:px-6">
           <h2 class="text-center text-2xl font-bold text-2xl">Editor</h2>
         </div>
