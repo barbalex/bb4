@@ -2,7 +2,6 @@ import { component$, useResource$, Resource, Slot } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 
-// TODO:
 // select all articles: id, title, draft
 const dataFetcher = server$(async () => {
   const isDev = process.env.NODE_ENV === 'development'
