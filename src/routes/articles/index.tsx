@@ -56,7 +56,8 @@ export default component$(() => {
                     <li key={a.id}>
                       <Link
                         href={`/articles/${a.id}`}
-                        class="bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold"
+                        // TODO: apply bg-gray-50 only if current article
+                        class={`bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold`}
                       >
                         {a.title}
                       </Link>
