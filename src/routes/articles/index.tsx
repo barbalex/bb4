@@ -1,7 +1,41 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useTask$ } from '@builder.io/qwik'
+import { server$ } from '@builder.io/qwik-city'
+import { Client } from 'pg'
 import styles from './articles.module.css'
 
+// TODO:
+// select all articles: id, title, draft
+const dataFetcher = server$(async () => {
+  const options = {
+    connectionString: process.env.PGCONNECTIONSTRING,
+  }
+  console.log('db options from server:', options)
+  const client = new Client(options)
+  try {
+    await client.connect()
+  } catch (error) {
+    console.error('connection error', error.stack)
+  }
+
+  // TODO: drafts only if user is logged in
+  let res
+  try {
+    res = await client.query(
+      'select id, title, draft from article order by datum desc',
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+  console.log('articles from server:', res?.rows)
+  client.end()
+
+  return res?.rows
+})
+
 export default component$(() => {
+  const articles = useTask$(async () => await dataFetcher())
+  console.log('articles from client:', articles)
+
   return (
     <div class="flex min-h-full flex-col">
       <div class="flex-1 xl:flex">
