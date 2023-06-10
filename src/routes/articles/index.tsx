@@ -19,7 +19,8 @@ const dataFetcher = server$(async () => {
     console.error('connection error', error.stack)
   }
 
-  // TODO: drafts only if user is logged in
+  // TODO: include drafts only if user is logged in
+  // TODO: create client on app start and store in store
   let res
   try {
     res = await client.query(
@@ -28,7 +29,6 @@ const dataFetcher = server$(async () => {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  console.log('server articles', res?.rows)
   client.end()
 
   return res?.rows
