@@ -1,5 +1,5 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { server$, Link } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 import styles from './articles.module.css'
 
@@ -35,9 +35,7 @@ const dataFetcher = server$(async () => {
 })
 
 export default component$(() => {
-  const articles = useResource$(
-    async ({ track, cleanup }) => await dataFetcher(),
-  )
+  const articles = useResource$(async () => await dataFetcher())
   console.log('client articles', articles)
 
   return (
@@ -49,31 +47,28 @@ export default component$(() => {
             aria-label="Sidebar"
           >
             <ul role="list" class="-mx-2 space-y-1">
-              <li>
-                <a
-                  href="#"
-                  class="bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold"
-                >
-                  Dashboard
-                </a>
-              </li>
+              <Resource
+                value={articles}
+                onPending={() => <div>Loading...</div>}
+                onRejected={(reason) => <div>Error: {reason}</div>}
+                onResolved={(articles) =>
+                  (articles ?? []).map((a) => (
+                    <li key={a.id}>
+                      <Link
+                        href={`/articles/${a.id}`}
+                        class="bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold"
+                      >
+                        {a.title}
+                      </Link>
+                    </li>
+                  ))
+                }
+              />
             </ul>
           </nav>
         </div>
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-          <>
-            Main area
-            <Resource
-              value={articles}
-              onPending={() => <div>Loading...</div>}
-              onRejected={(reason) => <div>Error: {reason}</div>}
-              onResolved={(data) => {
-                console.log('resolved', data)
-                const stringified = JSON.stringify(data)
-                return <div>{stringified}</div>
-              }}
-            />
-          </>
+          <>Main area</>
         </div>
       </div>
     </div>
