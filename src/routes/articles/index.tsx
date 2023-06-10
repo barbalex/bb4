@@ -1,3 +1,3 @@
 import { component$ } from '@builder.io/qwik'
 
-export default component$(() => null)
+export default component$(() => 'Please choose an article')

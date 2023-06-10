@@ -1,7 +1,6 @@
 import { component$, useResource$, Resource, Slot } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
-import styles from './articles.module.css'
 
 // TODO:
 // select all articles: id, title, draft
@@ -42,10 +41,7 @@ export default component$(() => {
     <div class="flex min-h-full flex-col">
       <div class="flex-1 xl:flex">
         <div class="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
-          <nav
-            class={[styles.scrollspy, 'flex', 'flex-1', 'flex-col']}
-            aria-label="Sidebar"
-          >
+          <nav class={['flex', 'flex-1', 'flex-col']} aria-label="Sidebar">
             <ul role="list" class="-mx-2 space-y-1">
               <Resource
                 value={articles}
@@ -71,7 +67,6 @@ export default component$(() => {
           </nav>
         </div>
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-          <>Main area</>
           <Slot />
         </div>
       </div>
