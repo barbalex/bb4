@@ -3,6 +3,7 @@ import { Link, useLocation } from '@builder.io/qwik-city'
 
 export default component$(() => {
   const location = useLocation()
+  console.log('pathname:', location.url.pathname)
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
@@ -13,7 +14,8 @@ export default component$(() => {
               <Link
                 href="/"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
-                  location.url.pathname === '/'
+                  location.url.pathname === '/' ||
+                  location.url.pathname.startsWith('/events/')
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
                 }`}
@@ -33,7 +35,7 @@ export default component$(() => {
               <Link
                 href="/publications"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
-                  location.url.pathname === '/publications/'
+                  location.url.pathname.startsWith('/publications/')
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
                 }`}
@@ -43,7 +45,7 @@ export default component$(() => {
               <Link
                 href="/articles"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
-                  location.url.pathname === '/articles/'
+                  location.url.pathname.startsWith('/articles/')
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
                 }`}

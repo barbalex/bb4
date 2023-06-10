@@ -54,9 +54,9 @@ export default component$(() => {
                         // TODO: highlight current article
                         class={`${
                           location.params.article_id === a.id
-                            ? 'bg-gray-200'
-                            : 'bg-gray-50'
-                        } text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold`}
+                            ? 'font-extrabold'
+                            : 'opacity-80'
+                        } text-white font-bold group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 bg-[url(../../../oceanDark.jpg)] hover:opacity-100 hover:font-extrabold`}
                       >
                         {a.title}
                       </Link>
