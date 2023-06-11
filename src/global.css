@@ -29,6 +29,9 @@ body {
   hyphens: auto;
   overflow-x: hidden;
   overflow-y: auto;
+  /* overflow-y: overlay; */
+  /* scrollbar-gutter: stable;
+  scrollbar-color: blue blue; */
 }
 
 a,

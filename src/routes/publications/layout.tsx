@@ -64,44 +64,46 @@ export default component$(() => {
   return (
     <div class="flex min-h-full flex-col">
       <div class="flex-1 xl:flex">
-        <div class="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+        <div class="border-b border-gray-200 px-4 py-0 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
           <nav class="sticky top-24 flex  flex-1 flex-col" aria-label="Sidebar">
-            <ul role="list" class="-mx-2 space-y-1">
-              <Resource
-                value={publications}
-                onPending={() => <div>Loading...</div>}
-                onRejected={(reason) => <div>Error: {reason}</div>}
-                onResolved={(publications) => {
-                  const publicationsByCategory = groupBy(
-                    publications,
-                    'category',
-                  )
-                  return Object.entries(publicationsByCategory).map(
-                    ([category, pubs]) => (
-                      <div key={category}>
-                        <li class="bg-[url(../../../oceanDark.jpg)] font-bold text-white p-2 pl-3 text-sm leading-6 ">
-                          {category}
+            <Resource
+              value={publications}
+              onPending={() => <div>Loading...</div>}
+              onRejected={(reason) => <div>Error: {reason}</div>}
+              onResolved={(publications) => {
+                const publicationsByCategory = groupBy(publications, 'category')
+                return Object.entries(publicationsByCategory).map(
+                  ([category, pubs]) => (
+                    <ul
+                      key={category}
+                      class="-mx-2 mt-3 first:mt-0 border-collapse"
+                      role="list"
+                    >
+                      <li class="bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md">
+                        {category}
+                      </li>
+                      {pubs.map((p) => (
+                        <li
+                          class="border border-slate-100 last:rounded-b-md"
+                          key={p.id}
+                        >
+                          <Link
+                            href={`/publications/${p.id}`}
+                            class={`${
+                              location.params.publication_id === p.id
+                                ? 'font-extrabold bg-slate-100'
+                                : ''
+                            } font-bold flex p-2 pl-3 text-sm leading-6 hover:font-extrabold hover:bg-slate-100`}
+                          >
+                            {p.title}
+                          </Link>
                         </li>
-                        {pubs.map((p) => (
-                          <li key={p.id}>
-                            <Link
-                              href={`/publications/${p.id}`}
-                              class={`${
-                                location.params.publication_id === p.id
-                                  ? 'font-extrabold'
-                                  : 'opacity-80'
-                              } font-bold group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 hover:opacity-100 hover:font-extrabold`}
-                            >
-                              {p.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </div>
-                    ),
-                  )
-                }}
-              />
-            </ul>
+                      ))}
+                    </ul>
+                  ),
+                )
+              }}
+            />
           </nav>
         </div>
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
