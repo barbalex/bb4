@@ -3,7 +3,6 @@ import { Link, useLocation } from '@builder.io/qwik-city'
 
 export default component$(() => {
   const location = useLocation()
-  console.log('pathname:', location.url.pathname)
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
