@@ -51,7 +51,6 @@ export default component$(() => {
                     <li key={a.id}>
                       <Link
                         href={`/articles/${a.id}`}
-                        // TODO: highlight current article
                         class={`${
                           location.params.article_id === a.id
                             ? 'font-extrabold'
