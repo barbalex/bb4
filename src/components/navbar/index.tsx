@@ -1,3 +1,4 @@
+/* eslint-disable qwik/jsx-img */
 import { component$ } from '@builder.io/qwik'
 import { Link, useLocation } from '@builder.io/qwik-city'
 
@@ -7,7 +8,7 @@ export default component$(() => {
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 justify-between">
+        <div class="flex h-14 justify-between">
           <div class="flex">
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
@@ -49,7 +50,7 @@ export default component$(() => {
                     : ' border-transparent font-normal '
                 }`}
               >
-                My Articles
+                Articles
               </Link>
               <Link
                 href="/about"
@@ -115,7 +116,6 @@ export default component$(() => {
               <span class="sr-only">Open main menu</span>
               {/*
           Icon when menu is closed.
-
           Menu open: "hidden", Menu closed: "block"
         */}
               <svg
@@ -134,7 +134,6 @@ export default component$(() => {
               </svg>
               {/*
           Icon when menu is open.
-
           Menu open: "block", Menu closed: "hidden"
         */}
               <svg

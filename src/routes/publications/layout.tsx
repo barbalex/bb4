@@ -76,7 +76,7 @@ export default component$(() => {
                   ([category, pubs]) => (
                     <ul
                       key={category}
-                      class="-mx-2 mt-3 first:mt-0 border-collapse"
+                      class="-mx-2 mt-3 mb-3 first:mt-0 border-collapse"
                       role="list"
                     >
                       <li class="bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md">
@@ -84,7 +84,7 @@ export default component$(() => {
                       </li>
                       {pubs.map((p) => (
                         <li
-                          class="border border-slate-100 last:rounded-b-md"
+                          class="border border-slate-200 last:rounded-b-md"
                           key={p.id}
                         >
                           <Link
