@@ -7,10 +7,10 @@ export default component$(() => {
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
         <div class="flex h-14 justify-between">
           <div class="flex">
-            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div class="hidden sm:flex sm:space-x-8">
               <Link
                 href="/"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
