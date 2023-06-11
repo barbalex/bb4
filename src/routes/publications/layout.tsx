@@ -1,6 +1,28 @@
 import { component$, useResource$, Resource, Slot } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
+import groupBy from 'lodash/groupBy'
+
+const categorySort = {
+  'European Union': 1,
+  'IOs & NGOs': 2,
+  Academic: 3,
+}
+const sorter = (a, b) => {
+  const aCategorySort = categorySort[a.category]
+  const bCategorySort = categorySort[b.category]
+  if (aCategorySort && bCategorySort && aCategorySort !== bCategorySort) {
+    return aCategorySort - bCategorySort
+  }
+
+  const aSort = a.sort
+  const bSort = b.sort
+  if (aSort && bSort && aSort !== bSort) {
+    return aSort - bSort
+  }
+
+  return a.title.localeCompare(b.title)
+}
 
 // select all publications: id, title, draft
 const dataFetcher = server$(async () => {
@@ -22,14 +44,17 @@ const dataFetcher = server$(async () => {
   let res
   try {
     res = await client.query(
-      'select id, title, category, draft from publication order by sort',
+      'select id, title, category, draft, sort from publication',
     )
   } catch (error) {
     console.error('query error', error.stack)
   }
   client.end()
 
-  return res?.rows
+  const rows = res?.rows ?? []
+  const rowsSorted = [...rows].sort(sorter)
+
+  return rowsSorted
 })
 
 export default component$(() => {
@@ -46,22 +71,35 @@ export default component$(() => {
                 value={publications}
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
-                onResolved={(publications) =>
-                  publications.map((p) => (
-                    <li key={p.id}>
-                      <Link
-                        href={`/publications/${p.id}`}
-                        class={`${
-                          location.params.publication_id === p.id
-                            ? 'font-extrabold'
-                            : 'opacity-80'
-                        } text-white font-bold group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 bg-[url(../../../oceanDark.jpg)] hover:opacity-100 hover:font-extrabold`}
-                      >
-                        {p.title}
-                      </Link>
-                    </li>
-                  ))
-                }
+                onResolved={(publications) => {
+                  const publicationsByCategory = groupBy(
+                    publications,
+                    'category',
+                  )
+                  return Object.entries(publicationsByCategory).map(
+                    ([category, pubs]) => (
+                      <div key={category}>
+                        <li class="bg-[url(../../../oceanDark.jpg)] font-bold text-white p-2 pl-3 text-sm leading-6 ">
+                          {category}
+                        </li>
+                        {pubs.map((p) => (
+                          <li key={p.id}>
+                            <Link
+                              href={`/publications/${p.id}`}
+                              class={`${
+                                location.params.publication_id === p.id
+                                  ? 'font-extrabold'
+                                  : 'opacity-80'
+                              } font-bold group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 hover:opacity-100 hover:font-extrabold`}
+                            >
+                              {p.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </div>
+                    ),
+                  )
+                }}
               />
             </ul>
           </nav>
