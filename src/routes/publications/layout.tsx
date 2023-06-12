@@ -64,8 +64,8 @@ export default component$(() => {
   return (
     <div class="flex min-h-full flex-col">
       <div class="flex-1 xl:flex">
-        <div class="px-2 py-0 xl:w-64 xl:shrink-0">
-          <nav class="sticky top-24 flex  flex-1 flex-col" aria-label="Sidebar">
+        <div class="px-2 xl:w-64 xl:shrink-0">
+          <nav class="sticky top-24 flex flex-1 flex-col" aria-label="Sidebar">
             <Resource
               value={publications}
               onPending={() => <div>Loading...</div>}
@@ -76,7 +76,7 @@ export default component$(() => {
                   ([category, pubs]) => (
                     <ul
                       key={category}
-                      class="-mx-2 mt-3 mb-3 first:mt-0 border-collapse"
+                      class="-mx-2 mt-3 first:mt-0 border-collapse"
                       role="list"
                     >
                       <li class="bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md">
