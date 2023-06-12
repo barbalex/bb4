@@ -1,156 +1,156 @@
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
-  <table
-    border="1"
-    cellspacing="0"
-    cellpadding="0"
-  >
+  <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
-      <tr style="height: 16.5pt;">
-        <td
-          style="width: 269.35pt; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt; border-width: 1pt; border-color: windowtext; border-style: solid;"
-          colspan="2"
-          valign="top"
-          width="359"
-        >
-          <p
-            style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
-            align="center"
+      <thead class="sticky top-14">
+        <tr style="height: 16.5pt;">
+          <td
+            style="width: 269.35pt; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt; border-width: 1pt; border-color: windowtext; border-style: solid;"
+            colspan="2"
+            valign="top"
+            width="359"
           >
-            <strong>
-              <span style="font-size: 9pt;">Italy Arrivals (43'735)</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style="width: 4cm; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
-          rowspan="2"
-          valign="top"
-          width="151"
-        >
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
+            <p
+              style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">Italy Arrivals (43'735)</span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style="width: 4cm; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
+            rowspan="2"
+            valign="top"
+            width="151"
           >
-            <strong>
-              <span style="font-size: 9pt;">&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">Malta (1'526)</span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style="width: 6cm; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
+            rowspan="2"
+            valign="top"
+            width="227"
           >
-            <strong>
-              <span style="font-size: 9pt;">Malta (1'526)</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style="width: 6cm; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
-          rowspan="2"
-          valign="top"
-          width="227"
-        >
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">
+                  SAR &amp; Debarkation Problems{' '}
+                </span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">
+                  Accidents, Dead &amp; Missing
+                </span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">&nbsp;</span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style="width: 205.55pt; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
+            rowspan="2"
+            valign="top"
+            width="274"
           >
-            <strong>
-              <span style="font-size: 9pt;">&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">Politics &amp; Diplomacy</span>
+              </strong>
+            </p>
+            <p
+              style="margin-bottom: 0.0001pt; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">
+                  Detention &amp; Repatriation Problems
+                </span>
+              </strong>
+            </p>
+          </td>
+        </tr>
+        <tr style="height: 16.45pt;">
+          <td
+            style="width: 120.55pt; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; border-top-style: none; border-top-width: initial; border-top-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.45pt;"
+            valign="top"
+            width="161"
           >
-            <strong>
-              <span style="font-size: 9pt;">
-                SAR &amp; Debarkation Problems{' '}
-              </span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
+            <p
+              style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">Lampedusa (38'185)</span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style="width: 148.8pt; border-top-style: none; border-top-width: initial; border-top-color: initial; border-left-style: none; border-left-width: initial; border-left-color: initial; border-bottom-style: solid; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-style: solid; border-right-color: windowtext; border-right-width: 1pt; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.45pt;"
+            valign="top"
+            width="198"
           >
-            <strong>
-              <span style="font-size: 9pt;">Accidents, Dead &amp; Missing</span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">&nbsp;</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style="width: 205.55pt; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; border-left-style: none; border-left-width: initial; border-left-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.5pt;"
-          rowspan="2"
-          valign="top"
-          width="274"
-        >
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">Politics &amp; Diplomacy</span>
-            </strong>
-          </p>
-          <p
-            style="margin-bottom: 0.0001pt; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">
-                Detention &amp; Repatriation Problems
-              </span>
-            </strong>
-          </p>
-        </td>
-      </tr>
-      <tr style="height: 16.45pt;">
-        <td
-          style="width: 120.55pt; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; border-top-style: none; border-top-width: initial; border-top-color: initial; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.45pt;"
-          valign="top"
-          width="161"
-        >
-          <p
-            style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">Lampedusa (38'185)</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style="width: 148.8pt; border-top-style: none; border-top-width: initial; border-top-color: initial; border-left-style: none; border-left-width: initial; border-left-color: initial; border-bottom-style: solid; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-style: solid; border-right-color: windowtext; border-right-width: 1pt; background-image: initial; background-attachment: initial; background-color: #fabf8f; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt; height: 16.45pt;"
-          valign="top"
-          width="198"
-        >
-          <p
-            style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
-            align="center"
-          >
-            <strong>
-              <span style="font-size: 9pt;">Italy South (5'550)</span>
-            </strong>
-          </p>
-        </td>
-      </tr>
+            <p
+              style="margin-top: 6pt; margin-right: 0cm; margin-bottom: 6pt; margin-left: 0cm; text-align: center;"
+              align="center"
+            >
+              <strong>
+                <span style="font-size: 9pt;">Italy South (5'550)</span>
+              </strong>
+            </p>
+          </td>
+        </tr>
+      </thead>
       <tr>
         <td
           style="width: 120.55pt; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; border-top-style: none; border-top-width: initial; border-top-color: initial; padding-top: 0cm; padding-right: 5.4pt; padding-bottom: 0cm; padding-left: 5.4pt;"
