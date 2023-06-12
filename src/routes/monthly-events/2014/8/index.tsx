@@ -2,208 +2,208 @@ import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
   <table border="1" cellspacing="0" cellpadding="0">
+    <thead class="sticky top-14">
+      <tr>
+        <th
+          style="width: 276.45pt; background: #fabf8f; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; padding-right: 5.4pt; border: windowtext 1pt solid;"
+          colspan="2"
+          valign="top"
+          width="369"
+        >
+          <p
+            style="text-align: center; margin: 6pt 0cm; line-height: normal;"
+            align="center"
+          >
+            <span style="font-size: small;">
+              <strong>
+                <span style="font-family: 'Arial','sans-serif';">Italy</span>
+              </strong>
+            </span>
+          </p>
+        </th>
+        <th
+          style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 134.65pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          rowspan="2"
+          valign="top"
+          width="180"
+        >
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong></strong>&nbsp;
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
+            align="center"
+          >
+            <span style="font-size: small;">
+              <strong>
+                <span style="font-family: 'Arial','sans-serif';">Malta</span>
+              </strong>
+            </span>
+          </p>
+        </th>
+        <th
+          style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 163pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          rowspan="2"
+          valign="top"
+          width="217"
+        >
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong></strong>&nbsp;
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
+                Tunisia, Libya,&nbsp;Egypt,
+              </span>
+            </strong>
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
+                miscellaneous info
+              </span>
+            </strong>
+            &nbsp;
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            &nbsp;
+          </p>
+        </th>
+        <th
+          style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 177.2pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          rowspan="2"
+          valign="top"
+          width="236"
+        >
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
+                <strong>
+                  <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
+                    Diplomacy,&nbsp;Politics, Law
+                  </span>
+                </strong>
+              </span>
+            </strong>
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong></strong>
+            <strong>
+              <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
+                European Union
+              </span>
+            </strong>
+            &nbsp;
+          </p>
+          <p
+            style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
+            align="center"
+          >
+            &nbsp;
+          </p>
+          <p
+            style="margin-bottom: 0pt; text-align: center; line-height: normal;"
+            align="center"
+          >
+            <strong>
+              <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+        </th>
+      </tr>
+      <tr>
+        <th
+          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          valign="top"
+          width="161"
+        >
+          <p
+            style="text-align: center; margin: 6pt 0cm; line-height: normal;"
+            align="center"
+          >
+            <span style="font-size: small;">
+              <strong>
+                <span style="font-family: 'Arial','sans-serif';">
+                  Lampedusa
+                </span>
+              </strong>
+            </span>
+          </p>
+        </th>
+        <th
+          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          valign="top"
+          width="208"
+        >
+          <p
+            style="text-align: center; margin: 6pt 0cm; line-height: normal;"
+            align="center"
+          >
+            <span style="font-size: small;">
+              <strong>
+                <span style="font-family: 'Arial','sans-serif';">
+                  Italy South
+                </span>
+              </strong>
+            </span>
+          </p>
+        </th>
+      </tr>
+    </thead>
     <tbody>
-      <thead class="sticky top-14">
-        <tr style="height: 16.5pt;">
-          <td
-            style="height: 16.5pt; width: 276.45pt; background: #fabf8f; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; padding-right: 5.4pt; border: windowtext 1pt solid;"
-            colspan="2"
-            valign="top"
-            width="369"
-          >
-            <p
-              style="text-align: center; margin: 6pt 0cm; line-height: normal;"
-              align="center"
-            >
-              <span style="font-size: small;">
-                <strong>
-                  <span style="font-family: 'Arial','sans-serif';">Italy</span>
-                </strong>
-              </span>
-            </p>
-          </td>
-          <td
-            style="border-top: windowtext 1pt solid; height: 16.5pt; border-right: windowtext 1pt solid; width: 134.65pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
-            rowspan="2"
-            valign="top"
-            width="180"
-          >
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong></strong>&nbsp;
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
-              align="center"
-            >
-              <span style="font-size: small;">
-                <strong>
-                  <span style="font-family: 'Arial','sans-serif';">Malta</span>
-                </strong>
-              </span>
-            </p>
-          </td>
-          <td
-            style="border-top: windowtext 1pt solid; height: 16.5pt; border-right: windowtext 1pt solid; width: 163pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
-            rowspan="2"
-            valign="top"
-            width="217"
-          >
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong></strong>&nbsp;
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
-                  Tunisia, Libya,&nbsp;Egypt,
-                </span>
-              </strong>
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
-                  miscellaneous info
-                </span>
-              </strong>
-              &nbsp;
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              &nbsp;
-            </p>
-          </td>
-          <td
-            style="border-top: windowtext 1pt solid; height: 16.5pt; border-right: windowtext 1pt solid; width: 177.2pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
-            rowspan="2"
-            valign="top"
-            width="236"
-          >
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
-                  <strong>
-                    <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
-                      Diplomacy,&nbsp;Politics, Law
-                    </span>
-                  </strong>
-                </span>
-              </strong>
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong></strong>
-              <strong>
-                <span style="font-size: 8pt; font-family: 'Arial','sans-serif';">
-                  European Union
-                </span>
-              </strong>
-              &nbsp;
-            </p>
-            <p
-              style="text-align: center; margin: 6pt 0cm 0pt; line-height: normal;"
-              align="center"
-            >
-              &nbsp;
-            </p>
-            <p
-              style="margin-bottom: 0pt; text-align: center; line-height: normal;"
-              align="center"
-            >
-              <strong>
-                <span style="font-size: 9pt; font-family: 'Arial','sans-serif';">
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-          </td>
-        </tr>
-        <tr style="height: 16.45pt;">
-          <td
-            style="border-top: medium none; height: 16.45pt; border-right: windowtext 1pt solid; width: 120.5pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
-            valign="top"
-            width="161"
-          >
-            <p
-              style="text-align: center; margin: 6pt 0cm; line-height: normal;"
-              align="center"
-            >
-              <span style="font-size: small;">
-                <strong>
-                  <span style="font-family: 'Arial','sans-serif';">
-                    Lampedusa
-                  </span>
-                </strong>
-              </span>
-            </p>
-          </td>
-          <td
-            style="border-top: medium none; height: 16.45pt; border-right: windowtext 1pt solid; width: 155.95pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
-            valign="top"
-            width="208"
-          >
-            <p
-              style="text-align: center; margin: 6pt 0cm; line-height: normal;"
-              align="center"
-            >
-              <span style="font-size: small;">
-                <strong>
-                  <span style="font-family: 'Arial','sans-serif';">
-                    Italy South
-                  </span>
-                </strong>
-              </span>
-            </p>
-          </td>
-        </tr>
-      </thead>
       <tr>
         <td
           style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"

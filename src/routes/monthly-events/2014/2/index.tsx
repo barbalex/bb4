@@ -2,331 +2,331 @@ import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
   <table border={1} cellSpacing={0} cellPadding={0}>
+    <thead class="sticky top-14">
+      <tr>
+        <td
+          style={{
+            height: '16.5pt',
+            width: '276.45pt',
+            background: '#fabf8f',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            paddingRight: '5.4pt',
+            border: 'windowtext 1pt solid',
+          }}
+          colSpan={2}
+          valign="top"
+          width={369}
+        >
+          <p
+            style={{
+              textAlign: 'center',
+              margin: '6pt 0cm',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Italy
+              </span>
+            </strong>
+          </p>
+        </td>
+        <td
+          style={{
+            borderTop: 'windowtext 1pt solid',
+            height: '16.5pt',
+            borderRight: 'windowtext 1pt solid',
+            width: '134.65pt',
+            background: '#fabf8f',
+            borderBottom: 'windowtext 1pt solid',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            borderLeft: 'medium none',
+            paddingRight: '5.4pt',
+          }}
+          rowSpan={2}
+          valign="top"
+          width={180}
+        >
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style={{
+              textAlign: 'center',
+              margin: '6pt 0cm 0pt',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Malta
+              </span>
+            </strong>
+          </p>
+        </td>
+        <td
+          style={{
+            borderTop: 'windowtext 1pt solid',
+            height: '16.5pt',
+            borderRight: 'windowtext 1pt solid',
+            width: '163pt',
+            background: '#fabf8f',
+            borderBottom: 'windowtext 1pt solid',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            borderLeft: 'medium none',
+            paddingRight: '5.4pt',
+          }}
+          rowSpan={2}
+          valign="top"
+          width={217}
+        >
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '8pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Tunisia, Libya, Accidents, SAR,{' '}
+              </span>
+            </strong>
+          </p>
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '8pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Migrant Smuggling, Repatriation
+              </span>
+            </strong>
+          </p>
+        </td>
+        <td
+          style={{
+            borderTop: 'windowtext 1pt solid',
+            height: '16.5pt',
+            borderRight: 'windowtext 1pt solid',
+            width: '177.2pt',
+            background: '#fabf8f',
+            borderBottom: 'windowtext 1pt solid',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            borderLeft: 'medium none',
+            paddingRight: '5.4pt',
+          }}
+          rowSpan={2}
+          valign="top"
+          width={236}
+        >
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+          <p
+            style={{
+              textAlign: 'center',
+              margin: '6pt 0cm 0pt',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Diplomacy, Politics, Law
+              </span>
+            </strong>
+          </p>
+          <p
+            style={{
+              marginBottom: '0pt',
+              textAlign: 'center',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                &nbsp;
+              </span>
+            </strong>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style={{
+            borderTop: 'medium none',
+            height: '16.45pt',
+            borderRight: 'windowtext 1pt solid',
+            width: '120.5pt',
+            background: '#fabf8f',
+            borderBottom: 'windowtext 1pt solid',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            borderLeft: 'windowtext 1pt solid',
+            paddingRight: '5.4pt',
+          }}
+          valign="top"
+          width={161}
+        >
+          <p
+            style={{
+              textAlign: 'center',
+              margin: '6pt 0cm',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Lampedusa
+              </span>
+            </strong>
+          </p>
+        </td>
+        <td
+          style={{
+            borderTop: 'medium none',
+            height: '16.45pt',
+            borderRight: 'windowtext 1pt solid',
+            width: '155.95pt',
+            background: '#fabf8f',
+            borderBottom: 'windowtext 1pt solid',
+            paddingBottom: '0cm',
+            paddingTop: '0cm',
+            paddingLeft: '5.4pt',
+            borderLeft: 'medium none',
+            paddingRight: '5.4pt',
+          }}
+          valign="top"
+          width={208}
+        >
+          <p
+            style={{
+              textAlign: 'center',
+              margin: '6pt 0cm',
+              lineHeight: 'normal',
+            }}
+            align="center"
+          >
+            <strong>
+              <span
+                style={{
+                  fontSize: '9pt',
+                  fontFamily: '"Arial","sans-serif"',
+                }}
+              >
+                Italy South
+              </span>
+            </strong>
+          </p>
+        </td>
+      </tr>
+    </thead>
     <tbody>
-      <thead class="sticky top-14">
-        <tr style={{ height: '16.5pt' }}>
-          <td
-            style={{
-              height: '16.5pt',
-              width: '276.45pt',
-              background: '#fabf8f',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              paddingRight: '5.4pt',
-              border: 'windowtext 1pt solid',
-            }}
-            colSpan={2}
-            valign="top"
-            width={369}
-          >
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '6pt 0cm',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Italy
-                </span>
-              </strong>
-            </p>
-          </td>
-          <td
-            style={{
-              borderTop: 'windowtext 1pt solid',
-              height: '16.5pt',
-              borderRight: 'windowtext 1pt solid',
-              width: '134.65pt',
-              background: '#fabf8f',
-              borderBottom: 'windowtext 1pt solid',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              borderLeft: 'medium none',
-              paddingRight: '5.4pt',
-            }}
-            rowSpan={2}
-            valign="top"
-            width={180}
-          >
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '6pt 0cm 0pt',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Malta
-                </span>
-              </strong>
-            </p>
-          </td>
-          <td
-            style={{
-              borderTop: 'windowtext 1pt solid',
-              height: '16.5pt',
-              borderRight: 'windowtext 1pt solid',
-              width: '163pt',
-              background: '#fabf8f',
-              borderBottom: 'windowtext 1pt solid',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              borderLeft: 'medium none',
-              paddingRight: '5.4pt',
-            }}
-            rowSpan={2}
-            valign="top"
-            width={217}
-          >
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '8pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Tunisia, Libya, Accidents, SAR,{' '}
-                </span>
-              </strong>
-            </p>
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '8pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Migrant Smuggling, Repatriation
-                </span>
-              </strong>
-            </p>
-          </td>
-          <td
-            style={{
-              borderTop: 'windowtext 1pt solid',
-              height: '16.5pt',
-              borderRight: 'windowtext 1pt solid',
-              width: '177.2pt',
-              background: '#fabf8f',
-              borderBottom: 'windowtext 1pt solid',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              borderLeft: 'medium none',
-              paddingRight: '5.4pt',
-            }}
-            rowSpan={2}
-            valign="top"
-            width={236}
-          >
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '6pt 0cm 0pt',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Diplomacy, Politics, Law
-                </span>
-              </strong>
-            </p>
-            <p
-              style={{
-                marginBottom: '0pt',
-                textAlign: 'center',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  &nbsp;
-                </span>
-              </strong>
-            </p>
-          </td>
-        </tr>
-        <tr style={{ height: '16.45pt' }}>
-          <td
-            style={{
-              borderTop: 'medium none',
-              height: '16.45pt',
-              borderRight: 'windowtext 1pt solid',
-              width: '120.5pt',
-              background: '#fabf8f',
-              borderBottom: 'windowtext 1pt solid',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              borderLeft: 'windowtext 1pt solid',
-              paddingRight: '5.4pt',
-            }}
-            valign="top"
-            width={161}
-          >
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '6pt 0cm',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Lampedusa
-                </span>
-              </strong>
-            </p>
-          </td>
-          <td
-            style={{
-              borderTop: 'medium none',
-              height: '16.45pt',
-              borderRight: 'windowtext 1pt solid',
-              width: '155.95pt',
-              background: '#fabf8f',
-              borderBottom: 'windowtext 1pt solid',
-              paddingBottom: '0cm',
-              paddingTop: '0cm',
-              paddingLeft: '5.4pt',
-              borderLeft: 'medium none',
-              paddingRight: '5.4pt',
-            }}
-            valign="top"
-            width={208}
-          >
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '6pt 0cm',
-                lineHeight: 'normal',
-              }}
-              align="center"
-            >
-              <strong>
-                <span
-                  style={{
-                    fontSize: '9pt',
-                    fontFamily: '"Arial","sans-serif"',
-                  }}
-                >
-                  Italy South
-                </span>
-              </strong>
-            </p>
-          </td>
-        </tr>
-      </thead>
       <tr>
         <td
           style={{
