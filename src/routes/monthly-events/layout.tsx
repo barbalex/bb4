@@ -13,7 +13,7 @@ export default component$(() => {
       <div class="flex-1 xl:flex">
         <div class="px-2 xl:w-64 xl:shrink-0">
           <nav class="sticky top-24 flex  flex-1 flex-col" aria-label="Sidebar">
-            <ul class="-mx-2 mt-3 first:mt-0 border-collapse" role="list">
+            <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
               <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2014/"
@@ -173,7 +173,7 @@ export default component$(() => {
                 </>
               )}
             </ul>
-            <ul class="-mx-2 mt-3 first:mt-0 border-collapse" role="list">
+            <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
               <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2013/"
@@ -333,7 +333,7 @@ export default component$(() => {
                 </>
               )}
             </ul>
-            <ul class="-mx-2 mt-3 first:mt-0 border-collapse" role="list">
+            <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
               <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2012/"
@@ -494,7 +494,7 @@ export default component$(() => {
                 </>
               )}
             </ul>
-            <ul class="-mx-2 mt-3 first:mt-0 border-collapse" role="list">
+            <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
               <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2011/"
@@ -656,7 +656,7 @@ export default component$(() => {
             </ul>
           </nav>
         </div>
-        <div class="px-2 py-2 xl:flex-1">
+        <div class="px-2 xl:flex-1">
           <Slot />
         </div>
       </div>

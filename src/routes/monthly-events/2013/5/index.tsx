@@ -2,7 +2,6 @@ import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
   <table
-    style="width: 1002px; border-collapse: collapse; margin-left: -1.7pt;"
     border="1"
     cellspacing="0"
     cellpadding="0"

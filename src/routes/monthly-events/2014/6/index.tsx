@@ -1,12 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
-  <table
-    style="width: 1002px; border-collapse: collapse; margin-left: -1.7pt;"
-    border="1"
-    cellspacing="0"
-    cellpadding="0"
-  >
+  <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
       <tr style="height: 16.5pt;">
         <td
@@ -2412,7 +2407,9 @@ export default component$(() => (
             <span style="font-size: x-small;">
               <span style="text-decoration: underline;">Palermo</span>
               :&nbsp;Arrival of&nbsp;765 migrants rescued by navy;{' '}
-              <strong>one migrant dies at&nbsp;local hospital</strong>&nbsp;{' '}
+              <strong>
+                one migrant dies at&nbsp;local hospital
+              </strong>&nbsp;{' '}
               <span style="color: #0000ff;">
                 <a href="http://palermo.blogsicilia.it/emergenza-nel-canale-di-sicilia-altri-624-migranti-in-arrivo-a-palermo/260003/">
                   <span style="color: #0000ff;">BS 13.6.</span>
