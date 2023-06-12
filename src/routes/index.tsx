@@ -21,10 +21,10 @@ export default component$(() => {
             name="tabs"
             class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
           >
-            <option>My Account</option>
-            <option>Company</option>
-            <option selected="">Team Members</option>
-            <option>Billing</option>
+            <option>2011 - 2014</option>
+            <option>2015 - 2018</option>
+            <option>2019 - 2022</option>
+            <option selected="">2023</option>
           </select>
         </div>
         <div class="hidden sm:block">
@@ -32,29 +32,29 @@ export default component$(() => {
             <nav class="-mb-px flex" aria-label="Tabs">
               {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
               <a
-                href="#"
+                href="/monthly-events/2014/"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
               >
-                My Account
+                2011 - 2014
               </a>
               <a
                 href="#"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
               >
-                Company
+                2015 - 2018
               </a>
               <a
                 href="#"
                 class="border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
                 aria-current="page"
               >
-                Team Members
+                2019 - 2022
               </a>
               <a
                 href="#"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
               >
-                Billing
+                2023
               </a>
             </nav>
           </div>
