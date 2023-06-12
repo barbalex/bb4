@@ -1,261 +1,259 @@
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
-  <table
-    border={1}
-    cellSpacing={0}
-    cellPadding={0}
-  >
+  <table border={1} cellSpacing={0} cellPadding={0}>
     <tbody>
-      <tr style={{ height: '16.5pt' }}>
-        <td
-          style={{
-            background: '#fabf8f',
-            padding: '0cm 5.4pt',
-            border: '1pt solid windowtext',
-            width: '269.35pt',
-            height: '16.5pt',
-          }}
-          colSpan={2}
-          valign="top"
-          width={359}
-        >
-          <p
+      <thead class="sticky top-14">
+        <tr style={{ height: '16.5pt' }}>
+          <td
             style={{
-              margin: '6pt 0cm',
-              textAlign: 'center',
-              lineHeight: 'normal',
+              background: '#fabf8f',
+              padding: '0cm 5.4pt',
+              border: '1pt solid windowtext',
+              width: '269.35pt',
+              height: '16.5pt',
             }}
-            align="center"
+            colSpan={2}
+            valign="top"
+            width={359}
           >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+            <p
+              style={{
+                margin: '6pt 0cm',
+                textAlign: 'center',
+                lineHeight: 'normal',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>Italy</span>
+                </strong>
+              </span>
+            </p>
+          </td>
+          <td
+            style={{
+              background: '#fabf8f',
+              borderWidth: '1pt 1pt 1pt medium',
+              borderStyle: 'solid solid solid none',
+              borderColor: 'windowtext windowtext windowtext currentColor',
+              padding: '0cm 5.4pt',
+              width: '4cm',
+              height: '16.5pt',
+            }}
+            rowSpan={2}
+            valign="top"
+            width={151}
+          >
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
               <strong>
-                <span style={{ fontSize: '9pt' }}>Italy</span>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
               </strong>
-            </span>
-          </p>
-        </td>
-        <td
-          style={{
-            background: '#fabf8f',
-            borderWidth: '1pt 1pt 1pt medium',
-            borderStyle: 'solid solid solid none',
-            borderColor: 'windowtext windowtext windowtext currentColor',
-            padding: '0cm 5.4pt',
-            width: '4cm',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={151}
-        >
-          <p
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>Malta</span>
+                </strong>
+              </span>
+            </p>
+          </td>
+          <td
             style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
+              background: '#fabf8f',
+              borderWidth: '1pt 1pt 1pt medium',
+              borderStyle: 'solid solid solid none',
+              borderColor: 'windowtext windowtext windowtext currentColor',
+              padding: '0cm 5.4pt',
+              width: '184.3pt',
+              height: '16.5pt',
             }}
-            align="center"
+            rowSpan={2}
+            valign="top"
+            width={246}
           >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
-            }}
-            align="center"
-          >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
               <strong>
-                <span style={{ fontSize: '9pt' }}>Malta</span>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
               </strong>
-            </span>
-          </p>
-        </td>
-        <td
-          style={{
-            background: '#fabf8f',
-            borderWidth: '1pt 1pt 1pt medium',
-            borderStyle: 'solid solid solid none',
-            borderColor: 'windowtext windowtext windowtext currentColor',
-            padding: '0cm 5.4pt',
-            width: '184.3pt',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={246}
-        >
-          <p
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>
+                    Accidents, Victims, SAR, Debarkation,&nbsp;Detention,
+                    Repatriation
+                  </span>
+                </strong>
+              </span>
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>Resettlement</span>
+                </strong>
+              </span>
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              &nbsp;
+            </p>
+          </td>
+          <td
             style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
+              background: '#fabf8f',
+              borderWidth: '1pt 1pt 1pt medium',
+              borderStyle: 'solid solid solid none',
+              borderColor: 'windowtext windowtext windowtext currentColor',
+              padding: '0cm 5.4pt',
+              width: '191.35pt',
+              height: '16.5pt',
             }}
-            align="center"
+            rowSpan={2}
+            valign="top"
+            width={255}
           >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
-            }}
-            align="center"
-          >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
               <strong>
-                <span style={{ fontSize: '9pt' }}>
-                  Accidents, Victims, SAR, Debarkation,&nbsp;Detention,
-                  Repatriation
-                </span>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
               </strong>
-            </span>
-          </p>
-          <p
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>
+                    Diplomacy, Politics, Law
+                  </span>
+                </strong>
+              </span>
+            </p>
+            <p
+              style={{
+                textAlign: 'center',
+                lineHeight: 'normal',
+                marginBottom: '0pt',
+              }}
+              align="center"
+            >
+              &nbsp;
+            </p>
+          </td>
+        </tr>
+        <tr style={{ height: '16.45pt' }}>
+          <td
             style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
+              background: '#fabf8f',
+              borderWidth: 'medium 1pt 1pt',
+              borderStyle: 'none solid solid',
+              borderColor: 'currentColor windowtext windowtext',
+              padding: '0cm 5.4pt',
+              width: '120.55pt',
+              height: '16.45pt',
             }}
-            align="center"
+            valign="top"
+            width={161}
           >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
-              <strong>
-                <span style={{ fontSize: '9pt' }}>Resettlement</span>
-              </strong>
-            </span>
-          </p>
-          <p
+            <p
+              style={{
+                margin: '6pt 0cm',
+                textAlign: 'center',
+                lineHeight: 'normal',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>Lampedusa</span>
+                </strong>
+              </span>
+            </p>
+          </td>
+          <td
             style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
+              background: '#fabf8f',
+              borderWidth: 'medium 1pt 1pt medium',
+              borderStyle: 'none solid solid none',
+              borderColor: 'currentColor windowtext windowtext currentColor',
+              padding: '0cm 5.4pt',
+              width: '148.8pt',
+              height: '16.45pt',
             }}
-            align="center"
+            valign="top"
+            width={198}
           >
-            &nbsp;
-          </p>
-        </td>
-        <td
-          style={{
-            background: '#fabf8f',
-            borderWidth: '1pt 1pt 1pt medium',
-            borderStyle: 'solid solid solid none',
-            borderColor: 'windowtext windowtext windowtext currentColor',
-            padding: '0cm 5.4pt',
-            width: '191.35pt',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={255}
-        >
-          <p
-            style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
-            }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
-            }}
-            align="center"
-          >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
-              <strong>
-                <span style={{ fontSize: '9pt' }}>
-                  Diplomacy, Politics, Law
-                </span>
-              </strong>
-            </span>
-          </p>
-          <p
-            style={{
-              textAlign: 'center',
-              lineHeight: 'normal',
-              marginBottom: '0pt',
-            }}
-            align="center"
-          >
-            &nbsp;
-          </p>
-        </td>
-      </tr>
-      <tr style={{ height: '16.45pt' }}>
-        <td
-          style={{
-            background: '#fabf8f',
-            borderWidth: 'medium 1pt 1pt',
-            borderStyle: 'none solid solid',
-            borderColor: 'currentColor windowtext windowtext',
-            padding: '0cm 5.4pt',
-            width: '120.55pt',
-            height: '16.45pt',
-          }}
-          valign="top"
-          width={161}
-        >
-          <p
-            style={{
-              margin: '6pt 0cm',
-              textAlign: 'center',
-              lineHeight: 'normal',
-            }}
-            align="center"
-          >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
-              <strong>
-                <span style={{ fontSize: '9pt' }}>Lampedusa</span>
-              </strong>
-            </span>
-          </p>
-        </td>
-        <td
-          style={{
-            background: '#fabf8f',
-            borderWidth: 'medium 1pt 1pt medium',
-            borderStyle: 'none solid solid none',
-            borderColor: 'currentColor windowtext windowtext currentColor',
-            padding: '0cm 5.4pt',
-            width: '148.8pt',
-            height: '16.45pt',
-          }}
-          valign="top"
-          width={198}
-        >
-          <p
-            style={{
-              margin: '6pt 0cm',
-              textAlign: 'center',
-              lineHeight: 'normal',
-            }}
-            align="center"
-          >
-            <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
-              <strong>
-                <span style={{ fontSize: '9pt' }}>Italy South</span>
-              </strong>
-            </span>
-          </p>
-        </td>
-      </tr>
+            <p
+              style={{
+                margin: '6pt 0cm',
+                textAlign: 'center',
+                lineHeight: 'normal',
+              }}
+              align="center"
+            >
+              <span style={{ fontFamily: 'arial,helvetica,sans-serif' }}>
+                <strong>
+                  <span style={{ fontSize: '9pt' }}>Italy South</span>
+                </strong>
+              </span>
+            </p>
+          </td>
+        </tr>
+      </thead>
       <tr>
         <td
           style={{
