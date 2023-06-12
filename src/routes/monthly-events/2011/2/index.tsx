@@ -1,291 +1,291 @@
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => (
-  <table
-    border={1}
-    cellSpacing={0}
-    cellPadding={0}
-  >
+  <table border={1} cellSpacing={0} cellPadding={0}>
     <tbody>
-      <tr style={{ height: '16.5pt' }}>
-        <td
-          style={{
-            width: '269.35pt',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.5pt',
-            borderWidth: '1pt',
-            borderColor: 'windowtext',
-            borderStyle: 'solid',
-          }}
-          colSpan={2}
-          valign="top"
-          width={359}
-        >
-          <p
+      <thead class="sticky top-14">
+        <tr style={{ height: '16.5pt' }}>
+          <td
             style={{
-              marginTop: '6pt',
-              marginRight: '0cm',
-              marginBottom: '6pt',
-              marginLeft: '0cm',
-              textAlign: 'center',
+              width: '269.35pt',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.5pt',
+              borderWidth: '1pt',
+              borderColor: 'windowtext',
+              borderStyle: 'solid',
             }}
-            align="center"
+            colSpan={2}
+            valign="top"
+            width={359}
           >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>Italy Arrivals (5'751)</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style={{
-            width: '4cm',
-            borderTopStyle: 'solid',
-            borderRightStyle: 'solid',
-            borderBottomStyle: 'solid',
-            borderTopColor: 'windowtext',
-            borderRightColor: 'windowtext',
-            borderBottomColor: 'windowtext',
-            borderTopWidth: '1pt',
-            borderRightWidth: '1pt',
-            borderBottomWidth: '1pt',
-            borderLeftStyle: 'none',
-            borderLeftWidth: 'initial',
-            borderLeftColor: 'initial',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={151}
-        >
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>Malta</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style={{
-            width: '184.3pt',
-            borderTopStyle: 'solid',
-            borderRightStyle: 'solid',
-            borderBottomStyle: 'solid',
-            borderTopColor: 'windowtext',
-            borderRightColor: 'windowtext',
-            borderBottomColor: 'windowtext',
-            borderTopWidth: '1pt',
-            borderRightWidth: '1pt',
-            borderBottomWidth: '1pt',
-            borderLeftStyle: 'none',
-            borderLeftWidth: 'initial',
-            borderLeftColor: 'initial',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={246}
-        >
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>
-                SAR &amp; Disembarkation Problems{' '}
-              </span>
-            </strong>
-          </p>
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>
-                Accidents, Dead &amp; Missing
-              </span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style={{
-            width: '191.35pt',
-            borderTopStyle: 'solid',
-            borderRightStyle: 'solid',
-            borderBottomStyle: 'solid',
-            borderTopColor: 'windowtext',
-            borderRightColor: 'windowtext',
-            borderBottomColor: 'windowtext',
-            borderTopWidth: '1pt',
-            borderRightWidth: '1pt',
-            borderBottomWidth: '1pt',
-            borderLeftStyle: 'none',
-            borderLeftWidth: 'initial',
-            borderLeftColor: 'initial',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.5pt',
-          }}
-          rowSpan={2}
-          valign="top"
-          width={255}
-        >
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>&nbsp;</span>
-            </strong>
-          </p>
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>Politics &amp; Diplomacy</span>
-            </strong>
-          </p>
-          <p
-            style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
-            align="center"
-          >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>
-                Detention &amp; Repatriation Problems
-              </span>
-            </strong>
-          </p>
-        </td>
-      </tr>
-      <tr style={{ height: '16.45pt' }}>
-        <td
-          style={{
-            width: '120.55pt',
-            borderRightStyle: 'solid',
-            borderBottomStyle: 'solid',
-            borderLeftStyle: 'solid',
-            borderRightColor: 'windowtext',
-            borderBottomColor: 'windowtext',
-            borderLeftColor: 'windowtext',
-            borderRightWidth: '1pt',
-            borderBottomWidth: '1pt',
-            borderLeftWidth: '1pt',
-            borderTopStyle: 'none',
-            borderTopWidth: 'initial',
-            borderTopColor: 'initial',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.45pt',
-          }}
-          valign="top"
-          width={161}
-        >
-          <p
+            <p
+              style={{
+                marginTop: '6pt',
+                marginRight: '0cm',
+                marginBottom: '6pt',
+                marginLeft: '0cm',
+                textAlign: 'center',
+              }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>Italy Arrivals (5'751)</span>
+              </strong>
+            </p>
+          </td>
+          <td
             style={{
-              marginTop: '6pt',
-              marginRight: '0cm',
-              marginBottom: '6pt',
-              marginLeft: '0cm',
-              textAlign: 'center',
+              width: '4cm',
+              borderTopStyle: 'solid',
+              borderRightStyle: 'solid',
+              borderBottomStyle: 'solid',
+              borderTopColor: 'windowtext',
+              borderRightColor: 'windowtext',
+              borderBottomColor: 'windowtext',
+              borderTopWidth: '1pt',
+              borderRightWidth: '1pt',
+              borderBottomWidth: '1pt',
+              borderLeftStyle: 'none',
+              borderLeftWidth: 'initial',
+              borderLeftColor: 'initial',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.5pt',
             }}
-            align="center"
+            rowSpan={2}
+            valign="top"
+            width={151}
           >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>Lampedusa (5'700)</span>
-            </strong>
-          </p>
-        </td>
-        <td
-          style={{
-            width: '148.8pt',
-            borderTopStyle: 'none',
-            borderTopWidth: 'initial',
-            borderTopColor: 'initial',
-            borderLeftStyle: 'none',
-            borderLeftWidth: 'initial',
-            borderLeftColor: 'initial',
-            borderBottomStyle: 'solid',
-            borderBottomColor: 'windowtext',
-            borderBottomWidth: '1pt',
-            borderRightStyle: 'solid',
-            borderRightColor: 'windowtext',
-            borderRightWidth: '1pt',
-            backgroundImage: 'initial',
-            backgroundAttachment: 'initial',
-            backgroundColor: '#fabf8f',
-            paddingTop: '0cm',
-            paddingRight: '5.4pt',
-            paddingBottom: '0cm',
-            paddingLeft: '5.4pt',
-            height: '16.45pt',
-          }}
-          valign="top"
-          width={198}
-        >
-          <p
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>Malta</span>
+              </strong>
+            </p>
+          </td>
+          <td
             style={{
-              marginTop: '6pt',
-              marginRight: '0cm',
-              marginBottom: '6pt',
-              marginLeft: '0cm',
-              textAlign: 'center',
+              width: '184.3pt',
+              borderTopStyle: 'solid',
+              borderRightStyle: 'solid',
+              borderBottomStyle: 'solid',
+              borderTopColor: 'windowtext',
+              borderRightColor: 'windowtext',
+              borderBottomColor: 'windowtext',
+              borderTopWidth: '1pt',
+              borderRightWidth: '1pt',
+              borderBottomWidth: '1pt',
+              borderLeftStyle: 'none',
+              borderLeftWidth: 'initial',
+              borderLeftColor: 'initial',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.5pt',
             }}
-            align="center"
+            rowSpan={2}
+            valign="top"
+            width={246}
           >
-            <strong>
-              <span style={{ fontSize: '9pt' }}>Italy South (51)</span>
-            </strong>
-          </p>
-        </td>
-      </tr>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>
+                  SAR &amp; Disembarkation Problems{' '}
+                </span>
+              </strong>
+            </p>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>
+                  Accidents, Dead &amp; Missing
+                </span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style={{
+              width: '191.35pt',
+              borderTopStyle: 'solid',
+              borderRightStyle: 'solid',
+              borderBottomStyle: 'solid',
+              borderTopColor: 'windowtext',
+              borderRightColor: 'windowtext',
+              borderBottomColor: 'windowtext',
+              borderTopWidth: '1pt',
+              borderRightWidth: '1pt',
+              borderBottomWidth: '1pt',
+              borderLeftStyle: 'none',
+              borderLeftWidth: 'initial',
+              borderLeftColor: 'initial',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.5pt',
+            }}
+            rowSpan={2}
+            valign="top"
+            width={255}
+          >
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>&nbsp;</span>
+              </strong>
+            </p>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>
+                  Politics &amp; Diplomacy
+                </span>
+              </strong>
+            </p>
+            <p
+              style={{ marginBottom: '0.0001pt', textAlign: 'center' }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>
+                  Detention &amp; Repatriation Problems
+                </span>
+              </strong>
+            </p>
+          </td>
+        </tr>
+        <tr style={{ height: '16.45pt' }}>
+          <td
+            style={{
+              width: '120.55pt',
+              borderRightStyle: 'solid',
+              borderBottomStyle: 'solid',
+              borderLeftStyle: 'solid',
+              borderRightColor: 'windowtext',
+              borderBottomColor: 'windowtext',
+              borderLeftColor: 'windowtext',
+              borderRightWidth: '1pt',
+              borderBottomWidth: '1pt',
+              borderLeftWidth: '1pt',
+              borderTopStyle: 'none',
+              borderTopWidth: 'initial',
+              borderTopColor: 'initial',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.45pt',
+            }}
+            valign="top"
+            width={161}
+          >
+            <p
+              style={{
+                marginTop: '6pt',
+                marginRight: '0cm',
+                marginBottom: '6pt',
+                marginLeft: '0cm',
+                textAlign: 'center',
+              }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>Lampedusa (5'700)</span>
+              </strong>
+            </p>
+          </td>
+          <td
+            style={{
+              width: '148.8pt',
+              borderTopStyle: 'none',
+              borderTopWidth: 'initial',
+              borderTopColor: 'initial',
+              borderLeftStyle: 'none',
+              borderLeftWidth: 'initial',
+              borderLeftColor: 'initial',
+              borderBottomStyle: 'solid',
+              borderBottomColor: 'windowtext',
+              borderBottomWidth: '1pt',
+              borderRightStyle: 'solid',
+              borderRightColor: 'windowtext',
+              borderRightWidth: '1pt',
+              backgroundImage: 'initial',
+              backgroundAttachment: 'initial',
+              backgroundColor: '#fabf8f',
+              paddingTop: '0cm',
+              paddingRight: '5.4pt',
+              paddingBottom: '0cm',
+              paddingLeft: '5.4pt',
+              height: '16.45pt',
+            }}
+            valign="top"
+            width={198}
+          >
+            <p
+              style={{
+                marginTop: '6pt',
+                marginRight: '0cm',
+                marginBottom: '6pt',
+                marginLeft: '0cm',
+                textAlign: 'center',
+              }}
+              align="center"
+            >
+              <strong>
+                <span style={{ fontSize: '9pt' }}>Italy South (51)</span>
+              </strong>
+            </p>
+          </td>
+        </tr>
+      </thead>
       <tr>
         <td
           style={{
