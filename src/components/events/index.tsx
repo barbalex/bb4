@@ -48,7 +48,22 @@ export default component$(({ activeYear }) => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={() => {
-        console.log('TODO:')
+        return (
+          <div class="relative w-full mb-0 mt-12">
+            {/* header */}
+            <div class="absolute w-full -top-10 font-bold text-2xl break-words">
+              <div class="flex w-full">
+                <div class="grow-0 w-15 pr-4 text-right">day</div>
+                <div class="grow w-auto pr-2 text-center">Maritime Events</div>
+                <div class="grow w-auto pr-2 text-center">Political Events</div>
+              </div>
+            </div>
+            {/* body */}
+            <div class="overflow-x-hidden overflow-y-auto bg-indigo-50">
+              body
+            </div>
+          </div>
+        )
       }}
     />
   )
