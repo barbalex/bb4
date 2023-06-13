@@ -36,14 +36,13 @@ const dataFetcher = server$(async () => {
   }
   client.end()
 
-  return res?.rows
+  return res?.rows?.map((r) => r.year)
 })
 
 export default component$(() => {
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(false)
   const years = useResource$(async () => await dataFetcher())
-  console.log('years', years)
 
   return (
     <>
@@ -85,16 +84,40 @@ export default component$(() => {
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
                 onResolved={(years) => {
+                  console.log('years', years)
+                  const years15to18 = years.filter(
+                    (y) => y >= 2015 && y <= 2018,
+                  )
+                  const years19to22 = years.filter(
+                    (y) => y >= 2019 && y <= 2022,
+                  )
+                  const yearsAfter22 = years.filter((y) => y > 2022)
                   // TODO:
-                  return null
+                  return (
+                    <>
+                      {grouped15to18.value ? (
+                        <a
+                          href="#"
+                          class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                          onClick$={() => (grouped15to18.value = false)}
+                        >
+                          2015 - 2018
+                        </a>
+                      ) : (
+                        years15to18.map((year) => (
+                          <a
+                            key={year}
+                            href="#"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                          >
+                            {year}
+                          </a>
+                        ))
+                      )}
+                    </>
+                  )
                 }}
               />
-              <a
-                href="#"
-                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
-              >
-                2015 - 2018
-              </a>
               <a
                 href="#"
                 class="border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
