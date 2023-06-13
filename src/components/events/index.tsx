@@ -3,7 +3,7 @@ import { server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 
 // select all articles: id, title, draft
-const dataFetcher = server$(async () => {
+const dataFetcher = server$(async (activeYear) => {
   const isDev = process.env.NODE_ENV === 'development'
   const options = {
     connectionString: isDev
@@ -18,28 +18,44 @@ const dataFetcher = server$(async () => {
   }
 
   // TODO: create client on app start and store in store
-  let res
+  let eventRes
   try {
-    res = await client.query(
+    eventRes = await client.query(
       `SELECT
-          to_char(date_trunc('year', datum), 'yyyy')::int AS year
+          *
         FROM
           EVENT
-        GROUP BY
-          year
+        where
+          datum between '${activeYear}-01-01' and '${activeYear}-12-31'
         ORDER BY
-          year ASC`,
+          datum desc, tags_sort asc`,
     )
   } catch (error) {
     console.error('query error', error.stack)
   }
+  let datumRes
+  try {
+    datumRes = await client.query(
+      `SELECT
+          distinct datum
+        FROM
+          EVENT
+        where
+          datum between '${activeYear}-01-01' and '${activeYear}-12-31'
+        ORDER BY
+          datum desc`,
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+
   client.end()
 
-  return res?.rows?.map((r) => r.year)
+  return { events: eventRes?.rows, datums: datumRes?.rows?.map((r) => r.datum) }
 })
 
 export default component$(({ activeYear }) => {
-  const years = useResource$(async () => await dataFetcher())
+  const years = useResource$(async () => await dataFetcher(activeYear.value))
   console.log('events', { activeYear: activeYear.value })
 
   return (
@@ -47,7 +63,9 @@ export default component$(({ activeYear }) => {
       value={years}
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={() => {
+      onResolved={({ events, datums }) => {
+        console.log('events', { events, datums })
+
         return (
           <div class="relative w-full mb-0 mt-12">
             {/* header */}
