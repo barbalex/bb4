@@ -1,6 +1,14 @@
-import { component$, useSignal, useResource$, Resource } from '@builder.io/qwik'
+import {
+  component$,
+  useSignal,
+  useResource$,
+  Resource,
+  useContext,
+} from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
+
+import { CTX } from '../../root'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async () => {
@@ -38,7 +46,9 @@ const dataFetcher = server$(async () => {
   return res?.rows?.map((r) => r.year)
 })
 
-export default component$(({activeYear}) => {
+export default component$(({ activeYear }) => {
+  const store = useContext(CTX)
+  console.log('years, client:', store.client)
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(true)
   const years = useResource$(async () => await dataFetcher())
@@ -166,4 +176,3 @@ export default component$(({activeYear}) => {
     </>
   )
 })
-
