@@ -22,7 +22,8 @@ export default component$(() => {
    *
    * Dont remove the `<head>` and `<body>` elements.
    */
-  const store = useStore({ client: undefined })
+  // TODO: use store for what?
+  const store = useStore({ todo: undefined })
   useContextProvider(CTX, store)
 
   return (
