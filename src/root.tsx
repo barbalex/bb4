@@ -3,17 +3,41 @@ import {
   createContextId,
   useStore,
   useContextProvider,
+  useContext,
+  useResource$,
+  noSerialize,
 } from '@builder.io/qwik'
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
+  server$,
 } from '@builder.io/qwik-city'
 import { RouterHead } from './components/router-head/router-head'
+import { Client } from 'pg'
 
 import './global.css'
 
 export const CTX = createContextId('root')
+
+const clientFetcher = server$(async () => {
+  const isDev = process.env.NODE_ENV === 'development'
+  const options = {
+    connectionString: isDev
+      ? process.env.PG_CONNECTIONSTRING_DEV
+      : process.env.PG_CONNECTIONSTRING_PROD,
+  }
+  const client = new Client(options)
+  try {
+    await client.connect()
+  } catch (error) {
+    console.error('connection error', error.stack)
+  }
+
+  client.end()
+
+  return noSerialize(client)
+})
 
 export default component$(() => {
   /**
@@ -24,6 +48,8 @@ export default component$(() => {
    */
   const store = useStore({ client: undefined })
   useContextProvider(CTX, store)
+  const client = useResource$(async () => await clientFetcher())
+  store.client = noSerialize(client)
 
   return (
     <QwikCityProvider>
