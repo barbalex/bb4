@@ -1,6 +1,6 @@
 import { component$, useSignal, useResource$, Resource } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
-import { server$, Link, useLocation } from '@builder.io/qwik-city'
+import { server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 
 // select all articles: id, title, draft
@@ -92,14 +92,13 @@ export default component$(() => {
                     (y) => y >= 2019 && y <= 2022,
                   )
                   const yearsAfter22 = years.filter((y) => y > 2022)
-                  console.log('years', {
-                    years,
-                    years15to18,
-                    years19to22,
-                    yearsAfter22,
-                    activeYear: activeYear.value,
-                  })
-                  // TODO:
+                  // console.log('years', {
+                  //   years,
+                  //   years15to18,
+                  //   years19to22,
+                  //   yearsAfter22,
+                  //   activeYear: activeYear.value,
+                  // })
                   return (
                     <>
                       {grouped15to18.value ? (
