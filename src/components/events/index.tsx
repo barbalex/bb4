@@ -87,54 +87,22 @@ export default component$(({ activeYear }) => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={({ migrationEvents, politicEvents, datums }) => {
-        const rowsData = datums.map((datum) => ({
-          date: datum,
-          migrationEvents: migrationEvents.filter((e) => e.datum === datum),
-          politicEvents: politicEvents.filter((e) => e.datum === datum),
-        }))
-        const rows = []
-        for (const [index, row] of rowsData.entries()) {
-          const day = dayjs(row.date).format('D')
-          const endOfMonth = dayjs(row.date).endOf('month').format('DD')
-          const rowForDateRow = {
-            date: row.date,
-            migrationEvents: row.migrationEvents.filter(
-              (event) =>
-                !event.tags || !event.tags.includes('monthlyStatistics'),
+        console.log('events, migrationEvents:', migrationEvents[0])
+        console.log('events, politicEvents:', politicEvents[0])
+        console.log('events, datums:', datums[0])
+        const rowsData = datums.map((datum) => {
+          // console.log('events', {datum})
+          return {
+            date: datum,
+            migrationEvents: migrationEvents.filter(
+              (e) => !e.tags || !e.tags.includes('monthlyStatistics'),
             ),
-            politicsEvents: (row?.politicsEvents ?? []).filter(
-              (event) =>
-                !event.tags || !event.tags.includes('monthlyStatistics'),
+            politicEvents: politicEvents.filter(
+              (e) => !e.tags || !e.tags.includes('monthlyStatistics'),
             ),
           }
-          const rowForMonthlyStatsRow = {
-            date: row.date,
-            migrationEvents: row.migrationEvents.filter(
-              (event) => event.tags && event.tags.includes('monthlyStatistics'),
-            ),
-            politicsEvents: (row?.politicsEvents ?? []).filter(
-              (event) => event.tags && event.tags.includes('monthlyStatistics'),
-            ),
-          }
-          const rowForMonthlyStatsHasEvents =
-            rowForMonthlyStatsRow.migrationEvents.length > 0 ||
-            rowForMonthlyStatsRow.politicsEvents.length > 0
-          const needsMonthRow = day === endOfMonth || index === 0
-          const needsMonthlyStatisticsRow =
-            day === endOfMonth && rowForMonthlyStatsHasEvents
-          if (needsMonthRow) {
-            // rows.push(<MonthRow key={`${index}monthRow`} dateRowObject={row} />)
-          }
-          if (needsMonthlyStatisticsRow) {
-            // rows.push(
-            //   <MonthlyStatisticsRow
-            //     key={`${index}monthlyStatisticsRow`}
-            //     dateRowObject={rowForMonthlyStatsRow}
-            //   />,
-            // )
-          }
-          rows.push(<DateRow key={index} data={rowForDateRow} />)
-        }
+        })
+        // console.log('events, rowsData:', rowsData)
 
         return (
           <div class="relative w-full mb-0 mt-12">
@@ -142,13 +110,60 @@ export default component$(({ activeYear }) => {
             <div class="absolute w-full -top-10 font-bold text-2xl break-words">
               <div class="flex w-full">
                 <div class="grow-0 w-15 pr-4 text-right">day</div>
-                <div class="grow w-auto pr-2 text-center">Maritime Events</div>
-                <div class="grow w-auto pr-2 text-center">Political Events</div>
+                <div class="grow-0 basis-1/2 pr-2 text-center">
+                  Maritime Events
+                </div>
+                <div class="grow-0 basis-1/2 pr-2 text-center">
+                  Political Events
+                </div>
               </div>
             </div>
             {/* body */}
             <div class="overflow-x-hidden overflow-y-auto bg-indigo-50">
-              {rows}
+              {rowsData.map((row, index) => {
+                const day = dayjs(row.date).format('D')
+                const endOfMonth = dayjs(row.date).endOf('month').format('DD')
+                const rowForDateRow = {
+                  date: row.date,
+                  migrationEvents: row.migrationEvents.filter(
+                    (event) =>
+                      !event.tags || !event.tags.includes('monthlyStatistics'),
+                  ),
+                  politicsEvents: (row?.politicsEvents ?? []).filter(
+                    (event) =>
+                      !event.tags || !event.tags.includes('monthlyStatistics'),
+                  ),
+                }
+                const rowForMonthlyStatsRow = {
+                  date: row.date,
+                  migrationEvents: row.migrationEvents.filter(
+                    (event) =>
+                      event.tags && event.tags.includes('monthlyStatistics'),
+                  ),
+                  politicsEvents: (row?.politicsEvents ?? []).filter(
+                    (event) =>
+                      event.tags && event.tags.includes('monthlyStatistics'),
+                  ),
+                }
+                const rowForMonthlyStatsHasEvents =
+                  rowForMonthlyStatsRow.migrationEvents.length > 0 ||
+                  rowForMonthlyStatsRow.politicsEvents.length > 0
+                const needsMonthRow = day === endOfMonth || index === 0
+                const needsMonthlyStatisticsRow =
+                  day === endOfMonth && rowForMonthlyStatsHasEvents
+                return (
+                  <>
+                    {/* {needsMonthRow && <MonthRow key={`${index}monthRow`} dateRowObject={row} />} */}
+                    {/* {needsMonthlyStatisticsRow && (
+                    <MonthlyStatisticsRow
+                      key={`${index}monthlyStatisticsRow`}
+                      dateRowObject={rowForMonthlyStatsRow}
+                    />
+                  )} */}
+                    <DateRow key={index} data={rowForDateRow} />
+                  </>
+                )
+              })}
             </div>
           </div>
         )
