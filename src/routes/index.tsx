@@ -42,6 +42,7 @@ const dataFetcher = server$(async () => {
 export default component$(() => {
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(false)
+  const activeYear = useSignal(new Date().getFullYear())
   const years = useResource$(async () => await dataFetcher())
 
   return (
@@ -84,7 +85,6 @@ export default component$(() => {
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
                 onResolved={(years) => {
-                  console.log('years', years)
                   const years15to18 = years.filter(
                     (y) => y >= 2015 && y <= 2018,
                   )
@@ -92,6 +92,13 @@ export default component$(() => {
                     (y) => y >= 2019 && y <= 2022,
                   )
                   const yearsAfter22 = years.filter((y) => y > 2022)
+                  console.log('years', {
+                    years,
+                    years15to18,
+                    years19to22,
+                    yearsAfter22,
+                    activeYear: activeYear.value,
+                  })
                   // TODO:
                   return (
                     <>
@@ -108,7 +115,12 @@ export default component$(() => {
                           <a
                             key={year}
                             href="#"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                            class={
+                              activeYear.value === year
+                                ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
+                                : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
+                            }
+                            onClick$={() => (activeYear.value = year)}
                           >
                             {year}
                           </a>
@@ -120,7 +132,7 @@ export default component$(() => {
               />
               <a
                 href="#"
-                class="border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
                 aria-current="page"
               >
                 2019 - 2022
