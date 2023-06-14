@@ -93,7 +93,7 @@ export default component$(() => {
                               location.params.publication_id === p.id
                                 ? 'font-extrabold bg-slate-100'
                                 : ''
-                            } font-bold flex p-2 pl-3 text-sm leading-6 hover:font-extrabold hover:bg-slate-100`}
+                            } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
                           >
                             {p.title}
                           </Link>
