@@ -6,7 +6,7 @@ export default component$(({ event }) => {
   const eventClasses = (event.tags ?? []).map((tag) => `event-${tag}`).join(' ')
 
   return (
-    <li class={eventClasses}>
+    <li class={`${eventClasses} py-1.5`}>
       <div class={eventClasses}>
         {event.title}{' '}
         <span>

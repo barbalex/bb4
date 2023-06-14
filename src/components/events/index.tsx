@@ -25,7 +25,9 @@ const dataFetcher = server$(async (activeYear) => {
   try {
     migrationEventRes = await client.query(
       `SELECT
-          *
+          *,
+          extract(month from datum)::int as month,
+          extract(day from datum)::int as day
         FROM
           EVENT
         where
@@ -41,7 +43,9 @@ const dataFetcher = server$(async (activeYear) => {
   try {
     politicEventRes = await client.query(
       `SELECT
-          *
+          *,
+          extract(month from datum)::int as month,
+          extract(day from datum)::int as day
         FROM
           EVENT
         where
@@ -53,11 +57,15 @@ const dataFetcher = server$(async (activeYear) => {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  let datumRes
+  let dateRes
   try {
-    datumRes = await client.query(
+    dateRes = await client.query(
       `SELECT
-          distinct datum
+          distinct datum,
+          extract(month from datum)::int as month,
+          extract(day from datum)::int as day,
+          (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
+          (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum::date as is_end_of_month
         FROM
           EVENT
         where
@@ -74,35 +82,43 @@ const dataFetcher = server$(async (activeYear) => {
   return {
     migrationEvents: migrationEventRes?.rows,
     politicEvents: politicEventRes?.rows,
-    datums: datumRes?.rows?.map((r) => r.datum),
+    dates: dateRes?.rows,
   }
 })
 
 export default component$(({ activeYear }) => {
-  const years = useResource$(async () => await dataFetcher(activeYear.value))
+  const years = useResource$(async ({ track }) => {
+    const year = track(() => activeYear.value)
+
+    return await dataFetcher(year)
+  })
 
   return (
     <Resource
       value={years}
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={({ migrationEvents, politicEvents, datums }) => {
-        console.log('events, migrationEvents:', migrationEvents[0])
-        console.log('events, politicEvents:', politicEvents[0])
-        console.log('events, datums:', datums[0])
-        const rowsData = datums.map((datum) => {
-          // console.log('events', {datum})
+      onResolved={({ migrationEvents, politicEvents, dates }) => {
+        // console.log('events, migrationEvents:', migrationEvents[0])
+        // console.log('events, politicEvents:', politicEvents[0])
+        // console.log('events, dates:', dates[0])
+
+        // comparing equality of dates did not work
+        // so need to extract day and month
+        const rowsData = dates.map((date) => {
           return {
-            date: datum,
+            date: date.datum,
+            day: date.day,
+            isEndOfMonth: date.is_end_of_month,
             migrationEvents: migrationEvents.filter(
-              (e) => !e.tags || !e.tags.includes('monthlyStatistics'),
+              (e) => e.month === date.month && e.day === date.day,
             ),
             politicEvents: politicEvents.filter(
-              (e) => !e.tags || !e.tags.includes('monthlyStatistics'),
+              (e) => e.month === date.month && e.day === date.day,
             ),
           }
         })
-        // console.log('events, rowsData:', rowsData)
+        console.log('events, rowsData:', rowsData[0])
 
         return (
           <div class="relative w-full mb-0 mt-12">
@@ -119,17 +135,15 @@ export default component$(({ activeYear }) => {
               </div>
             </div>
             {/* body */}
-            <div class="overflow-x-hidden overflow-y-auto bg-indigo-50">
+            <div class="overflow-x-hidden overflow-y-auto">
               {rowsData.map((row, index) => {
-                const day = dayjs(row.date).format('D')
-                const endOfMonth = dayjs(row.date).endOf('month').format('DD')
                 const rowForDateRow = {
                   date: row.date,
                   migrationEvents: row.migrationEvents.filter(
                     (event) =>
                       !event.tags || !event.tags.includes('monthlyStatistics'),
                   ),
-                  politicsEvents: (row?.politicsEvents ?? []).filter(
+                  politicEvents: (row?.politicEvents ?? []).filter(
                     (event) =>
                       !event.tags || !event.tags.includes('monthlyStatistics'),
                   ),
@@ -140,20 +154,24 @@ export default component$(({ activeYear }) => {
                     (event) =>
                       event.tags && event.tags.includes('monthlyStatistics'),
                   ),
-                  politicsEvents: (row?.politicsEvents ?? []).filter(
+                  politicEvents: (row?.politicEvents ?? []).filter(
                     (event) =>
                       event.tags && event.tags.includes('monthlyStatistics'),
                   ),
                 }
                 const rowForMonthlyStatsHasEvents =
                   rowForMonthlyStatsRow.migrationEvents.length > 0 ||
-                  rowForMonthlyStatsRow.politicsEvents.length > 0
-                const needsMonthRow = day === endOfMonth || index === 0
+                  rowForMonthlyStatsRow.politicEvents.length > 0
+                const needsMonthRow = row.isEndOfMonth || index === 0
                 const needsMonthlyStatisticsRow =
-                  day === endOfMonth && rowForMonthlyStatsHasEvents
+                  row.isEndOfMonth && rowForMonthlyStatsHasEvents
                 return (
                   <>
+                    {needsMonthRow && <div>month row</div>}
                     {/* {needsMonthRow && <MonthRow key={`${index}monthRow`} dateRowObject={row} />} */}
+                    {needsMonthlyStatisticsRow && (
+                      <div>monthly statistics row</div>
+                    )}
                     {/* {needsMonthlyStatisticsRow && (
                     <MonthlyStatisticsRow
                       key={`${index}monthlyStatisticsRow`}
