@@ -2,6 +2,7 @@ import { component$, useSignal } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
 
 import Years from '../components/years'
+import EventHeader from '../components/events/header'
 import Events from '../components/events'
 
 export default component$(() => {
@@ -16,6 +17,7 @@ export default component$(() => {
         focusing on both maritime and political events.
       </p>
       <Years activeYear={activeYear} />
+      <EventHeader />
       <Events activeYear={activeYear} />
     </>
   )

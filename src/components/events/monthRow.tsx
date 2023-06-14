@@ -6,6 +6,6 @@ export default component$(({ date }) => {
   const year = dayjs(date).format('YYYY')
 
   return (
-    <div class="absolute sticky top-0 px-4 py-1 text-white font-bold bg-[url(../../../oceanDark.jpg)] rounded">{`${month} ${year}`}</div>
+    <div class="sticky top-0 px-4 py-1 text-white font-bold bg-[url(../../../oceanDark.jpg)] rounded">{`${month} ${year}`}</div>
   )
 })
