@@ -16,14 +16,14 @@ export default component$(({ data }) => {
       {!dayWithEvents && (
         <p class="grow-0 shrink-0 basis-14 p-1.5 pr-5 text-right">{day}</p>
       )}
-      <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
+      <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
           {data.migrationEvents.map((event) => (
             <Event key={event.id} event={event} />
           ))}
         </ul>
       </div>
-      <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
+      <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
           {data.politicEvents.map((event) => (
             <Event key={event.id} event={event} />
