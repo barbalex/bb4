@@ -81,15 +81,13 @@ export default component$(() => {
               </button>
             )}
             <div class="relative ml-3">
-              <div>
-                <button
-                  type="button"
-                  class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  title={loggedIn.value ? 'Log out' : 'Log in'}
-                >
-                  {loggedIn.value ? <LogoutIcon /> : <LoginIcon />}
-                </button>
-              </div>
+              <button
+                type="button"
+                class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                title={loggedIn.value ? 'Log out' : 'Log in'}
+              >
+                {loggedIn.value ? <LogoutIcon /> : <LoginIcon />}
+              </button>
             </div>
           </div>
           <div class="-mr-2 flex items-center sm:hidden">
