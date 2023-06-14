@@ -13,7 +13,9 @@ export default component$(({ event }) => {
       }
     >
       <div
-        class={`${(event.tags ?? []).map((tag) => `event-${tag}`).join(' ')}`}
+        class={`${(event.tags ?? [])
+          .map((tag) => `event-${tag}`)
+          .join(' ')} relative`}
       >
         {event.title}{' '}
         <span>
