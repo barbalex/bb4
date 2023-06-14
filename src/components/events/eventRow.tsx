@@ -19,15 +19,15 @@ export default component$(({ data }) => {
       )}
       <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
-          {data.migrationEvents.map((event, key) => (
-            <Event key={key} event={event} />
+          {data.migrationEvents.map((event) => (
+            <Event key={event.id} event={event} />
           ))}
         </ul>
       </div>
       <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
-          {data.politicEvents.map((event, key) => (
-            <Event key={key} event={event} />
+          {data.politicEvents.map((event) => (
+            <Event key={event.id} event={event} />
           ))}
         </ul>
       </div>

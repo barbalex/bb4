@@ -84,13 +84,7 @@ export default component$(({ activeYear }) => {
                     (y) => y >= 2019 && y <= 2022,
                   )
                   const yearsAfter22 = years.filter((y) => y > 2022)
-                  // console.log('years', {
-                  //   years,
-                  //   years15to18,
-                  //   years19to22,
-                  //   yearsAfter22,
-                  //   activeYear: activeYear.value,
-                  // })
+
                   return (
                     <>
                       {grouped15to18.value ? (

@@ -1,9 +1,9 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 import { Client } from 'pg'
-import dayjs from 'dayjs'
 
-import DateRow from './dateRow'
+import EventRow from './eventRow'
+import MonthRow from './monthRow'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async (activeYear) => {
@@ -166,7 +166,7 @@ export default component$(({ activeYear }) => {
                 const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
                 return (
                   <>
-                    {needsMonthRow && <div>month row</div>}
+                    {needsMonthRow && <MonthRow date={row.date} />}
                     {/* {needsMonthRow && <MonthRow key={`${index}monthRow`} dateRowObject={row} />} */}
                     {needsMonthlyStatisticsRow && (
                       <div>monthly statistics row</div>
@@ -177,7 +177,7 @@ export default component$(({ activeYear }) => {
                       dateRowObject={rowForMonthlyStatsRow}
                     />
                   )} */}
-                    <DateRow key={index} data={eventData} />
+                    <EventRow key={`${row.date}-event-data`} data={eventData} />
                   </>
                 )
               })}
