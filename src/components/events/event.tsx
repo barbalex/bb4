@@ -6,8 +6,14 @@ export default component$(({ event }) => {
   const eventClasses = (event.tags ?? []).map((tag) => `event-${tag}`).join(' ')
 
   return (
-    <li class={`${eventClasses} py-1.5`}>
-      <div class={eventClasses}>
+    <li
+      class={
+        event.tags?.length
+          ? `${eventClasses} py-1.5 list-none pl-1.5`
+          : `py-1.5 list-disc pl-1.5`
+      }
+    >
+      <div class={`${eventClasses} relative`}>
         {event.title}{' '}
         <span>
           {(event.links ?? []).map((l, key) => (
@@ -19,7 +25,7 @@ export default component$(({ event }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {l.label}
+                {`${l.label} `}
               </a>
             </span>
           ))}

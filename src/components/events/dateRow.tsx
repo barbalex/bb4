@@ -12,24 +12,20 @@ export default component$(({ data }) => {
   return (
     <div class="flex border-t border-solid border-slate-200 hover:background-slate-100">
       {dayWithEvents && (
-        <div class="grow-0 p-1 w-15 max-w-15 pr-5 text-right">
-          <p class="mt-2">{day}</p>
-        </div>
+        <p class="grow-0 shrink-0 basis-14 p-1.5 pr-5 text-right">{day}</p>
       )}
       {!dayWithEvents && (
-        <div class="grow-0 p-1 w-15 max-w-15 pr-5 text-right">
-          <p>{day}</p>
-        </div>
+        <p class="grow-0 shrink-0 basis-14 p-1.5 pr-5 text-right">{day}</p>
       )}
-      <div class="grow-0 basis-1/2 pr-2.5 break-words">
-        <ul>
+      <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
+        <ul class="px-4">
           {data.migrationEvents.map((event, key) => (
             <Event key={key} event={event} />
           ))}
         </ul>
       </div>
-      <div class="grow-0 basis-1/2 pr-2.5 break-words">
-        <ul>
+      <div class="grow-0 shrink-0 basis-1/2 pr-2.5 break-words">
+        <ul class="px-4">
           {data.politicEvents.map((event, key) => (
             <Event key={key} event={event} />
           ))}

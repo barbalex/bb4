@@ -118,18 +118,18 @@ export default component$(({ activeYear }) => {
             ),
           }
         })
-        console.log('events, rowsData:', rowsData[0])
+        // console.log('events, rowsData:', rowsData[0])
 
         return (
           <div class="relative w-full mb-0 mt-12">
             {/* header */}
             <div class="absolute w-full -top-10 font-bold text-2xl break-words">
               <div class="flex w-full">
-                <div class="grow-0 w-15 pr-4 text-right">day</div>
-                <div class="grow-0 basis-1/2 pr-2 text-center">
+                <div class="grow-0 shrink-0 basis-14 pr-4 text-right">day</div>
+                <div class="grow-0 shrink-0 basis-1/2 pr-2 text-center">
                   Maritime Events
                 </div>
-                <div class="grow-0 basis-1/2 pr-2 text-center">
+                <div class="grow-0 shrink-0 basis-1/2 pr-2 text-center">
                   Political Events
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default component$(({ activeYear }) => {
             {/* body */}
             <div class="overflow-x-hidden overflow-y-auto">
               {rowsData.map((row, index) => {
-                const rowForDateRow = {
+                const eventData = {
                   date: row.date,
                   migrationEvents: row.migrationEvents.filter(
                     (event) =>
@@ -148,7 +148,7 @@ export default component$(({ activeYear }) => {
                       !event.tags || !event.tags.includes('monthlyStatistics'),
                   ),
                 }
-                const rowForMonthlyStatsRow = {
+                const statsData = {
                   date: row.date,
                   migrationEvents: row.migrationEvents.filter(
                     (event) =>
@@ -159,12 +159,11 @@ export default component$(({ activeYear }) => {
                       event.tags && event.tags.includes('monthlyStatistics'),
                   ),
                 }
-                const rowForMonthlyStatsHasEvents =
-                  rowForMonthlyStatsRow.migrationEvents.length > 0 ||
-                  rowForMonthlyStatsRow.politicEvents.length > 0
+                const statsExist =
+                  statsData.migrationEvents.length > 0 ||
+                  statsData.politicEvents.length > 0
                 const needsMonthRow = row.isEndOfMonth || index === 0
-                const needsMonthlyStatisticsRow =
-                  row.isEndOfMonth && rowForMonthlyStatsHasEvents
+                const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
                 return (
                   <>
                     {needsMonthRow && <div>month row</div>}
@@ -178,7 +177,7 @@ export default component$(({ activeYear }) => {
                       dateRowObject={rowForMonthlyStatsRow}
                     />
                   )} */}
-                    <DateRow key={index} data={rowForDateRow} />
+                    <DateRow key={index} data={eventData} />
                   </>
                 )
               })}
