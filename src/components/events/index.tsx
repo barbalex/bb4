@@ -165,12 +165,6 @@ export default component$(({ activeYear }) => {
                   statsData.politicEvents.length > 0
                 const needsMonthRow = row.isEndOfMonth || index === 0
                 const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
-                needsMonthlyStatisticsRow &&
-                  console.log('event', {
-                    statsExist,
-                    isEndOfMonth: row.isEndOfMonth,
-                    statsData,
-                  })
 
                 return (
                   <div key={row.id}>
