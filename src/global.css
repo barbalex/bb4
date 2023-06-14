@@ -34,42 +34,22 @@ body {
   scrollbar-color: blue blue; */
 }
 
-a,
-a:link {
-  cursor: pointer;
-}
-
 h1,
 h2,
 h3 {
   margin: 0;
 }
 
-.btn-default:active,
-.btn-default.active,
-.open > .dropdown-toggle.btn-default {
-  background-color: rgba(0, 109, 255, 0.05) !important;
+a {
+  color: rgb(0, 76, 255);
 }
-
-.col400,
-.col500 {
-  column-count: 1;
-  column-gap: 20px;
-}
-
-/* prevent buttons from lying above the datepicker */
-.react-datepicker-popper {
-  z-index: 9;
+a:hover {
+  text-decoration: underline;
 }
 
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
-/**
- * unfortunately content does not seem to
- * come over correctly in object literal
- * so need to keep this here
- */
 div.event-weather:before {
   content: url(/cloud-solid.svg);
   position: absolute;
