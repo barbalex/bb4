@@ -7,7 +7,6 @@ export default component$(({ data }) => {
   const day = dayjs(data.date).format('D')
   const dayWithEvents =
     data.migrationEvents.length > 0 || data.politicEvents.length > 0
-  // console.log('dateRow, data:', data)
 
   return (
     <div class="flex border-t border-solid border-slate-200 hover:bg-slate-50">

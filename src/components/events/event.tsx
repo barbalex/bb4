@@ -3,7 +3,6 @@ import { component$ } from '@builder.io/qwik'
 export default component$(({ event }) => {
   // TODO: when login is done
   // const showEditingGlyphons = !!store.login.user
-  const eventClasses = (event.tags ?? []).map((tag) => `event-${tag}`).join(' ')
 
   return (
     <li
@@ -13,7 +12,11 @@ export default component$(({ event }) => {
           : `py-1.5 list-disc pl-1.5`
       }
     >
-      <div class={`${eventClasses} relative`}>
+      <div
+        class={`${(event.tags ?? [])
+          .map((tag) => `event-${tag}`)
+          .join(' ')} relative`}
+      >
         {event.title}{' '}
         <span>
           {(event.links ?? []).map((l, key) => (

@@ -4,6 +4,7 @@ import { Client } from 'pg'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
+import StatisticRow from './statisticRow'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async (activeYear) => {
@@ -164,21 +165,21 @@ export default component$(({ activeYear }) => {
                   statsData.politicEvents.length > 0
                 const needsMonthRow = row.isEndOfMonth || index === 0
                 const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
+                needsMonthlyStatisticsRow &&
+                  console.log('event', {
+                    statsExist,
+                    isEndOfMonth: row.isEndOfMonth,
+                    statsData,
+                  })
+
                 return (
-                  <>
+                  <div key={row.id}>
                     {needsMonthRow && <MonthRow date={row.date} />}
-                    {/* {needsMonthRow && <MonthRow key={`${index}monthRow`} dateRowObject={row} />} */}
                     {needsMonthlyStatisticsRow && (
-                      <div>monthly statistics row</div>
+                      <StatisticRow data={statsData} />
                     )}
-                    {/* {needsMonthlyStatisticsRow && (
-                    <MonthlyStatisticsRow
-                      key={`${index}monthlyStatisticsRow`}
-                      dateRowObject={rowForMonthlyStatsRow}
-                    />
-                  )} */}
                     <EventRow key={`${row.date}-event-data`} data={eventData} />
-                  </>
+                  </div>
                 )
               })}
             </div>
