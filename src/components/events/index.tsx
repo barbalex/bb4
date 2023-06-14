@@ -121,11 +121,11 @@ export default component$(({ activeYear }) => {
         // console.log('events, rowsData:', rowsData[0])
 
         return (
-          <div class="relative w-full mb-0 mt-12">
+          <div class="relative w-full mb-0 mt-6">
             {/* header */}
-            <div class="absolute w-full -top-10 font-bold text-2xl break-words">
+            <div class="absolute w-full pb-1.5 font-bold text-2xl break-words sticky top-14 bg-white z-10 border-solid border border-white border-b-slate-200">
               <div class="flex w-full">
-                <div class="grow-0 shrink-0 basis-14 pr-4 text-right">day</div>
+                <div class="grow-0 shrink-0 basis-14 pr-4 text-right"></div>
                 <div class="grow-0 shrink-0 basis-1/2 pr-2 text-center">
                   Maritime Events
                 </div>

@@ -68,7 +68,7 @@ export default component$(({ activeYear }) => {
               {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
               <a
                 href="/monthly-events/2014/"
-                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
               >
                 2011 - 2014
               </a>
@@ -96,7 +96,7 @@ export default component$(({ activeYear }) => {
                       {grouped15to18.value ? (
                         <a
                           href="#"
-                          class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                          class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
                           onClick$={() => (grouped15to18.value = false)}
                         >
                           2015 - 2018
@@ -108,8 +108,8 @@ export default component$(({ activeYear }) => {
                             href="#"
                             class={
                               activeYear.value === year
-                                ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
-                                : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
+                                ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                                : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                             }
                             onClick$={() => (activeYear.value = year)}
                           >
@@ -120,7 +120,7 @@ export default component$(({ activeYear }) => {
                       {grouped19to22.value ? (
                         <a
                           href="#"
-                          class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium"
+                          class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
                           onClick$={() => (grouped19to22.value = false)}
                         >
                           2019 - 2022
@@ -132,8 +132,8 @@ export default component$(({ activeYear }) => {
                             href="#"
                             class={
                               activeYear.value === year
-                                ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
-                                : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
+                                ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                                : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                             }
                             onClick$={() => (activeYear.value = year)}
                           >
@@ -147,8 +147,8 @@ export default component$(({ activeYear }) => {
                           href="#"
                           class={
                             activeYear.value === year
-                              ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
-                              : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium`
+                              ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                              : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                           }
                           onClick$={() => (activeYear.value = year)}
                         >
