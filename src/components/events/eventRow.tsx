@@ -10,7 +10,7 @@ export default component$(({ data }) => {
   // console.log('dateRow, data:', data)
 
   return (
-    <div class="flex border-t border-solid border-slate-200 hover:background-slate-100">
+    <div class="flex border-t border-solid border-slate-200 hover:bg-slate-50">
       {dayWithEvents && (
         <p class="grow-0 shrink-0 basis-14 p-1.5 pr-5 text-right">{day}</p>
       )}
