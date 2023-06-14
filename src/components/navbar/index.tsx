@@ -1,13 +1,15 @@
 /* eslint-disable qwik/jsx-img */
-import { component$ } from '@builder.io/qwik'
+import { component$, useSignal } from '@builder.io/qwik'
 import { Link, useLocation } from '@builder.io/qwik-city'
 import {
   BsBoxArrowInRight as LoginIcon,
   BsBoxArrowRight as LogoutIcon,
+  BsPlus as PlusIcon,
 } from '@qwikest/icons/bootstrap'
 
 export default component$(() => {
   const location = useLocation()
+  const loggedIn = useSignal(false)
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
@@ -69,22 +71,23 @@ export default component$(() => {
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
-            <button
-              type="button"
-              class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              title="Log in"
-            >
-              <LoginIcon />
-            </button>
-            {/* Profile dropdown */}
+            {loggedIn.value && (
+              <button
+                type="button"
+                class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white font-black hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                title="add new Event"
+              >
+                <PlusIcon />
+              </button>
+            )}
             <div class="relative ml-3">
               <div>
                 <button
                   type="button"
                   class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  title="Log in"
+                  title={loggedIn.value ? 'Log out' : 'Log in'}
                 >
-                  <LoginIcon />
+                  {loggedIn.value ? <LogoutIcon /> : <LoginIcon />}
                 </button>
               </div>
             </div>

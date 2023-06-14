@@ -136,7 +136,7 @@ export default component$(({ activeYear }) => {
               </div>
             </div>
             {/* body */}
-            <div class="overflow-x-hidden overflow-y-auto">
+            <div class="relative overflow-x-hidden overflow-y-auto">
               {rowsData.map((row, index) => {
                 const eventData = {
                   date: row.date,
@@ -167,13 +167,20 @@ export default component$(({ activeYear }) => {
                 const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
 
                 return (
-                  <div key={row.id}>
-                    {needsMonthRow && <MonthRow date={row.date} />}
-                    {needsMonthlyStatisticsRow && (
-                      <StatisticRow data={statsData} />
+                  <>
+                    {needsMonthRow && (
+                      <MonthRow key={`${row.id}-month-row`} date={row.date} />
                     )}
-                    <EventRow key={`${row.date}-event-data`} data={eventData} />
-                  </div>
+                    <div key={row.id}>
+                      {needsMonthlyStatisticsRow && (
+                        <StatisticRow data={statsData} />
+                      )}
+                      <EventRow
+                        key={`${row.date}-event-data`}
+                        data={eventData}
+                      />
+                    </div>
+                  </>
                 )
               })}
             </div>
