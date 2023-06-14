@@ -122,9 +122,9 @@ export default component$(({ activeYear }) => {
         // console.log('events, rowsData:', rowsData[0])
 
         return (
-          <div class="relative w-full mb-0 mt-6">
+          <div class="w-full mb-0 mt-6">
             {/* header */}
-            <div class="absolute w-full pb-1.5 font-bold text-2xl break-words sticky top-14 bg-white z-10 border-solid border border-white border-b-slate-200">
+            <div class="sticky top-14 w-full pb-1.5 font-bold text-2xl break-words bg-white z-10 border-solid border border-white border-b-slate-200">
               <div class="flex w-full">
                 <div class="grow-0 shrink-0 basis-14 pr-4 text-right"></div>
                 <div class="grow-0 shrink-0 basis-1/2 pr-2 text-center">
@@ -136,54 +136,49 @@ export default component$(({ activeYear }) => {
               </div>
             </div>
             {/* body */}
-            <div class="relative overflow-x-hidden overflow-y-auto">
-              {rowsData.map((row, index) => {
-                const eventData = {
-                  date: row.date,
-                  migrationEvents: row.migrationEvents.filter(
-                    (event) =>
-                      !event.tags || !event.tags.includes('monthlyStatistics'),
-                  ),
-                  politicEvents: (row?.politicEvents ?? []).filter(
-                    (event) =>
-                      !event.tags || !event.tags.includes('monthlyStatistics'),
-                  ),
-                }
-                const statsData = {
-                  date: row.date,
-                  migrationEvents: row.migrationEvents.filter(
-                    (event) =>
-                      event.tags && event.tags.includes('monthlyStatistics'),
-                  ),
-                  politicEvents: (row?.politicEvents ?? []).filter(
-                    (event) =>
-                      event.tags && event.tags.includes('monthlyStatistics'),
-                  ),
-                }
-                const statsExist =
-                  statsData.migrationEvents.length > 0 ||
-                  statsData.politicEvents.length > 0
-                const needsMonthRow = row.isEndOfMonth || index === 0
-                const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
+            {rowsData.map((row, index) => {
+              const eventData = {
+                date: row.date,
+                migrationEvents: row.migrationEvents.filter(
+                  (event) =>
+                    !event.tags || !event.tags.includes('monthlyStatistics'),
+                ),
+                politicEvents: (row?.politicEvents ?? []).filter(
+                  (event) =>
+                    !event.tags || !event.tags.includes('monthlyStatistics'),
+                ),
+              }
+              const statsData = {
+                date: row.date,
+                migrationEvents: row.migrationEvents.filter(
+                  (event) =>
+                    event.tags && event.tags.includes('monthlyStatistics'),
+                ),
+                politicEvents: (row?.politicEvents ?? []).filter(
+                  (event) =>
+                    event.tags && event.tags.includes('monthlyStatistics'),
+                ),
+              }
+              const statsExist =
+                statsData.migrationEvents.length > 0 ||
+                statsData.politicEvents.length > 0
+              const needsMonthRow = row.isEndOfMonth || index === 0
+              const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
 
-                return (
-                  <>
-                    {needsMonthRow && (
-                      <MonthRow key={`${row.id}-month-row`} date={row.date} />
+              return (
+                <>
+                  {needsMonthRow && (
+                    <MonthRow key={`${row.id}-month-row`} date={row.date} />
+                  )}
+                  <div key={row.id}>
+                    {needsMonthlyStatisticsRow && (
+                      <StatisticRow data={statsData} />
                     )}
-                    <div key={row.id}>
-                      {needsMonthlyStatisticsRow && (
-                        <StatisticRow data={statsData} />
-                      )}
-                      <EventRow
-                        key={`${row.date}-event-data`}
-                        data={eventData}
-                      />
-                    </div>
-                  </>
-                )
-              })}
-            </div>
+                    <EventRow key={`${row.date}-event-data`} data={eventData} />
+                  </div>
+                </>
+              )
+            })}
           </div>
         )
       }}
