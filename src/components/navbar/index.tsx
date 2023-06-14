@@ -13,7 +13,7 @@ export default component$(() => {
             <div class="hidden sm:flex sm:space-x-8">
               <Link
                 href="/"
-                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white hover:no-underline ${
                   location.url.pathname === '/' ||
                   location.url.pathname.startsWith('/events/')
                     ? ' border-white font-bold '
@@ -24,7 +24,7 @@ export default component$(() => {
               </Link>
               <Link
                 href="/sar"
-                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white hover:no-underline ${
                   location.url.pathname === '/sar/'
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
@@ -34,7 +34,7 @@ export default component$(() => {
               </Link>
               <Link
                 href="/publications"
-                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white hover:no-underline ${
                   location.url.pathname.startsWith('/publications/')
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
@@ -44,7 +44,7 @@ export default component$(() => {
               </Link>
               <Link
                 href="/articles"
-                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white hover:no-underline ${
                   location.url.pathname.startsWith('/articles/')
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
@@ -54,7 +54,7 @@ export default component$(() => {
               </Link>
               <Link
                 href="/about"
-                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white ${
+                class={`inline-flex items-center border-b-2 px-1 pt-1 text-base text-white hover:font-bold hover:border-white hover:no-underline ${
                   location.url.pathname === '/about/'
                     ? ' border-white font-bold '
                     : ' border-transparent font-normal '
