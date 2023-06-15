@@ -44,7 +44,7 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
-    "@qwikest/icons": "^0.0.8",
+    "@qwikest/icons": "0.0.8",
     "dayjs": "1.11.8",
     "lodash": "4.17.21",
     "pg": "8.11.0"
