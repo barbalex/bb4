@@ -4,6 +4,7 @@ import { routeAction$, Form } from '@builder.io/qwik-city'
 export const useLogin = routeAction$(async (data, requestEvent) => {
   const { email, password } = data
   console.log('login', { email, password })
+  // TODO: 
 })
 
 export default component$(() => {
@@ -64,6 +65,10 @@ export default component$(() => {
               >
                 Log in
               </button>
+              {action.value?.success && <p>Logged in successfully</p>}
+              {action.value?.error && (
+                <p>{`Error loggin in: ${action.value?.error}`}</p>
+              )}
             </div>
           </Form>
         </div>
