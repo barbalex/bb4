@@ -1,6 +1,6 @@
 /* eslint-disable qwik/jsx-img */
 import { component$, useSignal } from '@builder.io/qwik'
-import { Link, useLocation } from '@builder.io/qwik-city'
+import { Link, useLocation, useNavigate } from '@builder.io/qwik-city'
 import {
   BsBoxArrowInRight as LoginIcon,
   BsBoxArrowRight as LogoutIcon,
@@ -8,6 +8,7 @@ import {
 } from '@qwikest/icons/bootstrap'
 
 export default component$(() => {
+  const nav = useNavigate()
   const location = useLocation()
   const loggedIn = useSignal(false)
 
@@ -85,6 +86,13 @@ export default component$(() => {
                 type="button"
                 class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 title={loggedIn.value ? 'Log out' : 'Log in'}
+                onClick$={() => {
+                  if (loggedIn.value) {
+                    // TODO: logout
+                    return
+                  }
+                  nav('/login')
+                }}
               >
                 {loggedIn.value ? <LogoutIcon /> : <LoginIcon />}
               </button>
