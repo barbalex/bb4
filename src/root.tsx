@@ -56,11 +56,12 @@ export default component$(() => {
       if (!user) return
       // console.log('App, onAuthStateChanged, user:', user)
       store.login.setUser(user)
+      // TODO: how do this server side?
+      // somehow call server$?
       getAuthToken({ store })
     })
 
     cleanup(() => {
-      console.log('should cleanup')
       unregisterAuthObserver()
     })
   })
