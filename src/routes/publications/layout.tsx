@@ -25,12 +25,12 @@ const sorter = (a, b) => {
 }
 
 // select all publications: id, title, draft
-const dataFetcher = server$(async () => {
-  const isDev = process.env.NODE_ENV === 'development'
+const dataFetcher = server$(async function () {
+  const isDev = this.env.get('NODE_ENV') === 'development'
   const options = {
     connectionString: isDev
-      ? process.env.PG_CONNECTIONSTRING_DEV
-      : process.env.PG_CONNECTIONSTRING_PROD,
+      ? this.env.get('PG_CONNECTIONSTRING_DEV')
+      : this.env.get('PG_CONNECTIONSTRING_PROD'),
   }
   const client = new Client(options)
   try {

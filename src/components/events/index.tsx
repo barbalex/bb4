@@ -7,12 +7,12 @@ import MonthRow from './monthRow'
 import StatisticRow from './statisticRow'
 
 // select all articles: id, title, draft
-const dataFetcher = server$(async (activeYear) => {
-  const isDev = process.env.NODE_ENV === 'development'
+const dataFetcher = server$(async function (activeYear) {
+  const isDev = this.env.get('NODE_ENV') === 'development'
   const options = {
     connectionString: isDev
-      ? process.env.PG_CONNECTIONSTRING_DEV
-      : process.env.PG_CONNECTIONSTRING_PROD,
+      ? this.env.get('PG_CONNECTIONSTRING_DEV')
+      : this.env.get('PG_CONNECTIONSTRING_PROD'),
   }
   const client = new Client(options)
   try {
