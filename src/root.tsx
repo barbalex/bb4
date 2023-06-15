@@ -3,17 +3,28 @@ import {
   createContextId,
   useStore,
   useContextProvider,
+  useVisibleTask$,
 } from '@builder.io/qwik'
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
-import { RouterHead } from './components/router-head/router-head'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { initializeApp, getApps, getApp } from 'firebase/app'
 
+import { RouterHead } from './components/router-head/router-head'
 import './global.css'
 
 export const CTX = createContextId('root')
+
+// Configure Firebase
+const firebaseConfig = {
+  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+  authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
+}
 
 export default component$(() => {
   /**
@@ -25,6 +36,34 @@ export default component$(() => {
   // TODO: use store for what?
   const store = useStore({ todo: undefined })
   useContextProvider(CTX, store)
+
+  useVisibleTask$(({ cleanup }) => {
+    // authenticate
+    let fbApp
+    // catch app already existing
+    // https://stackoverflow.com/a/48686803/712005
+    if (!getApps().length) {
+      fbApp = initializeApp(firebaseConfig)
+    } else {
+      fbApp = getApp() // if already initialized, use that one
+    }
+    const auth = getAuth(fbApp)
+    store.login?.setFirebaseAuth(auth) // TODO: add to store
+    const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
+      // BEWARE: this is called at least twice
+      // https://stackoverflow.com/questions/37673616/firebase-android-onauthstatechanged-called-twice
+      if (store.login?.user?.uid) return
+      if (!user) return
+      // console.log('App, onAuthStateChanged, user:', user)
+      store.login.setUser(user)
+      getAuthToken({ store })
+    })
+
+    cleanup(() => {
+      console.log('should cleanup')
+      unregisterAuthObserver()
+    })
+  })
 
   return (
     <QwikCityProvider>
