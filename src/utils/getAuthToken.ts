@@ -1,4 +1,4 @@
-const getAuthToken = async ({ store }) => {
+const getAuthToken = async (user) => {
   const hostnameWithoutWww = window.location.hostname.replace('www.', '')
   const isLocalhost = hostnameWithoutWww === 'localhost'
   const hostToUse = isLocalhost ? 'blue-borders.ch' : hostnameWithoutWww
@@ -6,7 +6,7 @@ const getAuthToken = async ({ store }) => {
   let res
   try {
     const response = await fetch(
-      `https://auth.${hostToUse}/add-hasura-claims/${store.login?.user?.uid}`,
+      `https://auth.${hostToUse}/add-hasura-claims/${user?.uid}`,
     )
     res = await response.json()
   } catch (error) {
@@ -16,7 +16,7 @@ const getAuthToken = async ({ store }) => {
   if (res?.status === 200) {
     let token
     try {
-      token = await store.login.user.getIdToken(true)
+      token = await user.getIdToken(true)
     } catch (error) {
       console.log('error from calling getting id token:', error)
     }

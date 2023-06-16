@@ -1,10 +1,15 @@
 import { component$ } from '@builder.io/qwik'
-import { routeAction$, Form } from '@builder.io/qwik-city'
+import { routeAction$, Form, useNavigate } from '@builder.io/qwik-city'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
+// TODO:
+// signInWithEmailAndPassword has to happen client-side
+// so does navigating after it
 export const useLogin = routeAction$(async (data, requestEvent) => {
   const { email, password } = data
   console.log('login', { email, password })
-  // TODO: 
+
+  return data
 })
 
 export default component$(() => {
@@ -19,7 +24,24 @@ export default component$(() => {
           </h2>
         </div>
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <Form action={action} class="space-y-6" action="#" method="POST">
+          <Form
+            action={action}
+            class="space-y-6"
+            action="#"
+            method="POST"
+            onSubmitCompleted$={() => {
+              console.log('onSubmitCompleted$', { action })
+              // try {
+              //   await signInWithEmailAndPassword(store.firebaseAuth, email, password)
+              // } catch (error) {
+              //   changeNewEmail(null)
+              //   changeLoginError(error)
+              //   return
+              // }
+              // TODO: how navigate in an action?
+              // setTimeout(() => navigate('/events/'), 500)
+            }}
+          >
             <div>
               <label
                 for="email"

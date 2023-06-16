@@ -36,7 +36,7 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
   // TODO: use store for what?
-  const store = useStore({ user: undefined })
+  const store = useStore({ user: undefined, firebaseAuth: undefined })
   useContextProvider(CTX, store)
 
   useVisibleTask$(({ cleanup }) => {
@@ -50,7 +50,9 @@ export default component$(() => {
       fbApp = getApp() // if already initialized, use that one
     }
     const auth = getAuth(fbApp)
-    store.login?.setFirebaseAuth(auth) // TODO: add to store
+    console.log('root, visibleTast', { fbApp, auth })
+    store.firebaseAuth.value = noSerialize(auth)
+    console.log('root, hi')
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
       // BEWARE: this is called at least twice
       // https://stackoverflow.com/questions/37673616/firebase-android-onauthstatechanged-called-twice
@@ -60,7 +62,7 @@ export default component$(() => {
       store.user.value = noSerialize(user)
       // TODO: how do this server side without needing separate server?
       // somehow call server$?
-      getAuthToken({ store })
+      getAuthToken(user)
     })
 
     cleanup(() => {
