@@ -4,25 +4,14 @@ import {
   useSignal,
   useVisibleTask$,
 } from '@builder.io/qwik'
-import { routeAction$, Form, useNavigate } from '@builder.io/qwik-city'
+import { Form, useNavigate } from '@builder.io/qwik-city'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
 import { CTX } from '../../root'
 
-// TODO:
-// signInWithEmailAndPassword has to happen client-side
-// so does navigating after it
-export const useLogin = routeAction$(async (data) => {
-  const { email, password } = data
-  console.log('login', { email, password })
-
-  return data
-})
-
 export default component$(() => {
   const store = useContext(CTX)
   const firebaseAuth = store.firebaseAuth
-  const action = useLogin()
   const navigate = useNavigate()
 
   const error = useSignal(null)
@@ -42,16 +31,10 @@ export default component$(() => {
         </div>
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <Form
-            action={action}
             class="space-y-6"
             action="#"
             method="POST"
             onSubmit$={async () => {
-              console.log('onSubmit', {
-                email: email.value,
-                password: password.value,
-              })
-
               let userCredential
               try {
                 userCredential = await signInWithEmailAndPassword(
@@ -64,9 +47,8 @@ export default component$(() => {
                 error.value = error.message
                 return
               }
-              console.log('userCredential', userCredential)
-              success.value = `${userCredential.user.email} logged in successfully, navigating to events`
-              setTimeout(() => navigate('/'), 2000)
+              success.value = userCredential.user.email
+              setTimeout(() => navigate('/'), 3000)
             }}
           >
             <div>
@@ -83,7 +65,7 @@ export default component$(() => {
                   type="email"
                   autoComplete="email"
                   required=""
-                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   autofocus
                 />
               </div>
@@ -104,7 +86,7 @@ export default component$(() => {
                   type="password"
                   autoComplete="current-password"
                   required=""
-                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -116,10 +98,15 @@ export default component$(() => {
                 Log in
               </button>
               {success.value && (
-                <p class="pt-2 text-green-600 font-medium">{success.value}</p>
+                <>
+                  <p class="pt-2 text-green-600 font-medium">{`${success.value} logged in`}</p>
+                  <p class="text-green-600 font-medium">
+                    will navigate to events
+                  </p>
+                </>
               )}
               {error.value && (
-                <p class="pt-2 text-red-600 font-medium">{`Error loggin in: ${error.value?.message}`}</p>
+                <p class="pt-2 text-red-600 font-medium">{`Error: ${error.value?.message}`}</p>
               )}
             </div>
           </Form>
