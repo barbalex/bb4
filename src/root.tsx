@@ -52,11 +52,6 @@ export default component$(() => {
     const auth = getAuth(fbApp)
     store.firebaseAuth = noSerialize(auth)
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
-      // BEWARE: this is called at least twice
-      // https://stackoverflow.com/questions/37673616/firebase-android-onauthstatechanged-called-twice
-      console.log('App, onAuthStateChanged, user:', user)
-      // if (store.user?.uid) return
-      // if (!user) return
       // console.log('App, onAuthStateChanged, user:', user)
       store.user = noSerialize(user)
       // TODO: how do this server side without needing separate server?

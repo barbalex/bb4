@@ -16,7 +16,6 @@ export default component$(() => {
   const store = useContext(CTX)
   const loggedIn = !!store.user
   const firebaseAuth = store.firebaseAuth
-  console.log('navbar, user:', store.user)
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
