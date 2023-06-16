@@ -1,7 +1,15 @@
-import { component$, useResource$, Resource, Slot } from '@builder.io/qwik'
+import {
+  component$,
+  useResource$,
+  Resource,
+  Slot,
+  useContext,
+} from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 import groupBy from 'lodash/groupBy'
+
+import { CTX } from '~/root'
 
 const categorySort = {
   'European Union': 1,
@@ -25,7 +33,7 @@ const sorter = (a, b) => {
 }
 
 // select all publications: id, title, draft
-const dataFetcher = server$(async function () {
+const dataFetcher = server$(async function (isLoggedIn) {
   const isDev = this.env.get('NODE_ENV') === 'development'
   const options = {
     connectionString: isDev
@@ -39,12 +47,14 @@ const dataFetcher = server$(async function () {
     console.error('connection error', error.stack)
   }
 
-  // TODO: include drafts only if user is logged in
+  // include drafts only if user is logged in
   // TODO: create client on app start and store in store
   let res
   try {
     res = await client.query(
-      'select id, title, category, draft, sort from publication',
+      `select id, title, category, draft, sort from publication ${
+        isLoggedIn ? '' : 'where draft is false'
+      }`,
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -58,7 +68,9 @@ const dataFetcher = server$(async function () {
 })
 
 export default component$(() => {
-  const publications = useResource$(async () => await dataFetcher())
+  const store = useContext(CTX)
+  const isLoggedIn = !!store.user
+  const publications = useResource$(async () => await dataFetcher(isLoggedIn))
   const location = useLocation()
 
   return (

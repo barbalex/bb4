@@ -4,6 +4,7 @@ import {
   useStore,
   useContextProvider,
   useVisibleTask$,
+  noSerialize,
 } from '@builder.io/qwik'
 import {
   QwikCityProvider,
@@ -35,7 +36,7 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
   // TODO: use store for what?
-  const store = useStore({ todo: undefined })
+  const store = useStore({ user: undefined })
   useContextProvider(CTX, store)
 
   useVisibleTask$(({ cleanup }) => {
@@ -56,8 +57,8 @@ export default component$(() => {
       if (store.login?.user?.uid) return
       if (!user) return
       // console.log('App, onAuthStateChanged, user:', user)
-      store.login.setUser(user)
-      // TODO: how do this server side?
+      store.user.value = noSerialize(user)
+      // TODO: how do this server side without needing separate server?
       // somehow call server$?
       getAuthToken({ store })
     })

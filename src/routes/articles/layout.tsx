@@ -1,9 +1,17 @@
-import { component$, useResource$, Resource, Slot } from '@builder.io/qwik'
+import {
+  component$,
+  useResource$,
+  Resource,
+  Slot,
+  useContext,
+} from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 import { Client } from 'pg'
 
+import { CTX } from '~/root'
+
 // select all articles: id, title, draft
-const dataFetcher = server$(async function () {
+const dataFetcher = server$(async function (isLoggedIn) {
   const isDev = this.env.get('NODE_ENV') === 'development'
   const options = {
     connectionString: isDev
@@ -17,12 +25,14 @@ const dataFetcher = server$(async function () {
     console.error('connection error', error.stack)
   }
 
-  // TODO: include drafts only if user is logged in
+  // include drafts only if user is logged in
   // TODO: create client on app start and store in store
   let res
   try {
     res = await client.query(
-      'select id, title, draft from article order by datum desc',
+      `select id, title, draft from article ${
+        isLoggedIn ? '' : 'where draft is false'
+      } order by datum desc`,
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -33,7 +43,9 @@ const dataFetcher = server$(async function () {
 })
 
 export default component$(() => {
-  const articles = useResource$(async () => await dataFetcher())
+  const store = useContext(CTX)
+  const isLoggedIn = !!store.user
+  const articles = useResource$(async () => await dataFetcher(isLoggedIn))
   const location = useLocation()
 
   return (
