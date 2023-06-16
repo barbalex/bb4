@@ -1,16 +1,22 @@
 /* eslint-disable qwik/jsx-img */
-import { component$, useSignal } from '@builder.io/qwik'
+import { component$, useContext } from '@builder.io/qwik'
 import { Link, useLocation, useNavigate } from '@builder.io/qwik-city'
 import {
   BsBoxArrowInRight as LoginIcon,
   BsBoxArrowRight as LogoutIcon,
   BsPlus as PlusIcon,
 } from '@qwikest/icons/bootstrap'
+import { signOut } from 'firebase/auth'
+
+import { CTX } from '../../root'
 
 export default component$(() => {
   const nav = useNavigate()
   const location = useLocation()
-  const loggedIn = useSignal(false)
+  const store = useContext(CTX)
+  const loggedIn = !!store.user
+  const firebaseAuth = store.firebaseAuth
+  console.log('navbar, user:', store.user)
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)]">
@@ -72,7 +78,7 @@ export default component$(() => {
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
-            {loggedIn.value && (
+            {!!store.user && (
               <button
                 type="button"
                 class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white font-black hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -85,16 +91,19 @@ export default component$(() => {
               <button
                 type="button"
                 class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                title={loggedIn.value ? 'Log out' : 'Log in'}
+                title={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
-                  if (loggedIn.value) {
+                  if (loggedIn) {
                     // TODO: logout
+                    firebaseAuth && signOut(firebaseAuth)
+                    window.localStorage.removeItem('token')
+                    store.user = null
                     return
                   }
                   nav('/login')
                 }}
               >
-                {loggedIn.value ? <LogoutIcon /> : <LoginIcon />}
+                {store.user ? <LogoutIcon /> : <LoginIcon />}
               </button>
             </div>
           </div>

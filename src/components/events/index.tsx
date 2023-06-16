@@ -153,17 +153,13 @@ export default component$(({ activeYear }) => {
               const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
 
               return (
-                <>
-                  {needsMonthRow && (
-                    <MonthRow key={`${row.id}-month-row`} date={row.date} />
+                <div key={row.id}>
+                  {needsMonthRow && <MonthRow date={row.date} />}
+                  {needsMonthlyStatisticsRow && (
+                    <StatisticRow data={statsData} />
                   )}
-                  <div key={row.id}>
-                    {needsMonthlyStatisticsRow && (
-                      <StatisticRow data={statsData} />
-                    )}
-                    <EventRow key={`${row.date}-event-data`} data={eventData} />
-                  </div>
-                </>
+                  <EventRow data={eventData} />
+                </div>
               )
             })}
           </>
