@@ -57,14 +57,14 @@ a:hover {
 [data-title]:after {
   content: attr(data-title);
   background-image: url(/oceanDark.jpg);
+  outline: 1px solid white;
   color: white;
   font-size: 1em;
   position: absolute;
-  margin-left: 5px;
   padding: 1px 3px 2px 3px;
   border-radius: 4px;
-  bottom: -1.6em;
-  left: 100%;
+  left: -50%;
+  top: -2em;
   white-space: nowrap;
   box-shadow: 1px 1px 3px #00000075;
   opacity: 0;

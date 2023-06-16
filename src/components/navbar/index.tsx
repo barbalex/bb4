@@ -1,11 +1,6 @@
 /* eslint-disable qwik/jsx-img */
 import { component$, useContext, noSerialize } from '@builder.io/qwik'
 import { Link, useLocation, useNavigate } from '@builder.io/qwik-city'
-import {
-  BsBoxArrowInRight as LoginIcon,
-  BsBoxArrowRight as LogoutIcon,
-  BsPlus as PlusIcon,
-} from '@qwikest/icons/bootstrap'
 import { signOut } from 'firebase/auth'
 
 import { CTX } from '../../root'
@@ -80,17 +75,23 @@ export default component$(() => {
             {!!store.user && (
               <button
                 type="button"
-                class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white font-black hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                title="add new Event"
+                class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                data-title="new Event"
               >
-                <PlusIcon />
+                <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M266 80c0-17.7-24.3-32-42-32s-43.226 14.343-42 32v134H48c-17.7 0-32 24.3-32 42s14.35 43.317 32 42h134v134c0 17.7 24.3 32 42 32s42-14.3 42-32V298h134c17.7 0 32-24.3 32-42s-14.3-42-32-42H266Z"
+                  />
+                </svg>
               </button>
             )}
             <div class="relative ml-3">
               <button
                 type="button"
-                class="rounded-full shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                title={store.user ? 'Log out' : 'Log in'}
+                class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                data-title={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
                   if (loggedIn) {
                     firebaseAuth && signOut(firebaseAuth)
@@ -102,7 +103,15 @@ export default component$(() => {
                   nav('/login')
                 }}
               >
-                {store.user ? <LogoutIcon /> : <LoginIcon />}
+                {store.user ? (
+                  <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 512 512">
+                    <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
+                  </svg>
+                ) : (
+                  <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 512 512">
+                    <path d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
