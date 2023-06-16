@@ -19,13 +19,17 @@ export default component$(({ event }) => {
   // enable clicking outside of delete menu to close it
   useVisibleTask$(({ track, cleanup }) => {
     track(() => deleteMenuOpen.value)
+
+    // close delete menu when clicking outside of it
     document.addEventListener('click', () => {
       if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
     })
     const deleteButton = document.getElementById('deleteButton')
+    // prevent closing delete menu when clicking on delete button and it's menu
     deleteButton?.addEventListener('click', (e) => e.stopPropagation())
     const deleteMenu = document.getElementById('deleteMenu')
     deleteMenu?.addEventListener('click', (e) => e.stopPropagation())
+
     cleanup(() => {
       deleteMenu?.removeEventListener('click', () => {
         if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
@@ -51,7 +55,7 @@ export default component$(({ event }) => {
         {event.title}&nbsp;
         <>
           {(event.links ?? []).map((l, key) => (
-            <span class="pl-1" key={l.label}>
+            <span class="pl-1" key={`${l.label}/${key}`}>
               {key > 0 && ' '}
               <a
                 class="after:content-[url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==)]"
