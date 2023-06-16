@@ -1,5 +1,5 @@
 /* eslint-disable qwik/jsx-img */
-import { component$, useContext } from '@builder.io/qwik'
+import { component$, useContext, noSerialize } from '@builder.io/qwik'
 import { Link, useLocation, useNavigate } from '@builder.io/qwik-city'
 import {
   BsBoxArrowInRight as LoginIcon,
@@ -94,10 +94,10 @@ export default component$(() => {
                 title={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
                   if (loggedIn) {
-                    // TODO: logout
                     firebaseAuth && signOut(firebaseAuth)
                     window.localStorage.removeItem('token')
-                    store.user = null
+                    store.user = noSerialize(null)
+                    store.firebaseAuth = noSerialize(null)
                     return
                   }
                   nav('/login')
