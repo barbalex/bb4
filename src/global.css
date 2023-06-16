@@ -47,6 +47,8 @@ a:hover {
   text-decoration: underline;
 }
 
+/* enables styling titles */
+/* simpler than building popovers */
 [data-title]:hover:after {
   opacity: 1;
   transition: all 0.1s ease 0.5s;
@@ -64,9 +66,8 @@ a:hover {
   bottom: -1.6em;
   left: 100%;
   white-space: nowrap;
-  box-shadow: 1px 1px 3px #222222;
+  box-shadow: 1px 1px 3px #00000075;
   opacity: 0;
-  border: 1px solid #111111;
   z-index: 99999;
   visibility: hidden;
 }
