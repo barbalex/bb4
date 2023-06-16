@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { initializeApp, getApps, getApp } from 'firebase/app'
 
 import { RouterHead } from './components/router-head/router-head'
+import getAuthToken from './utils/getAuthToken'
 import './global.css'
 
 export const CTX = createContextId('root')
