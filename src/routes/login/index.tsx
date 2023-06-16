@@ -1,6 +1,8 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useContext, useSignal } from '@builder.io/qwik'
 import { routeAction$, Form, useNavigate } from '@builder.io/qwik-city'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+
+import { CTX } from '../../root'
 
 // TODO:
 // signInWithEmailAndPassword has to happen client-side
@@ -13,7 +15,13 @@ export const useLogin = routeAction$(async (data, requestEvent) => {
 })
 
 export default component$(() => {
+  const store = useContext(CTX)
+  const firebaseAuth = store.firebaseAuth
   const action = useLogin()
+  const navigate = useNavigate()
+
+  const error = useSignal(null)
+  const success = useSignal(null)
 
   return (
     <>
@@ -29,17 +37,27 @@ export default component$(() => {
             class="space-y-6"
             action="#"
             method="POST"
-            onSubmitCompleted$={() => {
-              console.log('onSubmitCompleted$', { action })
-              // try {
-              //   await signInWithEmailAndPassword(store.firebaseAuth, email, password)
-              // } catch (error) {
-              //   changeNewEmail(null)
-              //   changeLoginError(error)
-              //   return
-              // }
-              // TODO: how navigate in an action?
-              // setTimeout(() => navigate('/events/'), 500)
+            onSubmit$={async () => {
+              console.log('onSubmit', {
+                email: email.value,
+                password: password.value,
+              })
+
+              let userCredential
+              try {
+                userCredential = await signInWithEmailAndPassword(
+                  firebaseAuth,
+                  email.value,
+                  password.value,
+                )
+              } catch (error) {
+                console.error('error', error.message)
+                error.value = error.message
+                return
+              }
+              console.log('userCredential', userCredential)
+              success.value = true
+              setTimeout(() => navigate('/events/'), 500)
             }}
           >
             <div>
@@ -56,7 +74,7 @@ export default component$(() => {
                   type="email"
                   autoComplete="email"
                   required=""
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -76,7 +94,7 @@ export default component$(() => {
                   type="password"
                   autoComplete="current-password"
                   required=""
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -87,9 +105,9 @@ export default component$(() => {
               >
                 Log in
               </button>
-              {action.value?.success && <p>Logged in successfully</p>}
-              {action.value?.error && (
-                <p>{`Error loggin in: ${action.value?.error}`}</p>
+              {success.value && <p>Logged in successfully</p>}
+              {error.value && (
+                <p>{`Error loggin in: ${error.value?.message}`}</p>
               )}
             </div>
           </Form>
