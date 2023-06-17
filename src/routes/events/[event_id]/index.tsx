@@ -44,9 +44,9 @@ export default component$(() => {
                   />
                 </div>
               </div>
-              <div class="sm:col-span-4">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
-                  <div class="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
+              <div class="sm:col-span-3 sm:col-start-4">
+                <div class="lg:grid lg:grid-cols-4 lg:gap-x-16">
+                  <div class="mt-10 text-center lg:col-start-0 lg:col-end-5 lg:row-start-1 lg:mt-9 xl:col-start-1">
                     <div class="flex items-center text-gray-900">
                       <button
                         type="button"
@@ -579,12 +579,6 @@ export default component$(() => {
                         </time>
                       </button>
                     </div>
-                    <button
-                      type="button"
-                      class="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Add event
-                    </button>
                   </div>
                 </div>
               </div>
