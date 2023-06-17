@@ -4,6 +4,7 @@ import {
   useSignal,
   useVisibleTask$,
 } from '@builder.io/qwik'
+import { useNavigate } from '@builder.io/qwik-city'
 import {
   BsPencilFill as EditIcon,
   BsXCircle as DeleteIcon,
@@ -12,6 +13,7 @@ import {
 import { CTX } from '~/root'
 
 export default component$(({ event }) => {
+  const navigate = useNavigate()
   const store = useContext(CTX)
   const showEditingGlyphons = !!store.user
   const deleteMenuOpen = useSignal(false)
@@ -74,9 +76,7 @@ export default component$(({ event }) => {
               type="button"
               class="rounded-full hover:bg-gray-200 ml-2 p-1"
               data-title="edit"
-              onClick$={() => {
-                console.log('TODO: edit event')
-              }}
+              onClick$={() => navigate(`/events/${event.id}`)}
             >
               <EditIcon class="text-sm" />
             </button>
