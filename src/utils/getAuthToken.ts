@@ -14,7 +14,7 @@ const getAuthToken = async (user) => {
   } catch (error) {
     console.log('error from getting claims from auth.blue-borders.ch:', error)
   }
-  console.log('getAuthToken, res:', res)
+  // console.log('getAuthToken, res:', res)
   if (res?.status === 200) {
     let token
     try {
