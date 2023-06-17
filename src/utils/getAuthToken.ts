@@ -1,18 +1,20 @@
+import axios from 'redaxios'
+
 const getAuthToken = async (user) => {
   const hostnameWithoutWww = window.location.hostname.replace('www.', '')
   const isLocalhost = hostnameWithoutWww === 'localhost'
   const hostToUse = isLocalhost ? 'blue-borders.ch' : hostnameWithoutWww
 
+  // using fetch caused issues. Somehow the response was not as expected
   let res
   try {
-    const response = await fetch(
+    res = await axios.get(
       `https://auth.${hostToUse}/add-hasura-claims/${user?.uid}`,
     )
-    res = await response.json()
   } catch (error) {
     console.log('error from getting claims from auth.blue-borders.ch:', error)
   }
-  //console.log('getAuthToken, res:', res)
+  console.log('getAuthToken, res:', res)
   if (res?.status === 200) {
     let token
     try {
