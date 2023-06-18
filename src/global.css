@@ -81,7 +81,7 @@ a:hover {
 \*--------------------------------*/
 div.event-weather:before,
 label.event-weather:before {
-  content: url(/cloud-solid.svg);
+  content: url(/weather.svg);
   position: absolute;
   top: 1px;
   left: -1.8em;
@@ -93,7 +93,7 @@ div.event-statistics:before,
 label.event-statistics:before,
 div.event-monthlyStatistics:before,
 label.event-monthlyStatistics:before {
-  content: url(/chart-simple-solid.svg);
+  content: url(/statistics.svg);
   position: absolute;
   top: 1px;
   left: -1.8em;
@@ -103,7 +103,7 @@ label.event-monthlyStatistics:before {
 
 div.event-victims:before,
 label.event-victims:before {
-  content: url(/circle-exclamation-solid.svg);
+  content: url(/victims.svg);
   position: absolute;
   top: 1px;
   left: -1.8em;
@@ -113,7 +113,7 @@ label.event-victims:before {
 
 div.event-highlighted:before,
 label.event-highlighted:before {
-  content: url(/star-solid.svg);
+  content: url(/highlighted.svg);
   position: absolute;
   top: 1px;
   left: -1.8em;
