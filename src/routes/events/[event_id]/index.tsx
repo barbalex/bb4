@@ -4,11 +4,9 @@ export default component$(() => {
   return (
     <>
       <form class="space-y-4">
-        <div class="border-b border-gray-900/10 pb-2">
-          <h2 class="text-xl font-semibold leading-7 text-gray-900">
-            Edit event
-          </h2>
-        </div>
+        <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7 text-gray-900">
+          Edit event
+        </h2>
         <fieldset class="col-span-full">
           <label
             for="title"
@@ -44,7 +42,7 @@ export default component$(() => {
           </div>
           <div class="sm:col-span-3 sm:col-start-4">
             <div class="grid grid-cols-4 gap-x-16">
-              <div class="mt-10 text-center col-start-1 col-end-5 row-start-1 mt-9">
+              <div class="text-center col-start-1 col-end-5 row-start-1">
                 <div class="flex items-center text-gray-900">
                   <button
                     type="button"
