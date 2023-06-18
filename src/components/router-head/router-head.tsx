@@ -10,15 +10,20 @@ export const RouterHead = component$(() => {
 
   return (
     <>
-      <title>{head.title}</title>
+      <title>mediterranean migration</title>
 
       <link rel="canonical" href={loc.url.href} />
+      <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="Overview over migration across the the blue borders of the Me­diterrane­an"
+      />
+      <meta
+        name="keywords"
+        content="migration, politics, political-sciende, refugees, mediterranean"
+      />
       <link rel="icon" type="image/png" href="/favicon.png" />
-
-      {head.meta.map((m) => (
-        <meta key={m.key} {...m} />
-      ))}
 
       {head.links.map((l) => (
         <link key={l.key} {...l} />
