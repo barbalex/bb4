@@ -3,7 +3,7 @@ import { component$ } from '@builder.io/qwik'
 export default component$(() => {
   return (
     <>
-      <form class="space-y-4">
+      <form class="space-y-5">
         <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7 text-gray-900">
           Edit event
         </h2>
