@@ -595,10 +595,10 @@ export default component$(() => {
             </span>
           </div>
         </fieldset>
-        <fieldset class="">
+        <fieldset class="select-none">
           <legend class="text-sm font-semibold leading-6">Tags</legend>
-          <div class="mt-4 space-y-4">
-            <div class="flex align-center gap-x-3">
+          <div class="flex flex-wrap gap-x-3 gap-y-4 grow shrink-0 mt-4">
+            <div class="flex align-center gap-x-3 basis-44">
               <input
                 id="weather"
                 name="tags"
@@ -612,7 +612,7 @@ export default component$(() => {
                 weather
               </label>
             </div>
-            <div class="flex align-center gap-x-3">
+            <div class="flex align-center gap-x-3 basis-44">
               <input
                 id="victims"
                 name="tags"
@@ -626,7 +626,7 @@ export default component$(() => {
                 victims
               </label>
             </div>
-            <div class="flex align-center gap-x-3">
+            <div class="flex align-center gap-x-3 basis-44">
               <input
                 id="highlighted"
                 name="tags"
@@ -640,7 +640,7 @@ export default component$(() => {
                 highlighted
               </label>
             </div>
-            <div class="flex align-center gap-x-3">
+            <div class="flex align-center gap-x-3 basis-44">
               <input
                 id="statistics"
                 name="tags"
@@ -654,7 +654,7 @@ export default component$(() => {
                 statistics
               </label>
             </div>
-            <div class="flex align-center gap-x-3">
+            <div class="flex align-center gap-x-3 basis-44">
               <input
                 id="monthlyStatistics"
                 name="tags"
