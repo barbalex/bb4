@@ -18,10 +18,11 @@ const dataFetcher = server$(async function (activeYear) {
         FROM
           EVENT
         where
-          datum between '${activeYear}-01-01' and '${activeYear}-12-31'
+          datum between $1 and $2
           and event_type = 'migration'
         ORDER BY
           datum desc, tags_sort asc`,
+      [`${activeYear}-01-01`, `${activeYear}-12-31`],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -36,10 +37,11 @@ const dataFetcher = server$(async function (activeYear) {
         FROM
           EVENT
         where
-          datum between '${activeYear}-01-01' and '${activeYear}-12-31'
+          datum between $1 and $2
           and event_type = 'politics'
         ORDER BY
           datum desc, tags_sort asc`,
+      [`${activeYear}-01-01`, `${activeYear}-12-31`],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -56,9 +58,10 @@ const dataFetcher = server$(async function (activeYear) {
         FROM
           EVENT
         where
-          datum between '${activeYear}-01-01' and '${activeYear}-12-31'
+          datum between $1 and $2
         ORDER BY
           datum desc`,
+      [`${activeYear}-01-01`, `${activeYear}-12-31`],
     )
   } catch (error) {
     console.error('query error', error.stack)

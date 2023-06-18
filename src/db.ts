@@ -1,3 +1,4 @@
+// https://node-postgres.com/guides/project-structure
 import { Pool } from 'pg'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -9,6 +10,5 @@ const options = {
 
 const pool = new Pool(options)
 
-export const query = (text, params, callback) => {
-  return pool.query(text, params, callback)
-}
+export const query = (text, params, callback) =>
+  pool.query(text, params, callback)
