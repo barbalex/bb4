@@ -605,7 +605,10 @@ export default component$(() => {
                 type="radio"
                 class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
-              <label for="weather" class="text-sm font-medium">
+              <label
+                for="weather"
+                class="text-sm font-medium relative ml-6 event-weather"
+              >
                 weather
               </label>
             </div>
@@ -616,7 +619,10 @@ export default component$(() => {
                 type="radio"
                 class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
-              <label for="victims" class="text-sm font-medium">
+              <label
+                for="victims"
+                class="text-sm font-medium relative ml-6 event-victims"
+              >
                 victims
               </label>
             </div>
@@ -627,7 +633,10 @@ export default component$(() => {
                 type="radio"
                 class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
-              <label for="highlighted" class="text-sm font-medium">
+              <label
+                for="highlighted"
+                class="text-sm font-medium relative ml-6 event-highlighted"
+              >
                 highlighted
               </label>
             </div>
@@ -638,7 +647,10 @@ export default component$(() => {
                 type="radio"
                 class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
-              <label for="statistics" class="text-sm font-medium">
+              <label
+                for="statistics"
+                class="text-sm font-medium relative ml-6 event-statistics"
+              >
                 statistics
               </label>
             </div>
@@ -649,7 +661,10 @@ export default component$(() => {
                 type="radio"
                 class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
-              <label for="monthlyStatistics" class="text-sm font-medium">
+              <label
+                for="monthlyStatistics"
+                class="text-sm font-medium  relative ml-6 event-monthlyStatistics"
+              >
                 monthly Statistics
               </label>
             </div>

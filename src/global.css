@@ -79,7 +79,8 @@ a:hover {
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
-div.event-weather:before {
+div.event-weather:before,
+label.event-weather:before {
   content: url(/cloud-solid.svg);
   position: absolute;
   top: 1px;
@@ -89,7 +90,9 @@ div.event-weather:before {
 }
 
 div.event-statistics:before,
-div.event-monthlyStatistics:before {
+label.event-statistics:before,
+div.event-monthlyStatistics:before,
+label.event-monthlyStatistics:before {
   content: url(/chart-simple-solid.svg);
   position: absolute;
   top: 1px;
@@ -98,7 +101,8 @@ div.event-monthlyStatistics:before {
   width: 1.3em;
 }
 
-div.event-victims:before {
+div.event-victims:before,
+label.event-victims:before {
   content: url(/circle-exclamation-solid.svg);
   position: absolute;
   top: 1px;
@@ -107,7 +111,8 @@ div.event-victims:before {
   width: 1.3em;
 }
 
-div.event-highlighted:before {
+div.event-highlighted:before,
+label.event-highlighted:before {
   content: url(/star-solid.svg);
   position: absolute;
   top: 1px;
