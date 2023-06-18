@@ -1,30 +1,16 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
-import { Client } from 'pg'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
 import StatisticRow from './statisticRow'
+import * as db from '../../db'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function (activeYear) {
-  const isDev = this.env.get('NODE_ENV') === 'development'
-  const options = {
-    connectionString: isDev
-      ? this.env.get('PG_CONNECTIONSTRING_DEV')
-      : this.env.get('PG_CONNECTIONSTRING_PROD'),
-  }
-  const client = new Client(options)
-  try {
-    await client.connect()
-  } catch (error) {
-    console.error('connection error', error.stack)
-  }
-
-  // TODO: create client on app start and store in store
   let migrationEventRes
   try {
-    migrationEventRes = await client.query(
+    migrationEventRes = await db.query(
       `SELECT
           *,
           extract(month from datum)::int as month,
@@ -42,7 +28,7 @@ const dataFetcher = server$(async function (activeYear) {
   }
   let politicEventRes
   try {
-    politicEventRes = await client.query(
+    politicEventRes = await db.query(
       `SELECT
           *,
           extract(month from datum)::int as month,
@@ -60,7 +46,7 @@ const dataFetcher = server$(async function (activeYear) {
   }
   let dateRes
   try {
-    dateRes = await client.query(
+    dateRes = await db.query(
       `SELECT
           distinct datum,
           extract(month from datum)::int as month,
@@ -77,8 +63,6 @@ const dataFetcher = server$(async function (activeYear) {
   } catch (error) {
     console.error('query error', error.stack)
   }
-
-  client.end()
 
   return {
     migrationEvents: migrationEventRes?.rows,

@@ -6,10 +6,10 @@ import {
   useContext,
 } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
-import { Client } from 'pg'
 import groupBy from 'lodash/groupBy'
 
 import { CTX } from '~/root'
+import * as db from '../../db'
 
 const categorySort = {
   'European Union': 1,
@@ -34,24 +34,10 @@ const sorter = (a, b) => {
 
 // select all publications: id, title, draft
 const dataFetcher = server$(async function (isLoggedIn) {
-  const isDev = this.env.get('NODE_ENV') === 'development'
-  const options = {
-    connectionString: isDev
-      ? this.env.get('PG_CONNECTIONSTRING_DEV')
-      : this.env.get('PG_CONNECTIONSTRING_PROD'),
-  }
-  const client = new Client(options)
-  try {
-    await client.connect()
-  } catch (error) {
-    console.error('connection error', error.stack)
-  }
-
   // include drafts only if user is logged in
-  // TODO: create client on app start and store in store
   let res
   try {
-    res = await client.query(
+    res = await db.query(
       `select id, title, category, draft, sort from publication ${
         isLoggedIn ? '' : 'where draft is false'
       }`,
@@ -59,7 +45,6 @@ const dataFetcher = server$(async function (isLoggedIn) {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  client.end()
 
   const rows = res?.rows ?? []
   const rowsSorted = [...rows].sort(sorter)

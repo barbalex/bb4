@@ -1,34 +1,17 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
-import { Client } from 'pg'
 
 import { styles } from './styles.css'
+import * as db from '../../../db'
 
 // select all publications: id, title, draft
 const dataFetcher = server$(async function (id) {
-  const isDev = this.env.get('NODE_ENV') === 'development'
-  const options = {
-    connectionString: isDev
-      ? this.env.get('PG_CONNECTIONSTRING_DEV')
-      : this.env.get('PG_CONNECTIONSTRING_PROD'),
-  }
-  const client = new Client(options)
-  try {
-    await client.connect()
-  } catch (error) {
-    console.error('connection error', error.stack)
-  }
-
-  // TODO: create client on app start and store in store
   let res
   try {
-    res = await client.query('select content from publication where id = $1', [
-      id,
-    ])
+    res = await db.query('select content from publication where id = $1', [id])
   } catch (error) {
     console.error('query error', error.stack)
   }
-  client.end()
 
   // console.log('publication, dataFetcher, res:', res)
   const content = res?.rows[0]?.content
