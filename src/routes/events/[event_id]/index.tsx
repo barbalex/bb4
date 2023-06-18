@@ -68,9 +68,9 @@ export default component$(() => {
                     type="button"
                     class={`relative inline-flex items-center rounded-l-md ${
                       event.event_type === 'migration'
-                        ? 'bg-indigo-200'
-                        : 'bg-white'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 focus:z-10`}
+                        ? 'bg-blue-800 text-white'
+                        : 'bg-white text-black'
+                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-blue-50 focus:z-10`}
                   >
                     maritime events
                   </button>
@@ -78,9 +78,9 @@ export default component$(() => {
                     type="button"
                     class={`relative -ml-px inline-flex items-center rounded-r-md  ${
                       event.event_type === 'politics'
-                        ? 'bg-indigo-200'
+                        ? 'bg-blue-200'
                         : 'bg-white'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 focus:z-10`}
+                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-blue-50 focus:z-10`}
                   >
                     political events
                   </button>
@@ -96,7 +96,7 @@ export default component$(() => {
                   type="text"
                   name="title"
                   id="title"
-                  class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   value={event.title}
                 />
               </div>
@@ -114,7 +114,7 @@ export default component$(() => {
                     type="text"
                     name="title"
                     id="title"
-                    class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     value={event.datum}
                   />
                 </div>
@@ -179,7 +179,7 @@ export default component$(() => {
     Is selected, include: "text-white"
     Is not selected, is not today, and is current month, include: "text-gray-900"
     Is not selected, is not today, and is not current month, include: "text-gray-400"
-    Is today and is not selected, include: "text-indigo-600"
+    Is today and is not selected, include: "text-blue-600"
 
     Top left day, include: "rounded-tl-lg"
     Top right day, include: "rounded-tr-lg"
@@ -192,7 +192,7 @@ export default component$(() => {
                       >
                         {/*
       Always include: "mx-auto flex h-7 w-7 items-center justify-center rounded-full"
-      Is selected and is today, include: "bg-indigo-600"
+      Is selected and is today, include: "bg-blue-600"
       Is selected and is not today, include: "bg-gray-900"
     */}
                         <time
@@ -369,7 +369,7 @@ export default component$(() => {
                       </button>
                       <button
                         type="button"
-                        class="bg-white py-1.5 font-semibold text-indigo-600 hover:bg-gray-100 focus:z-10"
+                        class="bg-white py-1.5 font-semibold text-blue-600 hover:bg-gray-100 focus:z-10"
                       >
                         <time
                           dateTime="2022-01-12"
@@ -670,7 +670,7 @@ export default component$(() => {
                     id="weather"
                     name="tags"
                     type="radio"
-                    class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('weather')}
                   />
                   <label
@@ -685,7 +685,7 @@ export default component$(() => {
                     id="victims"
                     name="tags"
                     type="radio"
-                    class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('victims')}
                   />
                   <label
@@ -700,7 +700,7 @@ export default component$(() => {
                     id="highlighted"
                     name="tags"
                     type="radio"
-                    class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('highlighted')}
                   />
                   <label
@@ -715,7 +715,7 @@ export default component$(() => {
                     id="statistics"
                     name="tags"
                     type="radio"
-                    class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('statistics')}
                   />
                   <label
@@ -730,7 +730,7 @@ export default component$(() => {
                     id="monthlyStatistics"
                     name="tags"
                     type="radio"
-                    class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('monthlyStatistics')}
                   />
                   <label
@@ -748,13 +748,13 @@ export default component$(() => {
                 Links will be listet after the title and open in a new tab.
               </p>
               <div class="mt-4 space-y-6">
-                <div class="flex items-center gap-x-3">add links here</div>
+                {(event.links ?? []).map((link) => JSON.stringify(link))}
               </div>
             </fieldset>
             <div class="flex items-center justify-end gap-x-6">
               <button
                 type="submit"
-                class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 Close
               </button>
