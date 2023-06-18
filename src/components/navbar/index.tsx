@@ -78,6 +78,7 @@ export default component$(() => {
                 type="button"
                 class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 data-title="new Event"
+                aria-label="new Event"
               >
                 <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
                   <path
@@ -93,6 +94,7 @@ export default component$(() => {
                 type="button"
                 class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 data-title={store.user ? 'Log out' : 'Log in'}
+                aria-label={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
                   if (loggedIn) {
                     firebaseAuth && signOut(firebaseAuth)
