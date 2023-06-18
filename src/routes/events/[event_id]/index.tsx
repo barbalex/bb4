@@ -10,7 +10,7 @@ export default component$(() => {
               Edit event
             </h2>
           </div>
-          <div class="col-span-full">
+          <fieldset class="col-span-full">
             <label
               for="title"
               class="block text-sm font-medium leading-6 text-gray-900"
@@ -25,8 +25,8 @@ export default component$(() => {
                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
-          </div>
-          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          </fieldset>
+          <fieldset class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="col-span-2">
               <label
                 for="title"
@@ -581,94 +581,90 @@ export default component$(() => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="mt-10 space-y-10">
-            <fieldset>
-              <legend class="text-sm font-semibold leading-6 text-gray-900">
-                Column
-              </legend>
-              <div class="mt-6 space-y-6">
-                <span class="isolate inline-flex rounded-md shadow-sm">
-                  <button
-                    type="button"
-                    class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
-                  >
-                    maritime events / monthly statistics
-                  </button>
-                  <button
-                    type="button"
-                    class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
-                  >
-                    political events / total statistics
-                  </button>
-                </span>
-              </div>
-            </fieldset>
-          </div>
-          <div class="mt-10 space-y-10">
-            <fieldset>
-              <legend class="text-sm font-semibold leading-6 text-gray-900">
-                Tags
-              </legend>
-              <div class="mt-6 space-y-6">
-                <div class="relative flex gap-x-3">
-                  <div class="flex h-6 items-center">
-                    <input
-                      id="comments"
-                      name="tags"
-                      type="radio"
-                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div class="text-sm leading-6">
-                    <label for="comments" class="font-medium text-gray-900">
-                      Comments
-                    </label>
-                    <p class="text-gray-500">
-                      Get notified when someones posts a comment on a posting.
-                    </p>
-                  </div>
+          </fieldset>
+          <fieldset class="mt-10">
+            <legend class="text-sm font-semibold leading-6 text-gray-900">
+              Column
+            </legend>
+            <div class="mt-2">
+              <span class="isolate inline-flex rounded-md shadow-sm">
+                <button
+                  type="button"
+                  class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                >
+                  maritime events / monthly statistics
+                </button>
+                <button
+                  type="button"
+                  class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                >
+                  political events / total statistics
+                </button>
+              </span>
+            </div>
+          </fieldset>
+          <fieldset class="mt-10">
+            <legend class="text-sm font-semibold leading-6 text-gray-900">
+              Tags
+            </legend>
+            <div class="mt-6 space-y-6">
+              <div class="relative flex gap-x-3">
+                <div class="flex h-6 items-center">
+                  <input
+                    id="comments"
+                    name="tags"
+                    type="radio"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
                 </div>
-                <div class="relative flex gap-x-3">
-                  <div class="flex h-6 items-center">
-                    <input
-                      id="candidates"
-                      name="tags"
-                      type="radio"
-                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div class="text-sm leading-6">
-                    <label for="candidates" class="font-medium text-gray-900">
-                      Candidates
-                    </label>
-                    <p class="text-gray-500">
-                      Get notified when a candidate applies for a job.
-                    </p>
-                  </div>
-                </div>
-                <div class="relative flex gap-x-3">
-                  <div class="flex h-6 items-center">
-                    <input
-                      id="offers"
-                      name="tags"
-                      type="radio"
-                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div class="text-sm leading-6">
-                    <label for="offers" class="font-medium text-gray-900">
-                      Offers
-                    </label>
-                    <p class="text-gray-500">
-                      Get notified when a candidate accepts or rejects an offer.
-                    </p>
-                  </div>
+                <div class="text-sm leading-6">
+                  <label for="comments" class="font-medium text-gray-900">
+                    Comments
+                  </label>
+                  <p class="text-gray-500">
+                    Get notified when someones posts a comment on a posting.
+                  </p>
                 </div>
               </div>
-            </fieldset>
-          </div>
-          <fieldset class="mt-10 space-y-10">
+              <div class="relative flex gap-x-3">
+                <div class="flex h-6 items-center">
+                  <input
+                    id="candidates"
+                    name="tags"
+                    type="radio"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
+                </div>
+                <div class="text-sm leading-6">
+                  <label for="candidates" class="font-medium text-gray-900">
+                    Candidates
+                  </label>
+                  <p class="text-gray-500">
+                    Get notified when a candidate applies for a job.
+                  </p>
+                </div>
+              </div>
+              <div class="relative flex gap-x-3">
+                <div class="flex h-6 items-center">
+                  <input
+                    id="offers"
+                    name="tags"
+                    type="radio"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
+                </div>
+                <div class="text-sm leading-6">
+                  <label for="offers" class="font-medium text-gray-900">
+                    Offers
+                  </label>
+                  <p class="text-gray-500">
+                    Get notified when a candidate accepts or rejects an offer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="mt-10">
             <legend class="text-sm font-semibold leading-6 text-gray-900">
               Links
             </legend>
