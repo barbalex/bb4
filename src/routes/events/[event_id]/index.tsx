@@ -4,14 +4,11 @@ export default component$(() => {
   return (
     <>
       <form class="space-y-5">
-        <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7 text-gray-900">
+        <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7">
           Edit event
         </h2>
         <fieldset class="col-span-full">
-          <label
-            for="title"
-            class="block text-sm font-medium leading-6 text-gray-900"
-          >
+          <label for="title" class="block text-sm font-medium leading-6">
             Title
           </label>
           <div class="mt-2">
@@ -19,14 +16,14 @@ export default component$(() => {
               type="text"
               name="title"
               id="title"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </fieldset>
         <fieldset class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <legend
             for="title"
-            class="block text-sm font-medium leading-6 text-gray-900 col-span-full"
+            class="block text-sm font-medium leading-6 col-span-full"
           >
             Date
           </legend>
@@ -36,14 +33,14 @@ export default component$(() => {
                 type="text"
                 name="title"
                 id="title"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div class="sm:col-span-3 sm:col-start-4">
             <div class="grid grid-cols-4 gap-x-16">
               <div class="text-center col-start-1 col-end-5 row-start-1">
-                <div class="flex items-center text-gray-900">
+                <div class="flex items-center">
                   <button
                     type="button"
                     class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
@@ -169,7 +166,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-01"
@@ -180,7 +177,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="rounded-tr-lg bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="rounded-tr-lg bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-01"
@@ -191,7 +188,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-02"
@@ -202,7 +199,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-04"
@@ -213,7 +210,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-05"
@@ -224,7 +221,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-06"
@@ -235,7 +232,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-07"
@@ -246,7 +243,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-08"
@@ -257,7 +254,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-09"
@@ -268,7 +265,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-10"
@@ -279,7 +276,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-11"
@@ -301,7 +298,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-13"
@@ -312,7 +309,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-14"
@@ -323,7 +320,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-15"
@@ -334,7 +331,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-16"
@@ -345,7 +342,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-17"
@@ -356,7 +353,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-18"
@@ -367,7 +364,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-19"
@@ -378,7 +375,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-20"
@@ -389,7 +386,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-21"
@@ -400,7 +397,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-22"
@@ -411,7 +408,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-23"
@@ -422,7 +419,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-24"
@@ -433,7 +430,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-25"
@@ -444,7 +441,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-26"
@@ -455,7 +452,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-27"
@@ -466,7 +463,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-28"
@@ -477,7 +474,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-29"
@@ -488,7 +485,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-30"
@@ -499,7 +496,7 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    class="rounded-bl-lg bg-white py-1.5 text-gray-900 hover:bg-gray-100 focus:z-10"
+                    class="rounded-bl-lg bg-white py-1.5 hover:bg-gray-100 focus:z-10"
                   >
                     <time
                       dateTime="2022-01-31"
@@ -580,20 +577,18 @@ export default component$(() => {
           </div>
         </fieldset>
         <fieldset class="">
-          <legend class="text-sm font-semibold leading-6 text-gray-900">
-            Column
-          </legend>
+          <legend class="text-sm font-semibold leading-6">Column</legend>
           <div class="mt-2">
             <span class="isolate inline-flex rounded-md shadow-sm">
               <button
                 type="button"
-                class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
               >
                 maritime events / monthly statistics
               </button>
               <button
                 type="button"
-                class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
               >
                 political events / total statistics
               </button>
@@ -601,70 +596,67 @@ export default component$(() => {
           </div>
         </fieldset>
         <fieldset class="">
-          <legend class="text-sm font-semibold leading-6 text-gray-900">
-            Tags
-          </legend>
-          <div class="mt-4 space-y-6">
-            <div class="relative flex gap-x-3">
-              <div class="flex h-6 items-center">
-                <input
-                  id="comments"
-                  name="tags"
-                  type="radio"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div class="text-sm leading-6">
-                <label for="comments" class="font-medium text-gray-900">
-                  Comments
-                </label>
-                <p class="text-gray-500">
-                  Get notified when someones posts a comment on a posting.
-                </p>
-              </div>
+          <legend class="text-sm font-semibold leading-6">Tags</legend>
+          <div class="mt-4 space-y-4">
+            <div class="flex align-center gap-x-3">
+              <input
+                id="weather"
+                name="tags"
+                type="radio"
+                class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label for="weather" class="text-sm font-medium">
+                weather
+              </label>
             </div>
-            <div class="relative flex gap-x-3">
-              <div class="flex h-6 items-center">
-                <input
-                  id="candidates"
-                  name="tags"
-                  type="radio"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div class="text-sm leading-6">
-                <label for="candidates" class="font-medium text-gray-900">
-                  Candidates
-                </label>
-                <p class="text-gray-500">
-                  Get notified when a candidate applies for a job.
-                </p>
-              </div>
+            <div class="flex align-center gap-x-3">
+              <input
+                id="victims"
+                name="tags"
+                type="radio"
+                class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label for="victims" class="text-sm font-medium">
+                victims
+              </label>
             </div>
-            <div class="relative flex gap-x-3">
-              <div class="flex h-6 items-center">
-                <input
-                  id="offers"
-                  name="tags"
-                  type="radio"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-              <div class="text-sm leading-6">
-                <label for="offers" class="font-medium text-gray-900">
-                  Offers
-                </label>
-                <p class="text-gray-500">
-                  Get notified when a candidate accepts or rejects an offer.
-                </p>
-              </div>
+            <div class="flex align-center gap-x-3">
+              <input
+                id="highlighted"
+                name="tags"
+                type="radio"
+                class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label for="highlighted" class="text-sm font-medium">
+                highlighted
+              </label>
+            </div>
+            <div class="flex align-center gap-x-3">
+              <input
+                id="statistics"
+                name="tags"
+                type="radio"
+                class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label for="statistics" class="text-sm font-medium">
+                statistics
+              </label>
+            </div>
+            <div class="flex align-center gap-x-3">
+              <input
+                id="monthlyStatistics"
+                name="tags"
+                type="radio"
+                class="w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label for="monthlyStatistics" class="text-sm font-medium">
+                monthly Statistics
+              </label>
             </div>
           </div>
         </fieldset>
         <fieldset class="">
-          <legend class="text-sm font-semibold leading-6 text-gray-900">
-            Links
-          </legend>
+          <legend class="text-sm font-semibold leading-6">Links</legend>
           <p class="mt-1 text-sm leading-6 text-gray-600">
             Links will be listet after the title and open in a new tab.
           </p>
@@ -673,10 +665,7 @@ export default component$(() => {
           </div>
         </fieldset>
         <div class="flex items-center justify-end gap-x-6">
-          <button
-            type="button"
-            class="text-sm font-semibold leading-6 text-gray-900"
-          >
+          <button type="button" class="text-sm font-semibold leading-6">
             Cancel
           </button>
           <button
