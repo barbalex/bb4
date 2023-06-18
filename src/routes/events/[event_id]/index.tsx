@@ -674,7 +674,7 @@ export default component$(() => {
             </div>
           </div>
         </fieldset>
-        <fieldset class="">
+        <fieldset class="border-b border-gray-900/10 pb-3">
           <legend class="text-sm font-semibold leading-6">Links</legend>
           <p class="mt-1 text-sm leading-6 text-gray-600">
             Links will be listet after the title and open in a new tab.
@@ -684,14 +684,11 @@ export default component$(() => {
           </div>
         </fieldset>
         <div class="flex items-center justify-end gap-x-6">
-          <button type="button" class="text-sm font-semibold leading-6">
-            Cancel
-          </button>
           <button
             type="submit"
             class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Save
+            Close
           </button>
         </div>
       </form>
