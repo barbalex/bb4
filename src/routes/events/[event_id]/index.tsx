@@ -7,6 +7,25 @@ export default component$(() => {
         <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7">
           Edit event
         </h2>
+        <fieldset class="">
+          <legend class="text-sm font-semibold leading-6">Column</legend>
+          <div class="mt-2">
+            <span class="isolate inline-flex rounded-md shadow-sm">
+              <button
+                type="button"
+                class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+              >
+                maritime events
+              </button>
+              <button
+                type="button"
+                class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+              >
+                political events
+              </button>
+            </span>
+          </div>
+        </fieldset>
         <fieldset class="col-span-full">
           <label for="title" class="block text-sm font-medium leading-6">
             Title
@@ -16,7 +35,7 @@ export default component$(() => {
               type="text"
               name="title"
               id="title"
-              class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </fieldset>
@@ -33,7 +52,7 @@ export default component$(() => {
                 type="text"
                 name="title"
                 id="title"
-                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -576,27 +595,12 @@ export default component$(() => {
             </div>
           </div>
         </fieldset>
-        <fieldset class="">
-          <legend class="text-sm font-semibold leading-6">Column</legend>
-          <div class="mt-2">
-            <span class="isolate inline-flex rounded-md shadow-sm">
-              <button
-                type="button"
-                class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
-              >
-                maritime events / monthly statistics
-              </button>
-              <button
-                type="button"
-                class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
-              >
-                political events / total statistics
-              </button>
-            </span>
-          </div>
-        </fieldset>
         <fieldset class="select-none">
-          <legend class="text-sm font-semibold leading-6">Tags</legend>
+          <legend class="text-sm font-semibold leading-6">Tag</legend>
+          <p class="text-sm text-grey-600">
+            The tag replaces the bullet point of the event. Thus only one can be
+            choosen.
+          </p>
           <div class="flex flex-wrap gap-x-3 gap-y-4 grow shrink-0 mt-4">
             <div class="flex align-center gap-x-3 basis-44">
               <input
