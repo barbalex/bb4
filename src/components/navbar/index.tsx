@@ -72,7 +72,8 @@ export default component$(() => {
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
-            {!!store.user && (
+            {/* only show new Event button on events page */}
+            {!!store.user && location.url.pathname === '/' && (
               <button
                 type="button"
                 class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
