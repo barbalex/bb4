@@ -585,17 +585,46 @@ export default component$(() => {
             </div>
           </div>
           <div class="border-b border-gray-900/10 pb-12">
-            <h2 class="text-base font-semibold leading-7 text-gray-900">
-              Tags
-            </h2>
-            <p class="mt-1 text-sm leading-6 text-gray-600">
-              A tag's symbol will replace the bullet point of the event. Thus
-              only one tag can be choosen.
-            </p>
             <div class="mt-10 space-y-10">
               <fieldset>
                 <legend class="text-sm font-semibold leading-6 text-gray-900">
-                  By Email
+                  Column
+                </legend>
+                <div class="mt-6 space-y-6">
+                  <span class="isolate inline-flex rounded-md shadow-sm">
+                    <button
+                      type="button"
+                      class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                    >
+                      maritime events / monthly statistics
+                    </button>
+                    <button
+                      type="button"
+                      class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                    >
+                      political events / total statistics
+                    </button>
+                  </span>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend class="text-sm font-semibold leading-6 text-gray-900">
+                  Links
+                </legend>
+                <p class="mt-1 text-sm leading-6 text-gray-600">
+                  Links will be listet after the title and open in a new tab.
+                </p>
+                <div class="mt-6 space-y-6">
+                  <div class="flex items-center gap-x-3">add links here</div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="border-b border-gray-900/10 pb-12">
+            <div class="mt-10 space-y-10">
+              <fieldset>
+                <legend class="text-sm font-semibold leading-6 text-gray-900">
+                  Tags
                 </legend>
                 <div class="mt-6 space-y-6">
                   <div class="relative flex gap-x-3">
