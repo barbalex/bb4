@@ -3,7 +3,6 @@ import { server$, useLocation } from '@builder.io/qwik-city'
 
 import * as db from '../../../db'
 
-// select all articles: id, title, draft
 const dataFetcher = server$(async function (id) {
   let res
   try {
