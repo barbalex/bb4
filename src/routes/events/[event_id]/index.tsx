@@ -1,5 +1,5 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$, useLocation } from '@builder.io/qwik-city'
+import { server$, useLocation, routeAction$, Form } from '@builder.io/qwik-city'
 
 import * as db from '../../../db'
 
@@ -22,6 +22,15 @@ const dataFetcher = server$(async function (id) {
   return res?.rows[0]
 })
 
+export const useFormData = routeAction$(async (data, requestEvent) => {
+  // This will only run on the server when the user submits the form (or when the action is called programatically)
+  console.log('event, action, data:', data)
+
+  return {
+    success: true,
+  }
+})
+
 export default component$(() => {
   const location = useLocation()
 
@@ -30,6 +39,8 @@ export default component$(() => {
 
     return await dataFetcher(id)
   })
+
+  const action = useFormData()
 
   return (
     <Resource
@@ -40,38 +51,90 @@ export default component$(() => {
         console.log('event', event)
 
         return (
-          <form class="space-y-5">
+          <Form action={action} class="space-y-5">
             <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7">
               Edit event
             </h2>
-            <fieldset class="">
+            <fieldset class="" role="group">
+              <div class="flex flex-col items-center py-16 bg-gray-100">
+                <ul
+                  id="filter1"
+                  class="filter-switch inline-flex items-center relative h-10 p-1 space-x-0 font-semibold text-blue-600 my-4"
+                >
+                  <li class="filter-switch-item flex relative h-9 bg-gray-300x">
+                    <input
+                      type="radio"
+                      name="filter1"
+                      id="filter1-0"
+                      class="sr-only"
+                      checked={event.event_type === 'migration'}
+                    />
+                    <label
+                      for="filter1-0"
+                      class={`h-9 py-1 px-2 text-sm leading-6 ${
+                        event.event_type === 'migration'
+                          ? 'bg-blue-800 text-white'
+                          : 'bg-white text-black hover:bg-blue-50'
+                      } rounded-l-md shadow`}
+                    >
+                      maritime events
+                    </label>
+                    <div aria-hidden="true" class="filter-active"></div>
+                  </li>
+                  <li class="filter-switch-item flex relative h-9 bg-gray-300x">
+                    <input
+                      type="radio"
+                      name="filter1"
+                      id="filter1-1"
+                      class="sr-only"
+                      checked={event.event_type === 'politics'}
+                    />
+                    <label
+                      for="filter1-1"
+                      class={`h-9 py-1 px-2 text-sm leading-6  ${
+                        event.event_type === 'politics'
+                          ? 'bg-blue-800 text-white'
+                          : 'bg-white text-black hover:bg-blue-50'
+                      } rounded-r-md shadow`}
+                    >
+                      political events
+                    </label>
+                  </li>
+                </ul>
+              </div>
               <legend class="text-sm font-semibold leading-6">Column</legend>
               <div class="mt-2">
                 <span class="isolate inline-flex rounded-md shadow-sm">
                   <button
-                    type="button"
+                    type="radio"
                     class={`relative inline-flex items-center rounded-l-md ${
                       event.event_type === 'migration'
                         ? 'bg-blue-800 text-white'
-                        : 'bg-white text-black'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-blue-50 focus:z-10`}
+                        : 'bg-white text-black hover:bg-blue-50'
+                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-10`}
+                    name="event_type"
+                    value="migration"
+                    checked={event.event_type === 'migration'}
                   >
                     maritime events
                   </button>
                   <button
-                    type="button"
+                    type="radio"
                     class={`relative -ml-px inline-flex items-center rounded-r-md  ${
                       event.event_type === 'politics'
-                        ? 'bg-blue-200'
-                        : 'bg-white'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-blue-50 focus:z-10`}
+                        ? 'bg-blue-800 text-white'
+                        : 'bg-white text-black hover:bg-blue-50'
+                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-10`}
+                    name="event_type"
+                    value="politics"
+                    checked={event.event_type === 'politics'}
                   >
                     political events
                   </button>
                 </span>
               </div>
             </fieldset>
-            <fieldset class="col-span-full">
+            <fieldset class="col-span-full" id="title">
               <label for="title" class="block text-sm font-medium leading-6">
                 Title
               </label>
@@ -96,7 +159,7 @@ export default component$(() => {
                 <div class="mt-2">
                   <input
                     type="text"
-                    name="title"
+                    name="datum"
                     id="title"
                     class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     value={event.datum}
@@ -740,10 +803,10 @@ export default component$(() => {
                 type="submit"
                 class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                Close
+                Save
               </button>
             </div>
-          </form>
+          </Form>
         )
       }}
     />
