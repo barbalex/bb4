@@ -7,4 +7,5 @@ export const onRequest: RequestHandler = ({ redirect }) => {
 
 // need to export a component due to a bug
 // https://github.com/BuilderIO/qwik/issues/4502
+// TODO: bug fixed 19.6.2023, remove this export when qwik version is updated
 export default component$(() => 'hi')
