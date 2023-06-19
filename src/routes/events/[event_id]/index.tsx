@@ -31,39 +31,35 @@ export const useFormData = routeAction$(async (data, requestEvent) => {
   // tags_sort is set by a trigger
   const date = dayjs(data.datum, 'DD.MM.YYYY')
   const dateIsValid = date.isValid()
-  const dateReformated = dateIsValid ? date.format('YYYY-MM-DD') : undefined
+  const dateFormated = dateIsValid ? date.format('YYYY-MM-DD') : null
   const dataToUpdate = {
     ...data,
-    datum: dateIsValid ? `"${dateReformated}"` : null,
-    // convert tag to array
-    // TODO: migrate tag to text instead of array
-    tags: data.tags.split(','),
+    datum: dateFormated,
   }
   const id = requestEvent.params.event_id
   // TODO: how to know if the data has changed / is dirty?
-  console.log('event, action, dataToUpdate:', {
-    dataToUpdate,
-    id,
-  })
 
-  let res
   try {
-    res = await db.query(
+    await db.query(
       `update event
         set 
           datum = $1,
           title = $2,
-          event_type = $3
-          -- TODO: get jsonb array working
-          --tags = $4
+          event_type = $3,
+          tag = $4
         where
-          id = $4`,
-      [dataToUpdate.datum, dataToUpdate.title, dataToUpdate.event_type, id],
+          id = $5`,
+      [
+        dataToUpdate.datum,
+        dataToUpdate.title,
+        dataToUpdate.event_type,
+        dataToUpdate.tag,
+        id,
+      ],
     )
   } catch (error) {
     console.error('query error', error.stack)
   }
-  console.log('event, action, res:', res)
 
   return {
     success: true,
@@ -742,10 +738,10 @@ export default component$(() => {
                 <div class="flex align-center gap-x-3 basis-44">
                   <input
                     id="weather"
-                    name="tags"
+                    name="tag"
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
-                    checked={(event.tags ?? []).includes('weather')}
+                    checked={event.tag === 'weather'}
                     value="weather"
                     onChange$={() => (dirty.value = true)}
                   />
@@ -759,10 +755,10 @@ export default component$(() => {
                 <div class="flex align-center gap-x-3 basis-44">
                   <input
                     id="victims"
-                    name="tags"
+                    name="tag"
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
-                    checked={(event.tags ?? []).includes('victims')}
+                    checked={event.tag === 'victims'}
                     value="victims"
                     onChange$={() => (dirty.value = true)}
                   />
@@ -776,10 +772,10 @@ export default component$(() => {
                 <div class="flex align-center gap-x-3 basis-44">
                   <input
                     id="highlighted"
-                    name="tags"
+                    name="tag"
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
-                    checked={(event.tags ?? []).includes('highlighted')}
+                    checked={event.tag === 'highlighted'}
                     value="highlighted"
                     onChange$={() => (dirty.value = true)}
                   />
@@ -793,10 +789,10 @@ export default component$(() => {
                 <div class="flex align-center gap-x-3 basis-44">
                   <input
                     id="statistics"
-                    name="tags"
+                    name="tag"
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
-                    checked={(event.tags ?? []).includes('statistics')}
+                    checked={event.tag === 'statistics'}
                     value="statistics"
                     onChange$={() => (dirty.value = true)}
                   />
@@ -810,10 +806,10 @@ export default component$(() => {
                 <div class="flex align-center gap-x-3 basis-44">
                   <input
                     id="monthlyStatistics"
-                    name="tags"
+                    name="tag"
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
-                    checked={(event.tags ?? []).includes('monthlyStatistics')}
+                    checked={event.tag === 'monthlyStatistics'}
                     value="monthlyStatistics"
                     onChange$={() => (dirty.value = true)}
                   />

@@ -83,7 +83,7 @@ div.event-weather:before,
 label.event-weather:before {
   content: url(/weather.svg);
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: -1.8em;
   height: 1.3em;
   width: 1.3em;
@@ -95,7 +95,7 @@ div.event-monthlyStatistics:before,
 label.event-monthlyStatistics:before {
   content: url(/statistics.svg);
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: -1.8em;
   height: 1.3em;
   width: 1.3em;
@@ -105,7 +105,7 @@ div.event-victims:before,
 label.event-victims:before {
   content: url(/victims.svg);
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: -1.8em;
   height: 1.3em;
   width: 1.3em;
@@ -115,7 +115,7 @@ div.event-highlighted:before,
 label.event-highlighted:before {
   content: url(/highlighted.svg);
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: -1.8em;
   height: 1.3em;
   width: 1.3em;

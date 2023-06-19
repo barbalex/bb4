@@ -43,17 +43,9 @@ export default component$(({ event }) => {
 
   return (
     <li
-      class={
-        event.tags?.length
-          ? `py-1.5 list-none pl-1.5`
-          : `py-1.5 list-disc pl-1.5`
-      }
+      class={event.tag ? `py-1.5 list-none pl-1.5` : `py-1.5 list-disc pl-1.5`}
     >
-      <div
-        class={`${(event.tags ?? [])
-          .map((tag) => `event-${tag}`)
-          .join(' ')} relative`}
-      >
+      <div class={`${`event-${event.tag}`} relative`}>
         {event.title}&nbsp;
         <>
           {(event.links ?? []).map((l, key) => (

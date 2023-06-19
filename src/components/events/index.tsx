@@ -114,23 +114,19 @@ export default component$(({ activeYear }) => {
               const eventData = {
                 date: row.date,
                 migrationEvents: row.migrationEvents.filter(
-                  (event) =>
-                    !event.tags || !event.tags.includes('monthlyStatistics'),
+                  (event) => event.tag !== 'monthlyStatistics',
                 ),
                 politicEvents: (row?.politicEvents ?? []).filter(
-                  (event) =>
-                    !event.tags || !event.tags.includes('monthlyStatistics'),
+                  (event) => event.tag !== 'monthlyStatistics',
                 ),
               }
               const statsData = {
                 date: row.date,
                 migrationEvents: row.migrationEvents.filter(
-                  (event) =>
-                    event.tags && event.tags.includes('monthlyStatistics'),
+                  (event) => event.tag === 'monthlyStatistics',
                 ),
                 politicEvents: (row?.politicEvents ?? []).filter(
-                  (event) =>
-                    event.tags && event.tags.includes('monthlyStatistics'),
+                  (event) => event.tag === 'monthlyStatistics',
                 ),
               }
               const statsExist =
