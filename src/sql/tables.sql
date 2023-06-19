@@ -8,7 +8,8 @@ CREATE TABLE event(
   -- TODO: check if multipla array elements exist
   -- TODO: import the right one
   tags jsonb DEFAULT NULL,
-  tags_sort integer DEFAULT 99
+  tags_sort integer DEFAULT 99,
+  tag text DEFAULT NULL
 );
 
 -- 1. find tags with multiple elements:
@@ -21,9 +22,13 @@ CREATE TABLE event(
 -- update event set tags = tags - 'Greece';
 -- update event set tags = tags - 'Libya';
 -- update event set tags = tags - 'statistics' where jsonb_array_length(tags) > 1;
-ALTER TABLE event
-  ADD COLUMN tag text DEFAULT NULL;
-
+-- 3. update tag column with first (now only) element of tags array
+-- UPDATE
+--   event
+-- SET
+--   tag = tags::jsonb ->> 0
+-- WHERE
+--   tags IS NOT NULL;
 CREATE INDEX ON event USING btree(id);
 
 CREATE INDEX ON event USING btree(datum);
