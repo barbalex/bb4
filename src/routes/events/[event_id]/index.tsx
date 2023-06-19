@@ -25,6 +25,8 @@ const dataFetcher = server$(async function (id) {
 export const useFormData = routeAction$(async (data, requestEvent) => {
   // This will only run on the server when the user submits the form (or when the action is called programatically)
   console.log('event, action, data:', data)
+  // TODO: convert tag to array
+  // TODO: migrate tag to text instead of array
 
   return {
     success: true,
@@ -689,6 +691,7 @@ export default component$(() => {
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('weather')}
+                    value="weather"
                   />
                   <label
                     for="weather"
@@ -704,6 +707,7 @@ export default component$(() => {
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('victims')}
+                    value="victims"
                   />
                   <label
                     for="victims"
@@ -719,6 +723,7 @@ export default component$(() => {
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('highlighted')}
+                    value="highlighted"
                   />
                   <label
                     for="highlighted"
@@ -734,6 +739,7 @@ export default component$(() => {
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('statistics')}
+                    value="statistics"
                   />
                   <label
                     for="statistics"
@@ -749,6 +755,7 @@ export default component$(() => {
                     type="radio"
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('monthlyStatistics')}
+                    value="monthlyStatistics"
                   />
                   <label
                     for="monthlyStatistics"
