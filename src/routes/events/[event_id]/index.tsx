@@ -1,5 +1,7 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
 import { server$, useLocation, routeAction$, Form } from '@builder.io/qwik-city'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import * as db from '../../../db'
 
@@ -23,10 +25,45 @@ const dataFetcher = server$(async function (id) {
 })
 
 export const useFormData = routeAction$(async (data, requestEvent) => {
+  dayjs.extend(customParseFormat)
   // This will only run on the server when the user submits the form (or when the action is called programatically)
-  console.log('event, action, data:', data)
-  // TODO: convert tag to array
-  // TODO: migrate tag to text instead of array
+  // console.log('event, action, params:', { data, requestEvent })
+  // tags_sort is set by a trigger
+  const date = dayjs(data.datum, 'DD.MM.YYYY')
+  const dateIsValid = date.isValid()
+  const dateReformated = dateIsValid ? date.format('YYYY-MM-DD') : undefined
+  const dataToUpdate = {
+    ...data,
+    datum: dateIsValid ? `"${dateReformated}"` : null,
+    // convert tag to array
+    // TODO: migrate tag to text instead of array
+    tags: data.tags.split(','),
+  }
+  const id = requestEvent.params.event_id
+  // TODO: how to know if the data has changed / is dirty?
+  console.log('event, action, dataToUpdate:', {
+    dataToUpdate,
+    id,
+  })
+
+  let res
+  try {
+    res = await db.query(
+      `update event
+        set 
+          datum = $1,
+          title = $2,
+          event_type = $3
+          -- TODO: get jsonb array working
+          --tags = $4
+        where
+          id = $4`,
+      [dataToUpdate.datum, dataToUpdate.title, dataToUpdate.event_type, id],
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+  console.log('event, action, res:', res)
 
   return {
     success: true,
@@ -35,6 +72,7 @@ export const useFormData = routeAction$(async (data, requestEvent) => {
 
 export default component$(() => {
   const location = useLocation()
+  const dirty = useSignal(false)
 
   const event = useResource$(async ({ track }) => {
     const id = track(() => location.params.event_id)
@@ -50,7 +88,8 @@ export default component$(() => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(event) => {
-        console.log('event', event)
+        // console.log('event', event)
+        // console.log('event, form:', { action, formData: action.formData })
 
         return (
           <Form action={action} class="space-y-5">
@@ -71,6 +110,7 @@ export default component$(() => {
                     class="sr-only"
                     value="migration"
                     checked={event.event_type === 'migration'}
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="event_type-0"
@@ -79,6 +119,10 @@ export default component$(() => {
                         ? 'bg-blue-800 text-white  ring-blue-800'
                         : 'bg-white text-black  ring-gray-300 hover:bg-blue-50'
                     } rounded-l-md shadow ring-1 ring-inset`}
+                    onClick$={() => {
+                      // TODO: set the value
+                      dirty.value = true
+                    }}
                   >
                     maritime events
                   </label>
@@ -92,6 +136,7 @@ export default component$(() => {
                     class="sr-only"
                     value="politics"
                     checked={event.event_type === 'politics'}
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="event_type-1"
@@ -100,6 +145,10 @@ export default component$(() => {
                         ? 'bg-blue-800 text-white  ring-blue-800'
                         : 'bg-white text-black  ring-gray-300 hover:bg-blue-50'
                     } rounded-r-md shadow ring-1 ring-inset`}
+                    onClick$={() => {
+                      // TODO: set the value
+                      dirty.value = true
+                    }}
                   >
                     political events
                   </label>
@@ -117,6 +166,7 @@ export default component$(() => {
                   id="title"
                   class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   value={event.title}
+                  onChange$={() => (dirty.value = true)}
                 />
               </div>
             </fieldset>
@@ -134,7 +184,12 @@ export default component$(() => {
                     name="datum"
                     id="title"
                     class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                    value={event.datum}
+                    value={
+                      event.datum
+                        ? dayjs(event.datum).format('DD.MM.YYYY')
+                        : null
+                    }
+                    onChange$={() => (dirty.value = true)}
                   />
                 </div>
               </div>
@@ -692,6 +747,7 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('weather')}
                     value="weather"
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="weather"
@@ -708,6 +764,7 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('victims')}
                     value="victims"
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="victims"
@@ -724,6 +781,7 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('highlighted')}
                     value="highlighted"
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="highlighted"
@@ -740,6 +798,7 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('statistics')}
                     value="statistics"
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="statistics"
@@ -756,6 +815,7 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={(event.tags ?? []).includes('monthlyStatistics')}
                     value="monthlyStatistics"
+                    onChange$={() => (dirty.value = true)}
                   />
                   <label
                     for="monthlyStatistics"
