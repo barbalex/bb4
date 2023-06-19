@@ -1,7 +1,6 @@
 import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
 import { server$, useLocation, routeAction$, Form } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import * as db from '../../../db'
 
@@ -25,11 +24,38 @@ const dataFetcher = server$(async function (id) {
 })
 
 export const useFormData = routeAction$(async (data, requestEvent) => {
-  dayjs.extend(customParseFormat)
   // This will only run on the server when the user submits the form (or when the action is called programatically)
-  // console.log('event, action, params:', { data, requestEvent })
   // tags_sort is set by a trigger
-  const date = dayjs(data.datum, 'DD.MM.YYYY')
+  // accept date in format D, DD, D.M, DD.M, D.MM, DD.MM, D.M.YY, DD.M.YY, D.MM.YY, DD.MM.YY, D.M.YYYY, DD.M.YYYY, D.MM.YYYY, DD.MM.YYYY
+  const date = dayjs(data.datum, 'DD.MM.YYYY').isValid()
+    ? dayjs(data.datum, 'DD.MM.YYYY')
+    : dayjs(data.datum, 'D.MM.YYYY').isValid()
+    ? dayjs(data.datum, 'D.MM.YYYY')
+    : dayjs(data.datum, 'DD.M.YYYY').isValid()
+    ? dayjs(data.datum, 'DD.M.YYYY')
+    : dayjs(data.datum, 'D.M.YYYY').isValid()
+    ? dayjs(data.datum, 'D.M.YYYY')
+    : dayjs(data.datum, 'DD.MM.YY').isValid()
+    ? dayjs(data.datum, 'DD.MM.YY')
+    : dayjs(data.datum, 'D.MM.YY').isValid()
+    ? dayjs(data.datum, 'D.MM.YY')
+    : dayjs(data.datum, 'DD.M.YY').isValid()
+    ? dayjs(data.datum, 'DD.M.YY')
+    : dayjs(data.datum, 'D.M.YY').isValid()
+    ? dayjs(data.datum, 'D.M.YY')
+    : dayjs(data.datum, 'DD.MM').isValid()
+    ? dayjs(data.datum, 'DD.MM')
+    : dayjs(data.datum, 'D.MM').isValid()
+    ? dayjs(data.datum, 'D.MM')
+    : dayjs(data.datum, 'DD.M').isValid()
+    ? dayjs(data.datum, 'DD.M')
+    : dayjs(data.datum, 'D.M').isValid()
+    ? dayjs(data.datum, 'D.M')
+    : dayjs(data.datum, 'DD').isValid()
+    ? dayjs(data.datum, 'DD')
+    : dayjs(data.datum, 'D').isValid()
+    ? dayjs(data.datum, 'D')
+    : null
   const dateIsValid = date.isValid()
   const dateFormated = dateIsValid ? date.format('YYYY-MM-DD') : null
   const dataToUpdate = {
@@ -38,6 +64,7 @@ export const useFormData = routeAction$(async (data, requestEvent) => {
   }
   const id = requestEvent.params.event_id
   // TODO: how to know if the data has changed / is dirty?
+  // would be better to only update if necessary
 
   try {
     await db.query(
@@ -186,6 +213,7 @@ export default component$(() => {
                         : null
                     }
                     onChange$={() => (dirty.value = true)}
+                    required
                   />
                 </div>
               </div>
