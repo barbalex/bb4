@@ -56,83 +56,53 @@ export default component$(() => {
               Edit event
             </h2>
             <fieldset class="" role="group">
-              <div class="flex flex-col items-center py-16 bg-gray-100">
-                <ul
-                  id="filter1"
-                  class="filter-switch inline-flex items-center relative h-10 p-1 space-x-0 font-semibold text-blue-600 my-4"
-                >
-                  <li class="filter-switch-item flex relative h-9 bg-gray-300x">
-                    <input
-                      type="radio"
-                      name="filter1"
-                      id="filter1-0"
-                      class="sr-only"
-                      checked={event.event_type === 'migration'}
-                    />
-                    <label
-                      for="filter1-0"
-                      class={`h-9 py-1 px-2 text-sm leading-6 ${
-                        event.event_type === 'migration'
-                          ? 'bg-blue-800 text-white'
-                          : 'bg-white text-black hover:bg-blue-50'
-                      } rounded-l-md shadow`}
-                    >
-                      maritime events
-                    </label>
-                    <div aria-hidden="true" class="filter-active"></div>
-                  </li>
-                  <li class="filter-switch-item flex relative h-9 bg-gray-300x">
-                    <input
-                      type="radio"
-                      name="filter1"
-                      id="filter1-1"
-                      class="sr-only"
-                      checked={event.event_type === 'politics'}
-                    />
-                    <label
-                      for="filter1-1"
-                      class={`h-9 py-1 px-2 text-sm leading-6  ${
-                        event.event_type === 'politics'
-                          ? 'bg-blue-800 text-white'
-                          : 'bg-white text-black hover:bg-blue-50'
-                      } rounded-r-md shadow`}
-                    >
-                      political events
-                    </label>
-                  </li>
-                </ul>
-              </div>
               <legend class="text-sm font-semibold leading-6">Column</legend>
-              <div class="mt-2">
-                <span class="isolate inline-flex rounded-md shadow-sm">
-                  <button
+              <ul
+                id="event_type"
+                class="filter-switch inline-flex items-center relative space-x-0 font-semibold mt-2"
+              >
+                <li class="filter-switch-item flex relative shadow-sm">
+                  <input
                     type="radio"
-                    class={`relative inline-flex items-center rounded-l-md ${
-                      event.event_type === 'migration'
-                        ? 'bg-blue-800 text-white'
-                        : 'bg-white text-black hover:bg-blue-50'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-10`}
                     name="event_type"
+                    id="event_type-0"
+                    class="sr-only"
                     value="migration"
                     checked={event.event_type === 'migration'}
+                  />
+                  <label
+                    for="event_type-0"
+                    class={`px-3 py-1.5 text-sm leading-6 ${
+                      event.event_type === 'migration'
+                        ? 'bg-blue-800 text-white  ring-blue-800'
+                        : 'bg-white text-black  ring-gray-300 hover:bg-blue-50'
+                    } rounded-l-md shadow ring-1 ring-inset`}
                   >
                     maritime events
-                  </button>
-                  <button
+                  </label>
+                  <div aria-hidden="true" class="filter-active"></div>
+                </li>
+                <li class="filter-switch-item flex relative shadow-sm">
+                  <input
                     type="radio"
-                    class={`relative -ml-px inline-flex items-center rounded-r-md  ${
-                      event.event_type === 'politics'
-                        ? 'bg-blue-800 text-white'
-                        : 'bg-white text-black hover:bg-blue-50'
-                    } px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-10`}
                     name="event_type"
+                    id="event_type-1"
+                    class="sr-only"
                     value="politics"
                     checked={event.event_type === 'politics'}
+                  />
+                  <label
+                    for="event_type-1"
+                    class={`px-3 py-1.5 -ml-px text-sm leading-6  ${
+                      event.event_type === 'politics'
+                        ? 'bg-blue-800 text-white  ring-blue-800'
+                        : 'bg-white text-black  ring-gray-300 hover:bg-blue-50'
+                    } rounded-r-md shadow ring-1 ring-inset`}
                   >
                     political events
-                  </button>
-                </span>
-              </div>
+                  </label>
+                </li>
+              </ul>
             </fieldset>
             <fieldset class="col-span-full" id="title">
               <label for="title" class="block text-sm font-medium leading-6">
