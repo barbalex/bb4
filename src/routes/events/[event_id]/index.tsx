@@ -61,8 +61,10 @@ export const useFormData = routeAction$(async (data, requestEvent) => {
   const dataToUpdate = {
     ...data,
     datum: dateFormated,
+    tag: data.tag === 'null' ? null : data.tag,
   }
   const id = requestEvent.params.event_id
+  console.log('action', { data, dataToUpdate, id })
   // TODO: how to know if the data has changed / is dirty?
   // would be better to only update if necessary
 
@@ -846,6 +848,20 @@ export default component$(() => {
                     class="text-sm font-medium  relative ml-6 event-monthlyStatistics"
                   >
                     monthly Statistics
+                  </label>
+                </div>
+                <div class="flex align-center gap-x-3 basis-44">
+                  <input
+                    id="null"
+                    name="tag"
+                    type="radio"
+                    class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
+                    checked={event.tag === null}
+                    value="null"
+                    onChange$={() => (dirty.value = true)}
+                  />
+                  <label for="monthlyStatistics" class="text-sm font-medium">
+                    none
                   </label>
                 </div>
               </div>
