@@ -129,7 +129,7 @@ export default component$(() => {
   })
 
   useTask$(({ cleanup }) => {
-    cleanup(() => console.log('unmounting event form, cleanup'))
+    cleanup(() => console.log('unmounting event form, TODO: save data here'))
   })
 
   // useOnWindow('beforeunload', () => {
