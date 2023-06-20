@@ -9,7 +9,6 @@ export default component$(({ event, dirty }) => {
         {(event.links ?? []).map((link, index) => (
           <Link
             key={`${link.label}/${link.url}/${index}`}
-            event={event}
             index={index}
             dirty={dirty}
           />

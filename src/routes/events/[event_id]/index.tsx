@@ -1,12 +1,4 @@
-import {
-  component$,
-  useResource$,
-  Resource,
-  useSignal,
-  $,
-  useOnWindow,
-  useTask$,
-} from '@builder.io/qwik'
+import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
 import {
   server$,
   useLocation,
@@ -94,27 +86,27 @@ export default component$(() => {
 
   const action = useFormData()
 
-  useTask$(({ cleanup }) => {
-    cleanup(() => {
-      console.log('unmounting dirty event form, submitting')
-      // document.getElementById('eventForm').submit()
-      // if (dirty.value) {
-      //   // TODO:
-      //   // action.formData is undefined. how to get the data from the form?
-      //   // how to submit the form?
-      //   // how to stop event until form is submitted?
-      //   console.log('unmounting dirty event form, TODO: save data')
-      //   // document.eventForm.submit() // does not work
-      // }
-    })
-  })
+  // useTask$(({ cleanup }) => {
+  //   cleanup(() => {
+  //     console.log('unmounting dirty event form, submitting')
+  //     document.getElementById('eventForm').submit()
+  //     if (dirty.value) {
+  //       // TODO:
+  //       // action.formData is undefined. how to get the data from the form?
+  //       // how to submit the form?
+  //       // how to stop event until form is submitted?
+  //       console.log('unmounting dirty event form, TODO: save data')
+  //       // document.eventForm.submit() // does not work
+  //     }
+  //   })
+  // })
 
-  useOnWindow(
-    'beforeunload',
-    $(() => {
-      console.log('beforeunload event form')
-    }),
-  )
+  // useOnWindow(
+  //   'beforeunload',
+  //   $(() => {
+  //     console.log('beforeunload event form')
+  //   }),
+  // )
 
   return (
     <Resource
