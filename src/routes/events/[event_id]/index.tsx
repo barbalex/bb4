@@ -126,6 +126,8 @@ export default component$(() => {
             class="space-y-5"
             onSubmitCompleted$={() => {
               dirty.value = false
+              // turned off because the form flashes hideously
+              // TODO: test if flashes in production too
               // navigate('/')
             }}
           >
