@@ -1,9 +1,28 @@
 import { component$ } from '@builder.io/qwik'
 
-export default component$(({ event }) => {
+import Link from './link'
+
+export default component$(({ event, dirty }) => {
   return (
-    <div class="mt-4 space-y-6">
-      {(event.links ?? []).map((link) => JSON.stringify(link))}
-    </div>
+    <>
+      <div class="mt-4 space-y-1 w-full">
+        {(event.links ?? []).map((link, index) => (
+          <Link
+            key={`${link.label}/${link.url}/${index}`}
+            event={event}
+            index={index}
+            dirty={dirty}
+          />
+        ))}
+      </div>
+      <button
+        class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
+        onClick$={() => {
+          console.log('TODO: Add link')
+        }}
+      >
+        Add Link
+      </button>
+    </>
   )
 })

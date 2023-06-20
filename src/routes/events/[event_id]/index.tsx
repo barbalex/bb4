@@ -20,7 +20,7 @@ dayjs.extend(customParseFormat)
 
 import * as db from '../../../db'
 import dateFromInputForDb from '~/utils/dateFromInputForDb'
-import Links from './Links'
+import Links from './links'
 
 const dataFetcher = server$(async function (id) {
   let res
@@ -866,7 +866,7 @@ export default component$(() => {
               <p class="mt-1 text-sm leading-6 text-gray-600">
                 Links will be listet after the title and open in a new tab.
               </p>
-              <Links event={event} />
+              <Links event={event} dirty={dirty} />
             </fieldset>
             <div class="flex items-center justify-end gap-x-6">
               <button
