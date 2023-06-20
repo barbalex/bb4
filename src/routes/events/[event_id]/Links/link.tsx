@@ -1,29 +1,28 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$, useLocation } from '@builder.io/qwik-city'
+import { server$, useLocation, $ } from '@builder.io/qwik-city'
 
 import * as db from '../../../../db'
 
 const labelUpdater = server$(async function ({ id, index, label }) {
+  console.log('link, labelUpdater', { id, index, label })
   let res
   try {
     res = await db.query(
       `update event
-          set links = jsonb_set(links, $2, to_json($3)::JSONB)
-        FROM
-          EVENT
+          --set links = jsonb_set(links, $2, to_json($3)::JSONB, true)
+          set links = jsonb_set(links, $2::text[], $3::JSONB, true)
         where
           id = $1`,
-      [id, `{${index},${label}}`, label],
+      [id, `{${index},label}`, label],
     )
   } catch (error) {
-    console.error('query error', error.stack)
+    console.error('query error', { stack: error.stack, message: error.message })
   }
 
-  return res?.rows[0]
+  console.log('link, labelUpdater, res:', res)
 })
 
 const dataFetcher = server$(async function ({ id, index }) {
-  console.log('link, dataFetcher', { id, index })
   let res
   try {
     res = await db.query(
@@ -38,8 +37,6 @@ const dataFetcher = server$(async function ({ id, index }) {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  // TODO: why is the link null?
-  console.log('link, dataFetcher, link:', res?.rows[0]?.links?.[index])
 
   return res?.rows[0]?.links?.[index]
 })
@@ -59,7 +56,9 @@ export default component$(({ index, dirty }) => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(link) => {
-        console.log('link, onResolved, link:', link)
+        if (!link) {
+          return <div>Link not found</div>
+        }
 
         return (
           <div class="flex gap-1">
@@ -73,13 +72,19 @@ export default component$(({ index, dirty }) => {
                 id="label"
                 class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 value={link.label}
-                onChange$={(event) => {
-                  dirty.value = true
-                  // TODO: update event
+                onChange$={(event, currentTarget) => {
+                  console.log('link, label, onChange', { event, currentTarget })
+                  // dirty.value = true // TODO: this is not working
+                  console.log('link, label, will call labelUpdater with:', {
+                    id: location.params.event_id,
+                    index,
+                    label: currentTarget.value,
+                  })
+                  // // TODO: update event
                   labelUpdater({
                     id: location.params.event_id,
                     index,
-                    label: event.target.value,
+                    label: currentTarget.value,
                   })
                 }}
               />
