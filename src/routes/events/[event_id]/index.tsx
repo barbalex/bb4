@@ -136,24 +136,10 @@ export default component$(() => {
   //   console.log('beforeunload')
   // })
 
-  // window.onbeforeunload = async () => {
-  //   // save any data changed before closing tab or browser
-  //   updateOnServer()
-  // }
 
-  // on form:
-  // onBlur={(e) => {
-  //   if (!e.currentTarget.contains(e.relatedTarget)) {
-  //     // focus left the container
-  //     // https://github.com/facebook/react/issues/6410#issuecomment-671915381
-  //     updateOnServer()
-  //   }
-  // }}
 
   const action = useFormData()
   console.log('dirty', dirty.value)
-
-  const handleBlur = $(() => console.log('Event Form bluring!'))
 
   return (
     <Resource
@@ -169,8 +155,6 @@ export default component$(() => {
             action={action}
             class="space-y-5"
             onSubmitCompleted$={() => navigate('/')}
-            on:blur={handleBlur}
-            onBlur$={() => console.log('Event Form bluring!')}
           >
             <div>
               <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7">
