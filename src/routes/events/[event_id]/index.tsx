@@ -20,6 +20,7 @@ dayjs.extend(customParseFormat)
 
 import * as db from '../../../db'
 import dateFromInputForDb from '~/utils/dateFromInputForDb'
+import Links from './Links'
 
 const dataFetcher = server$(async function (id) {
   let res
@@ -101,6 +102,7 @@ export default component$(() => {
       //   // TODO:
       //   // action.formData is undefined. how to get the data from the form?
       //   // how to submit the form?
+      //   // how to stop event until form is submitted?
       //   console.log('unmounting dirty event form, TODO: save data')
       //   // document.eventForm.submit() // does not work
       // }
@@ -864,9 +866,7 @@ export default component$(() => {
               <p class="mt-1 text-sm leading-6 text-gray-600">
                 Links will be listet after the title and open in a new tab.
               </p>
-              <div class="mt-4 space-y-6">
-                {(event.links ?? []).map((link) => JSON.stringify(link))}
-              </div>
+              <Links event={event} />
             </fieldset>
             <div class="flex items-center justify-end gap-x-6">
               <button
