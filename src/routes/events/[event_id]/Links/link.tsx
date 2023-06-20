@@ -1,4 +1,26 @@
 import { component$ } from '@builder.io/qwik'
+import { server$ } from '@builder.io/qwik-city'
+
+import * as db from '../../../../db'
+
+const labelUpdater = server$(async function ({ event, index, label }) {
+  let res
+  try {
+    res = await db.query(
+      `SELECT
+          *
+        FROM
+          EVENT
+        where
+          id = $1`,
+      [id],
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+
+  return res?.rows[0]
+})
 
 export default component$(({ event, index, dirty }) => {
   return (
@@ -13,9 +35,10 @@ export default component$(({ event, index, dirty }) => {
           id="label"
           class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
           value={event.links[index].label}
-          onChange$={() => {
+          onChange$={(event) => {
             dirty.value = true
             // TODO: update event
+            labelUpdater({ event, index, label: event.target.value })
           }}
         />
       </fieldset>
