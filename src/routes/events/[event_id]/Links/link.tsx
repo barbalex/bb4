@@ -127,11 +127,9 @@ export default component$(({ index }) => {
                 Url
               </label>
               <textarea
-                type="text"
                 name="url"
                 id="url"
                 class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                value={link.url}
                 onChange$={(event, currentTarget) =>
                   urlUpdater({
                     id: location.params.event_id,
@@ -141,7 +139,9 @@ export default component$(({ index }) => {
                 }
                 // make it one line high but user can enlarge it
                 rows="1"
-              />
+              >
+                {link.url}
+              </textarea>
             </fieldset>
           </div>
         )
