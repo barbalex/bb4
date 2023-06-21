@@ -1,17 +1,32 @@
-import { component$, useSignal } from '@builder.io/qwik'
+import { component$, useComputed$, useSignal } from '@builder.io/qwik'
 import dayjs from 'dayjs'
 
 export default component$(({ datum }) => {
   const today = dayjs()
-  const date = dayjs(datum).isValid() ? dayjs(datum) : undefined
-  const initialMonth = (date ?? today).month()
-  const month = useSignal(initialMonth)
+  const currentDate = dayjs(datum).isValid() ? dayjs(datum) : undefined
+  const initialDate = dayjs(datum).isValid() ? dayjs(datum) : today
+  // signals and computeds need to be serializable, so we can't use dayjs objects directly
+  const dateString = useSignal(initialDate.format())
+  const daysInMonth = useComputed$(() => dayjs(dateString.value).daysInMonth())
+  const firstDayOfMonth = useComputed$(() =>
+    dayjs(dateString.value).startOf('month').format(),
+  )
+  const weekDayAsNr = useComputed$(() =>
+    dayjs(firstDayOfMonth.value).format('d'),
+  )
+  const monthAndYear = useComputed$(() =>
+    dayjs(dateString.value).format('MMMM YYYY'),
+  )
+  // const firstWeek = dayjs(`date`)
 
   console.log('calendar, date:', {
     datum,
-    initialMonth,
-    month: month.value,
-    monthTitle: dayjs(`2222-${month.value}-1`, 'YYYY-M-D').format('MMMM'),
+    currentDate: currentDate?.format('YYYY-MM-DD'),
+    dateString: dateString.value,
+    firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
+    daysInMonth: daysInMonth.value,
+    weekDayNr: weekDayAsNr.value,
+    monthAndYear: monthAndYear.value,
   })
 
   /**
@@ -35,7 +50,11 @@ export default component$(({ datum }) => {
             <button
               type="button"
               class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-              onClick$={() => month.value--}
+              onClick$={() =>
+                (dateString.value = dayjs(dateString.value)
+                  .subtract(1, 'month')
+                  .format())
+              }
             >
               <span class="sr-only">Previous month</span>
               <svg
@@ -52,12 +71,16 @@ export default component$(({ datum }) => {
               </svg>
             </button>
             <div class="flex-auto text-sm font-semibold">
-              {dayjs(`2222-${month.value}-1`, 'YYYY-M-D').format('MMMM')}
+              {monthAndYear.value}
             </div>
             <button
               type="button"
               class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-              onClick$={() => month.value++}
+              onClick$={() =>
+                (dateString.value = dayjs(dateString.value)
+                  .add(1, 'month')
+                  .format())
+              }
             >
               <span class="sr-only">Next month</span>
               <svg
