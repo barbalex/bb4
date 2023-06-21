@@ -6,7 +6,9 @@ dayjs.extend(isoWeek)
 
 export default component$(({ datum }) => {
   const today = dayjs()
-  const currentDate = dayjs(datum).isValid() ? dayjs(datum) : undefined
+  const choosenDate = useComputed$(() =>
+    dayjs(datum).isValid() ? dayjs(datum).format() : undefined,
+  )
   const initialDate = dayjs(datum).isValid() ? dayjs(datum) : today
   // signals and computeds need to be serializable, so we can't use dayjs objects directly
   const dateString = useSignal(initialDate.format())
@@ -35,6 +37,7 @@ export default component$(({ datum }) => {
         weekDay: 0,
         day: 0,
         isToday: false,
+        isChoosen: false,
         isMonth: false,
       }
       if (i < firstDayOfMonthWeekDayIndex.value) {
@@ -61,6 +64,10 @@ export default component$(({ datum }) => {
         dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
         dayObject.day = dayjs(dayObject.date).date()
       }
+      dayObject.isChoosen = dayjs(dayObject.date).isSame(
+        dayjs(choosenDate.value),
+        'day',
+      )
       dayObject.isToday = dayjs(dayObject.date).isSame(dayjs(), 'day')
       dayObject.weekDay = dayjs(dayObject.date).isoWeekday() - 1
       dayObjectArray.push(dayObject)
