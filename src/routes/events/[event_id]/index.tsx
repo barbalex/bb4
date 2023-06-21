@@ -210,10 +210,10 @@ export default component$(() => {
                 <div class="sm:col-span-3 sm:col-start-6">
                   <div class="grid grid-cols-4 gap-x-16">
                     <div class="text-center col-start-1 col-end-5 row-start-1">
-                      <div class="flex items-center h-1">
+                      <div class="flex items-center h-0">
                         <button
                           type="button"
-                          class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                          class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
                         >
                           <span class="sr-only">Previous month</span>
                           <svg
@@ -234,7 +234,7 @@ export default component$(() => {
                         </div>
                         <button
                           type="button"
-                          class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                          class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
                         >
                           <span class="sr-only">Next month</span>
                           <svg
