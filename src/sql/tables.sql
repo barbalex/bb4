@@ -5,10 +5,10 @@ CREATE TABLE event(
   links jsonb DEFAULT NULL,
   event_type text,
   -- tags is old way of doing this
-  -- TODO: check if multipla array elements exist
-  -- TODO: import the right one
+  -- TODO: remove after migrating to bb4
   tags jsonb DEFAULT NULL,
   tags_sort integer DEFAULT 99,
+  -- tag is new way of doing this
   tag text DEFAULT NULL
 );
 
