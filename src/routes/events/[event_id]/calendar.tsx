@@ -21,7 +21,10 @@ export default component$(({ datum }) => {
    * - [ ] calculate nr of days to show before first day of month (0 to 6)
    * - [ ] get nr of days in month
    * - [ ] calculate nr of days to show after last day of month (42 - nr of days in month - nr of days before first day of month)
-   * - [ ] when rendering, save date in data-date attribute
+   * - [ ] build an array of day-objects containing: date, weeknumber, day, isToday, isMonth
+   * - [ ] render by looping over array of day-objects, grouped by weeknumber
+   * - [ ] when rendering, save date in data-date attribute for later use
+   * - [ ] on click, get date from data-date attribute and set it
    */
 
   return (
