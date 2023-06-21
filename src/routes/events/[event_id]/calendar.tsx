@@ -14,6 +14,16 @@ export default component$(({ datum }) => {
     monthTitle: dayjs(`2222-${month.value}-1`, 'YYYY-M-D').format('MMMM'),
   })
 
+  /**
+   * TODO: Implement calendar
+   * nr of days to show: 42
+   * - [ ] get weekday of the first day of month
+   * - [ ] calculate nr of days to show before first day of month (0 to 6)
+   * - [ ] get nr of days in month
+   * - [ ] calculate nr of days to show after last day of month (42 - nr of days in month - nr of days before first day of month)
+   * - [ ] when rendering, save date in data-date attribute
+   */
+
   return (
     <div class="sm:col-span-3 sm:col-start-6">
       <div class="grid grid-cols-4 gap-x-16">
