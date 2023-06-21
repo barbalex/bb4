@@ -39,10 +39,10 @@ export default component$(({ datum }) => {
         isToday: false,
         isChoosen: false,
         isMonth: false,
-        isFirst: i === 0,
-        isFirstSunday: i === 6,
-        isLastMonday: i === 34,
-        isLast: i === 41,
+        isTopLeft: i === 0,
+        isTopRight: i === 6,
+        isBottomLeft: i === 34,
+        isBottomRight: i === 41,
       }
       if (i < firstDayOfMonthWeekDayIndex.value) {
         dayObject.date = dayjs(firstDayOfMonth.value)
@@ -76,7 +76,7 @@ export default component$(({ datum }) => {
       dayObject.weekDay = dayjs(dayObject.date).isoWeekday() - 1
       dayObjectArray.push(dayObject)
     }
-    return groupBy(dayObjectArray, 'weekNumber')
+    return dayObjectArray
   })
 
   // console.log('calendar, date:', {
@@ -173,12 +173,40 @@ export default component$(({ datum }) => {
             <div>S</div>
           </div>
           <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+            {dayObjectArray.value.map((o) => (
+              <button
+                key={o.date}
+                type="button"
+                class={`${
+                  o.isChoosen
+                    ? 'bg-blue-700'
+                    : o.isMonth
+                    ? 'bg-white'
+                    : 'bg-gray-50'
+                } py-1.5 text-gray-400 ${
+                  o.isChoosen ? 'hover:bg-blue-800' : 'hover:bg-gray-100'
+                } focus:z-10`}
+              >
+                <time
+                  dateTime={o.date}
+                  class={`${(o.isToday || o.isChoosen) && 'font-bold'} ${
+                    o.isChoosen
+                      ? 'text-white'
+                      : o.isMonth
+                      ? 'text-gray-900'
+                      : 'text-gray-400'
+                  } mx-auto flex h-7 w-7 items-center justify-center rounded-full`}
+                >
+                  {o.day}
+                </time>
+              </button>
+            ))}
             {/*
 Always include: "py-1.5 hover:bg-gray-100 focus:z-10"
-Is current month, include: "bg-white"
-Is not current month, include: "bg-gray-50"
-Is selected or is today, include: "font-semibold"
-Is selected, include: "text-white"
+y: Is current month, include: "bg-white"
+y: Is not current month, include: "bg-gray-50"
+y: Is selected or is today, include: "font-semibold"
+y: Is selected, include: "text-white"
 Is not selected, is not today, and is current month, include: "text-gray-900"
 Is not selected, is not today, and is not current month, include: "text-gray-400"
 Is today and is not selected, include: "text-blue-600"
@@ -193,6 +221,7 @@ Bottom right day, include: "rounded-br-lg"
               class="rounded-tl-lg bg-gray-50 py-1.5 text-gray-400 hover:bg-gray-100 focus:z-10"
             >
               {/*
+time:
 Always include: "mx-auto flex h-7 w-7 items-center justify-center rounded-full"
 Is selected and is today, include: "bg-blue-600"
 Is selected and is not today, include: "bg-gray-900"
