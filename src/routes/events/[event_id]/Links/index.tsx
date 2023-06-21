@@ -2,16 +2,12 @@ import { component$ } from '@builder.io/qwik'
 
 import Link from './link'
 
-export default component$(({ event, dirty }) => {
+export default component$(({ event }) => {
   return (
     <>
       <div class="mt-4 space-y-1 w-full">
         {(event.links ?? []).map((link, index) => (
-          <Link
-            key={`${link.label}/${link.url}/${index}`}
-            index={index}
-            dirty={dirty}
-          />
+          <Link key={`${link.label}/${link.url}/${index}`} index={index} />
         ))}
       </div>
       <button
