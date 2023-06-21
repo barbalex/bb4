@@ -1,10 +1,18 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useSignal } from '@builder.io/qwik'
 import dayjs from 'dayjs'
 
 export default component$(({ datum }) => {
   const today = dayjs()
   const date = dayjs(datum).isValid() ? dayjs(datum) : undefined
-  console.log('calendar, date:', { datum, today, date })
+  const initialMonth = (date ?? today).month()
+  const month = useSignal(initialMonth)
+
+  console.log('calendar, date:', {
+    datum,
+    initialMonth,
+    month: month.value,
+    monthTitle: dayjs(`2222-${month.value}-1`, 'YYYY-M-D').format('MMMM'),
+  })
 
   return (
     <div class="sm:col-span-3 sm:col-start-6">
@@ -14,6 +22,7 @@ export default component$(({ datum }) => {
             <button
               type="button"
               class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+              onClick$={() => month.value--}
             >
               <span class="sr-only">Previous month</span>
               <svg
@@ -29,10 +38,13 @@ export default component$(({ datum }) => {
                 />
               </svg>
             </button>
-            <div class="flex-auto text-sm font-semibold">January</div>
+            <div class="flex-auto text-sm font-semibold">
+              {dayjs(`2222-${month.value}-1`, 'YYYY-M-D').format('MMMM')}
+            </div>
             <button
               type="button"
               class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+              onClick$={() => month.value++}
             >
               <span class="sr-only">Next month</span>
               <svg
