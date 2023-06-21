@@ -39,6 +39,10 @@ export default component$(({ datum }) => {
         isToday: false,
         isChoosen: false,
         isMonth: false,
+        isFirst: i === 0,
+        isFirstSunday: i === 6,
+        isLastMonday: i === 34,
+        isLast: i === 41,
       }
       if (i < firstDayOfMonthWeekDayIndex.value) {
         dayObject.date = dayjs(firstDayOfMonth.value)
