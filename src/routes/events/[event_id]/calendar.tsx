@@ -1,7 +1,22 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
+import { server$, useLocation } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
+
+const updater = server$(async function ({ date, eventId }) {
+  try {
+    await db.query(
+      `update event
+        set date = $1
+      where
+        id = $2`,
+      [date, eventId],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+  }
+})
 
 export default component$(({ datum }) => {
   const today = dayjs()
@@ -77,6 +92,8 @@ export default component$(({ datum }) => {
     }
     return dayObjectArray
   })
+
+  const location = useLocation()
 
   // console.log('calendar, date:', {
   //   datum,
@@ -189,6 +206,13 @@ export default component$(({ datum }) => {
                 } ${o.isBottomLeft && 'rounded-bl-lg'} ${
                   o.isBottomRight && 'rounded-br-lg'
                 } focus:z-10`}
+                onClick$={() => {
+                  // TODO: set date
+                  console.log('calendar, clicked:', o)
+                  if (!o.isChoosen) {
+                    updater({ date: o.date, eventId: location.params.event_id })
+                  }
+                }}
               >
                 <time
                   dateTime={o.date}
