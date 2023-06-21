@@ -1,4 +1,5 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
+import groupBy from 'lodash/groupBy'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
@@ -17,7 +18,7 @@ export default component$(({ datum }) => {
   // we will compare with an index, so we need to substract 1
   // thus: monday = 0, tuesday = 1, etc.
   const firstDayOfMonthWeekDayIndex = useComputed$(
-    () => (dayjs(firstDayOfMonth.value).day() || 7) - 1,
+    () => dayjs(firstDayOfMonth.value).isoWeekday() - 1,
   )
   const firstDayOfNextMonthIndex = useComputed$(
     () => daysInMonth.value + firstDayOfMonthWeekDayIndex.value,
@@ -31,6 +32,7 @@ export default component$(({ datum }) => {
       const dayObject = {
         date: '',
         weekNumber: 0,
+        weekDay: 0,
         day: 0,
         isToday: false,
         isMonth: false,
@@ -54,27 +56,33 @@ export default component$(({ datum }) => {
       } else {
         dayObject.date = dayjs(firstDayOfMonth.value)
           .add(i - firstDayOfNextMonthIndex.value, 'day')
+          .add(1, 'month')
           .format('YYYY-MM-DD')
         dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
         dayObject.day = dayjs(dayObject.date).date()
       }
       dayObject.isToday = dayjs(dayObject.date).isSame(dayjs(), 'day')
+      dayObject.weekDay = dayjs(dayObject.date).isoWeekday() - 1
       dayObjectArray.push(dayObject)
     }
-    return dayObjectArray.sort((a, b) => a.date.localeCompare(b.date))
+    return groupBy(dayObjectArray, 'weekNumber')
   })
 
-  console.log('calendar, date:', {
-    datum,
-    currentDate: currentDate?.format('YYYY-MM-DD'),
-    dateString: dateString.value,
-    firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
-    daysInMonth: daysInMonth.value,
-    firstDayOfMonthWeekDayIndex: firstDayOfMonthWeekDayIndex.value,
-    monthAndYear: monthAndYear.value,
-    firstDayOfNextMonthIndex: firstDayOfNextMonthIndex.value,
-    dayObjectArray: dayObjectArray.value,
-  })
+  // console.log('calendar, date:', {
+  //   datum,
+  //   currentDate: currentDate?.format('YYYY-MM-DD'),
+  //   dateString: dateString.value,
+  //   firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
+  //   daysInMonth: daysInMonth.value,
+  //   firstDayOfMonthWeekDayIndex: firstDayOfMonthWeekDayIndex.value,
+  //   monthAndYear: monthAndYear.value,
+  //   firstDayOfNextMonthIndex: firstDayOfNextMonthIndex.value,
+  //   dayObjectArray: dayObjectArray.value,
+  //   dayObjectArrayLength: dayObjectArray.value.length,
+  //   dayObjectArrayLast: dayObjectArray.value[dayObjectArray.value.length - 1],
+  // })
+
+  console.log('calendar, dayObjectArray:', dayObjectArray.value)
 
   /**
    * TODO: Implement calendar
