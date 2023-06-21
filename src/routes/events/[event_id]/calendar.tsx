@@ -1,5 +1,7 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
 import dayjs from 'dayjs'
+import isoWeek from 'dayjs/plugin/isoWeek'
+dayjs.extend(isoWeek)
 
 export default component$(({ datum }) => {
   const today = dayjs()
@@ -14,14 +16,53 @@ export default component$(({ datum }) => {
   // dayjs returns 0 for sunday, but we want 7
   // we will compare with an index, so we need to substract 1
   // thus: monday = 0, tuesday = 1, etc.
-  const firstDayOfMonthWeekDayAsIndex = useComputed$(
+  const firstDayOfMonthWeekDayIndex = useComputed$(
     () => (dayjs(firstDayOfMonth.value).day() || 7) - 1,
   )
-
+  const firstDayOfNextMonthIndex = useComputed$(
+    () => daysInMonth.value + firstDayOfMonthWeekDayIndex.value,
+  )
   const monthAndYear = useComputed$(() =>
     dayjs(dateString.value).format('MMMM YYYY'),
   )
-  // const firstWeek = dayjs(`date`)
+  const dayObjectArray = useComputed$(() => {
+    const dayObjectArray = []
+    for (let i = 0; i < 42; i++) {
+      const dayObject = {
+        date: '',
+        weekNumber: 0,
+        day: 0,
+        isToday: false,
+        isMonth: false,
+      }
+      if (i < firstDayOfMonthWeekDayIndex.value) {
+        dayObject.date = dayjs(firstDayOfMonth.value)
+          .subtract(firstDayOfMonthWeekDayIndex.value - i, 'day')
+          .format('YYYY-MM-DD')
+        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
+        dayObject.day = dayjs(dayObject.date).date()
+      } else if (
+        i >= firstDayOfMonthWeekDayIndex.value &&
+        i < daysInMonth.value + firstDayOfMonthWeekDayIndex.value
+      ) {
+        dayObject.date = dayjs(firstDayOfMonth.value)
+          .add(i - firstDayOfMonthWeekDayIndex.value, 'day')
+          .format('YYYY-MM-DD')
+        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
+        dayObject.day = dayjs(dayObject.date).date()
+        dayObject.isMonth = true
+      } else {
+        dayObject.date = dayjs(firstDayOfMonth.value)
+          .add(i - firstDayOfNextMonthIndex.value, 'day')
+          .format('YYYY-MM-DD')
+        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
+        dayObject.day = dayjs(dayObject.date).date()
+      }
+      dayObject.isToday = dayjs(dayObject.date).isSame(dayjs(), 'day')
+      dayObjectArray.push(dayObject)
+    }
+    return dayObjectArray.sort((a, b) => a.date.localeCompare(b.date))
+  })
 
   console.log('calendar, date:', {
     datum,
@@ -29,17 +70,19 @@ export default component$(({ datum }) => {
     dateString: dateString.value,
     firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
     daysInMonth: daysInMonth.value,
-    weekDayNr: firstDayOfMonthWeekDayAsIndex.value,
+    firstDayOfMonthWeekDayIndex: firstDayOfMonthWeekDayIndex.value,
     monthAndYear: monthAndYear.value,
+    firstDayOfNextMonthIndex: firstDayOfNextMonthIndex.value,
+    dayObjectArray: dayObjectArray.value,
   })
 
   /**
    * TODO: Implement calendar
    * nr of days to show: 42
-   * - [ ] get weekday of the first day of month
-   * - [ ] calculate nr of days to show before first day of month (0 to 6)
-   * - [ ] get nr of days in month
-   * - [ ] calculate nr of days to show after last day of month (42 - nr of days in month - nr of days before first day of month)
+   * - [x] get weekday of the first day of month
+   * - [x] calculate nr of days to show before first day of month (0 to 6)
+   * - [x] get nr of days in month
+   * - [ ] calculate index of last day of month
    * - [ ] build an array of day-objects containing: date, weeknumber, day, isToday, isMonth
    * - [ ] render by looping over array of day-objects, grouped by weeknumber
    * - [ ] when rendering, save date in data-date attribute for later use
