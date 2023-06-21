@@ -11,9 +11,13 @@ export default component$(({ datum }) => {
   const firstDayOfMonth = useComputed$(() =>
     dayjs(dateString.value).startOf('month').format(),
   )
-  const weekDayAsNr = useComputed$(() =>
-    dayjs(firstDayOfMonth.value).format('d'),
+  // dayjs returns 0 for sunday, but we want 7
+  // we will compare with an index, so we need to substract 1
+  // thus: monday = 0, tuesday = 1, etc.
+  const firstDayOfMonthWeekDayAsIndex = useComputed$(
+    () => (dayjs(firstDayOfMonth.value).day() || 7) - 1,
   )
+
   const monthAndYear = useComputed$(() =>
     dayjs(dateString.value).format('MMMM YYYY'),
   )
@@ -25,7 +29,7 @@ export default component$(({ datum }) => {
     dateString: dateString.value,
     firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
     daysInMonth: daysInMonth.value,
-    weekDayNr: weekDayAsNr.value,
+    weekDayNr: firstDayOfMonthWeekDayAsIndex.value,
     monthAndYear: monthAndYear.value,
   })
 
