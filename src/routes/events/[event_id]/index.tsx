@@ -183,14 +183,14 @@ export default component$(() => {
                   />
                 </div>
               </fieldset>
-              <fieldset class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <fieldset class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-8">
                 <legend
                   for="title"
                   class="block text-sm font-medium leading-6 col-span-full"
                 >
                   Date
                 </legend>
-                <div class="col-span-2">
+                <div class="col-span-4">
                   <div class="mt-2">
                     <input
                       type="text"
@@ -207,10 +207,10 @@ export default component$(() => {
                     />
                   </div>
                 </div>
-                <div class="sm:col-span-3 sm:col-start-4">
+                <div class="sm:col-span-3 sm:col-start-6">
                   <div class="grid grid-cols-4 gap-x-16">
                     <div class="text-center col-start-1 col-end-5 row-start-1">
-                      <div class="flex items-center">
+                      <div class="flex items-center h-1">
                         <button
                           type="button"
                           class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
@@ -251,7 +251,7 @@ export default component$(() => {
                           </svg>
                         </button>
                       </div>
-                      <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+                      <div class="mt-4 grid grid-cols-7 text-xs leading-6 text-gray-500">
                         <div>M</div>
                         <div>T</div>
                         <div>W</div>

@@ -1,5 +1,5 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$, useLocation, $ } from '@builder.io/qwik-city'
+import { server$, useLocation } from '@builder.io/qwik-city'
 
 import * as db from '../../../../db'
 
