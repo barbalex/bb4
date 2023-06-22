@@ -1,5 +1,5 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { component$, useResource$, Resource, $ } from '@builder.io/qwik'
+import { server$, useNavigate } from '@builder.io/qwik-city'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
@@ -67,11 +67,21 @@ const dataFetcher = server$(async function (activeYear) {
     console.error('query error', error.stack)
   }
 
-  return {
-    migrationEvents: migrationEventRes?.rows,
-    politicEvents: politicEventRes?.rows,
-    dates: dateRes?.rows,
-  }
+  // comparing equality of dates did not work
+  // so need to extract day and month
+  const rowsData = dateRes.rows.map((date) => ({
+    date: date.datum,
+    day: date.day,
+    isEndOfMonth: date.is_end_of_month,
+    migrationEvents: migrationEventRes.rows.filter(
+      (e) => e.month === date.month && e.day === date.day,
+    ),
+    politicEvents: politicEventRes.rows.filter(
+      (e) => e.month === date.month && e.day === date.day,
+    ),
+  }))
+
+  return rowsData
 })
 
 export default component$(({ activeYear }) => {
@@ -80,6 +90,7 @@ export default component$(({ activeYear }) => {
 
     return await dataFetcher(year)
   })
+
   console.log('events rendering')
 
   return (
@@ -87,27 +98,8 @@ export default component$(({ activeYear }) => {
       value={data}
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={({ migrationEvents, politicEvents, dates }) => {
-        // console.log('events, migrationEvents:', migrationEvents[0])
-        // console.log('events, politicEvents:', politicEvents[0])
-        // console.log('events, dates:', dates[0])
-
-        // comparing equality of dates did not work
-        // so need to extract day and month
-        const rowsData = dates.map((date) => {
-          return {
-            date: date.datum,
-            day: date.day,
-            isEndOfMonth: date.is_end_of_month,
-            migrationEvents: migrationEvents.filter(
-              (e) => e.month === date.month && e.day === date.day,
-            ),
-            politicEvents: politicEvents.filter(
-              (e) => e.month === date.month && e.day === date.day,
-            ),
-          }
-        })
-        console.log('events, rowsData:', rowsData[0])
+      onResolved={(rowsData) => {
+        // console.log('events, rowsData:', rowsData[0])
 
         return (
           <>
