@@ -46,7 +46,7 @@ export default component$(({ event }) => {
       class={event.tag ? `py-1.5 list-none pl-1.5` : `py-1.5 list-disc pl-1.5`}
     >
       <div class={`${`event-${event.tag}`} relative`}>
-        {event.title}&nbsp;
+        {event.title || '(event with no title)'}&nbsp;
         <>
           {(event.links ?? []).map((l, key) => (
             <span class="pl-1" key={`${l.label}/${key}`}>
@@ -90,7 +90,7 @@ export default component$(({ event }) => {
                 class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 ${
                   deleteMenuOpen.value
                     ? 'transition ease-in opacity-100 translate-y-0'
-                    : 'transition duration-200 ease-out opacity-0 translate-y-1'
+                    : 'transition duration-200 ease-out opacity-0 translate-y-1 w-0 h-0'
                 }`}
               >
                 <div class="w-auto flex-auto overflow-hidden rounded-md p-2 pt-1 bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
