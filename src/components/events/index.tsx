@@ -162,22 +162,26 @@ export default component$(({ activeYear }) => {
         // console.log('events, rowsData:', rowsData)
 
         return rowsData.map((row, index) => (
-          <div key={row.id}>
-            {(row.isEndOfMonth || index === 0) && <MonthRow date={row.date} />}
+          <>
+            {(row.isEndOfMonth || index === 0) && (
+              <MonthRow key={`${row.id}/monthrow`} date={row.date} />
+            )}
             {row.isEndOfMonth &&
               (row.migrationStats?.length > 0 ||
                 row.politicStats?.length > 0) && (
                 <StatisticRow
+                  key={`${row.id}/statsrow`}
                   migrationStats={row.migrationStats}
                   politicStats={row.politicStats}
                 />
               )}
             <EventRow
+              key={`${row.id}/eventhrow`}
               date={row.date}
               migrationEvents={row.migrationEvents}
               politicEvents={row.politicEvents}
             />
-          </div>
+          </>
         ))
       }}
     />
