@@ -186,7 +186,6 @@ export default component$(({ event }) => {
                   o.isBottomRight && 'rounded-br-lg'
                 } focus:z-10`}
                 onClick$={async () => {
-                  console.log('calendar, clicked:', o)
                   if (!o.isChoosen) {
                     await updater({
                       datum: o.datum,
