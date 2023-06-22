@@ -1,5 +1,5 @@
-import { component$, useResource$, Resource, $ } from '@builder.io/qwik'
-import { server$, useNavigate } from '@builder.io/qwik-city'
+import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { server$ } from '@builder.io/qwik-city'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
@@ -121,6 +121,8 @@ const dataFetcher = server$(async function (activeYear) {
 
   // comparing equality of dates did not work
   // so need to extract day and month
+  // TODO: do this in PostgreSQL?
+  // guess it would need jsonb arrays of rows
   const rowsData = dateRes.rows.map((date) => ({
     date: date.datum,
     day: date.day,
@@ -159,30 +161,24 @@ export default component$(({ activeYear }) => {
       onResolved={(rowsData) => {
         // console.log('events, rowsData:', rowsData)
 
-        return (
-          <>
-            {rowsData.map((row, index) => (
-              <div key={row.id}>
-                {(row.isEndOfMonth || index === 0) && (
-                  <MonthRow date={row.date} />
-                )}
-                {row.isEndOfMonth &&
-                  (row.migrationStats?.length > 0 ||
-                    row.politicStats?.length > 0) && (
-                    <StatisticRow
-                      migrationStats={row.migrationStats}
-                      politicStats={row.politicStats}
-                    />
-                  )}
-                <EventRow
-                  date={row.date}
-                  migrationEvents={row.migrationEvents}
-                  politicEvents={row.politicEvents}
+        return rowsData.map((row, index) => (
+          <div key={row.id}>
+            {(row.isEndOfMonth || index === 0) && <MonthRow date={row.date} />}
+            {row.isEndOfMonth &&
+              (row.migrationStats?.length > 0 ||
+                row.politicStats?.length > 0) && (
+                <StatisticRow
+                  migrationStats={row.migrationStats}
+                  politicStats={row.politicStats}
                 />
-              </div>
-            ))}
-          </>
-        )
+              )}
+            <EventRow
+              date={row.date}
+              migrationEvents={row.migrationEvents}
+              politicEvents={row.politicEvents}
+            />
+          </div>
+        ))
       }}
     />
   )
