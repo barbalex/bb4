@@ -2,7 +2,7 @@ import {
   component$,
   useContext,
   useSignal,
-  useVisibleTask$,
+  // useVisibleTask$,
 } from '@builder.io/qwik'
 import { useNavigate } from '@builder.io/qwik-city'
 import {
@@ -19,27 +19,28 @@ export default component$(({ event }) => {
   const deleteMenuOpen = useSignal(false)
 
   // enable clicking outside of delete menu to close it
-  useVisibleTask$(({ track, cleanup }) => {
-    track(() => deleteMenuOpen.value)
+  // deactivated because menu could only be opened once
+  // useVisibleTask$(({ track, cleanup }) => {
+  //   track(() => deleteMenuOpen.value)
 
-    // close delete menu when clicking outside of it
-    document.addEventListener('click', () => {
-      if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
-    })
-    const deleteButton = document.getElementById('deleteButton')
-    // prevent closing delete menu when clicking on delete button and it's menu
-    deleteButton?.addEventListener('click', (e) => e.stopPropagation())
-    const deleteMenu = document.getElementById('deleteMenu')
-    deleteMenu?.addEventListener('click', (e) => e.stopPropagation())
+  //   // close delete menu when clicking outside of it
+  //   document.addEventListener('click', () => {
+  //     if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
+  //   })
+  //   const deleteButton = document.getElementById('deleteButton')
+  //   // prevent closing delete menu when clicking on delete button and it's menu
+  //   deleteButton?.addEventListener('click', (e) => e.stopPropagation())
+  //   const deleteMenu = document.getElementById('deleteMenu')
+  //   deleteMenu?.addEventListener('click', (e) => e.stopPropagation())
 
-    cleanup(() => {
-      deleteMenu?.removeEventListener('click', () => {
-        if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
-      })
-      deleteButton?.removeEventListener('click', (e) => e.stopPropagation())
-      window.removeEventListener('click', (e) => e.stopPropagation())
-    })
-  })
+  //   cleanup(() => {
+  //     deleteMenu?.removeEventListener('click', () => {
+  //       if (deleteMenuOpen.value === true) deleteMenuOpen.value = false
+  //     })
+  //     deleteButton?.removeEventListener('click', (e) => e.stopPropagation())
+  //     window.removeEventListener('click', (e) => e.stopPropagation())
+  //   })
+  // })
 
   return (
     <li
@@ -82,7 +83,13 @@ export default component$(({ event }) => {
                 type="button"
                 class="rounded-full hover:bg-gray-200 ml-1 p-1"
                 data-title={deleteMenuOpen.value ? undefined : 'delete'}
-                onClick$={() => (deleteMenuOpen.value = !deleteMenuOpen.value)}
+                onClick$={() => {
+                  console.log(
+                    'delete button, menuOpen.value:',
+                    deleteMenuOpen.value,
+                  )
+                  deleteMenuOpen.value = !deleteMenuOpen.value
+                }}
               >
                 <DeleteIcon class="text-red-600 font-bold text-sm" />
               </button>
