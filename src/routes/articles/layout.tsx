@@ -35,9 +35,9 @@ export default component$(() => {
 
   return (
     <div class="flex min-h-full flex-col">
-      <div class="flex-1 xl:flex">
-        <div class="px-2 py-0 xl:w-64 xl:shrink-0">
-          <nav class="sticky top-24 flex  flex-1 flex-col" aria-label="Sidebar">
+      <div class="flex-1 min-[820px]:flex">
+        <div class="px-2 py-0 min-[820px]:w-36 lg:w-52 xl:w-64 min-[820px]:shrink-0">
+          <nav class="sticky top-16 flex  flex-1 flex-col" aria-label="Sidebar">
             <ul role="list" class="-mx-2 mt-3 mb-3 first:mt-0 border-collapse">
               <li class="bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md">
                 Articles
@@ -69,7 +69,7 @@ export default component$(() => {
             </ul>
           </nav>
         </div>
-        <div class="px-2 py-2 xl:flex-1">
+        <div class="px-2 pb-2 md:flex-1">
           <Slot />
         </div>
       </div>
