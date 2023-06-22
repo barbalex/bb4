@@ -1,5 +1,5 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
-import { server$, useLocation } from '@builder.io/qwik-city'
+import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
@@ -20,7 +20,13 @@ const updater = server$(async function ({ datum, eventId }) {
   }
 })
 
-export default component$(({ datum }) => {
+export default component$(({ event }) => {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  // const datum = useComputed$(() => event.datum)
+  const datum = event.datum
+
   const today = dayjs()
   const choosenDate = useComputed$(() =>
     dayjs(datum).isValid() ? dayjs(datum).format() : undefined,
@@ -95,36 +101,7 @@ export default component$(({ datum }) => {
     return dayObjectArray
   })
 
-  const location = useLocation()
-
-  // console.log('calendar, date:', {
-  //   datum,
-  //   currentDate: currentDate?.format('YYYY-MM-DD'),
-  //   dateString: dateString.value,
-  //   firstDayOfMonth: dayjs(firstDayOfMonth.value).format('YYYY-MM-DD'),
-  //   daysInMonth: daysInMonth.value,
-  //   firstDayOfMonthWeekDayIndex: firstDayOfMonthWeekDayIndex.value,
-  //   monthAndYear: monthAndYear.value,
-  //   firstDayOfNextMonthIndex: firstDayOfNextMonthIndex.value,
-  //   dayObjectArray: dayObjectArray.value,
-  //   dayObjectArrayLength: dayObjectArray.value.length,
-  //   dayObjectArrayLast: dayObjectArray.value[dayObjectArray.value.length - 1],
-  // })
-
-  console.log('calendar, dayObjectArray:', dayObjectArray.value)
-
-  /**
-   * TODO: Implement calendar
-   * nr of days to show: 42
-   * - [x] get weekday of the first day of month
-   * - [x] calculate nr of days to show before first day of month (0 to 6)
-   * - [x] get nr of days in month
-   * - [ ] calculate index of last day of month
-   * - [ ] build an array of day-objects containing: datum, weeknumber, day, isToday, isMonth
-   * - [ ] render by looping over array of day-objects, grouped by weeknumber
-   * - [ ] when rendering, save date in data-date attribute for later use
-   * - [ ] on click, get date from data-date attribute and set it
-   */
+  // console.log('calendar, dayObjectArray:', dayObjectArray.value)
 
   return (
     <div class="sm:col-span-3 sm:col-start-6">
@@ -208,13 +185,14 @@ export default component$(({ datum }) => {
                 } ${o.isBottomLeft && 'rounded-bl-lg'} ${
                   o.isBottomRight && 'rounded-br-lg'
                 } focus:z-10`}
-                onClick$={() => {
+                onClick$={async () => {
                   console.log('calendar, clicked:', o)
                   if (!o.isChoosen) {
-                    updater({
+                    await updater({
                       datum: o.datum,
                       eventId: location.params.event_id,
                     })
+                    navigate()
                   }
                 }}
               >
