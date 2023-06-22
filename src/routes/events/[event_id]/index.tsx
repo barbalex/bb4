@@ -1,11 +1,5 @@
-import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
-import {
-  server$,
-  useLocation,
-  useNavigate,
-  routeAction$,
-  Form,
-} from '@builder.io/qwik-city'
+import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(customParseFormat)
@@ -34,80 +28,30 @@ const dataFetcher = server$(async function (id) {
   return res?.rows[0]
 })
 
-export const useFormData = routeAction$(async (data, requestEvent) => {
-  // This will only run on the server when the user submits the form (or when the action is called programatically)
-  // tags_sort is set by a trigger
-  const dataToUpdate = {
-    ...data,
-    datum: dateFromInputForDb(data.datum),
-    tag: data.tag === 'null' ? null : data.tag,
-  }
-  const id = requestEvent.params.event_id
-
-  // TODO: how to know if the data has changed / is dirty?
-  // would be better to only update if necessary
-
+const updater = server$(async function ({ field, value, eventId }) {
   try {
     await db.query(
       `update event
-        set 
-          datum = $1,
-          title = $2,
-          event_type = $3,
-          tag = $4
-        where
-          id = $5`,
-      [
-        dataToUpdate.datum,
-        dataToUpdate.title,
-        dataToUpdate.event_type,
-        dataToUpdate.tag,
-        id,
-      ],
+        set ${field} = $1
+      where
+        id = $2`,
+      [value, eventId],
     )
   } catch (error) {
-    console.error('query error', error.stack)
+    console.error('query error', { stack: error.stack, message: error.message })
   }
-
-  return {
-    success: true,
-  }
+  return
 })
 
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
-  const dirty = useSignal(false)
 
   const event = useResource$(async ({ track }) => {
     const id = track(() => location.params.event_id)
 
     return await dataFetcher(id)
   })
-
-  const action = useFormData()
-
-  // useTask$(({ cleanup }) => {
-  //   cleanup(() => {
-  //     console.log('unmounting dirty event form, submitting')
-  //     document.getElementById('eventForm').submit()
-  //     if (dirty.value) {
-  //       // TODO:
-  //       // action.formData is undefined. how to get the data from the form?
-  //       // how to submit the form?
-  //       // how to stop event until form is submitted?
-  //       console.log('unmounting dirty event form, TODO: save data')
-  //       // document.eventForm.submit() // does not work
-  //     }
-  //   })
-  // })
-
-  // useOnWindow(
-  //   'beforeunload',
-  //   $(() => {
-  //     console.log('beforeunload event form')
-  //   }),
-  // )
 
   return (
     <Resource
@@ -116,19 +60,17 @@ export default component$(() => {
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(event) => (
         <>
-          <Form
-            action={action}
-            class="space-y-4"
-            onSubmitCompleted$={() => {
-              dirty.value = false
-              // turned off because the form flashes hideously
-              // TODO: test if flashes in production too
-              // navigate('/')
-            }}
-          >
-            <h2 class="border-b border-gray-900/10 pb-2 text-xl font-semibold leading-7">
-              Edit event
-            </h2>
+          <form class="space-y-4">
+            <div class="flex items-center justify-between gap-x-6 border-b border-gray-900/10 pb-2">
+              <h2 class="text-xl font-semibold leading-7">Edit event</h2>
+              <button
+                type="button"
+                class={`rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
+                onClick$={() => navigate('/')}
+              >
+                Close
+              </button>
+            </div>
             <fieldset class="" role="group">
               <legend class="text-sm font-semibold leading-6">Column</legend>
               <div class="mt-2 space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
@@ -139,7 +81,13 @@ export default component$(() => {
                     type="radio"
                     checked={event.event_type === 'migration'}
                     value="migration"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'event_type',
+                        value: 'migration',
+                        eventId: event.id,
+                      })
+                    }
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   />
                   <label
@@ -156,7 +104,13 @@ export default component$(() => {
                     type="radio"
                     checked={event.event_type === 'politics'}
                     value="politics"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'event_type',
+                        value: 'politics',
+                        eventId: event.id,
+                      })
+                    }
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   />
                   <label
@@ -179,7 +133,13 @@ export default component$(() => {
                   id="title"
                   class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   value={event.title}
-                  onChange$={() => (dirty.value = true)}
+                  onChange$={(e, currentTarget) =>
+                    updater({
+                      field: 'title',
+                      value: currentTarget.value,
+                      eventId: event.id,
+                    })
+                  }
                 />
               </div>
             </fieldset>
@@ -202,7 +162,14 @@ export default component$(() => {
                         ? dayjs(event.datum).format('DD.MM.YYYY')
                         : null
                     }
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={async (e, currentTarget) => {
+                      await updater({
+                        field: 'datum',
+                        value: dateFromInputForDb(currentTarget.value),
+                        eventId: event.id,
+                      })
+                      navigate()
+                    }}
                     required
                   />
                 </div>
@@ -224,7 +191,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === 'weather'}
                     value="weather"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: 'weather',
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label
                     for="weather"
@@ -241,7 +214,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === 'victims'}
                     value="victims"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: 'victims',
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label
                     for="victims"
@@ -258,7 +237,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === 'highlighted'}
                     value="highlighted"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: 'highlighted',
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label
                     for="highlighted"
@@ -275,7 +260,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === 'statistics'}
                     value="statistics"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: 'statistics',
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label
                     for="statistics"
@@ -292,7 +283,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === 'monthlyStatistics'}
                     value="monthlyStatistics"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: 'monthlyStatistics',
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label
                     for="monthlyStatistics"
@@ -309,7 +306,13 @@ export default component$(() => {
                     class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800"
                     checked={event.tag === null}
                     value="null"
-                    onChange$={() => (dirty.value = true)}
+                    onChange$={() =>
+                      updater({
+                        field: 'tag',
+                        value: null,
+                        eventId: event.id,
+                      })
+                    }
                   />
                   <label for="monthlyStatistics" class="text-sm font-medium">
                     none
@@ -317,55 +320,23 @@ export default component$(() => {
                 </div>
               </div>
             </fieldset>
-            <div class="flex items-center justify-end gap-x-6 pb-4 border-b border-gray-300">
+            <fieldset class="mt-3">
+              <legend class="text-sm font-semibold leading-6">Links</legend>
+              <p class="mt-1 text-sm leading-6 text-gray-600">
+                Links will be listet after the title and open in a new tab.
+              </p>
+              <Links event={event} />
+            </fieldset>
+            <div class="flex items-center justify-end gap-x-6">
               <button
                 type="button"
-                class={`${
-                  dirty.value
-                    ? 'text-black'
-                    : 'text-slate-300 cursor-not-allowed'
-                } rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
-                disabled={dirty.value === false}
-                onClick$={() => {
-                  navigate('/')
-                }}
-              >
-                Close without saving
-              </button>
-              <button
-                type="submit"
-                class={`${
-                  dirty.value
-                    ? 'text-white bg-blue-600'
-                    : 'text-slate-400 bg-blue-100 cursor-not-allowed'
-                } rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
-                disabled={dirty.value === false}
-              >
-                Save
-              </button>
-              <button
-                type="button"
-                class={`${
-                  !dirty.value
-                    ? 'text-black'
-                    : 'text-slate-300 cursor-not-allowed'
-                } rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
-                disabled={dirty.value === true}
-                onClick$={() => {
-                  navigate('/')
-                }}
+                class={`rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
+                onClick$={() => navigate('/')}
               >
                 Close
               </button>
             </div>
-          </Form>
-          <fieldset class="mt-3">
-            <legend class="text-sm font-semibold leading-6">Links</legend>
-            <p class="mt-1 text-sm leading-6 text-gray-600">
-              Links will be listet after the title and open in a new tab.
-            </p>
-            <Links event={event} />
-          </fieldset>
+          </form>
         </>
       )}
     />
