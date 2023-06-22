@@ -4,13 +4,30 @@ import {
   useSignal,
   // useVisibleTask$,
 } from '@builder.io/qwik'
-import { useNavigate } from '@builder.io/qwik-city'
+import { useNavigate, server$ } from '@builder.io/qwik-city'
 import {
   BsPencilFill as EditIcon,
   BsXCircle as DeleteIcon,
 } from '@qwikest/icons/bootstrap'
 
 import { CTX } from '~/root'
+import * as db from '~/db'
+
+const deleter = server$(async function ({ id }) {
+  try {
+    await db.query(
+      `delete
+      FROM
+        EVENT
+      where
+        id = $1`,
+      [id],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+  }
+  return true
+})
 
 export default component$(({ event }) => {
   const navigate = useNavigate()
@@ -97,7 +114,7 @@ export default component$(({ event }) => {
                 class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 ${
                   deleteMenuOpen.value
                     ? 'transition ease-in opacity-100 translate-y-0'
-                    : 'transition duration-200 ease-out opacity-0 translate-y-1 w-0 h-0'
+                    : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
                 }`}
               >
                 <div class="w-auto flex-auto overflow-hidden rounded-md p-2 pt-1 bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
@@ -107,17 +124,18 @@ export default component$(({ event }) => {
                   <div class="mt-1 flex justify-between">
                     <button
                       type="button"
-                      class="rounded bg-red-600 px-4 py-2 text-xs font-bold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-800"
-                      onClick$={() => {
-                        console.log('TODO: delete event')
+                      class="rounded bg-red-600 px-4 py-2 text-xs font-bold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:cursor-pointer hover:bg-red-800"
+                      onClick$={async () => {
                         deleteMenuOpen.value = false
+                        await deleter({ id: event.id })
+                        navigate()
                       }}
                     >
                       Yes
                     </button>
                     <button
                       type="button"
-                      class="rounded bg-white px-4 py-2 text-xs font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      class="rounded bg-white px-4 py-2 text-xs font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:cursor-pointer hover:bg-gray-50"
                       onClick$={() => (deleteMenuOpen.value = false)}
                     >
                       No

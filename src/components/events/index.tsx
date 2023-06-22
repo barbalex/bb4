@@ -75,15 +75,16 @@ const dataFetcher = server$(async function (activeYear) {
 })
 
 export default component$(({ activeYear }) => {
-  const years = useResource$(async ({ track }) => {
+  const data = useResource$(async ({ track }) => {
     const year = track(() => activeYear.value)
 
     return await dataFetcher(year)
   })
+  console.log('events rendering')
 
   return (
     <Resource
-      value={years}
+      value={data}
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={({ migrationEvents, politicEvents, dates }) => {
@@ -106,7 +107,7 @@ export default component$(({ activeYear }) => {
             ),
           }
         })
-        // console.log('events, rowsData:', rowsData[0])
+        console.log('events, rowsData:', rowsData[0])
 
         return (
           <>
