@@ -81,6 +81,11 @@ export default component$(() => {
                   class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   data-title="new Event"
                   aria-label="new Event"
+                  onClick$={() => {
+                    // TODO:
+                    // 1. create new event
+                    // 2. navigate to edit page
+                  }}
                 >
                   <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
                     <path
