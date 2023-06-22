@@ -8,7 +8,7 @@ import { useNavigate, server$ } from '@builder.io/qwik-city'
 import {
   BsPencilFill as EditIcon,
   BsXCircle as DeleteIcon,
-} from '@qwikest/icons/bootstrap'
+} from '@qwikest/icons/bootstrap' 
 
 import { CTX } from '~/root'
 import * as db from '~/db'

@@ -1,12 +1,31 @@
 /* eslint-disable qwik/jsx-img */
 import { component$, useContext, noSerialize } from '@builder.io/qwik'
-import { Link, useLocation, useNavigate } from '@builder.io/qwik-city'
+import { Link, useLocation, useNavigate, server$ } from '@builder.io/qwik-city'
 import { signOut } from 'firebase/auth'
+import dayjs from 'dayjs'
 
 import { CTX } from '../../root'
+import * as db from '~/db'
+
+const eventAdder = server$(async function () {
+  let res
+  try {
+    res = await db.query(
+      `insert into EVENT (datum, event_type)
+      values ($1, $2)
+      returning id`,
+      [dayjs().format('YYYY-MM-DD'), 'migration'],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+    return undefined
+  }
+
+  return res.rows?.[0]?.id
+})
 
 export default component$(() => {
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const location = useLocation()
   const store = useContext(CTX)
   const loggedIn = !!store.user
@@ -81,10 +100,11 @@ export default component$(() => {
                   class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   data-title="new Event"
                   aria-label="new Event"
-                  onClick$={() => {
-                    // TODO:
+                  onClick$={async () => {
                     // 1. create new event
                     // 2. navigate to edit page
+                    const id = await eventAdder()
+                    id && navigate(`/events/${id}`)
                   }}
                 >
                   <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
@@ -110,7 +130,7 @@ export default component$(() => {
                     store.firebaseAuth = noSerialize(null)
                     return
                   }
-                  nav('/login')
+                  navigate('/login')
                 }}
               >
                 {store.user ? (
