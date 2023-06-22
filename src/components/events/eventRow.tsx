@@ -3,10 +3,9 @@ import dayjs from 'dayjs'
 
 import Event from './event'
 
-export default component$(({ data }) => {
-  const day = dayjs(data.date).format('D')
-  const dayWithEvents =
-    data.migrationEvents.length > 0 || data.politicEvents.length > 0
+export default component$(({ date, migrationEvents, politicEvents }) => {
+  const day = dayjs(date).format('D')
+  const dayWithEvents = migrationEvents.length > 0 || politicEvents.length > 0
 
   return (
     <div class="flex border-t border-solid border-slate-200 hover:bg-slate-50">
@@ -18,14 +17,14 @@ export default component$(({ data }) => {
       )}
       <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
-          {data.migrationEvents.map((event) => (
+          {migrationEvents.map((event) => (
             <Event key={event.id} event={event} />
           ))}
         </ul>
       </div>
       <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
-          {data.politicEvents.map((event) => (
+          {politicEvents.map((event) => (
             <Event key={event.id} event={event} />
           ))}
         </ul>

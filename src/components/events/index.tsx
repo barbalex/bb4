@@ -162,19 +162,13 @@ export default component$(({ activeYear }) => {
         return (
           <>
             {rowsData.map((row, index) => {
-              const eventData = {
-                date: row.date,
-                migrationEvents: row.migrationEvents ?? [],
-                politicEvents: row?.politicEvents ?? [],
-              }
               const statsData = {
                 date: row.date,
                 migrationEvents: row.migrationStats ?? [],
                 politicEvents: row?.politicStats ?? [],
               }
               const statsExist =
-                statsData.migrationEvents.length > 0 ||
-                statsData.politicEvents.length > 0
+                row.migrationStats?.length > 0 || row.politicStats?.length > 0
               const needsMonthRow = row.isEndOfMonth || index === 0
               const needsMonthlyStatisticsRow = row.isEndOfMonth && statsExist
 
@@ -184,7 +178,11 @@ export default component$(({ activeYear }) => {
                   {needsMonthlyStatisticsRow && (
                     <StatisticRow data={statsData} />
                   )}
-                  <EventRow data={eventData} />
+                  <EventRow
+                    date={row.date}
+                    migrationEvents={row.migrationEvents}
+                    politicEvents={row.politicEvents}
+                  />
                 </div>
               )
             })}
