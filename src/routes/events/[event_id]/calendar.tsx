@@ -4,14 +4,16 @@ import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
 
-const updater = server$(async function ({ date, eventId }) {
+import * as db from '../../../db'
+
+const updater = server$(async function ({ datum, eventId }) {
   try {
     await db.query(
       `update event
-        set date = $1
+        set datum = $1
       where
         id = $2`,
-      [date, eventId],
+      [datum, eventId],
     )
   } catch (error) {
     console.error('query error', { stack: error.stack, message: error.message })
@@ -46,7 +48,7 @@ export default component$(({ datum }) => {
     const dayObjectArray = []
     for (let i = 0; i < 42; i++) {
       const dayObject = {
-        date: '',
+        datum: '',
         weekNumber: 0,
         weekDay: 0,
         day: 0,
@@ -59,35 +61,35 @@ export default component$(({ datum }) => {
         isBottomRight: i === 41,
       }
       if (i < firstDayOfMonthWeekDayIndex.value) {
-        dayObject.date = dayjs(firstDayOfMonth.value)
+        dayObject.datum = dayjs(firstDayOfMonth.value)
           .subtract(firstDayOfMonthWeekDayIndex.value - i, 'day')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
-        dayObject.day = dayjs(dayObject.date).date()
+        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.day = dayjs(dayObject.datum).date()
       } else if (
         i >= firstDayOfMonthWeekDayIndex.value &&
         i < daysInMonth.value + firstDayOfMonthWeekDayIndex.value
       ) {
-        dayObject.date = dayjs(firstDayOfMonth.value)
+        dayObject.datum = dayjs(firstDayOfMonth.value)
           .add(i - firstDayOfMonthWeekDayIndex.value, 'day')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
-        dayObject.day = dayjs(dayObject.date).date()
+        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.day = dayjs(dayObject.datum).date()
         dayObject.isMonth = true
       } else {
-        dayObject.date = dayjs(firstDayOfMonth.value)
+        dayObject.datum = dayjs(firstDayOfMonth.value)
           .add(i - firstDayOfNextMonthIndex.value, 'day')
           .add(1, 'month')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.date).isoWeek()
-        dayObject.day = dayjs(dayObject.date).date()
+        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.day = dayjs(dayObject.datum).date()
       }
-      dayObject.isChoosen = dayjs(dayObject.date).isSame(
+      dayObject.isChoosen = dayjs(dayObject.datum).isSame(
         dayjs(choosenDate.value),
         'day',
       )
-      dayObject.isToday = dayjs(dayObject.date).isSame(dayjs(), 'day')
-      dayObject.weekDay = dayjs(dayObject.date).isoWeekday() - 1
+      dayObject.isToday = dayjs(dayObject.datum).isSame(dayjs(), 'day')
+      dayObject.weekDay = dayjs(dayObject.datum).isoWeekday() - 1
       dayObjectArray.push(dayObject)
     }
     return dayObjectArray
@@ -118,7 +120,7 @@ export default component$(({ datum }) => {
    * - [x] calculate nr of days to show before first day of month (0 to 6)
    * - [x] get nr of days in month
    * - [ ] calculate index of last day of month
-   * - [ ] build an array of day-objects containing: date, weeknumber, day, isToday, isMonth
+   * - [ ] build an array of day-objects containing: datum, weeknumber, day, isToday, isMonth
    * - [ ] render by looping over array of day-objects, grouped by weeknumber
    * - [ ] when rendering, save date in data-date attribute for later use
    * - [ ] on click, get date from data-date attribute and set it
@@ -191,7 +193,7 @@ export default component$(({ datum }) => {
           <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
             {dayObjectArray.value.map((o) => (
               <button
-                key={o.date}
+                key={o.datum}
                 type="button"
                 class={`${
                   o.isChoosen
@@ -207,15 +209,17 @@ export default component$(({ datum }) => {
                   o.isBottomRight && 'rounded-br-lg'
                 } focus:z-10`}
                 onClick$={() => {
-                  // TODO: set date
                   console.log('calendar, clicked:', o)
                   if (!o.isChoosen) {
-                    updater({ date: o.date, eventId: location.params.event_id })
+                    updater({
+                      datum: o.datum,
+                      eventId: location.params.event_id,
+                    })
                   }
                 }}
               >
                 <time
-                  dateTime={o.date}
+                  dateTime={o.datum}
                   class={`${
                     (o.isToday || o.isChoosen) && 'font-bold text-white'
                   } ${o.isMonth ? 'text-gray-900' : 'text-gray-400'} ${
