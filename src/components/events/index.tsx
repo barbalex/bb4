@@ -161,6 +161,8 @@ export default component$(({ activeYear }) => {
       onResolved={(rowsData) => {
         // console.log('events, rowsData:', rowsData)
 
+        // DO NOT use a parent div, use a fragment instead
+        // div prevents sticky month row
         return rowsData.map((row, index) => (
           <>
             {(row.isEndOfMonth || index === 0) && (
