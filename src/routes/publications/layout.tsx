@@ -60,8 +60,8 @@ export default component$(() => {
 
   return (
     <div class="flex min-h-full flex-col">
-      <div class="flex-1 xl:flex">
-        <div class="px-2 xl:w-64 xl:shrink-0">
+      <div class="flex-1 min-[820px]:flex">
+        <div class="px-2 min-[820px]:w-36 lg:w-52 xl:w-64 min-[820px]:shrink-0">
           <nav class="sticky top-24 flex flex-1 flex-col" aria-label="Sidebar">
             <Resource
               value={publications}
