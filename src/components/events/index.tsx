@@ -20,6 +20,10 @@ const dataFetcher = server$(async function (activeYear) {
         where
           datum between $1 and $2
           and event_type = 'migration'
+          and (
+            tag != 'monthlyStatistics'
+            or tag is null
+          )
         ORDER BY
           datum desc, tags_sort asc`,
       [`${activeYear}-01-01`, `${activeYear}-12-31`],
@@ -27,6 +31,28 @@ const dataFetcher = server$(async function (activeYear) {
   } catch (error) {
     console.error('query error', error.stack)
   }
+
+  let migrationStatRes
+  try {
+    migrationStatRes = await db.query(
+      `SELECT
+          *,
+          extract(month from datum)::int as month,
+          extract(day from datum)::int as day
+        FROM
+          EVENT
+        where
+          datum between $1 and $2
+          and event_type = 'migration'
+          and tag = 'monthlyStatistics'
+        ORDER BY
+          datum desc, tags_sort asc`,
+      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+
   let politicEventRes
   try {
     politicEventRes = await db.query(
@@ -39,6 +65,10 @@ const dataFetcher = server$(async function (activeYear) {
         where
           datum between $1 and $2
           and event_type = 'politics'
+          and (
+            tag != 'monthlyStatistics'
+            or tag is null
+          )
         ORDER BY
           datum desc, tags_sort asc`,
       [`${activeYear}-01-01`, `${activeYear}-12-31`],
@@ -46,6 +76,28 @@ const dataFetcher = server$(async function (activeYear) {
   } catch (error) {
     console.error('query error', error.stack)
   }
+
+  let politicStatRes
+  try {
+    politicStatRes = await db.query(
+      `SELECT
+          *,
+          extract(month from datum)::int as month,
+          extract(day from datum)::int as day
+        FROM
+          EVENT
+        where
+          datum between $1 and $2
+          and event_type = 'politics'
+          and tag = 'monthlyStatistics'
+        ORDER BY
+          datum desc, tags_sort asc`,
+      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+
   let dateRes
   try {
     dateRes = await db.query(
@@ -76,7 +128,13 @@ const dataFetcher = server$(async function (activeYear) {
     migrationEvents: migrationEventRes.rows.filter(
       (e) => e.month === date.month && e.day === date.day,
     ),
+    migrationStats: migrationStatRes.rows.filter(
+      (e) => e.month === date.month && e.day === date.day,
+    ),
     politicEvents: politicEventRes.rows.filter(
+      (e) => e.month === date.month && e.day === date.day,
+    ),
+    politicStats: politicStatRes.rows.filter(
       (e) => e.month === date.month && e.day === date.day,
     ),
   }))
@@ -99,28 +157,20 @@ export default component$(({ activeYear }) => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(rowsData) => {
-        // console.log('events, rowsData:', rowsData[0])
+        // console.log('events, rowsData:', rowsData)
 
         return (
           <>
             {rowsData.map((row, index) => {
               const eventData = {
                 date: row.date,
-                migrationEvents: row.migrationEvents.filter(
-                  (event) => event.tag !== 'monthlyStatistics',
-                ),
-                politicEvents: (row?.politicEvents ?? []).filter(
-                  (event) => event.tag !== 'monthlyStatistics',
-                ),
+                migrationEvents: row.migrationEvents ?? [],
+                politicEvents: row?.politicEvents ?? [],
               }
               const statsData = {
                 date: row.date,
-                migrationEvents: row.migrationEvents.filter(
-                  (event) => event.tag === 'monthlyStatistics',
-                ),
-                politicEvents: (row?.politicEvents ?? []).filter(
-                  (event) => event.tag === 'monthlyStatistics',
-                ),
+                migrationEvents: row.migrationStats ?? [],
+                politicEvents: row?.politicStats ?? [],
               }
               const statsExist =
                 statsData.migrationEvents.length > 0 ||
