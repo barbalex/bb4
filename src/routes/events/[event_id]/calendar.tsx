@@ -174,7 +174,7 @@ export default component$(({ event }) => {
                 type="button"
                 class={`${
                   o.isChoosen
-                    ? 'bg-blue-700'
+                    ? 'bg-[url(../../../oceanDark.jpg)]'
                     : o.isMonth
                     ? 'bg-white'
                     : 'bg-gray-50'
@@ -197,13 +197,17 @@ export default component$(({ event }) => {
               >
                 <time
                   dateTime={o.datum}
-                  class={`${
-                    (o.isToday || o.isChoosen) && 'font-bold text-white'
-                  } ${o.isMonth ? 'text-gray-900' : 'text-gray-400'} ${
+                  class={`${(o.isToday || o.isChoosen) && 'font-bold'} ${
+                    o.isToday || o.isChoosen
+                      ? 'text-white'
+                      : o.isMonth
+                      ? 'text-gray-900'
+                      : 'text-gray-400'
+                  } ${
                     o.isToday && o.isChoosen
-                      ? 'bg-black'
+                      ? 'bg-blue-400'
                       : o.isToday
-                      ? 'bg-gray-700'
+                      ? 'bg-blue-800'
                       : ''
                   } mx-auto flex h-7 w-7 items-center justify-center rounded-full`}
                 >

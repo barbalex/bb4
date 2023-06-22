@@ -73,22 +73,24 @@ export default component$(() => {
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
             {/* only show new Event button on events page */}
-            {!!store.user && location.url.pathname === '/' && (
-              <button
-                type="button"
-                class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                data-title="new Event"
-                aria-label="new Event"
-              >
-                <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M266 80c0-17.7-24.3-32-42-32s-43.226 14.343-42 32v134H48c-17.7 0-32 24.3-32 42s14.35 43.317 32 42h134v134c0 17.7 24.3 32 42 32s42-14.3 42-32V298h134c17.7 0 32-24.3 32-42s-14.3-42-32-42H266Z"
-                  />
-                </svg>
-              </button>
-            )}
+            {!!store.user &&
+              (location.url.pathname === '/' ||
+                location.url.pathname.startsWith('/events')) && (
+                <button
+                  type="button"
+                  class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  data-title="new Event"
+                  aria-label="new Event"
+                >
+                  <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M266 80c0-17.7-24.3-32-42-32s-43.226 14.343-42 32v134H48c-17.7 0-32 24.3-32 42s14.35 43.317 32 42h134v134c0 17.7 24.3 32 42 32s42-14.3 42-32V298h134c17.7 0 32-24.3 32-42s-14.3-42-32-42H266Z"
+                    />
+                  </svg>
+                </button>
+              )}
             <div class="relative ml-3">
               <button
                 type="button"
