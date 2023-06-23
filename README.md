@@ -17,12 +17,15 @@ It is being rebuilt from the ground up to:
 
 # Technologies
 
-- [Qwick](https://qwik.builder.io)
-  - Instantly-interactive web app.
-  - Query and mutate data server side.<br/>
-    Goodbye data fetching API...
-  - State management with signals.
-  - Only render what's on screen.
-  - Simpler yet more powerfull than React.
-- [Tailwind](https://tailwindcss.com)<br/>
-  A utility-first CSS framework.
+## [Qwick](https://qwik.builder.io)
+
+- Instantly-interactive web app.
+- Query and mutate data server side.<br/>
+  Goodbye data fetching API...
+- State management with signals.
+- Only render what's on screen.
+- Simpler yet more powerfull than React.
+
+## [Tailwind](https://tailwindcss.com)<br/>
+
+A utility-first CSS framework.
