@@ -11,7 +11,7 @@ import {
   RouterOutlet,
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
-import { type User, getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
 
 import { RouterHead } from './components/router-head/router-head'
