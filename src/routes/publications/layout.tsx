@@ -34,7 +34,6 @@ const sorter = (a, b) => {
 
 // select all publications: id, title, draft
 const dataFetcher = server$(async function (isLoggedIn) {
-  console.log('dataFetcher, isLoggedIn:', isLoggedIn)
   // include drafts only if user is logged in
   let res
   try {
