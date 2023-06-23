@@ -52,11 +52,27 @@ const dataFetcher = server$(async function (isLoggedIn) {
   return rowsSorted
 })
 
+const categoryChooser = {
+  isEu: 'European Union',
+  isIdNgo: 'IOs & NGOs',
+  isAcademic: 'Academic',
+}
+
 export default component$(() => {
   const store = useContext(CTX)
   const isLoggedIn = !!store.user
   const publications = useResource$(async () => await dataFetcher(isLoggedIn))
   const location = useLocation()
+  const isIdNgo = location.url.pathname.startsWith('/publications/io-ngo/')
+  const isAcademic = location.url.pathname.startsWith('/publications/academic/')
+  const isEu = location.url.pathname.startsWith('/publications/eu/')
+  // if none is choosen, default to EU
+  const activeCategory = isAcademic
+    ? categoryChooser.isAcademic
+    : isIdNgo
+    ? categoryChooser.isIdNgo
+    : categoryChooser.isEu
+  console.log('isCategory:', { isEu, isIdNgo, isAcademic, activeCategory })
 
   return (
     <div class="flex min-h-full flex-col">
@@ -69,6 +85,8 @@ export default component$(() => {
               onRejected={(reason) => <div>Error: {reason}</div>}
               onResolved={(publications) => {
                 const publicationsByCategory = groupBy(publications, 'category')
+                console.log('publicationsByCategory:', publicationsByCategory)
+
                 return Object.entries(publicationsByCategory).map(
                   ([category, pubs]) => (
                     <ul
