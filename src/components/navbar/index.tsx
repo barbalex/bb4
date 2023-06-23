@@ -60,8 +60,6 @@ export default component$(() => {
   const navigate = useNavigate()
   const location = useLocation()
   const store = useContext(CTX)
-  const loggedIn = !!store.user
-  const firebaseAuth = store.firebaseAuth
 
   return (
     <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark.jpg)] border border-blue-800">
@@ -247,11 +245,11 @@ export default component$(() => {
                 data-title={store.user ? 'Log out' : 'Log in'}
                 aria-label={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
-                  if (loggedIn) {
-                    firebaseAuth && signOut(firebaseAuth)
+                  if (store.user) {
+                    store.firebaseAuth && signOut(store.firebaseAuth)
                     window.localStorage.removeItem('token')
-                    store.user = noSerialize(null)
-                    store.firebaseAuth = noSerialize(null)
+                    store.user = ''
+                    store.firebaseAuth = noSerialize(undefined)
                     return
                   }
                   navigate('/login')
