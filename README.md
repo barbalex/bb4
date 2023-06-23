@@ -21,7 +21,8 @@ It is being rebuilt from the ground up to:
   - Instantly-interactive web app.
   - Query and mutate data server side.<br/>
     Goodbye data fetching API...
-  - Signals for state management.
+  - State management with signals.
   - Only render what's on screen.
+  - Simpler yet more powerfull than React.
 - [Tailwind](https://tailwindcss.com)
   A utility-first CSS framework.
