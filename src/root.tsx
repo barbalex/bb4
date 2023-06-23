@@ -19,7 +19,7 @@ import getAuthToken from './utils/getAuthToken'
 import './global.css'
 
 export const CTX = createContextId<{
-  user: User
+  user: string
   firebaseAuth: FirebaseApp
   editing: boolean
 }>('root')
@@ -40,7 +40,7 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
   const store = useStore({
-    user: undefined,
+    user: '',
     firebaseAuth: undefined,
     editing: false,
   })
@@ -59,8 +59,8 @@ export default component$(() => {
     const auth = getAuth(fbApp)
     store.firebaseAuth = noSerialize(auth)
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
-      // console.log('App, onAuthStateChanged, user:', user)
-      store.user = noSerialize(user)
+      console.log('App, onAuthStateChanged, user:', user)
+      store.user = user.uid
       // TODO: how do this server side without needing separate server?
       // somehow call server$?
       getAuthToken(user)
