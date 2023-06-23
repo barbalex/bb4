@@ -6,7 +6,6 @@ import {
   useContext,
 } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
-import groupBy from 'lodash/groupBy'
 
 import { CTX } from '~/root'
 import * as db from '../../db'
@@ -87,9 +86,8 @@ export default component$(() => {
                 return <div>Error: {reason}</div>
               }}
               onResolved={(publications) => {
-                const publicationsByCategory = groupBy(
-                  publications ?? {},
-                  'category',
+                const publicationsByCategory = publications.group(
+                  ({ category }) => category,
                 )
 
                 return Object.entries(publicationsByCategory).map(

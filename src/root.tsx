@@ -13,6 +13,8 @@ import {
 } from '@builder.io/qwik-city'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
+// need to polifill until well supported: https://caniuse.com/mdn-javascript_builtins_array_group
+import 'core-js/actual/array/group'
 
 import { RouterHead } from './components/router-head/router-head'
 import getAuthToken from './utils/getAuthToken'
