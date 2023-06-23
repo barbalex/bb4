@@ -151,7 +151,7 @@ export default component$(({ activeYear }) => {
     return await dataFetcher(year)
   })
 
-  console.log('events rendering')
+  // console.log('events rendering')
 
   return (
     <Resource
