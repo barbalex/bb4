@@ -11,15 +11,17 @@ This project succeeds [bb](https://github.com/barbalex/bb) and [bb2](https://git
 It is being rebuilt from the ground up to:
 
 - Learn new, promising technologies.
-- Improve user experience.
-- Improve developer experience.
+- Improve visitor's experience.
+- Improve the editor's experience.
+- Improve the developer's experience.
 
 # Technologies
 
 - [Qwick](https://qwik.builder.io)
   - Instantly-interactive web app.
   - Query and mutate data server side.
-  - Built-in signals for state management.
+    Goodbye data fetching API...
+  - Signals for state management.
   - Only render what's on screen.
 - [Tailwind](https://tailwindcss.com)
   A utility-first CSS framework.
