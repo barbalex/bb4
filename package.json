@@ -46,7 +46,7 @@
   "dependencies": {
     "@qwikest/icons": "0.0.8",
     "dayjs": "1.11.8",
-    "firebase": "9.22.2",
+    "firebase": "9.23.0",
     "pg": "8.11.0",
     "redaxios": "0.5.1"
   }
