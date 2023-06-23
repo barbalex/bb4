@@ -28,4 +28,4 @@ It is being rebuilt from the ground up to:
 
 ### [Tailwind](https://tailwindcss.com)<br/>
 
-A utility-first CSS framework.
+A "utility-first" CSS framework. Whatever that means. But I am starting to like it.
