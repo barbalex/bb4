@@ -19,7 +19,7 @@ It is being rebuilt from the ground up to:
 
 - [Qwick](https://qwik.builder.io)
   - Instantly-interactive web app.
-  - Query and mutate data server side.
+  - Query and mutate data server side.<br/>
     Goodbye data fetching API...
   - Signals for state management.
   - Only render what's on screen.
