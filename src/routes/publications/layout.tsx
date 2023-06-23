@@ -29,11 +29,12 @@ const sorter = (a, b) => {
     return aSort - bSort
   }
 
-  return a.title.localeCompare(b.title)
+  return a.title?.localeCompare(b.title)
 }
 
 // select all publications: id, title, draft
 const dataFetcher = server$(async function (isLoggedIn) {
+  console.log('dataFetcher, isLoggedIn:', isLoggedIn)
   // include drafts only if user is logged in
   let res
   try {
@@ -52,10 +53,10 @@ const dataFetcher = server$(async function (isLoggedIn) {
   return rowsSorted
 })
 
-const categoryChooser = {
-  isEu: 'European Union',
-  isIdNgo: 'IOs & NGOs',
-  isAcademic: 'Academic',
+const urlByCategory = {
+  'European Union': '/publications/eu/',
+  'IOs & NGOs': '/publications/io-ngo/',
+  Academic: '/publications/academic/',
 }
 
 export default component$(() => {
@@ -67,15 +68,12 @@ export default component$(() => {
   const location = useLocation()
   const isIdNgo = location.url.pathname.startsWith('/publications/io-ngo/')
   const isAcademic = location.url.pathname.startsWith('/publications/academic/')
-  const isEu = location.url.pathname.startsWith('/publications/eu/')
   // if none is choosen, default to EU
   const activeCategory = isAcademic
-    ? categoryChooser.isAcademic
+    ? 'Academic'
     : isIdNgo
-    ? categoryChooser.isIdNgo
-    : categoryChooser.isEu
-
-  console.log('isCategory:', { isEu, isIdNgo, isAcademic, activeCategory })
+    ? 'IOs & NGOs'
+    : 'European Union'
 
   return (
     <div class="flex min-h-full flex-col">
@@ -85,14 +83,20 @@ export default component$(() => {
             <Resource
               value={publications}
               onPending={() => <div>Loading...</div>}
-              onRejected={(reason) => <div>Error: {reason}</div>}
+              onRejected={(reason) => {
+                console.log('reason:', reason)
+                return <div>Error: {reason}</div>
+              }}
               onResolved={(publications) => {
-                const publicationsByCategory = groupBy(publications, 'category')
-                console.log('publicationsByCategory:', publicationsByCategory)
+                const publicationsByCategory = groupBy(
+                  publications ?? {},
+                  'category',
+                )
 
                 return Object.entries(publicationsByCategory).map(
                   ([category, pubs]) => {
                     const isActive = activeCategory === category
+                    const categoryUrl = urlByCategory[category]
 
                     return (
                       <ul
@@ -101,11 +105,20 @@ export default component$(() => {
                         role="list"
                       >
                         <li
-                          class={`bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md ${
+                          class={`bg-[url(../../../oceanDark.jpg)] leading-6 border-collapse rounded-t-md ${
                             !isActive && 'rounded-b-md'
                           }`}
                         >
-                          {category}
+                          <Link
+                            href={categoryUrl}
+                            class={`${
+                              categoryUrl === location.url.pathname
+                                ? 'font-extrabold'
+                                : ''
+                            } font-bold flex p-2 pl-3 text-white text-sm text-inherit leading-6 hover:font-extrabold hover:no-underline`}
+                          >
+                            {`${category} (${pubs.length})`}
+                          </Link>
                         </li>
                         {isActive &&
                           pubs.map((p) => (
@@ -114,14 +127,14 @@ export default component$(() => {
                               key={p.id}
                             >
                               <Link
-                                href={`/publications/${p.id}`}
+                                href={`${categoryUrl}/${p.id}`}
                                 class={`${
                                   location.params.publication_id === p.id
                                     ? 'font-extrabold bg-slate-100'
                                     : ''
                                 } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
                               >
-                                {p.title}
+                                {p.title || '(no title)'}
                               </Link>
                             </li>
                           ))}
