@@ -23,6 +23,38 @@ const eventAdder = server$(async function () {
 
   return res.rows?.[0]?.id
 })
+const publicationAdder = server$(async function () {
+  let res
+  try {
+    res = await db.query(
+      `insert into publication (datum, draft)
+      values ($1, $2)
+      returning id`,
+      [dayjs().format('YYYY-MM-DD'), true],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+    return undefined
+  }
+
+  return res.rows?.[0]?.id
+})
+const articleAdder = server$(async function () {
+  let res
+  try {
+    res = await db.query(
+      `insert into article (datum, draft)
+      values ($1, $2)
+      returning id`,
+      [dayjs().format('YYYY-MM-DD'), true],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+    return undefined
+  }
+
+  return res.rows?.[0]?.id
+})
 
 export default component$(() => {
   const navigate = useNavigate()
@@ -92,7 +124,7 @@ export default component$(() => {
           </div>
           {/* buttons */}
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
-            {/* edit article or publication */}
+            {/* edit article, publication or about. Only show on respective urls */}
             {!!store.user &&
               (!!location.params.article_id ||
                 !!location.params.publication_id ||
@@ -102,8 +134,8 @@ export default component$(() => {
                     <button
                       type="button"
                       class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      data-title="new Event"
-                      aria-label="new Event"
+                      data-title="preview"
+                      aria-label="preview"
                       onClick$={async () => {
                         store.editing = false
                       }}
@@ -124,8 +156,20 @@ export default component$(() => {
                     <button
                       type="button"
                       class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      data-title="new Event"
-                      aria-label="new Event"
+                      data-title={
+                        location.url.pathname.startsWith('/publications/')
+                          ? 'edit publication'
+                          : location.url.pathname.startsWith('/articles/')
+                          ? 'edit article'
+                          : 'edit event'
+                      }
+                      aria-label={
+                        location.url.pathname.startsWith('/publications/')
+                          ? 'edit publication'
+                          : location.url.pathname.startsWith('/articles/')
+                          ? 'edit article'
+                          : 'edit event'
+                      }
                       onClick$={async () => {
                         store.editing = true
                       }}
@@ -145,7 +189,7 @@ export default component$(() => {
                   )}
                 </>
               )}
-            {/* New Event. Only show on events page */}
+            {/* New event, article or publication. Only show on respective page */}
             {!!store.user &&
               (location.url.pathname === '/' ||
                 location.url.pathname.startsWith('/events') ||
@@ -154,17 +198,34 @@ export default component$(() => {
                 <button
                   type="button"
                   class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  data-title="new Event"
-                  aria-label="new Event"
+                  data-title={
+                    location.url.pathname.startsWith('/publications/')
+                      ? 'new publication'
+                      : location.url.pathname.startsWith('/articles/')
+                      ? 'new article'
+                      : 'new event'
+                  }
+                  aria-label={
+                    location.url.pathname.startsWith('/publications/')
+                      ? 'new publication'
+                      : location.url.pathname.startsWith('/articles/')
+                      ? 'new article'
+                      : 'new event'
+                  }
                   onClick$={async () => {
                     // 1. find what to create
                     // 2. create
                     // 3. navigate to edit page
                     if (location.url.pathname.startsWith('/publications/')) {
-                      // TODO:
+                      const id = await publicationAdder()
+                      id && navigate(`/publications/${id}`)
                     } else if (location.url.pathname.startsWith('/articles/')) {
-                      // TODO:
-                    } else {
+                      const id = await articleAdder()
+                      id && navigate(`/articles/${id}`)
+                    } else if (
+                      location.url.pathname === '/' ||
+                      location.url.pathname.startsWith('/events')
+                    ) {
                       const id = await eventAdder()
                       id && navigate(`/events/${id}`)
                     }

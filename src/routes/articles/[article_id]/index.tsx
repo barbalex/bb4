@@ -2,10 +2,13 @@ import {
   component$,
   useResource$,
   Resource,
+  useContext,
 } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 
-import * as db from '../../../db'
+import * as db from '~/db'
+import { CTX } from '~/root'
+import Editing from './editing'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function (id) {
@@ -31,15 +34,18 @@ export default component$(() => {
 
     return await dataFetcher(id)
   })
+  const store = useContext(CTX)
 
   return (
     <Resource
       value={article}
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={(article) => (
-        <div class="articles" dangerouslySetInnerHTML={article}></div>
-      )}
+      onResolved={(article) => {
+        if (store.editing) return <Editing article={article} />
+
+        return <div class="articles" dangerouslySetInnerHTML={article}></div>
+      }}
     />
   )
 })
