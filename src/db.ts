@@ -1,5 +1,7 @@
 // https://node-postgres.com/guides/project-structure
-import { Pool } from 'pg'
+import pg from 'pg'
+// Named export 'Pool' not found im: import { Pool } from 'pg'
+const { Pool } = pg
 
 const isDev = process.env.NODE_ENV === 'development'
 const options = {
