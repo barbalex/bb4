@@ -61,7 +61,9 @@ const categoryChooser = {
 export default component$(() => {
   const store = useContext(CTX)
   const isLoggedIn = !!store.user
+
   const publications = useResource$(async () => await dataFetcher(isLoggedIn))
+
   const location = useLocation()
   const isIdNgo = location.url.pathname.startsWith('/publications/io-ngo/')
   const isAcademic = location.url.pathname.startsWith('/publications/academic/')
@@ -72,6 +74,7 @@ export default component$(() => {
     : isIdNgo
     ? categoryChooser.isIdNgo
     : categoryChooser.isEu
+
   console.log('isCategory:', { isEu, isIdNgo, isAcademic, activeCategory })
 
   return (
@@ -88,34 +91,43 @@ export default component$(() => {
                 console.log('publicationsByCategory:', publicationsByCategory)
 
                 return Object.entries(publicationsByCategory).map(
-                  ([category, pubs]) => (
-                    <ul
-                      key={category}
-                      class="-mx-2 mt-3 first:mt-0 border-collapse"
-                      role="list"
-                    >
-                      <li class="bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md">
-                        {category}
-                      </li>
-                      {pubs.map((p) => (
+                  ([category, pubs]) => {
+                    const isActive = activeCategory === category
+
+                    return (
+                      <ul
+                        key={category}
+                        class="-mx-2 mt-3 first:mt-0 border-collapse"
+                        role="list"
+                      >
                         <li
-                          class="border border-slate-200 last:rounded-b-md"
-                          key={p.id}
+                          class={`bg-[url(../../../oceanDark.jpg)] font-bold flex p-2 pl-3 text-sm text-white leading-6 border-collapse rounded-t-md ${
+                            !isActive && 'rounded-b-md'
+                          }`}
                         >
-                          <Link
-                            href={`/publications/${p.id}`}
-                            class={`${
-                              location.params.publication_id === p.id
-                                ? 'font-extrabold bg-slate-100'
-                                : ''
-                            } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
-                          >
-                            {p.title}
-                          </Link>
+                          {category}
                         </li>
-                      ))}
-                    </ul>
-                  ),
+                        {isActive &&
+                          pubs.map((p) => (
+                            <li
+                              class="border border-slate-200 last:rounded-b-md"
+                              key={p.id}
+                            >
+                              <Link
+                                href={`/publications/${p.id}`}
+                                class={`${
+                                  location.params.publication_id === p.id
+                                    ? 'font-extrabold bg-slate-100'
+                                    : ''
+                                } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
+                              >
+                                {p.title}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    )
+                  },
                 )
               }}
             />
