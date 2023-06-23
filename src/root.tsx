@@ -11,14 +11,18 @@ import {
   RouterOutlet,
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { initializeApp, getApps, getApp } from 'firebase/app'
+import { type User, getAuth, onAuthStateChanged } from 'firebase/auth'
+import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
 
 import { RouterHead } from './components/router-head/router-head'
 import getAuthToken from './utils/getAuthToken'
 import './global.css'
 
-export const CTX = createContextId('root')
+export const CTX = createContextId<{
+  user: User
+  firebaseAuth: FirebaseApp
+  editing: boolean
+}>('root')
 
 // Configure Firebase
 const firebaseConfig = {
@@ -35,7 +39,6 @@ export default component$(() => {
    *
    * Dont remove the `<head>` and `<body>` elements.
    */
-  // TODO: use store for what?
   const store = useStore({
     user: undefined,
     firebaseAuth: undefined,
