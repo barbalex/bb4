@@ -165,7 +165,8 @@ h4.modal-title {
 /*--------------------------------*\
     4. #Articles
 \*--------------------------------*/
-.articles p {
+.articles p,
+.publications p {
   margin-bottom: 20px;
 }
 .articles .row {
@@ -190,4 +191,24 @@ h4.modal-title {
   font-weight: 800;
   margin-top: 40px;
   margin-bottom: 20px;
+}
+
+/*--------------------------------*\
+    5. #Publications
+\*--------------------------------*/
+.publications h2 {
+  font-size: medium;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.publications ul {
+  list-style: disc;
+}
+.publications p {
+  margin-bottom: 10px;
+}
+.publications .mce-tinymce {
+  margin: -15px;
+  width: calc(100% + 27px) !important;
 }
