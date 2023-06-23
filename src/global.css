@@ -161,3 +161,33 @@ h4.modal-title {
     width: 1100px;
   }
 }
+
+/*--------------------------------*\
+    4. #Articles
+\*--------------------------------*/
+.articles p {
+  margin-bottom: 20px;
+}
+.articles .row {
+  margin-bottom: 20px;
+}
+.articles table {
+  margin-bottom: 20px;
+}
+.articles h2 {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 60px !important;
+  margin-bottom: 20px !important;
+}
+.articles h2:first-child {
+  margin-top: 20px !important;
+}
+
+.articles h3 {
+  text-align: center;
+  font-size: large;
+  font-weight: 800;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}

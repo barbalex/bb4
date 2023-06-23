@@ -1,7 +1,10 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import {
+  component$,
+  useResource$,
+  Resource,
+} from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 
-import { styles } from './styles.css'
 import * as db from '../../../db'
 
 // select all articles: id, title, draft
@@ -35,7 +38,7 @@ export default component$(() => {
       onPending={() => <div>Loading...</div>}
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(article) => (
-        <div class={styles} dangerouslySetInnerHTML={article}></div>
+        <div class="articles" dangerouslySetInnerHTML={article}></div>
       )}
     />
   )
