@@ -59,7 +59,7 @@ export default component$(() => {
     const auth = getAuth(fbApp)
     store.firebaseAuth = noSerialize(auth)
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
-      console.log('App, onAuthStateChanged, user:', user)
+      // console.log('App, onAuthStateChanged, user:', user)
       if (!user) {
         store.user = ''
         return
