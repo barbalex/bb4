@@ -212,3 +212,24 @@ h4.modal-title {
   margin: -15px;
   width: calc(100% + 27px) !important;
 }
+
+/*--------------------------------*\
+    6. #About
+\*--------------------------------*/
+
+.about p,
+.about div {
+  font-size: medium;
+}
+.about h1 {
+  font-size: 36px;
+  font-weight: 500;
+}
+.about h2 {
+  font-size: x-large;
+  font-weight: 700;
+}
+.about h3 {
+  font-size: large;
+  font-weight: 700;
+}
