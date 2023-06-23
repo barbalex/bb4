@@ -24,5 +24,5 @@ It is being rebuilt from the ground up to:
   - State management with signals.
   - Only render what's on screen.
   - Simpler yet more powerfull than React.
-- [Tailwind](https://tailwindcss.com)
+- [Tailwind](https://tailwindcss.com)<br/>
   A utility-first CSS framework.
