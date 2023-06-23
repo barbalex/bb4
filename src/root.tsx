@@ -46,8 +46,9 @@ export default component$(() => {
   })
   useContextProvider(CTX, store)
 
+  // authenticate
+  // this is client only
   useVisibleTask$(({ cleanup }) => {
-    // authenticate
     let fbApp
     // catch app already existing
     // https://stackoverflow.com/a/48686803/712005
