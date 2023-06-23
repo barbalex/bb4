@@ -1,5 +1,6 @@
 import axios from 'redaxios'
 
+// TODO: how do this server side without needing separate server?
 const getAuthToken = async (user) => {
   const hostnameWithoutWww = window.location.hostname.replace('www.', '')
   const isLocalhost = hostnameWithoutWww === 'localhost'
