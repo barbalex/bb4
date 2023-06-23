@@ -1,4 +1,6 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useContext } from '@builder.io/qwik'
+
+// TODO: why not fetched from db?
 
 export default component$(() => {
   return (
