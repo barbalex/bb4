@@ -36,7 +36,11 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
   // TODO: use store for what?
-  const store = useStore({ user: undefined, firebaseAuth: undefined })
+  const store = useStore({
+    user: undefined,
+    firebaseAuth: undefined,
+    editing: false,
+  })
   useContextProvider(CTX, store)
 
   useVisibleTask$(({ cleanup }) => {
