@@ -60,6 +60,11 @@ export default component$(() => {
     store.firebaseAuth = noSerialize(auth)
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
       console.log('App, onAuthStateChanged, user:', user)
+      if (!user) {
+        store.user = ''
+        return
+      }
+
       store.user = user?.uid
       // TODO: how do this server side without needing separate server?
       // somehow call server$?
