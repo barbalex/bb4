@@ -2,24 +2,36 @@ import { component$, useVisibleTask$ } from '@builder.io/qwik'
 // import tinymce from 'tinymce/tinymce'
 
 export default component$(({ about }) => {
-  console.log('editing, about:', about)
-
+  // console.log('editing, about:', about)
   useVisibleTask$(() => {
-    tinymce.init({
-      selector: '#editor',
-      plugins:
-        'advlist autolink link image lists charmap print anchor pagebreak searchreplace wordcount visualblocks visualchars media nonbreaking save table directionality autosave fullscreen code',
-      menubar: 'edit insert view format table',
-      toolbar:
-        'insertfile undo redo searchreplace | styleselect | bold italic underline forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | wordcount print fullscreen',
-      height: 500,
-      browser_spellcheck: true,
-      automatic_uploads: false,
-      statusbar: false,
-      body_class: '',
-      fullscreen_native: true,
-    })
+    window.changeEditorHandler = (e) => {
+      console.log('editor, window.changeEditorHandler, event:', e)
+    }
+    window.blurEditorHandler = (e) => {
+      console.log('editor blurred, event:', e)
+    }
   })
 
-  return <textarea id="editor">editing</textarea>
+  // https://www.tiny.cloud/docs/tinymce/6/webcomponent-pm/
+  // https://www.tiny.cloud/docs/tinymce/6/webcomponent-ref/
+  return (
+    <div class="-my-2.5">
+      <tinymce-editor
+        api-key="58ali3ylgj6fv1zfjv6vdjkkt32yjw36v1iypn95psmae799"
+        height="calc(100vh - 57px)"
+        menubar="edit insert view format table"
+        plugins="advlist autolink lists link image charmap preview anchor
+                searchreplace visualblocks code fullscreen
+                insertdatetime media table code help wordcount"
+        toolbar="undo redo | blocks | bold italic underline forecolor backcolor |
+                alignleft aligncenter alignright alignjustify |
+                bullist numlist outdent indent | removeformat | link image code | wordcount print fullscreen"
+        browser_spellcheck="true"
+        on-Change="changeEditorHandler"
+        on-Blur="blurEditorHandler"
+      >
+        {about}
+      </tinymce-editor>
+    </div>
+  )
 })

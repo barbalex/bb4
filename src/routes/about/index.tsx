@@ -8,7 +8,7 @@ import { server$ } from '@builder.io/qwik-city'
 
 import * as db from '~/db'
 import { CTX } from '~/root'
-import Editing from './editing_lexical'
+import Editing from './editing'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function () {

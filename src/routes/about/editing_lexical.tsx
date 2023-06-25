@@ -75,11 +75,5 @@ export default component$(({ about }) => {
     })
   })
 
-  return (
-    <textarea
-      class="w-full h-60 bg-slate-100"
-      id="editor"
-      ref={editorRef}
-    ></textarea>
-  )
+  return <div class="w-full h-60 bg-slate-100" id="editor" ref={editorRef} />
 })

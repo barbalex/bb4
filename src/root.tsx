@@ -85,10 +85,7 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
-        {/* <script
-          src="https://cdn.tiny.cloud/1/58ali3ylgj6fv1zfjv6vdjkkt32yjw36v1iypn95psmae799/tinymce/6/tinymce.min.js"
-          referrerpolicy="origin"
-        ></script> */}
+        <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@2/dist/tinymce-webcomponent.min.js"></script>
       </head>
       <body lang="en">
         <RouterOutlet />
