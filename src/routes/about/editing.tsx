@@ -6,6 +6,7 @@ import { isServer } from '@builder.io/qwik/build'
 export default component$(({ about }) => {
   // console.log('editing, about:', about)
 
+  // useVisibleTask hat issues on first render - code did not run reliably
   useTask$(() => {
     if (isServer) return
 
