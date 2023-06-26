@@ -104,7 +104,7 @@ export default component$(({ event }) => {
   // console.log('calendar, dayObjectArray:', dayObjectArray.value)
 
   return (
-    <div class="sm:col-span-3 sm:col-start-6">
+    <div class="w-60 sm:w-80 bg-white">
       <div class="grid grid-cols-4 gap-x-16">
         <div class="text-center col-start-1 col-end-5 row-start-1">
           <div class="flex items-center h-0">

@@ -1,4 +1,4 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
@@ -52,6 +52,8 @@ export default component$(() => {
 
     return await dataFetcher(id)
   })
+
+  const dateIsOpen = useSignal(false)
 
   return (
     <Resource
@@ -143,38 +145,50 @@ export default component$(() => {
                 />
               </div>
             </fieldset>
-            <fieldset class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-8">
+            <fieldset class="col-span-full">
               <legend
                 for="title"
                 class="block text-sm font-medium leading-6 col-span-full"
               >
                 Date
               </legend>
-              <div class="col-span-4">
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="datum"
-                    id="title"
-                    class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                    value={
-                      event.datum
-                        ? dayjs(event.datum).format('DD.MM.YYYY')
-                        : null
-                    }
-                    onChange$={async (e, currentTarget) => {
-                      await updater({
-                        field: 'datum',
-                        value: dateFromInputForDb(currentTarget.value),
-                        eventId: event.id,
-                      })
-                      navigate()
-                    }}
-                    required
-                  />
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="datum"
+                  id="title"
+                  class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  value={
+                    event.datum ? dayjs(event.datum).format('DD.MM.YYYY') : null
+                  }
+                  onChange$={async (e, currentTarget) => {
+                    await updater({
+                      field: 'datum',
+                      value: dateFromInputForDb(currentTarget.value),
+                      eventId: event.id,
+                    })
+                    navigate()
+                  }}
+                  onFocus$={() => {
+                    console.log('focus')
+                    dateIsOpen.value = true
+                  }}
+                  onFocusout$={() => {
+                    console.log('focusout')
+                    dateIsOpen.value = false
+                  }}
+                  required
+                />
+                <div
+                  class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 mt-4 ${
+                    dateIsOpen.value
+                      ? 'transition ease-in opacity-100 translate-y-0'
+                      : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
+                  }`}
+                >
+                  <Calendar event={event} />
                 </div>
               </div>
-              <Calendar event={event} />
             </fieldset>
             <fieldset class="select-none">
               <legend class="text-sm font-semibold leading-6">Tag</legend>
