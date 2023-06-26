@@ -19,8 +19,6 @@ const saver = server$(async function (content) {
 })
 
 export default component$(({ about, refetcher }) => {
-  // console.log('editing, about:', about)
-
   // useVisibleTask had issues on first render - code did not run reliably
   useTask$(() => {
     if (isServer) return
@@ -49,9 +47,9 @@ export default component$(({ about, refetcher }) => {
                 alignleft aligncenter alignright alignjustify |
                 bullist numlist outdent indent | removeformat | link image code | wordcount print fullscreen"
         browser_spellcheck="true"
+        branding="false" // does not seem to work
         resize="false"
         on-Change="editorChangeHandler"
-        on-Blur="editorBlurHandler"
       >
         {about}
       </tinymce-editor>
