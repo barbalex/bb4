@@ -4,6 +4,7 @@ import {
   Resource,
   Slot,
   useContext,
+  useSignal,
 } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 
@@ -28,9 +29,15 @@ const dataFetcher = server$(async function (isLoggedIn) {
 })
 
 export default component$(() => {
+  const refetcher = useSignal(0)
   const store = useContext(CTX)
   const isLoggedIn = !!store.user
-  const articles = useResource$(async () => await dataFetcher(isLoggedIn))
+
+  const articles = useResource$(async ({ track }) => {
+    track(() => refetcher.value)
+
+    return await dataFetcher(isLoggedIn)
+  })
   const location = useLocation()
 
   return (
