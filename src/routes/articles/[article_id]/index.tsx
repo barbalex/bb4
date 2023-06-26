@@ -3,6 +3,7 @@ import {
   useResource$,
   Resource,
   useContext,
+  useSignal,
 } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 
@@ -41,9 +42,11 @@ const draftSetter = server$(async function ({ value, id }) {
 })
 
 export default component$(() => {
+  const refetcher = useSignal(0)
   const location = useLocation()
   const data = useResource$(async ({ track }) => {
     const id = track(() => location.params.article_id)
+    track(() => refetcher.value)
 
     return await dataFetcher(id)
   })
@@ -56,7 +59,14 @@ export default component$(() => {
       onRejected={(reason) => <div>Error: {reason}</div>}
       onResolved={(data) => {
         console.log('article, onResolved, data:', data)
-        if (store.editing) return <Editing article={data.content} />
+        if (store.editing)
+          return (
+            <Editing
+              id={location.params.article_id}
+              content={data.content}
+              refetcher={refetcher}
+            />
+          )
 
         return (
           <>

@@ -1,7 +1,58 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useTask$ } from '@builder.io/qwik'
+import { server$ } from '@builder.io/qwik-city'
+import { isServer } from '@builder.io/qwik/build'
 
-export default component$(({ article }) => {
-  console.log('editing, article:', article)
+import * as db from '~/db'
 
-  return <div>editing</div>
+const saver = server$(async function ({ content, id }) {
+  try {
+    await db.query(
+      `update article
+       set content = $1
+       where id = $2`,
+      [content, id],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+  }
+  return true
+})
+
+export default component$(({ id, content, refetcher }) => {
+  // useVisibleTask had issues on first render - code did not run reliably
+  useTask$(() => {
+    if (isServer) return
+
+    // this is essential or the event handler will only run on the first render
+    if (window.editorChangeHandler) return
+
+    window.editorChangeHandler = async (e) => {
+      await saver({ id, content: e?.target?.getContent?.() })
+      refetcher.value++
+    }
+  })
+
+  // https://www.tiny.cloud/docs/tinymce/6/webcomponent-pm/
+  // https://www.tiny.cloud/docs/tinymce/6/webcomponent-ref/
+  return (
+    <div class="-my-2.5">
+      <tinymce-editor
+        api-key="58ali3ylgj6fv1zfjv6vdjkkt32yjw36v1iypn95psmae799"
+        height="calc(100vh - 57px)"
+        menubar="edit insert view format table"
+        plugins="advlist autolink lists link image charmap preview anchor
+                 searchreplace visualblocks code fullscreen
+                 insertdatetime media table code help wordcount"
+        toolbar="undo redo | blocks | bold italic underline forecolor backcolor |
+                 alignleft aligncenter alignright alignjustify |
+                 bullist numlist outdent indent | removeformat | link image code | wordcount print fullscreen"
+        browser_spellcheck="true"
+        branding="false" // does not seem to work
+        resize="false"
+        on-Change="editorChangeHandler"
+      >
+        {content}
+      </tinymce-editor>
+    </div>
+  )
 })
