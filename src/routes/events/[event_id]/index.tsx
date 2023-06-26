@@ -145,7 +145,17 @@ export default component$(() => {
                 />
               </div>
             </fieldset>
-            <fieldset class="col-span-full">
+            <fieldset
+              class="col-span-full"
+              onFocusin$={() => {
+                console.log('focus in')
+                dateIsOpen.value = true
+              }}
+              onFocusout$={() => {
+                console.log('focusout')
+                dateIsOpen.value = false
+              }}
+            >
               <legend
                 for="title"
                 class="block text-sm font-medium leading-6 col-span-full"
@@ -168,14 +178,6 @@ export default component$(() => {
                       eventId: event.id,
                     })
                     navigate()
-                  }}
-                  onFocus$={() => {
-                    console.log('focus')
-                    dateIsOpen.value = true
-                  }}
-                  onFocusout$={() => {
-                    console.log('focusout')
-                    dateIsOpen.value = false
                   }}
                   required
                 />

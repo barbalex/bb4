@@ -111,11 +111,12 @@ export default component$(({ event }) => {
             <button
               type="button"
               class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-              onClick$={() =>
-                (dateString.value = dayjs(dateString.value)
+              onClick$={(event) => {
+                event.stopPropagation()
+                dateString.value = dayjs(dateString.value)
                   .subtract(1, 'month')
-                  .format())
-              }
+                  .format()
+              }}
             >
               <span class="sr-only">Previous month</span>
               <svg
