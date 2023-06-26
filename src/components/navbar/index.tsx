@@ -134,11 +134,7 @@ export default component$(() => {
                       class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       data-title="preview"
                       aria-label="preview"
-                      onClick$={async () => {
-                        store.editing = false
-                        // need to reload the data
-                        setTimeout(() => navigate())
-                      }}
+                      onClick$={() => (store.editing = false)}
                     >
                       <svg
                         class="block h-6 w-6"
