@@ -148,11 +148,9 @@ export default component$(() => {
             <fieldset
               class="col-span-full"
               onFocusin$={() => {
-                console.log('focus in')
                 dateIsOpen.value = true
               }}
               onFocusout$={() => {
-                console.log('focusout')
                 dateIsOpen.value = false
               }}
             >
@@ -177,6 +175,7 @@ export default component$(() => {
                       value: dateFromInputForDb(currentTarget.value),
                       eventId: event.id,
                     })
+                    dateIsOpen.value = false
                     navigate()
                   }}
                   required
