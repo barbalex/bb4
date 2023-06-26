@@ -35,7 +35,7 @@ export default component$(({ id, content, refetcher }) => {
   // https://www.tiny.cloud/docs/tinymce/6/webcomponent-pm/
   // https://www.tiny.cloud/docs/tinymce/6/webcomponent-ref/
   return (
-    <div class="-my-2.5">
+    <div class="-my-2.5 -mr-2.5">
       <tinymce-editor
         api-key="58ali3ylgj6fv1zfjv6vdjkkt32yjw36v1iypn95psmae799"
         height="calc(100vh - 57px)"
