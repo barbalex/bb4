@@ -217,8 +217,8 @@ export default component$(() => {
                       id && navigate(`/publications/${id}`)
                     } else if (location.url.pathname.startsWith('/articles/')) {
                       const id = await articleAdder()
-                      id && navigate(`/articles/${id}`)
                       store.articlesRefetcher++
+                      id && navigate(`/articles/${id}`)
                     } else if (
                       location.url.pathname === '/' ||
                       location.url.pathname.startsWith('/events')

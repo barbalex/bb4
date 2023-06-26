@@ -47,6 +47,17 @@ a:hover {
   text-decoration: underline;
 }
 
+.draft-parent {
+  container-type: inline-size;
+}
+
+.draft {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='20px' width='100px'><text x='6' y='16' fill='orange' font-size='20'>D R A F T</text></svg>");
+  background-size: 100cqw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* enables styling titles */
 /* simpler than building popovers */
 [data-title]:hover:after {
