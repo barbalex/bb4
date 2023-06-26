@@ -41,11 +41,11 @@ export default component$(({ about, refetcher }) => {
         height="calc(100vh - 57px)"
         menubar="edit insert view format table"
         plugins="advlist autolink lists link image charmap preview anchor
-                searchreplace visualblocks code fullscreen
-                insertdatetime media table code help wordcount"
+                 searchreplace visualblocks code fullscreen
+                 insertdatetime media table code help wordcount"
         toolbar="undo redo | blocks | bold italic underline forecolor backcolor |
-                alignleft aligncenter alignright alignjustify |
-                bullist numlist outdent indent | removeformat | link image code | wordcount print fullscreen"
+                 alignleft aligncenter alignright alignjustify |
+                 bullist numlist outdent indent | removeformat | link image code | wordcount print fullscreen"
         browser_spellcheck="true"
         branding="false" // does not seem to work
         resize="false"
