@@ -12,6 +12,7 @@ import Editing from './editing'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function () {
+  console.log('about, dataFetcher running')
   let res
   try {
     res = await db.query(
@@ -29,8 +30,12 @@ const dataFetcher = server$(async function () {
 })
 
 export default component$(() => {
-  const about = useResource$(async () => await dataFetcher())
   const store = useContext(CTX)
+  const about = useResource$(async ({ track }) => {
+    track(() => store.aboutRefetcher)
+
+    return await dataFetcher()
+  })
 
   return (
     <Resource
@@ -41,6 +46,7 @@ export default component$(() => {
         return <div>Error: {reason}</div>
       }}
       onResolved={(about) => {
+        console.log('about resource rendering')
         if (store.editing) return <Editing about={about} />
 
         return <div class="about" dangerouslySetInnerHTML={about}></div>

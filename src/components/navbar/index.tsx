@@ -136,6 +136,8 @@ export default component$(() => {
                       aria-label="preview"
                       onClick$={async () => {
                         store.editing = false
+                        // need to reload the data
+                        setTimeout(() => navigate())
                       }}
                     >
                       <svg
