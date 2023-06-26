@@ -1,9 +1,18 @@
-import { component$, useTask$, useContext } from '@builder.io/qwik'
+import {
+  component$,
+  useTask$,
+  useContext,
+  useSignal,
+  $,
+} from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 import { isServer } from '@builder.io/qwik/build'
+import dayjs from 'dayjs'
 
 import * as db from '~/db'
 import { CTX } from '~/root'
+import Calendar from '~/components/shared/calendar'
+import dateFromInputForDb from '~/utils/date-from-input-for-db'
 
 const titleUpdater = server$(async function ({ title, id }) {
   try {
@@ -12,6 +21,19 @@ const titleUpdater = server$(async function ({ title, id }) {
        set title = $1
        where id = $2`,
       [title, id],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+  }
+  return true
+})
+const datumUpdater = server$(async function ({ datum, id }) {
+  try {
+    await db.query(
+      `update article
+       set datum = $1
+       where id = $2`,
+      [datum, id],
     )
   } catch (error) {
     console.error('query error', { stack: error.stack, message: error.message })
@@ -35,6 +57,9 @@ const contentUpdater = server$(async function ({ content, id }) {
 export default component$(
   ({ id, title, datum, content, refetcher: articleRefetcher }) => {
     const store = useContext(CTX)
+
+    const dateIsOpen = useSignal(false)
+    const dateElement = useSignal()
     // useVisibleTask had issues on first render - code did not run reliably
     useTask$(() => {
       if (isServer) return
@@ -61,9 +86,9 @@ export default component$(
           </label>
           <div class="mt-2">
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="title"
+              id="title"
               class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               value={title}
               onChange$={async (e) => {
@@ -71,6 +96,61 @@ export default component$(
                 articleRefetcher.value++
                 store.articlesRefetcher++
               }}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset
+          class="w-full pb-4"
+          onFocusin$={() => {
+            dateIsOpen.value = true
+          }}
+          onFocusout$={() => {
+            dateIsOpen.value = false
+          }}
+        >
+          <legend
+            for="title"
+            class="block text-sm font-medium leading-6 col-span-full"
+          >
+            Date
+          </legend>
+          <input
+            ref={dateElement}
+            type="text"
+            name="datum"
+            id="title"
+            class="block w-full rounded-md border-0 py-1.5 px-3 mt-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            value={datum ? dayjs(datum).format('DD.MM.YYYY') : null}
+            onChange$={async (e, currentTarget) => {
+              await datumUpdater({
+                value: dateFromInputForDb(currentTarget.value),
+                id,
+              })
+              articleRefetcher.value++
+              store.articlesRefetcher++
+            }}
+            required
+          />
+          <div
+            class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 pt-4 mt-1 bg-white ${
+              dateIsOpen.value
+                ? 'transition ease-in opacity-100 translate-y-0'
+                : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
+            }`}
+          >
+            <Calendar
+              datum={datum}
+              element={dateElement}
+              updater={$(async (datum) => {
+                await datumUpdater({
+                  value: datum,
+                  id,
+                })
+                articleRefetcher.value++
+                store.articlesRefetcher++
+                dateIsOpen.value = false
+              })}
             />
           </div>
         </fieldset>

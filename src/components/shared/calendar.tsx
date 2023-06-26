@@ -3,10 +3,7 @@ import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
 
-export default component$(({ event, updater, element }) => {
-  // const datum = useComputed$(() => event.datum)
-  const datum = event.datum
-
+export default component$(({ datum, updater, element }) => {
   const today = dayjs()
   const choosenDate = useComputed$(() =>
     dayjs(datum).isValid() ? dayjs(datum).format() : undefined,
@@ -99,6 +96,7 @@ export default component$(({ event, updater, element }) => {
               class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
               onClick$={(event) => {
                 event.stopPropagation()
+                event.preventDefault() // may not be needed
                 dateString.value = dayjs(dateString.value)
                   .subtract(1, 'month')
                   .format()
@@ -132,6 +130,7 @@ export default component$(({ event, updater, element }) => {
               class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
               onClick$={(event) => {
                 event.stopPropagation()
+                event.preventDefault() // may not be needed
                 dateString.value = dayjs(dateString.value)
                   .add(1, 'month')
                   .format()

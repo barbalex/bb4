@@ -81,7 +81,7 @@ export default component$(() => {
                             : ''
                         } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
                       >
-                        {a.title}
+                        {a.title || '(kein Titel)'}
                       </Link>
                     </li>
                   ))

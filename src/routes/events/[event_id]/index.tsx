@@ -167,51 +167,45 @@ export default component$(() => {
               >
                 Date
               </legend>
-              <div class="mt-2">
-                <input
-                  ref={dateElement}
-                  type="text"
-                  name="datum"
-                  id="title"
-                  class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  value={
-                    event.datum ? dayjs(event.datum).format('DD.MM.YYYY') : null
-                  }
-                  onChange$={async (e, currentTarget) => {
+              <input
+                ref={dateElement}
+                type="text"
+                name="datum"
+                id="title"
+                class="block w-full rounded-md border-0 py-1.5 px-3 mt-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                value={
+                  event.datum ? dayjs(event.datum).format('DD.MM.YYYY') : null
+                }
+                onChange$={async (e, currentTarget) => {
+                  await updater({
+                    field: 'datum',
+                    value: dateFromInputForDb(currentTarget.value),
+                    eventId: event.id,
+                  })
+                  navigate()
+                }}
+                required
+              />
+              <div
+                class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 pt-4 mt-1 ${
+                  dateIsOpen.value
+                    ? 'transition ease-in opacity-100 translate-y-0'
+                    : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
+                }`}
+              >
+                <Calendar
+                  datum={event.datum}
+                  element={dateElement}
+                  updater={$(async (datum) => {
                     await updater({
                       field: 'datum',
-                      value: dateFromInputForDb(currentTarget.value),
+                      value: datum,
                       eventId: event.id,
                     })
                     navigate()
-                  }}
-                  required
+                    dateIsOpen.value = false
+                  })}
                 />
-                <div
-                  class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 mt-5 ${
-                    dateIsOpen.value
-                      ? 'transition ease-in opacity-100 translate-y-0'
-                      : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
-                  }`}
-                >
-                  <Calendar
-                    event={event}
-                    element={dateElement}
-                    updater={$(async (datum) => {
-                      console.log('event, datum', {
-                        datum,
-                        dateFromInputForDb: dateFromInputForDb(datum),
-                      })
-                      await updater({
-                        field: 'datum',
-                        value: datum,
-                        eventId: event.id,
-                      })
-                      navigate()
-                      dateIsOpen.value = false
-                    })}
-                  />
-                </div>
               </div>
             </fieldset>
             <fieldset class="select-none">
