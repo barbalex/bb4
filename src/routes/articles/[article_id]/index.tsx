@@ -16,7 +16,7 @@ const dataFetcher = server$(async function (id) {
   let res
   try {
     res = await db.query(
-      'select id, draft, content from article where id = $1',
+      'select id, title, datum, draft, content from article where id = $1',
       [id],
     )
   } catch (error) {
@@ -28,6 +28,8 @@ const dataFetcher = server$(async function (id) {
 
   return {
     id: article?.id,
+    title: article?.title,
+    datum: article?.datum,
     draft: article?.draft,
     content: article?.content?.toString('utf-8'),
   }
@@ -62,6 +64,8 @@ export default component$(() => {
           return (
             <Editing
               id={location.params.article_id}
+              title={data.title}
+              datum={data.datum}
               content={data.content}
               refetcher={refetcher}
             />

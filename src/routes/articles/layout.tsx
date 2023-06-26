@@ -48,6 +48,7 @@ export default component$(() => {
 
   const articles = useResource$(async ({ track }) => {
     track(() => refetcher.value)
+    track(() => store.articlesRefetcher)
 
     return await dataFetcher(isLoggedIn)
   })

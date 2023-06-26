@@ -218,6 +218,7 @@ export default component$(() => {
                     } else if (location.url.pathname.startsWith('/articles/')) {
                       const id = await articleAdder()
                       id && navigate(`/articles/${id}`)
+                      store.articlesRefetcher++
                     } else if (
                       location.url.pathname === '/' ||
                       location.url.pathname.startsWith('/events')
