@@ -31,9 +31,9 @@ const dataFetcher = server$(async function () {
 
 export default component$(() => {
   const store = useContext(CTX)
-  const aboutRefetcher = useSignal(0)
+  const refetcher = useSignal(0)
   const about = useResource$(async ({ track }) => {
-    track(() => aboutRefetcher.value)
+    track(() => refetcher.value)
 
     return await dataFetcher()
   })
@@ -48,7 +48,7 @@ export default component$(() => {
       }}
       onResolved={(about) => {
         console.log('about resource rendering')
-        if (store.editing) return <Editing about={about} aboutRefetcher={aboutRefetcher} />
+        if (store.editing) return <Editing about={about} refetcher={refetcher} />
 
         return <div class="about" dangerouslySetInnerHTML={about}></div>
       }}

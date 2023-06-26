@@ -8,7 +8,7 @@ import { useNavigate, server$ } from '@builder.io/qwik-city'
 import {
   BsPencilFill as EditIcon,
   BsXCircle as DeleteIcon,
-} from '@qwikest/icons/bootstrap' 
+} from '@qwikest/icons/bootstrap'
 
 import { CTX } from '~/root'
 import * as db from '~/db'
@@ -16,11 +16,8 @@ import * as db from '~/db'
 const deleter = server$(async function ({ id }) {
   try {
     await db.query(
-      `delete
-      FROM
-        EVENT
-      where
-        id = $1`,
+      `delete from event
+       where id = $1`,
       [id],
     )
   } catch (error) {
@@ -29,7 +26,7 @@ const deleter = server$(async function ({ id }) {
   return true
 })
 
-export default component$(({ event }) => {
+export default component$(({ event, refetcher }) => {
   const navigate = useNavigate()
   const store = useContext(CTX)
   const showEditingGlyphons = !!store.user
@@ -128,7 +125,7 @@ export default component$(({ event }) => {
                       onClick$={async () => {
                         deleteMenuOpen.value = false
                         await deleter({ id: event.id })
-                        navigate()
+                        refetcher.value++
                       }}
                     >
                       Yes

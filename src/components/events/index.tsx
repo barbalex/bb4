@@ -1,10 +1,15 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import {
+  component$,
+  useResource$,
+  Resource,
+  useSignal,
+} from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
 import StatisticRow from './statisticRow'
-import * as db from '../../db'
+import * as db from '~/db'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function (activeYear) {
@@ -145,8 +150,11 @@ const dataFetcher = server$(async function (activeYear) {
 })
 
 export default component$(({ activeYear }) => {
+  const refetcher = useSignal(0)
+
   const data = useResource$(async ({ track }) => {
     const year = track(() => activeYear.value)
+    track(() => refetcher.value)
 
     return await dataFetcher(year)
   })
@@ -182,6 +190,7 @@ export default component$(({ activeYear }) => {
               date={row.date}
               migrationEvents={row.migrationEvents}
               politicEvents={row.politicEvents}
+              refetcher={refetcher}
             />
           </>
         ))

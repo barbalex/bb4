@@ -18,7 +18,7 @@ const saver = server$(async function (content) {
   return true
 })
 
-export default component$(({ about, aboutRefetcher }) => {
+export default component$(({ about, refetcher }) => {
   // console.log('editing, about:', about)
 
   // useVisibleTask had issues on first render - code did not run reliably
@@ -30,7 +30,7 @@ export default component$(({ about, aboutRefetcher }) => {
 
     window.editorChangeHandler = async (e) => {
       await saver(e?.target?.getContent?.())
-      aboutRefetcher.value++
+      refetcher.value++
     }
   })
 

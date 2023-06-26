@@ -1,9 +1,9 @@
 import { component$ } from '@builder.io/qwik'
 import dayjs from 'dayjs'
 
-import Event from './event'
+import Event from './event' 
 
-export default component$(({ date, migrationEvents, politicEvents }) => {
+export default component$(({ date, migrationEvents, politicEvents,refetcher }) => {
   const day = dayjs(date).format('D')
   const dayWithEvents = migrationEvents.length > 0 || politicEvents.length > 0
 
@@ -18,14 +18,14 @@ export default component$(({ date, migrationEvents, politicEvents }) => {
       <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
           {migrationEvents.map((event) => (
-            <Event key={event.id} event={event} />
+            <Event key={event.id} event={event} refetcher={refetcher} />
           ))}
         </ul>
       </div>
       <div class="grow-1 shrink-1 basis-1/2 pr-2.5 break-words">
         <ul class="px-4">
           {politicEvents.map((event) => (
-            <Event key={event.id} event={event} />
+            <Event key={event.id} event={event} refetcher={refetcher} />
           ))}
         </ul>
       </div>
