@@ -99,9 +99,8 @@ export default component$(
             />
           </div>
         </fieldset>
-
         <fieldset
-          class="w-full pb-4"
+          class="pb-4 -mr-2.5"
           onFocusin$={() => {
             dateIsOpen.value = true
           }}
@@ -124,7 +123,7 @@ export default component$(
             value={datum ? dayjs(datum).format('DD.MM.YYYY') : null}
             onChange$={async (e, currentTarget) => {
               await datumUpdater({
-                value: dateFromInputForDb(currentTarget.value),
+                datum: dateFromInputForDb(currentTarget.value),
                 id,
               })
               articleRefetcher.value++
@@ -144,7 +143,7 @@ export default component$(
               element={dateElement}
               updater={$(async (datum) => {
                 await datumUpdater({
-                  value: datum,
+                  datum,
                   id,
                 })
                 articleRefetcher.value++
