@@ -2,7 +2,8 @@ import {
   component$,
   useResource$,
   Resource,
-  useContext,useSignal
+  useContext,
+  useSignal,
 } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 
@@ -12,7 +13,6 @@ import Editing from './editing'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function () {
-  console.log('about, dataFetcher running')
   let res
   try {
     res = await db.query(
@@ -47,8 +47,9 @@ export default component$(() => {
         return <div>Error: {reason}</div>
       }}
       onResolved={(about) => {
-        console.log('about resource rendering')
-        if (store.editing) return <Editing about={about} refetcher={refetcher} />
+        if (store.editing) {
+          return <Editing about={about} refetcher={refetcher} />
+        }
 
         return <div class="about" dangerouslySetInnerHTML={about}></div>
       }}
