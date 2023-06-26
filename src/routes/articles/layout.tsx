@@ -76,7 +76,7 @@ export default component$(() => {
             </ul>
           </nav>
         </div>
-        <div class="px-2 pb-2 md:flex-1">
+        <div class="px-2 pb-2 md:flex-1 relative">
           <Slot />
         </div>
       </div>
