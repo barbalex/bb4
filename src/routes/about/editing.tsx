@@ -7,11 +7,9 @@ import * as db from '~/db'
 const saver = server$(async function (content) {
   try {
     await db.query(
-      `update
-        page
-      set content = $1
-      where
-        id = '24c9db53-6d7d-4a97-98b4-666c9aaa85c9'`,
+      `update page
+       set content = $1
+       where id = '24c9db53-6d7d-4a97-98b4-666c9aaa85c9'`,
       [content],
     )
   } catch (error) {
@@ -27,27 +25,12 @@ export default component$(({ about, aboutRefetcher }) => {
   useTask$(() => {
     if (isServer) return
 
-    console.log('editor, visibleTask running')
-    // TODO:
-    // 1. save on change
-    // 2. or: save on blur if changed
-    if (window.editorChangeHandler) {
-      // this is essential or the event handler will only run on the first render
-      console.log('editor, visibleTask, editorChangeHandler already set')
-      return
-    }
+    // this is essential or the event handler will only run on the first render
+    if (window.editorChangeHandler) return
+
     window.editorChangeHandler = async (e) => {
-      console.log('editor, window.editorChangeHandler, content:', {
-        content: e?.target?.getContent?.(),
-      })
       await saver(e?.target?.getContent?.())
-      // store.aboutRefetcher++
       aboutRefetcher.value++
-    }
-    window.editorBlurHandler = (e) => {
-      console.log('editor blurred, content:', {
-        content: e?.target?.getContent?.(),
-      })
     }
   })
 
