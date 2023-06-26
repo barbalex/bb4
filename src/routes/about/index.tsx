@@ -2,7 +2,7 @@ import {
   component$,
   useResource$,
   Resource,
-  useContext,
+  useContext,useSignal
 } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 
@@ -31,8 +31,9 @@ const dataFetcher = server$(async function () {
 
 export default component$(() => {
   const store = useContext(CTX)
+  const aboutRefetcher = useSignal(0)
   const about = useResource$(async ({ track }) => {
-    track(() => store.aboutRefetcher)
+    track(() => aboutRefetcher.value)
 
     return await dataFetcher()
   })
@@ -47,7 +48,7 @@ export default component$(() => {
       }}
       onResolved={(about) => {
         console.log('about resource rendering')
-        if (store.editing) return <Editing about={about} />
+        if (store.editing) return <Editing about={about} aboutRefetcher={aboutRefetcher} />
 
         return <div class="about" dangerouslySetInnerHTML={about}></div>
       }}

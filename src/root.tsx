@@ -24,7 +24,6 @@ export const CTX = createContextId<{
   user: string
   firebaseAuth: FirebaseApp
   editing: boolean
-  aboutRefetcher: number
 }>('root')
 
 // Configure Firebase
@@ -46,7 +45,6 @@ export default component$(() => {
     user: '',
     firebaseAuth: undefined,
     editing: false,
-    aboutRefetcher: 0,
   })
   useContextProvider(CTX, store)
 

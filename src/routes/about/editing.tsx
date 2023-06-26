@@ -21,7 +21,7 @@ const saver = server$(async function (content) {
   return true
 })
 
-export default component$(({ about }) => {
+export default component$(({ about, aboutRefetcher }) => {
   // console.log('editing, about:', about)
   const navigate = useNavigate()
   const store = useContext(CTX)
@@ -44,7 +44,8 @@ export default component$(({ about }) => {
         content: e?.target?.getContent?.(),
       })
       await saver(e?.target?.getContent?.())
-      store.aboutRefetcher++
+      // store.aboutRefetcher++
+      aboutRefetcher.value++
     }
     window.editorBlurHandler = (e) => {
       console.log('editor blurred, content:', {
