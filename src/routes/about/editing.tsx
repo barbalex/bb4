@@ -1,9 +1,8 @@
-import { component$, useTask$, useContext } from '@builder.io/qwik'
-import { server$, useNavigate } from '@builder.io/qwik-city'
+import { component$, useTask$ } from '@builder.io/qwik'
+import { server$ } from '@builder.io/qwik-city'
 import { isServer } from '@builder.io/qwik/build'
 
 import * as db from '~/db'
-import { CTX } from '~/root'
 
 const saver = server$(async function (content) {
   try {
@@ -23,10 +22,8 @@ const saver = server$(async function (content) {
 
 export default component$(({ about, aboutRefetcher }) => {
   // console.log('editing, about:', about)
-  const navigate = useNavigate()
-  const store = useContext(CTX)
 
-  // useVisibleTask hat issues on first render - code did not run reliably
+  // useVisibleTask had issues on first render - code did not run reliably
   useTask$(() => {
     if (isServer) return
 
