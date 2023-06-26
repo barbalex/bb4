@@ -99,13 +99,7 @@ export default component$(({ event, refetcher }) => {
                 type="button"
                 class="rounded-full hover:bg-gray-200 ml-1 p-1"
                 data-title={deleteMenuOpen.value ? undefined : 'delete'}
-                onClick$={() => {
-                  console.log(
-                    'delete button, menuOpen.value:',
-                    deleteMenuOpen.value,
-                  )
-                  deleteMenuOpen.value = !deleteMenuOpen.value
-                }}
+                onClick$={() => (deleteMenuOpen.value = !deleteMenuOpen.value)}
               >
                 <DeleteIcon class="text-red-600 font-bold text-sm" />
               </button>
@@ -123,6 +117,7 @@ export default component$(({ event, refetcher }) => {
                     refetcher.value++
                   })}
                   onNo={$(() => (deleteMenuOpen.value = false))}
+                  subject="event"
                 />
               </div>
             </div>

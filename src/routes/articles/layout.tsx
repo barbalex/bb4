@@ -10,6 +10,7 @@ import { server$, Link, useLocation } from '@builder.io/qwik-city'
 
 import { CTX } from '~/root'
 import * as db from '../../db'
+import ConfirmDeletion from '~/components/shared/confirmDeletion'
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function (isLoggedIn) {

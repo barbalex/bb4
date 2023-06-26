@@ -1,9 +1,9 @@
 import { component$ } from '@builder.io/qwik'
 
-export default component$(({ onYes, onNo }) => {
+export default component$(({ onYes, onNo, subject }) => {
   return (
     <div class="w-auto flex-auto overflow-hidden rounded-md p-2 pt-1 bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-      <p class="font-semibold whitespace-nowrap">Delete this event?</p>
+      <p class="font-semibold whitespace-nowrap">{`Delete this ${subject}?`}</p>
       <div class="mt-1 flex justify-between">
         <button
           type="button"
