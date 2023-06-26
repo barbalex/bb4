@@ -175,7 +175,6 @@ export default component$(() => {
                       value: dateFromInputForDb(currentTarget.value),
                       eventId: event.id,
                     })
-                    dateIsOpen.value = false
                     navigate()
                   }}
                   required
