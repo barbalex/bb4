@@ -1,29 +1,9 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
-import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
 
-import * as db from '../../../db'
-
-const updater = server$(async function ({ datum, eventId }) {
-  try {
-    await db.query(
-      `update event
-        set datum = $1
-      where
-        id = $2`,
-      [datum, eventId],
-    )
-  } catch (error) {
-    console.error('query error', { stack: error.stack, message: error.message })
-  }
-})
-
-export default component$(({ event }) => {
-  const location = useLocation()
-  const navigate = useNavigate()
-
+export default component$(({ event, updater, element }) => {
   // const datum = useComputed$(() => event.datum)
   const datum = event.datum
 
@@ -101,16 +81,22 @@ export default component$(({ event }) => {
     return dayObjectArray
   })
 
-  // console.log('calendar, dayObjectArray:', dayObjectArray.value)
+  // element.value.focus('calendar, dayObjectArray:', dayObjectArray.value)
 
   return (
     <div class="w-60 sm:w-80 bg-white">
       <div class="grid grid-cols-4 gap-x-16">
         <div class="text-center col-start-1 col-end-5 row-start-1">
-          <div class="flex items-center h-0">
+          <div
+            class="flex items-center h-0"
+            onClick$={(event) => {
+              event.stopPropagation()
+              element.value.focus()
+            }}
+          >
             <button
               type="button"
-              class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+              class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
               onClick$={(event) => {
                 event.stopPropagation()
                 dateString.value = dayjs(dateString.value)
@@ -132,17 +118,24 @@ export default component$(({ event }) => {
                 />
               </svg>
             </button>
-            <div class="flex-auto text-sm font-semibold">
+            <div
+              class="flex-auto text-sm font-semibold"
+              onClick$={(event) => {
+                event.stopPropagation()
+                element.value.focus()
+              }}
+            >
               {monthAndYear.value}
             </div>
             <button
               type="button"
-              class="flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-              onClick$={() =>
-                (dateString.value = dayjs(dateString.value)
+              class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
+              onClick$={(event) => {
+                event.stopPropagation()
+                dateString.value = dayjs(dateString.value)
                   .add(1, 'month')
-                  .format())
-              }
+                  .format()
+              }}
             >
               <span class="sr-only">Next month</span>
               <svg
@@ -159,7 +152,13 @@ export default component$(({ event }) => {
               </svg>
             </button>
           </div>
-          <div class="mt-4 grid grid-cols-7 text-xs leading-6 text-gray-500">
+          <div
+            class="mt-4 grid grid-cols-7 text-xs leading-6 text-gray-500"
+            onClick$={(event) => {
+              event.stopPropagation()
+              element.value.focus()
+            }}
+          >
             <div>M</div>
             <div>T</div>
             <div>W</div>
@@ -186,13 +185,9 @@ export default component$(({ event }) => {
                 } ${o.isBottomLeft && 'rounded-bl-lg'} ${
                   o.isBottomRight && 'rounded-br-lg'
                 } focus:z-10`}
-                onClick$={async () => {
+                onClick$={() => {
                   if (!o.isChoosen) {
-                    await updater({
-                      datum: o.datum,
-                      eventId: location.params.event_id,
-                    })
-                    navigate()
+                    updater(o.datum)
                   }
                 }}
               >

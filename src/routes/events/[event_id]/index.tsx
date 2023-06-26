@@ -1,4 +1,10 @@
-import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
+import {
+  component$,
+  useResource$,
+  Resource,
+  useSignal,
+  $,
+} from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
@@ -7,7 +13,7 @@ dayjs.extend(customParseFormat)
 import * as db from '../../../db'
 import dateFromInputForDb from '~/utils/dateFromInputForDb'
 import Links from './links'
-import Calendar from './calendar'
+import Calendar from '../../../components/shared/calendar'
 
 const dataFetcher = server$(async function (id) {
   let res
@@ -54,6 +60,7 @@ export default component$(() => {
   })
 
   const dateIsOpen = useSignal(false)
+  const dateElement = useSignal()
 
   return (
     <Resource
@@ -73,7 +80,7 @@ export default component$(() => {
                 Close
               </button>
             </div>
-            <fieldset class="" role="group">
+            <fieldset role="group">
               <legend class="text-sm font-semibold leading-6">Column</legend>
               <div class="mt-2 space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                 <div class="flex items-center">
@@ -162,6 +169,7 @@ export default component$(() => {
               </legend>
               <div class="mt-2">
                 <input
+                  ref={dateElement}
                   type="text"
                   name="datum"
                   id="title"
@@ -180,13 +188,29 @@ export default component$(() => {
                   required
                 />
                 <div
-                  class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 mt-4 ${
+                  class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 mt-5 ${
                     dateIsOpen.value
                       ? 'transition ease-in opacity-100 translate-y-0'
                       : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
                   }`}
                 >
-                  <Calendar event={event} />
+                  <Calendar
+                    event={event}
+                    element={dateElement}
+                    updater={$(async (datum) => {
+                      console.log('event, datum', {
+                        datum,
+                        dateFromInputForDb: dateFromInputForDb(datum),
+                      })
+                      await updater({
+                        field: 'datum',
+                        value: datum,
+                        eventId: event.id,
+                      })
+                      navigate()
+                      dateIsOpen.value = false
+                    })}
+                  />
                 </div>
               </div>
             </fieldset>
