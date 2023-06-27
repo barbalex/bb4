@@ -41,18 +41,20 @@ const draftSetter = server$(async function ({ value, id }) {
   } catch (error) {
     console.error('query error', error.stack)
   }
+  return true
 })
 
 export default component$(() => {
   const refetcher = useSignal(0)
   const location = useLocation()
+  const store = useContext(CTX)
+
   const data = useResource$(async ({ track }) => {
     const id = track(() => location.params.article_id)
     track(() => refetcher.value)
 
     return await dataFetcher(id)
   })
-  const store = useContext(CTX)
 
   return (
     <Resource
