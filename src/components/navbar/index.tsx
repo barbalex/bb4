@@ -211,20 +211,24 @@ export default component$(() => {
                   onClick$={async () => {
                     // 1. find what to create
                     // 2. create
-                    // 3. navigate to edit page
+                    // 3. set editing to true
+                    // 4. navigate to edit page
                     if (location.url.pathname.startsWith('/publications/')) {
                       const id = await publicationAdder()
                       store.publicationsRefetcher++
+                      store.editing = true
                       id && navigate(`/publications/eu/${id}`)
                     } else if (location.url.pathname.startsWith('/articles/')) {
                       const id = await articleAdder()
                       store.articlesRefetcher++
+                      store.editing = true
                       id && navigate(`/articles/${id}`)
                     } else if (
                       location.url.pathname === '/' ||
                       location.url.pathname.startsWith('/events')
                     ) {
                       const id = await eventAdder()
+                      store.editing = true
                       id && navigate(`/events/${id}`)
                     }
                   }}

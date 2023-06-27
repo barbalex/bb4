@@ -122,7 +122,7 @@ export default component$(() => {
               dangerouslySetInnerHTML={
                 data.content ?? '(no content has been created yet)'
               }
-            ></div>
+            />
           )}
         </>
       )}

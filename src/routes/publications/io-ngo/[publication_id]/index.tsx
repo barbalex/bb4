@@ -3,6 +3,7 @@ import {
   useResource$,
   Resource,
   useContext,
+  useSignal,
 } from '@builder.io/qwik'
 import { useLocation, server$ } from '@builder.io/qwik-city'
 
@@ -14,23 +15,32 @@ import Editing from '../../editing'
 const dataFetcher = server$(async function (id) {
   let res
   try {
-    res = await db.query('select content from publication where id = $1', [id])
+    res = await db.query(
+      'select id, title, category, sort, content from publication where id = $1',
+      [id],
+    )
   } catch (error) {
     console.error('query error', error.stack)
   }
 
   // console.log('publication, dataFetcher, res:', res)
-  const content = res?.rows[0]?.content
-  if (!content) return null
-  const publicationDecoded = content?.toString('utf-8')
+  const pub = res?.rows[0]
 
-  return publicationDecoded
+  return {
+    id: pub.id,
+    title: pub.title,
+    category: pub.category,
+    sort: pub.sort,
+    content: pub?.content?.toString('utf-8'),
+  }
 })
 
 export default component$(() => {
+  const refetcher = useSignal(0)
   const location = useLocation()
-  const publication = useResource$(async ({ track }) => {
+  const data = useResource$(async ({ track }) => {
     const id = track(() => location.params.publication_id)
+    track(() => refetcher.value)
 
     return await dataFetcher(id)
   })
@@ -38,14 +48,26 @@ export default component$(() => {
 
   return (
     <Resource
-      value={publication}
+      value={data}
       onPending={() => <div>Loading...</div>}
-      onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={(publication) => {
-        if (store.editing) return <Editing publication={publication} />
-
-        return (
-          <div class="publications" dangerouslySetInnerHTML={publication ?? '(no content has been created yet)'}></div>
+      onRejected={(reason) => {
+        console.log('publication, dataFetcher, reason:', reason)
+        return <div>Error: {reason}</div>
+      }}
+      onResolved={(data) => {
+        console.log('publication, dataFetcher, data:', data)
+        return store.editing ? (
+          <Editing
+            data={data}
+            refetcher={refetcher}
+          />
+        ) : (
+          <div
+            class="publications"
+            dangerouslySetInnerHTML={
+              data?.content ?? '(no content has been created yet)'
+            }
+          />
         )
       }}
     />

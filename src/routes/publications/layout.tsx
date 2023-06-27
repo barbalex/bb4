@@ -13,14 +13,12 @@ import { CTX } from '~/root'
 import * as db from '~/db'
 import ConfirmDeletion from '~/components/shared/confirmDeletion'
 
-const categorySort = {
-  'European Union': 1,
-  'IOs & NGOs': 2,
-  Academic: 3,
-}
+// order of categories is used to sort the menu
+export const categories = ['European Union', 'IOs & NGOs', 'Academic']
+
 const sorter = (a, b) => {
-  const aCategorySort = categorySort[a.category]
-  const bCategorySort = categorySort[b.category]
+  const aCategorySort = categories.indexOf(a.category) + 1
+  const bCategorySort = categories.indexOf(b.category) + 1
   if (aCategorySort && bCategorySort && aCategorySort !== bCategorySort) {
     return aCategorySort - bCategorySort
   }
