@@ -8,7 +8,7 @@ import { CTX } from '~/root'
 const updater = server$(async function ({ field, value, id }) {
   try {
     await db.query(
-      `update article
+      `update publication
        set ${field} = $1
        where id = $2`,
       [value, id],
@@ -21,7 +21,7 @@ const updater = server$(async function ({ field, value, id }) {
 const contentUpdater = server$(async function ({ content, id }) {
   try {
     await db.query(
-      `update article
+      `update publication
        set content = $1
        where id = $2`,
       [content, id],
@@ -32,7 +32,9 @@ const contentUpdater = server$(async function ({ content, id }) {
   return true
 })
 
-export default component$(({ data, refetcher }) => {
+export default component$((props) => {
+  console.log('data editing, props:', props)
+  const { data, refetcher } = props
   console.log('data editing', { data, refetcher })
   const { id, title, category, sort, content } = data
   const store = useContext(CTX)
