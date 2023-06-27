@@ -159,7 +159,7 @@ export default component$(({ data, refetcher }) => {
           }}
         />
       </fieldset>
-      <fieldset class="mt-1 -mr-2.5 mb-2" role="group">
+      <fieldset class="mt-1 -mr-2.5 mb-4" role="group">
         <label
           for="sort"
           class="block text-sm font-medium leading-6 text-gray-900"
