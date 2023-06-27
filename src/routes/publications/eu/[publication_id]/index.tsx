@@ -45,7 +45,7 @@ export default component$(() => {
         if (store.editing) return <Editing publication={publication} />
 
         return (
-          <div class="publications" dangerouslySetInnerHTML={publication}></div>
+          <div class="publications" dangerouslySetInnerHTML={publication ?? '(no content has been created yet)'}></div>
         )
       }}
     />

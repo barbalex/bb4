@@ -117,7 +117,12 @@ export default component$(() => {
               refetcher={refetcher}
             />
           ) : (
-            <div class="articles" dangerouslySetInnerHTML={data.content}></div>
+            <div
+              class="articles"
+              dangerouslySetInnerHTML={
+                data.content ?? '(no content has been created yet)'
+              }
+            ></div>
           )}
         </>
       )}
