@@ -58,6 +58,11 @@ a:hover {
   background-position: center;
 }
 
+.content-item-hovered:hover,
+.content-item-selected {
+  background-color: rgba(210, 233, 255, 0.7);
+}
+
 /* enables styling titles */
 /* simpler than building popovers */
 [data-title]:hover:after {

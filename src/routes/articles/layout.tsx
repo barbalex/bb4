@@ -87,9 +87,9 @@ export default component$(() => {
                         href={`/articles/${a.id}`}
                         class={`${
                           location.params.article_id === a.id
-                            ? 'font-extrabold bg-slate-100'
+                            ? 'font-extrabold content-item-selected'
                             : ''
-                        } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
+                        } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
                       >
                         {a.title || '(kein Titel)'}
                       </Link>
