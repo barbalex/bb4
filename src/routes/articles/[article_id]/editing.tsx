@@ -12,7 +12,7 @@ import dayjs from 'dayjs'
 import * as db from '~/db'
 import { CTX } from '~/root'
 import Calendar from '~/components/shared/calendar'
-import dateFromInputForDb from '~/utils/date-from-input-for-db'
+import dateFromInputForDb from '~/utils/dateFromInputForDb'
 
 const titleUpdater = server$(async function ({ title, id }) {
   try {
