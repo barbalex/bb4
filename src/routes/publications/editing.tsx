@@ -29,13 +29,11 @@ const contentUpdater = server$(async function ({ content, id }) {
   } catch (error) {
     console.error('query error', { stack: error.stack, message: error.message })
   }
+
   return true
 })
 
-export default component$((props) => {
-  console.log('data editing, props:', props)
-  const { data, refetcher } = props
-  console.log('data editing', { data, refetcher })
+export default component$(({ data, refetcher }) => {
   const { id, title, category, sort, content } = data
   const store = useContext(CTX)
 
