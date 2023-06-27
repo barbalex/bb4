@@ -12,6 +12,7 @@ export const dataFetcher = server$(async function () {
           to_char(date_trunc('year', datum), 'yyyy')::int AS year
         FROM
           EVENT
+        where datum is not null
         GROUP BY
           year
         ORDER BY
@@ -41,11 +42,31 @@ export default component$(({ activeYear }) => {
             id="tabs"
             name="tabs"
             class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+            onChange$={(e) => {
+              if (e.target.value < 2015) {
+                return navigate(`/monthly-events/${e.target.value}/`)
+              }
+              activeYear.value = e.target.value
+            }}
           >
-            <option>2011 - 2014</option>
-            <option>2015 - 2018</option>
-            <option>2019 - 2022</option>
-            <option selected="">2023</option>
+            <Resource
+              value={years}
+              onPending={() => <div>Loading...</div>}
+              onRejected={(reason) => <div>Error: {reason}</div>}
+              onResolved={(years) =>
+                years.map((year) =>
+                  activeYear.value === year ? (
+                    <option key={year} value={year} selected="">
+                      {year}
+                    </option>
+                  ) : (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ),
+                )
+              }
+            />
           </select>
         </div>
         <div class="hidden sm:block">
@@ -63,6 +84,7 @@ export default component$(({ activeYear }) => {
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
                 onResolved={(years) => {
+                  console.log('years', years)
                   const years15to18 = years.filter(
                     (y) => y >= 2015 && y <= 2018,
                   )
