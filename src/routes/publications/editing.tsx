@@ -1,5 +1,5 @@
 import { component$, useTask$, useContext } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { server$, useNavigate } from '@builder.io/qwik-city'
 import { isServer } from '@builder.io/qwik/build'
 
 import * as db from '~/db'
@@ -36,6 +36,7 @@ const contentUpdater = server$(async function ({ content, id }) {
 export default component$(({ data, refetcher }) => {
   const { id, title, category, sort, content } = data
   const store = useContext(CTX)
+  const navigate = useNavigate()
 
   // useVisibleTask had issues on first render - code did not run reliably
   useTask$(() => {
@@ -54,6 +55,89 @@ export default component$(({ data, refetcher }) => {
   // https://www.tiny.cloud/docs/tinymce/6/webcomponent-ref/
   return (
     <>
+      <fieldset role="group">
+        <legend class="text-sm font-semibold leading-6">Category</legend>
+        <div class="mt-2 space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+          <div class="flex items-center">
+            <input
+              id="eu"
+              name="category"
+              type="radio"
+              checked={category === 'European Union'}
+              value="European Union"
+              onChange$={async () => {
+                await updater({
+                  field: 'category',
+                  value: 'European Union',
+                  id,
+                })
+                refetcher.value++
+                store.publicationsRefetcher++
+                navigate(`/publications/eu/${id}`)
+              }}
+              class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 hover:cursor-pointer"
+            />
+            <label
+              for="eu"
+              class="ml-3 block text-sm font-medium leading-6 text-gray-900 hover:cursor-pointer"
+            >
+              European Union
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              id="ios"
+              name="category"
+              type="radio"
+              checked={category === 'IOs & NGOs'}
+              value="IOs & NGOs"
+              onChange$={async () => {
+                await updater({
+                  field: 'category',
+                  value: 'IOs & NGOs',
+                  id,
+                })
+                refetcher.value++
+                store.publicationsRefetcher++
+                navigate(`/publications/io-ngo/${id}`)
+              }}
+              class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 hover:cursor-pointer"
+            />
+            <label
+              for="ios"
+              class="ml-3 block text-sm font-medium leading-6 text-gray-900 hover:cursor-pointer"
+            >
+              IOs & NGOs
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              id="academic"
+              name="category"
+              type="radio"
+              checked={category === 'Academic'}
+              value="Academic"
+              onChange$={async () => {
+                await updater({
+                  field: 'category',
+                  value: 'Academic',
+                  id,
+                })
+                refetcher.value++
+                store.publicationsRefetcher++
+                navigate(`/publications/academic/${id}`)
+              }}
+              class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 hover:cursor-pointer"
+            />
+            <label
+              for="academic"
+              class="ml-3 block text-sm font-medium leading-6 text-gray-900 hover:cursor-pointer"
+            >
+              Academic
+            </label>
+          </div>
+        </div>
+      </fieldset>
       <fieldset class="mt-1 -mr-2.5 mb-2" role="group">
         <label
           for="title"
