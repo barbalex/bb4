@@ -44,13 +44,11 @@ const deleter = server$(async function (id) {
 })
 
 export default component$(() => {
-  const refetcher = useSignal(0)
   const deleteMenuOpen = useSignal(false)
 
   const store = useContext(CTX)
 
   const articles = useResource$(async ({ track }) => {
-    track(() => refetcher.value)
     track(() => store.articlesRefetcher)
     const isLoggedIn = track(() => !!store.user)
 
