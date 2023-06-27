@@ -98,7 +98,7 @@ export default component$(() => {
                     return (
                       <ul
                         key={category}
-                        class="-mx-2 mt-3 first:mt-0 border-collapse"
+                        class="-mx-2 mt-3 first:mt-0 border-collapse draft-parent"
                         role="list"
                       >
                         <li
@@ -120,16 +120,18 @@ export default component$(() => {
                         {isActive &&
                           pubs.map((p) => (
                             <li
-                              class="border border-slate-200 last:rounded-b-md"
+                              class={`border border-slate-200 last:rounded-b-md  ${
+                                !!p.draft && 'draft'
+                              }`}
                               key={p.id}
                             >
                               <Link
                                 href={`${categoryUrl}/${p.id}`}
                                 class={`${
                                   location.params.publication_id === p.id
-                                    ? 'font-extrabold bg-slate-100'
+                                    ? 'font-extrabold content-item-selected'
                                     : ''
-                                } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold hover:bg-slate-100`}
+                                } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
                               >
                                 {p.title || '(no title)'}
                               </Link>
