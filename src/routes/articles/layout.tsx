@@ -7,7 +7,7 @@ import {
   useSignal,
   $,
 } from '@builder.io/qwik'
-import { server$, Link, useLocation } from '@builder.io/qwik-city'
+import { server$, Link, useLocation, useNavigate } from '@builder.io/qwik-city'
 
 import { CTX } from '~/root'
 import * as db from '../../db'
@@ -47,6 +47,7 @@ export default component$(() => {
   const deleteMenuOpen = useSignal(false)
 
   const store = useContext(CTX)
+  const navigate = useNavigate()
 
   const articles = useResource$(async ({ track }) => {
     track(() => store.articlesRefetcher)
@@ -72,9 +73,8 @@ export default component$(() => {
                 value={articles}
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
-                onResolved={(articles) => {
-                  console.log('articles', articles)
-                  return articles.map((a) => (
+                onResolved={(articles) =>
+                  articles.map((a) => (
                     <li
                       key={a.id}
                       class={`border border-slate-200 last:rounded-b-md ${
@@ -93,7 +93,7 @@ export default component$(() => {
                       </Link>
                     </li>
                   ))
-                }}
+                }
               />
             </ul>
           </nav>
@@ -121,7 +121,7 @@ export default component$(() => {
                 </svg>
               </button>
               <div
-                class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 ${
+                class={`absolute left-full z-50 flex -translate-x-full px-4 ${
                   deleteMenuOpen.value
                     ? 'transition ease-in opacity-100 translate-y-0'
                     : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'

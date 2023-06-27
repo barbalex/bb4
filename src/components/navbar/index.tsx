@@ -27,10 +27,10 @@ const publicationAdder = server$(async function () {
   let res
   try {
     res = await db.query(
-      `insert into publication (datum, draft)
+      `insert into publication (draft, category)
       values ($1, $2)
       returning id`,
-      [dayjs().format('YYYY-MM-DD'), true],
+      [true, 'European Union'],
     )
   } catch (error) {
     console.error('query error', { stack: error.stack, message: error.message })
@@ -214,7 +214,8 @@ export default component$(() => {
                     // 3. navigate to edit page
                     if (location.url.pathname.startsWith('/publications/')) {
                       const id = await publicationAdder()
-                      id && navigate(`/publications/${id}`)
+                      store.publicationsRefetcher++
+                      id && navigate(`/publications/eu/${id}`)
                     } else if (location.url.pathname.startsWith('/articles/')) {
                       const id = await articleAdder()
                       store.articlesRefetcher++
