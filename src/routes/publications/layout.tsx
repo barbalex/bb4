@@ -4,6 +4,7 @@ import {
   Resource,
   Slot,
   useContext,
+  useSignal,
 } from '@builder.io/qwik'
 import { server$, Link, useLocation } from '@builder.io/qwik-city'
 
@@ -59,9 +60,17 @@ const urlByCategory = {
 
 export default component$(() => {
   const store = useContext(CTX)
-  const isLoggedIn = !!store.user
 
-  const publications = useResource$(async () => await dataFetcher(isLoggedIn))
+  const refetcher = useSignal(0)
+  const deleteMenuOpen = useSignal(false)
+
+  const publications = useResource$(async ({ track }) => {
+    track(() => refetcher.value)
+    track(() => store.publicationsRefetcher)
+    const isLoggedIn = track(() => !!store.user)
+
+    return await dataFetcher(isLoggedIn)
+  })
 
   const location = useLocation()
   const isIdNgo = location.url.pathname.startsWith('/publications/io-ngo/')
