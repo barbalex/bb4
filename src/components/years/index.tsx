@@ -77,7 +77,6 @@ export default component$(({ activeYear }) => {
         <div class="hidden sm:block">
           <div class="border-b border-gray-200">
             <nav class="-mb-px flex" aria-label="Tabs">
-              {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
               <a
                 href="/monthly-events/2014/"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
