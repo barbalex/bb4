@@ -1,5 +1,5 @@
 import { component$, useSignal, useResource$, Resource } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { server$, useNavigate } from '@builder.io/qwik-city'
 
 import * as db from '../../db'
 
@@ -26,6 +26,7 @@ export const dataFetcher = server$(async function () {
 })
 
 export default component$(({ activeYear }) => {
+  const navigate = useNavigate()
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(true)
   const years = useResource$(async () => await dataFetcher())
@@ -53,8 +54,12 @@ export default component$(({ activeYear }) => {
               value={years}
               onPending={() => <div>Loading...</div>}
               onRejected={(reason) => <div>Error: {reason}</div>}
-              onResolved={(years) =>
-                years.map((year) =>
+              onResolved={(years) => {
+                // need to add 2011-2014 to the list
+                const yearsToUse = [
+                  ...new Set([...[2011, 2012, 2013, 2014], ...years]),
+                ]
+                return yearsToUse.map((year) =>
                   activeYear.value === year ? (
                     <option key={year} value={year} selected="">
                       {year}
@@ -65,7 +70,7 @@ export default component$(({ activeYear }) => {
                     </option>
                   ),
                 )
-              }
+              }}
             />
           </select>
         </div>
@@ -84,7 +89,6 @@ export default component$(({ activeYear }) => {
                 onPending={() => <div>Loading...</div>}
                 onRejected={(reason) => <div>Error: {reason}</div>}
                 onResolved={(years) => {
-                  console.log('years', years)
                   const years15to18 = years.filter(
                     (y) => y >= 2015 && y <= 2018,
                   )
