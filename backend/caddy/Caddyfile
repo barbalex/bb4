@@ -30,7 +30,7 @@ auth.blue-borders.ch {
   }
 }
 
-neu.blue-borders.ch {
+new.blue-borders.ch {
   reverse_proxy * {
     to bb_app:3000
     header_down Access-Control-Allow-Origin *
