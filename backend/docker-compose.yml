@@ -1,0 +1,91 @@
+version: '3.7'
+services:
+  db:
+    # specify container name to make it easier to run commands.
+    # for example, you could run docker exec -i postgres psql -U postgres postgres < schema.sql to run an SQL file against the Postgres database
+    container_name: bb_db
+    restart: always
+    image: db
+    build:
+      context: ./db
+    env_file:
+      - ./.env
+    ports:
+      # make the Postgres database accessible from outside the Docker container on port 5432
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - sik_data:/sik_data
+    # hasura needs higher max_locks_per_transaction
+    command: postgres -c max_locks_per_transaction=2000
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '3'
+  auth:
+    build:
+      context: ./auth
+    container_name: bb_auth
+    restart: always
+    env_file:
+      - ./.env
+    expose:
+      - '7000'
+    ports:
+      - '7000:7000'
+    depends_on:
+      - db
+      - graphql
+  graphql:
+    image: 'hasura/graphql-engine:v2.26.0'
+    container_name: bb_graphql
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    restart: always
+    env_file:
+      - ./.env
+    command:
+      - graphql-engine
+      - serve
+  caddy:
+    build:
+      context: ./caddy
+    container_name: bb_caddy
+    depends_on:
+      - db
+    restart: always
+    # original image downgrades user but that seems not to work
+    # see: https://caddy.community/t/basic-docker-compose-setup-failing/6892/7?u=alexander_gabriel
+    user: root
+    ports:
+      - '80:80'
+      - '443:443'
+    env_file:
+      - ./.env
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_certs:/data
+      - caddy_config:/config
+  app:
+    build:
+      context: ./app
+    container_name: bb_app
+    restart: always
+    env_file:
+      - ./.env
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - app_data:/app_data
+volumes:
+  db_data:
+  caddy_certs:
+  caddy_config:
+  sik_data:
+  app_data:
