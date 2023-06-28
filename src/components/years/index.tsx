@@ -29,6 +29,7 @@ export default component$(({ activeYear }) => {
   const navigate = useNavigate()
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(true)
+  const chooserFocused = useSignal(false)
   const years = useResource$(async () => await dataFetcher())
 
   return (
@@ -38,41 +39,118 @@ export default component$(({ activeYear }) => {
           <label for="tabs" class="sr-only">
             Select a tab
           </label>
-          {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-          <select
-            id="tabs"
-            name="tabs"
-            class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-            onChange$={(e) => {
-              if (e.target.value < 2015) {
-                return navigate(`/monthly-events/${e.target.value}/`)
-              }
-              activeYear.value = e.target.value
+          <Resource
+            value={years}
+            onPending={() => <div>Loading...</div>}
+            onRejected={(reason) => <div>Error: {reason}</div>}
+            onResolved={(years) => {
+              // need to add 2011-2014 to the list
+              const yearsToUse = [
+                ...new Set([...[2011, 2012, 2013, 2014], ...years]),
+              ]
+
+              return (
+                <div>
+                  <label
+                    id="listbox-label"
+                    class="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Choose a year
+                  </label>
+                  <div class="relative mt-2">
+                    <button
+                      type="button"
+                      class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      aria-haspopup="listbox"
+                      aria-expanded="true"
+                      aria-labelledby="listbox-label"
+                      onFocusin$={() => (chooserFocused.value = true)}
+                      onFocusout$={() => (chooserFocused.value = false)}
+                    >
+                      <span class="block truncate">{activeYear.value}</span>
+                      <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                        <svg
+                          class="h-5 w-5 text-gray-400"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                    <ul
+                      class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${
+                        chooserFocused.value
+                          ? 'transition ease-in opacity-100 z-30'
+                          : 'transition duration-200 ease-out opacity-0 z-0'
+                      }`}
+                      tabIndex={-1}
+                      role="listbox"
+                      aria-labelledby="listbox-label"
+                      aria-activedescendant={`listbox-option-${activeYear.value}`}
+                    >
+                      {yearsToUse.reverse().map((year) => {
+                        const selected = year === activeYear.value
+
+                        return (
+                          <li
+                            key={`${year}-option`}
+                            class={`${
+                              selected
+                                ? 'bg-indigo-600 text-white'
+                                : 'text-gray-900'
+                            } relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white`}
+                            id={`listbox-option-${year}`}
+                            role="option"
+                            onClick$={() => {
+                              // console.log('click', year)
+                              if (year < 2015) {
+                                navigate(`/monthly-events/${year}/`)
+                              } else {
+                                activeYear.value = year
+                              }
+                              chooserFocused.value = false
+                            }}
+                          >
+                            <span
+                              class={`block truncate ${
+                                selected ? 'font-semibold' : 'font-normal'
+                              }`}
+                            >
+                              {year}
+                            </span>
+                            {selected && (
+                              <span
+                                class={`absolute inset-y-0 right-0 flex items-center pr-4 text-white`}
+                              >
+                                <svg
+                                  class="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </span>
+                            )}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              )
             }}
-          >
-            <Resource
-              value={years}
-              onPending={() => <div>Loading...</div>}
-              onRejected={(reason) => <div>Error: {reason}</div>}
-              onResolved={(years) => {
-                // need to add 2011-2014 to the list
-                const yearsToUse = [
-                  ...new Set([...[2011, 2012, 2013, 2014], ...years]),
-                ]
-                return yearsToUse.map((year) =>
-                  activeYear.value === year ? (
-                    <option key={year} value={year} selected="">
-                      {year}
-                    </option>
-                  ) : (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ),
-                )
-              }}
-            />
-          </select>
+          />
         </div>
         <div class="hidden sm:block">
           <div class="border-b border-gray-200">
