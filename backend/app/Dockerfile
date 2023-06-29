@@ -26,4 +26,4 @@ EXPOSE 3000
 ENV ADDRESS=0.0.0.0 PORT=3000
 
 # Start the application
-CMD [ "ORIGIN=https://neu.blue-borders.ch node", "server/entry.fastify"]
+CMD [ "ORIGIN=https://new.blue-borders.ch node", "server/entry.fastify"]
