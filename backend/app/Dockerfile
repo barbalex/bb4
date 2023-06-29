@@ -22,11 +22,13 @@ COPY --from=build /app/package.json ./package.json
 
 EXPOSE 3000
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
-ENV ADDRESS=0.0.0.0 PORT=3000
+# ENV ADDRESS=0.0.0.0 PORT=3000
 
 ENV ORIGIN=https://new.blue-borders.ch
+
+USER node
 
 # Start the application
 CMD [ "node", "server/entry.fastify"]
