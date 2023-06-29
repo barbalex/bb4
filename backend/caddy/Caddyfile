@@ -11,9 +11,7 @@ api.blue-borders.ch {
     header_down Access-Control-Allow-Origin *
     header_up Host {http.request.host}
     header_up X-Real-IP {http.request.remote}
-    header_up X-Forwarded-For {http.request.remote}
     header_up X-Forwarded-Port {http.request.port}
-    header_up X-Forwarded-Proto {http.request.scheme}
   }
 }
 
@@ -24,23 +22,30 @@ auth.blue-borders.ch {
     header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
     header_up Host {http.request.host}
     header_up X-Real-IP {http.request.remote}
-    header_up X-Forwarded-For {http.request.remote}
     header_up X-Forwarded-Port {http.request.port}
-    header_up X-Forwarded-Proto {http.request.scheme}
   }
 }
 
+# new.blue-borders.ch {
+#   reverse_proxy * {
+#     to bb_app:3000
+#     header_down Access-Control-Allow-Origin *
+#     header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
+#     header_up Host {http.request.host}
+#     header_up X-Real-IP {http.request.remote}
+#     header_up X-Forwarded-Port {http.request.port}
+#   }
+# }
+
+# new.blue-borders.ch {
+# 	root * /app
+# 	encode gzip
+# 	try_files {path} /index.html
+# 	file_server
+# }
+
 new.blue-borders.ch {
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-    header_up Host {http.request.host}
-    header_up X-Real-IP {http.request.remote}
-    header_up X-Forwarded-For {http.request.remote}
-    header_up X-Forwarded-Port {http.request.port}
-    header_up X-Forwarded-Proto {http.request.scheme}
-  }
+	reverse_proxy *:3000
 }
 
 api.mediterranean-migration.com {
@@ -49,9 +54,7 @@ api.mediterranean-migration.com {
     header_down Access-Control-Allow-Origin *
     header_up Host {http.request.host}
     header_up X-Real-IP {http.request.remote}
-    header_up X-Forwarded-For {http.request.remote}
     header_up X-Forwarded-Port {http.request.port}
-    header_up X-Forwarded-Proto {http.request.scheme}
   }
 }
 
@@ -62,8 +65,6 @@ auth.mediterranean-migration.com {
     header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
     header_up Host {http.request.host}
     header_up X-Real-IP {http.request.remote}
-    header_up X-Forwarded-For {http.request.remote}
     header_up X-Forwarded-Port {http.request.port}
-    header_up X-Forwarded-Proto {http.request.scheme}
   }
 }
