@@ -1,3 +1,3 @@
 # https://hub.docker.com/_/caddy
-FROM caddy:2.6.4-alpine
+FROM caddy:latest
 COPY Caddyfile /etc/caddy/Caddyfile
