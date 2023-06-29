@@ -5,8 +5,7 @@ WORKDIR /app
 COPY ./package.json ./
 
 RUN npm install
-
-# TODO: how copy 
+# need all app files for build, just like when building locally
 COPY ./ ./
 
 # Build the project
