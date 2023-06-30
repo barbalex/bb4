@@ -77,6 +77,7 @@ export default component$(() => {
                       id: location.params.article_id,
                     })
                     refetcher.value++
+                    store.articlesRefetcher++
                   }}
                 >
                   <svg class="block h-6 w-6" fill="red" viewBox="0 0 512 512">
@@ -99,6 +100,7 @@ export default component$(() => {
                       id: location.params.article_id,
                     })
                     refetcher.value++
+                    store.articlesRefetcher++
                   }}
                 >
                   <svg class="block h-6 w-6" fill="green" viewBox="0 0 448 512">
