@@ -335,7 +335,6 @@ export default component$(() => {
       {menuOpen.value && (
         <div class="sm:hidden" id="mobile-menu">
           <div class="space-y-1 pb-3 pt-2">
-            {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-800", Default: "border-transparent text-gray-800 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
             <Link
               href="/"
               class={
