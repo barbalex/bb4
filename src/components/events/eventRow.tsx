@@ -20,14 +20,14 @@ export default component$(
             {day}
           </p>
         )}
-        <div class="grow-1 shrink-1 pr-2.5 break-words event-category">
+        <div class="grow-0 shrink-0 pr-2.5 break-words event-category">
           <ul class="px-4">
             {migrationEvents.map((event) => (
               <Event key={event.id} event={event} refetcher={refetcher} />
             ))}
           </ul>
         </div>
-        <div class="grow-1 shrink-1 pr-2.5 break-words event-category">
+        <div class="grow-0 shrink-0 pr-2.5 break-words event-category">
           <ul class="px-4">
             {politicEvents.map((event) => (
               <Event key={event.id} event={event} refetcher={refetcher} />
