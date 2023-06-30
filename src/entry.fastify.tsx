@@ -40,6 +40,7 @@ const start = async () => {
   await fastify.register(FastifyQwik, { distDir, buildDir })
 
   // Start the fastify server
+  // host standard is localhost, but we want to allow connections from other services on docker
   await fastify.listen({ port: PORT, host: '0.0.0.0' })
 }
 
