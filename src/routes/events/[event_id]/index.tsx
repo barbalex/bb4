@@ -74,7 +74,7 @@ export default component$(() => {
               <h2 class="text-xl font-semibold leading-7">Edit event</h2>
               <button
                 type="button"
-                class={`rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
+                class="rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300"
                 onClick$={() => navigate('/')}
               >
                 Close
