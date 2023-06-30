@@ -77,6 +77,7 @@ export default component$(() => {
       store.user = user?.uid
       // TODO: how do this server side without needing separate server?
       // somehow call server$?
+      // this call is needed to log in?
       getAuthToken(user)
     })
 
