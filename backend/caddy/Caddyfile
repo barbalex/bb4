@@ -21,6 +21,7 @@ auth.blue-borders.ch {
 }
 
 www.new.blue-borders.ch {
+	encode gzip
   reverse_proxy * {
     to bb_app:3000
     header_down Access-Control-Allow-Origin *
@@ -29,6 +30,7 @@ www.new.blue-borders.ch {
 }
 
 new.blue-borders.ch {
+	encode gzip
   reverse_proxy * {
     to bb_app:3000
     header_down Access-Control-Allow-Origin *
