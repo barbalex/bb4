@@ -4,7 +4,12 @@ import axios from 'redaxios'
 const getAuthToken = async (user) => {
   const hostnameWithoutWww = window.location.hostname.replace('www.', '')
   const isLocalhost = hostnameWithoutWww === 'localhost'
-  const hostToUse = isLocalhost ? 'blue-borders.ch' : hostnameWithoutWww
+  const hostToUse = isLocalhost
+    ? 'blue-borders.ch'
+    : hostnameWithoutWww.includes('blue-borders.ch')
+    ? 'blue-borders.ch'
+    : 'mediterranean-migration.com'
+  // this should also work on new.blue-borders.ch
 
   // using fetch caused issues. Somehow the response was not as expected
   let res
