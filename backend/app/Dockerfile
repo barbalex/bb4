@@ -24,8 +24,6 @@ EXPOSE 3000
 
 ENV NODE_ENV=production
 
-# ENV ADDRESS=0.0.0.0 PORT=3000
-
 ENV ORIGIN=https://new.blue-borders.ch
 
 USER node
