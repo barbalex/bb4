@@ -20,6 +20,14 @@ auth.blue-borders.ch {
 	}
 }
 
+www.new.blue-borders.ch {
+  reverse_proxy * {
+    to bb_app:3000
+    header_down Access-Control-Allow-Origin *
+    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
+  }
+}
+
 new.blue-borders.ch {
   reverse_proxy * {
     to bb_app:3000
