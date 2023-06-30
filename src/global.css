@@ -95,6 +95,15 @@ a:hover {
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
+.event-row .event-category {
+  flex-basis: calc(50vw - 22px);
+}
+@media (min-width: 640px) {
+  .event-row .event-category {
+    flex-basis: calc(50vw - 28px);
+  }
+}
+
 div.event-weather:before,
 label.event-weather:before {
   content: url(/weather.svg);
