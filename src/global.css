@@ -249,3 +249,18 @@ h4.modal-title {
   font-size: large;
   font-weight: 700;
 }
+
+.about .row {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+
+.about .row .col-sm-7 {
+  flex-basis: 500px;
+}
+
+.about .row .col-sm-5 {
+  flex-basis: 300px;
+}
