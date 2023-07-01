@@ -78,7 +78,7 @@ a:hover {
 }
 [data-title]:after {
   content: attr(data-title);
-  background-image: url(/oceanDark_3.webp);
+  background-image: url(/oceanDark_4.webp);
   outline: 1px solid white;
   color: white;
   text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,

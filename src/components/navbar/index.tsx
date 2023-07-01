@@ -77,7 +77,7 @@ export default component$(() => {
   })
 
   return (
-    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark_3.webp)] border border-blue-800 text-shadowed">
+    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark_4.webp)] border border-blue-800 text-shadowed">
       <div class="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
         <div class="flex h-14 justify-between">
           <div class="flex">

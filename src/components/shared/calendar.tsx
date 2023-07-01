@@ -173,7 +173,7 @@ export default component$(({ datum, updater, element }) => {
                 type="button"
                 class={`${
                   o.isChoosen
-                    ? 'bg-[url(../../../oceanDark_3.webp)]'
+                    ? 'bg-[url(../../../oceanDark_4.webp)]'
                     : o.isMonth
                     ? 'bg-white'
                     : 'bg-gray-50'

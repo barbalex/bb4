@@ -66,7 +66,7 @@ export default component$(() => {
               role="list"
               class="-mx-2 mt-3 mb-3 first:mt-0 border-collapse draft-parent"
             >
-              <li class="bg-[url(../../../oceanDark_3.webp)] font-bold  flex p-2 pl-3 text-sm text-white text-shadowed leading-6 border-collapse rounded-t-md">
+              <li class="bg-[url(../../../oceanDark_4.webp)] font-bold  flex p-2 pl-3 text-sm text-white text-shadowed leading-6 border-collapse rounded-t-md">
                 Articles
               </li>
               <Resource
