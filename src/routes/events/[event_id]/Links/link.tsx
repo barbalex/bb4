@@ -86,13 +86,6 @@ const deleter = server$(async function ({ id, url, label }) {
   return true
 })
 
-// example:
-// `SELECT
-//   links
-// FROM
-//   EVENT
-// where
-//   id = 'b9d8ab28-6c86-4696-9efa-292f7b9767df'`
 const dataFetcher = server$(async function ({ id, index }) {
   let res
   try {
