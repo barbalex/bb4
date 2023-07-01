@@ -37,7 +37,7 @@ const adder = server$(async function (id) {
 export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  console.log('event links, running with event:', event)
+  // console.log('event links, running with event:', event)
 
   return (
     <>
