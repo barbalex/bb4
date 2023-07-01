@@ -1,5 +1,6 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { server$, useLocation } from '@builder.io/qwik-city'
+import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
+import { BsXCircle as DeleteIcon } from '@qwikest/icons/bootstrap'
 
 import * as db from '../../../../db'
 
@@ -55,6 +56,35 @@ const urlUpdater = server$(async function ({ id, index, url }) {
     console.error('query error', { stack: error.stack, message: error.message })
   }
 })
+const deleter = server$(async function ({ id, url, label }) {
+  try {
+    const queryRes = await db.query(
+      `SELECT
+        links
+      FROM
+        EVENT
+      where
+        id = $1`,
+      [id],
+    )
+    const links = queryRes?.rows[0]?.links ?? []
+    const newLinks = links.filter(
+      (link) => link.url !== url && link.label !== label,
+    )
+    // need to stringify the links array because of pg converts objects but not arrays:
+    // https://github.com/brianc/node-postgres/issues/374
+    await db.query(
+      `update event
+          set links = $2
+        where
+          id = $1`,
+      [id, JSON.stringify(newLinks)],
+    )
+  } catch (error) {
+    console.error('query error', { stack: error.stack, message: error.message })
+  }
+  return true
+})
 
 // example:
 // `SELECT
@@ -83,6 +113,7 @@ const dataFetcher = server$(async function ({ id, index }) {
 })
 
 export default component$(({ index }) => {
+  const navigate = useNavigate()
   const location = useLocation()
 
   const link = useResource$(async ({ track }) => {
@@ -143,6 +174,21 @@ export default component$(({ index }) => {
                 {link.url}
               </textarea>
             </fieldset>
+            <button
+              type="button"
+              class="rounded-full hover:bg-gray-200 ml-1 p-1"
+              data-title="delete"
+              onClick$={async () => {
+                await deleter({
+                  id: location.params.event_id,
+                  url: link.url,
+                  label: link.label,
+                })
+                navigate()
+              }}
+            >
+              <DeleteIcon class="text-red-600 font-black text-2xl" />
+            </button>
           </div>
         )
       }}
