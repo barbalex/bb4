@@ -16,7 +16,7 @@ import Links from './links'
 import Calendar from '../../../components/shared/calendar'
 
 const dataFetcher = server$(async function (id) {
-  console.log('event, dataFetcher running for id:', id)
+  // console.log('event, dataFetcher running for id:', id)
   let res
   try {
     res = await db.query(
