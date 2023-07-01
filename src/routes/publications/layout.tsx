@@ -123,7 +123,7 @@ export default component$(() => {
                         role="list"
                       >
                         <li
-                          class={`bg-[url(../../../oceanDark.jpg)] leading-6 border-collapse rounded-t-md ${
+                          class={`bg-[url(../../../oceanDark_3.webp)] text-shadowed leading-6 border-collapse rounded-t-md ${
                             !isActive && 'rounded-b-md'
                           }`}
                         >

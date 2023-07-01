@@ -14,7 +14,7 @@ export default component$(() => {
         <div class="px-2 xl:w-64 xl:shrink-0">
           <nav class="sticky top-24 flex  flex-1 flex-col" aria-label="Sidebar">
             <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
-              <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
+              <li class="bg-[url(../../../oceanDark_3.webp)] text-shadowed leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2014/"
                   class={`${
@@ -174,7 +174,7 @@ export default component$(() => {
               )}
             </ul>
             <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
-              <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
+              <li class="bg-[url(../../../oceanDark_3.webp)] text-shadowed leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2013/"
                   class={`${
@@ -334,7 +334,7 @@ export default component$(() => {
               )}
             </ul>
             <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
-              <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
+              <li class="bg-[url(../../../oceanDark_3.webp)] text-shadowed leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2012/"
                   class={`${
@@ -495,7 +495,7 @@ export default component$(() => {
               )}
             </ul>
             <ul class="-mx-1 mt-3 first:mt-0 border-collapse" role="list">
-              <li class="bg-[url(../../../oceanDark.jpg)] leading-6 rounded-t-md last:rounded-b-md">
+              <li class="bg-[url(../../../oceanDark_3.webp)] text-shadowed leading-6 rounded-t-md last:rounded-b-md">
                 <Link
                   href="/monthly-events/2011/"
                   class={`${

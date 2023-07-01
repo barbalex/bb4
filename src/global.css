@@ -47,6 +47,12 @@ a:hover {
   text-decoration: underline;
 }
 
+.text-shadowed {
+  color: #fff;
+  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+    -2px 2px 3px black;
+}
+
 .draft-parent {
   container-type: inline-size;
 }
@@ -72,9 +78,11 @@ a:hover {
 }
 [data-title]:after {
   content: attr(data-title);
-  background-image: url(/oceanDark.jpg);
+  background-image: url(/oceanDark_3.webp);
   outline: 1px solid white;
   color: white;
+  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+    -2px 2px 3px black;
   font-size: 1em;
   position: absolute;
   padding: 1px 3px 2px 3px;
@@ -95,10 +103,20 @@ a:hover {
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
+.event-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 1fr;
+}
+.event-row .event-date {
+  width: 44px;
+}
 .event-row .event-category {
   flex-basis: calc(50vw - 22px);
 }
 @media (min-width: 640px) {
+  .event-row .event-date {
+    width: 56px;
+  }
   .event-row .event-category {
     flex-basis: calc(50vw - 28px);
   }

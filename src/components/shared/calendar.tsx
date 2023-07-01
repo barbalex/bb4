@@ -166,14 +166,14 @@ export default component$(({ datum, updater, element }) => {
             <div>S</div>
             <div>S</div>
           </div>
-          <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+          <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm text-shadowed shadow ring-1 ring-gray-200">
             {dayObjectArray.value.map((o) => (
               <button
                 key={o.datum}
                 type="button"
                 class={`${
                   o.isChoosen
-                    ? 'bg-[url(../../../oceanDark.jpg)]'
+                    ? 'bg-[url(../../../oceanDark_3.webp)]'
                     : o.isMonth
                     ? 'bg-white'
                     : 'bg-gray-50'
