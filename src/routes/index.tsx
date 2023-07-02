@@ -17,8 +17,12 @@ export default component$(() => {
         focusing on both maritime and political events.
       </p>
       <Years activeYear={activeYear} />
-      <EventHeader />
-      <Events activeYear={activeYear} />
+      <div class="event-grid">
+        <EventHeader />
+        <main>
+          <Events activeYear={activeYear} />
+        </main>
+      </div>
     </>
   )
 })

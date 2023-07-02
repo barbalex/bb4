@@ -103,22 +103,26 @@ a:hover {
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'header'
+    'main';
+}
+.event-header {
+  grid-area: header;
+}
+.main {
+  grid-area: main;
+}
 .event-row {
   display: grid;
   grid-template-columns: 44px 1fr 1fr;
 }
-.event-row .event-date {
-  width: 44px;
-}
-.event-row .event-category {
-  flex-basis: calc(50vw - 22px);
-}
 @media (min-width: 640px) {
-  .event-row .event-date {
-    width: 56px;
-  }
-  .event-row .event-category {
-    flex-basis: calc(50vw - 28px);
+  .event-row {
+    grid-template-columns: 56px 1fr 1fr;
   }
 }
 
