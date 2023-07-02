@@ -1,4 +1,4 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { component$ } from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import { BsXCircle as DeleteIcon } from '@qwikest/icons/bootstrap'
 
@@ -56,7 +56,7 @@ const urlUpdater = server$(async function ({ id, index, url }) {
     console.error('query error', { stack: error.stack, message: error.message })
   }
 })
-const deleter = server$(async function ({ id, url, label }) {
+const deleter = server$(async function ({ id, index }) {
   try {
     const queryRes = await db.query(
       `SELECT
@@ -68,9 +68,7 @@ const deleter = server$(async function ({ id, url, label }) {
       [id],
     )
     const links = queryRes?.rows[0]?.links ?? []
-    const newLinks = links.filter(
-      (link) => link.url !== url && link.label !== label,
-    )
+    links.splice(index, 1)
     // need to stringify the links array because of pg converts objects but not arrays:
     // https://github.com/brianc/node-postgres/issues/374
     await db.query(
@@ -78,7 +76,7 @@ const deleter = server$(async function ({ id, url, label }) {
           set links = $2
         where
           id = $1`,
-      [id, JSON.stringify(newLinks)],
+      [id, JSON.stringify(links)],
     )
   } catch (error) {
     console.error('query error', { stack: error.stack, message: error.message })
@@ -86,105 +84,66 @@ const deleter = server$(async function ({ id, url, label }) {
   return true
 })
 
-const dataFetcher = server$(async function ({ id, index }) {
-  let res
-  try {
-    res = await db.query(
-      `SELECT
-          links
-        FROM
-          EVENT
-        where
-          id = $1`,
-      [id],
-    )
-  } catch (error) {
-    console.error('query error', error.stack)
-  }
-
-  return res?.rows[0]?.links?.[index]
-})
-
-export default component$(({ index }) => {
+export default component$(({ link, index }) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const link = useResource$(async ({ track }) => {
-    const id = track(() => location.params.event_id)
-
-    return await dataFetcher({ id, index })
-  })
-
   return (
-    <Resource
-      value={link}
-      onPending={() => <div>Loading...</div>}
-      onRejected={(reason) => <div>Error: {reason}</div>}
-      onResolved={(link) => {
-        if (!link) {
-          return <div>Link not found</div>
-        }
-
-        return (
-          <div class="flex gap-1">
-            <fieldset class="">
-              <label for="label" class="sr-only">
-                Label
-              </label>
-              <input
-                type="text"
-                name="label"
-                id="label"
-                class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                value={link.label}
-                onChange$={(event, currentTarget) =>
-                  labelUpdater({
-                    id: location.params.event_id,
-                    index,
-                    label: currentTarget.value,
-                  })
-                }
-              />
-            </fieldset>
-            <fieldset class="basis-auto grow">
-              <label for="label" class="sr-only">
-                Url
-              </label>
-              <textarea
-                name="url"
-                id="url"
-                class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                onChange$={(event, currentTarget) =>
-                  urlUpdater({
-                    id: location.params.event_id,
-                    index,
-                    url: currentTarget.value,
-                  })
-                }
-                // make it one line high but user can enlarge it
-                rows="1"
-              >
-                {link.url}
-              </textarea>
-            </fieldset>
-            <button
-              type="button"
-              class="rounded-full hover:bg-gray-200 ml-1 p-1"
-              data-title="delete"
-              onClick$={async () => {
-                await deleter({
-                  id: location.params.event_id,
-                  url: link.url,
-                  label: link.label,
-                })
-                navigate()
-              }}
-            >
-              <DeleteIcon class="text-red-600 font-black text-2xl" />
-            </button>
-          </div>
-        )
-      }}
-    />
+    <div class="flex gap-1">
+      <fieldset class="">
+        <label for="label" class="sr-only">
+          Label
+        </label>
+        <input
+          type="text"
+          name="label"
+          id="label"
+          class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+          value={link.label}
+          onChange$={(event, currentTarget) =>
+            labelUpdater({
+              id: location.params.event_id,
+              index,
+              label: currentTarget.value,
+            })
+          }
+        />
+      </fieldset>
+      <fieldset class="basis-auto grow">
+        <label for="label" class="sr-only">
+          Url
+        </label>
+        <textarea
+          name="url"
+          id="url"
+          class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+          onChange$={(event, currentTarget) =>
+            urlUpdater({
+              id: location.params.event_id,
+              index,
+              url: currentTarget.value,
+            })
+          }
+          // make it one line high but user can enlarge it
+          rows="1"
+        >
+          {link.url}
+        </textarea>
+      </fieldset>
+      <button
+        type="button"
+        class="rounded-full hover:bg-gray-200 ml-1 p-1"
+        data-title="delete"
+        onClick$={async () => {
+          await deleter({
+            id: location.params.event_id,
+            index,
+          })
+          navigate()
+        }}
+      >
+        <DeleteIcon class="text-red-600 font-black text-2xl" />
+      </button>
+    </div>
   )
 })
