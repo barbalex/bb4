@@ -1,9 +1,4 @@
-import {
-  component$,
-  useResource$,
-  Resource,
-  useSignal,
-} from '@builder.io/qwik'
+import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
 import { server$ } from '@builder.io/qwik-city'
 
 import EventRow from './eventRow'
@@ -174,19 +169,19 @@ export default component$(({ activeYear }) => {
         return rowsData.map((row, index) => (
           <>
             {(row.isEndOfMonth || index === 0) && (
-              <MonthRow key={`${row.id}/monthrow`} date={row.date} />
+              <MonthRow key={`${row.id}/month`} date={row.date} />
             )}
             {row.isEndOfMonth &&
               (row.migrationStats?.length > 0 ||
                 row.politicStats?.length > 0) && (
                 <StatisticRow
-                  key={`${row.id}/statsrow`}
+                  key={`${row.id}/stats`}
                   migrationStats={row.migrationStats}
                   politicStats={row.politicStats}
                 />
               )}
             <EventRow
-              key={`${row.id}/eventhrow`}
+              key={`${row.id}/event`}
               date={row.date}
               migrationEvents={row.migrationEvents}
               politicEvents={row.politicEvents}
