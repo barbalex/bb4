@@ -23,15 +23,14 @@ const adder = server$(async function (id) {
         where id = $1`,
       [id, JSON.stringify(newLinks)],
     )
-    console.log('hi')
   } catch (error) {
-    return console.error('query error', {
+    console.error('query error', {
       stack: error.stack,
       message: error.message,
     })
   }
-  console.log('hi 2')
-  return
+  console.log('links, adder will return')
+  return true
 })
 
 export default component$(({ event }) => {
@@ -47,14 +46,19 @@ export default component$(({ event }) => {
       </div>
       <div class="space-y-1 w-full">
         {(event.links ?? []).map((link, index) => (
-          <Link key={`${link.label}/${link.url}/${index}`} index={index} />
+          <Link
+            key={`${link.label}/${link.url}/${index}`}
+            link={link}
+            index={index}
+          />
         ))}
       </div>
       <button
         class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
         onClick$={async () => {
           await adder(location.params.event_id)
-          console.log('hi 3')
+          // TODO: not happening!!!!!!
+          console.log('links, onClick, adder returned')
           navigate()
         }}
       >
