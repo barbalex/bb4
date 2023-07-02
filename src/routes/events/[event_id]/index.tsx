@@ -16,7 +16,7 @@ import Links from './links'
 import Calendar from '../../../components/shared/calendar'
 
 const dataFetcher = server$(async function (id) {
-  // console.log('event, dataFetcher running for id:', id)
+  console.log('event, dataFetcher running for id:', id)
   let res
   try {
     res = await db.query(
@@ -67,7 +67,10 @@ export default component$(() => {
     <Resource
       value={event}
       onPending={() => <div>Loading...</div>}
-      onRejected={(reason) => <div>Error: {reason}</div>}
+      onRejected={(reason) => {
+        console.error('event rejected, reason:', reason)
+        return <div>Error: {reason}</div>
+      }}
       onResolved={(event) => {
         if (!event) return <div>Event not found</div>
 
