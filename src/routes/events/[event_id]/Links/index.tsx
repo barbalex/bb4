@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, $ } from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 
 import Link from './link'
@@ -56,7 +56,15 @@ export default component$(({ event }) => {
       <button
         class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
         onClick$={async () => {
-          await adder(location.params.event_id)
+          setTimeout(
+            () =>
+              $(() => {
+                console.log('links, onClick, navigate from timeout')
+                navigate()
+              }),
+            500,
+          )
+          await adder(location.params.event_id).then
           // TODO: not happening!!!!!!
           console.log('links, onClick, adder returned')
           navigate()
