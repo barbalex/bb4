@@ -77,7 +77,7 @@ export default component$(() => {
   })
 
   return (
-    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark_4.webp)] border border-blue-800 text-shadowed">
+    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark_4.webp)] border border-blue-800 sm-text-shadowed">
       <div class="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
         <div class="flex h-14 justify-between">
           <div class="flex">
@@ -340,7 +340,7 @@ export default component$(() => {
               class={
                 location.url.pathname === '/' ||
                 location.url.pathname.startsWith('/events/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800'
+                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
                   : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
@@ -350,7 +350,7 @@ export default component$(() => {
               href="/sar"
               class={
                 location.url.pathname === '/sar/'
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800'
+                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
                   : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
@@ -360,7 +360,7 @@ export default component$(() => {
               href="/publications"
               class={
                 location.url.pathname.startsWith('/publications/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800'
+                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
                   : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
@@ -370,7 +370,7 @@ export default component$(() => {
               href="/articles"
               class={
                 location.url.pathname.startsWith('/articles/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800'
+                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
                   : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
@@ -380,7 +380,7 @@ export default component$(() => {
               href="/about"
               class={
                 location.url.pathname === '/about/'
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800'
+                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
                   : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >

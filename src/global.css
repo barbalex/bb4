@@ -53,6 +53,14 @@ a:hover {
     -2px 2px 3px black;
 }
 
+@media (min-width: 640px) {
+  .sm-text-shadowed {
+    color: #fff;
+    text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+      -2px 2px 3px black;
+  }
+}
+
 .draft-parent {
   container-type: inline-size;
 }
