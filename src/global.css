@@ -111,22 +111,35 @@ a:hover {
 /*--------------------------------*\
     3. #Events
 \*--------------------------------*/
+
+/* sticky elements and event-grid do not shrink below 450px */
+@media (max-width: 450px) {
+  .event-grid .sticky,
+  .event-grid .event-list {
+    width: calc(100vw - 36px);
+  }
+}
 .event-grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
     'header'
-    'main';
+    'event-list';
 }
 .event-header {
   grid-area: header;
 }
-.main {
-  grid-area: main;
+.event-list {
+  grid-area: event-list;
 }
 .event-row {
   display: grid;
-  grid-template-columns: 44px 1fr 1fr;
+  grid-template-columns: 36px 1fr 1fr;
+}
+@media (min-width: 460px) {
+  .event-row {
+    grid-template-columns: 44px 1fr 1fr;
+  }
 }
 @media (min-width: 640px) {
   .event-row {
