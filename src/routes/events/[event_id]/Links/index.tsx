@@ -58,6 +58,7 @@ export default component$(({ event, refetcher }) => {
         onClick$={async () => {
           await adder(location.params.event_id)
           // not sure if both are needed
+          // either way: it does not work :(
           navigate()
           refetcher.value++
         }}
