@@ -16,7 +16,7 @@ import Links from './links'
 import Calendar from '../../../components/shared/calendar'
 
 const dataFetcher = server$(async function (id) {
-  console.log('event, dataFetcher running for id:', id)
+  // console.log('event, dataFetcher running for id:', id)
   let res
   try {
     res = await db.query(
@@ -53,9 +53,11 @@ const updater = server$(async function ({ field, value, eventId }) {
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
+  const refetcher = useSignal(0)
 
   const event = useResource$(async ({ track }) => {
     const id = track(() => location.params.event_id)
+    track(() => refetcher.value)
 
     return await dataFetcher(id)
   })
@@ -367,7 +369,7 @@ export default component$(() => {
                 <p class="text-sm leading-6 text-gray-600">
                   Links will be listet after the title and open in a new tab.
                 </p>
-                <Links event={event} />
+                <Links event={event} refetcher={refetcher} />
               </fieldset>
               <div class="flex items-center justify-end gap-x-6">
                 <button
