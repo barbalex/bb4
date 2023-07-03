@@ -19,9 +19,9 @@ export default component$(() => {
       <Years activeYear={activeYear} />
       <div class="event-grid">
         <EventHeader />
-        <main>
+        <div class="event-list">
           <Events activeYear={activeYear} />
-        </main>
+        </div>
       </div>
     </>
   )
