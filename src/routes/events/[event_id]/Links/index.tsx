@@ -1,5 +1,5 @@
-import { component$, $ } from '@builder.io/qwik'
-import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
+import { component$ } from '@builder.io/qwik'
+import { server$, useLocation } from '@builder.io/qwik-city'
 
 import Link from './link'
 import * as db from '~/db'
@@ -33,10 +33,8 @@ const adder = server$(async function (id) {
   return true
 })
 
-export default component$(({ event }) => {
+export default component$(({ event, refetcher }) => {
   const location = useLocation()
-  const navigate = useNavigate()
-  // console.log('event links, running with event:', event)
 
   return (
     <>
@@ -56,18 +54,8 @@ export default component$(({ event }) => {
       <button
         class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
         onClick$={async () => {
-          setTimeout(
-            () =>
-              $(() => {
-                console.log('links, onClick, navigate from timeout')
-                navigate()
-              }),
-            500,
-          )
-          await adder(location.params.event_id).then
-          // TODO: not happening!!!!!!
-          console.log('links, onClick, adder returned')
-          navigate()
+          await adder(location.params.event_id)
+          refetcher()
         }}
       >
         Add Link
