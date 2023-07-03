@@ -57,6 +57,7 @@ export default component$(({ event, refetcher }) => {
         class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
         onClick$={async () => {
           await adder(location.params.event_id)
+          // not sure if both are needed
           navigate()
           refetcher.value++
         }}
