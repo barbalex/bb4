@@ -25,8 +25,8 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.1.5",
-    "@builder.io/qwik-city": "1.1.5",
+    "@builder.io/qwik": "1.2.4",
+    "@builder.io/qwik-city": "1.2.4",
     "@fastify/compress": "6.4.0",
     "@fastify/static": "6.10.2",
     "@types/eslint": "8.40.2",
@@ -36,7 +36,7 @@
     "autoprefixer": "10.4.14",
     "cross-env": "7.0.3",
     "eslint": "8.44.0",
-    "eslint-plugin-qwik": "1.2.3",
+    "eslint-plugin-qwik": "1.2.4",
     "fastify": "4.19.1",
     "fastify-plugin": "4.5.0",
     "postcss": "8.4.24",
