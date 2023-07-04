@@ -3,7 +3,7 @@ import { routeLoader$ } from '@builder.io/qwik-city'
 
 import Years from './years'
 import EventHeader from './header'
-import Events from './list'
+import List from './list'
 import * as db from '~/db'
 
 export const useYears = routeLoader$(async function () {
@@ -167,7 +167,6 @@ export const useEvents = routeLoader$(async function (requestEvent) {
       (e) => e.month === date.month && e.day === date.day,
     ),
   }))
-  // console.log('rowsData:', rowsData)
 
   return rowsData
 })
@@ -185,7 +184,7 @@ export default component$(() => {
       <div class="event-grid">
         <EventHeader />
         <div class="event-list">
-          <Events />
+          <List />
         </div>
       </div>
     </>
