@@ -35,8 +35,8 @@ const adder = server$(async function ({ id, url, label }) {
 export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  const newUrl = useSignal()
-  const newLabel = useSignal()
+  const newUrl = useSignal('')
+  const newLabel = useSignal('')
 
   return (
     <>
@@ -81,8 +81,8 @@ export default component$(({ event }) => {
                   url: newUrl.value,
                   label: currentTarget.value,
                 })
-                newLabel.value = undefined
-                newUrl.value = undefined
+                newLabel.value = ''
+                newUrl.value = ''
                 navigate()
               }
             }}
@@ -104,8 +104,8 @@ export default component$(({ event }) => {
                   url: currentTarget.value,
                   label: newLabel.value,
                 })
-                newLabel.value = undefined
-                newUrl.value = undefined
+                newLabel.value = ''
+                newUrl.value = ''
                 navigate()
               }
             }}
