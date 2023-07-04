@@ -11,9 +11,13 @@ COPY ./ ./
 # Build the project
 RUN npm run build
 
+RUN echo 'finished building app'
+
 FROM node:lts-alpine as production
 
 WORKDIR /app
+
+RUN echo 'will copy to production'
 
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/server ./server
@@ -27,6 +31,8 @@ ENV NODE_ENV=production
 ENV ORIGIN=https://new.blue-borders.ch
 
 USER node
+
+RUN echo 'will start server'
 
 # Start the application
 CMD [ "node", "server/entry.fastify"]
