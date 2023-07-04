@@ -99,6 +99,8 @@ const dataFetcher = server$(async function (activeYear) {
   }
 
   let dateRes
+  // need last_of_month, not end_of_month
+  // reason: there may be no event on the last day of the month
   try {
     dateRes = await db.query(
       `SELECT
@@ -106,7 +108,8 @@ const dataFetcher = server$(async function (activeYear) {
           extract(month from datum)::int as month,
           extract(day from datum)::int as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
-          (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum::date as is_end_of_month
+          (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum::date as is_end_of_month,
+          row_number() over (partition by extract(month from datum)::int order by datum desc)::int = 1 as is_last_of_month
         FROM
           EVENT
         where
@@ -118,6 +121,8 @@ const dataFetcher = server$(async function (activeYear) {
   } catch (error) {
     console.error('query error', error.stack)
   }
+
+  console.log('dateRes.rows:', dateRes.rows)
 
   // comparing equality of dates did not work
   // so need to extract day and month
