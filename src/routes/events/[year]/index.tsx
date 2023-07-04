@@ -6,11 +6,12 @@ import EventHeader from './header'
 import List from './list'
 import * as db from '~/db'
 
-export const useYears = routeLoader$(async function () {
-  let res
-  try {
-    res = await db.query(
-      `SELECT
+export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
+  async function () {
+    let res
+    try {
+      res = await db.query(
+        `SELECT
           to_char(date_trunc('year', datum), 'yyyy')::int AS year
         FROM
           EVENT
@@ -19,13 +20,18 @@ export const useYears = routeLoader$(async function () {
           year
         ORDER BY
           year ASC`,
-    )
-  } catch (error) {
-    console.error('query error', error.stack)
-  }
+      )
+    } catch (error) {
+      console.error('query error', error.stack)
+    }
 
-  return res?.rows?.map((r) => r.year)
-})
+    const years = res?.rows?.map((r) => r.year)
+    // need to add 2011-2014 to the list
+    const yearsToUse = [...new Set([...[2011, 2012, 2013, 2014], ...years])]
+
+    return yearsToUse
+  },
+)
 
 // select all articles: id, title, draft
 export const useEvents = routeLoader$(async function (requestEvent) {
@@ -34,7 +40,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   try {
     migrationEventRes = await db.query(
       `SELECT
-          *,
+          id,
+          datum,
+          title,
+          links,
+          event_type,
+          tag,
           extract(month from datum)::int as month,
           extract(day from datum)::int as day
         FROM

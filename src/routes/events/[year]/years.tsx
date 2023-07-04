@@ -1,4 +1,4 @@
-import { component$, useSignal } from '@builder.io/qwik'
+import { component$, useSignal, useComputed$ } from '@builder.io/qwik'
 import { useNavigate, useLocation } from '@builder.io/qwik-city'
 
 // select all articles: id, title, draft
@@ -7,15 +7,24 @@ import { useYears } from './index.tsx'
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
-  const grouped15to18 = useSignal(true)
-  const grouped19to22 = useSignal(true)
   const chooserFocused = useSignal(false)
+
   const years = useYears()
-  // need to add 2011-2014 to the list
-  const yearsToUse = [...new Set([...[2011, 2012, 2013, 2014], ...years.value])]
-  const years15to18 = years.value.filter((y) => y >= 2015 && y <= 2018)
-  const years19to22 = years.value.filter((y) => y >= 2019 && y <= 2022)
-  const yearsAfter22 = years.value.filter((y) => y > 2022)
+  const years15to18: Array<number> = useComputed$(() =>
+    years.value.filter((y) => y >= 2015 && y <= 2018),
+  )
+  const years19to22 = useComputed$(() =>
+    years.value.filter((y) => y >= 2019 && y <= 2022),
+  )
+  const yearsAfter22 = useComputed$(() => years.value.filter((y) => y > 2022))
+
+  // ungroup if is active
+  const grouped15to18 = useSignal(
+    !years15to18.value.includes(+location.params.year),
+  )
+  const grouped19to22 = useSignal(
+    !years19to22.value.includes(+location.params.year),
+  )
 
   return (
     <>
@@ -68,7 +77,7 @@ export default component$(() => {
                 aria-labelledby="listbox-label"
                 aria-activedescendant={`listbox-option-${location.params.year}`}
               >
-                {yearsToUse.reverse().map((year) => {
+                {years.value.reverse().map((year) => {
                   const selected = year === +location.params.year
 
                   return (
@@ -139,7 +148,7 @@ export default component$(() => {
                     2015 - 2018
                   </a>
                 ) : (
-                  years15to18.map((year) => (
+                  years15to18.value.map((year) => (
                     <a
                       key={year}
                       href="#"
@@ -163,7 +172,7 @@ export default component$(() => {
                     2019 - 2022
                   </a>
                 ) : (
-                  years19to22.map((year) => (
+                  years19to22.value.map((year) => (
                     <a
                       key={year}
                       href="#"
@@ -178,7 +187,7 @@ export default component$(() => {
                     </a>
                   ))
                 )}
-                {yearsAfter22.map((year) => (
+                {yearsAfter22.value.map((year) => (
                   <a
                     key={year}
                     href="#"

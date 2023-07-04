@@ -7,12 +7,12 @@ import StatisticRow from './statisticRow'
 import { useEvents } from '.'
 
 export default component$(() => {
-  const data = useEvents()
-  // TODO: data updates, but not the view
+  const events = useEvents()
+  // TODO: data updates, but not the top of the list
 
   // DO NOT use a parent div, use a fragment instead
   // div prevents sticky month row
-  return data.value.map((row, index) => (
+  return events.value.map((row, index) => (
     <>
       {(row.isLastOfMonth || index === 0) && (
         <MonthRow key={`${row.id}/month`} date={row.date} />
