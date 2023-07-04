@@ -23,7 +23,7 @@ export default component$(() => {
           date={row.date}
         />
       )}
-      {row.isLastOfMonth &&
+      {row.isEndOfMonth &&
         (row.migrationStats?.length > 0 || row.politicStats?.length > 0) && (
           <StatisticRow
             key={`${row.id}/stats/${location.params.year}`}

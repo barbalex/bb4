@@ -142,19 +142,26 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           datum,
           extract(month from datum)::int as month,
           extract(day from datum)::int as day,
-          (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
+          (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum as is_end_of_month,
+          --row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int as rn,
           row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int = 1 as is_last_of_month
-        FROM
-          EVENT
+        from event
         where
-          datum between $1 and $2
+          extract(year from datum)::int = $1
         ORDER BY
-        extract(month from datum)::int desc, extract(day from datum)::int desc`,
-      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+          extract(month from datum)::int desc,
+          extract(day from datum)::int desc,
+          -- need to ensure the rn 1 is choosen by distinct on
+          row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int asc`,
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
   }
+  // console.log(
+  //   'july events',
+  //   dateRes.rows.filter((row) => [8, 7].includes(row.month)),
+  // )
 
   // comparing equality of dates did not work
   // so need to extract day and month
@@ -165,6 +172,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     month: date.month,
     day: date.day,
     isLastOfMonth: date.is_last_of_month,
+    isEndOfMonth: date.is_end_of_month,
     migrationEvents: migrationEventRes.rows.filter(
       (e) => e.month === date.month && e.day === date.day,
     ),
