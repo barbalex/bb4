@@ -1,10 +1,10 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useSignal } from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 
 import Link from './link'
 import * as db from '~/db'
 
-const adder = server$(async function (id) {
+const adder = server$(async function ({ id, url, label }) {
   try {
     const queryRes = await db.query(
       `select links
@@ -13,8 +13,7 @@ const adder = server$(async function (id) {
       [id],
     )
     const links = queryRes?.rows[0]?.links ?? []
-    const newLinks = [...links, { url: '', label: '' }]
-    console.log('newLinks', { id, newLinks })
+    const newLinks = [...links, { url, label }]
     // need to stringify the links array because of pg converts objects but not arrays:
     // https://github.com/brianc/node-postgres/issues/374
     await db.query(
@@ -29,13 +28,21 @@ const adder = server$(async function (id) {
       message: error.message,
     })
   }
-  console.log('links, adder will return')
+
   return true
 })
 
 export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
+  const newUrl = useSignal('')
+  const newLabel = useSignal('')
+
+  console.log('event links', {
+    newUrl: newUrl.value,
+    newLabel: newLabel.value,
+    linksLength: event.value.links?.length,
+  })
 
   return (
     <>
@@ -52,17 +59,72 @@ export default component$(({ event }) => {
           />
         ))}
       </div>
-      <button
-        class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
-        onClick$={async () => {
-          await adder(location.params.event_id)
-          console.log('adder returned, calling navigate')
-          // TODO: does not work :(
-          navigate()
-        }}
+
+      <div
+        class={`mt-0 text-sm font-semibold ${
+          !!event.value.links?.length && 'mt-2'
+        }`}
       >
-        Add Link
-      </button>
+        <label class="w-full text-slate-400" for="new-link">
+          Add a new link here:
+        </label>
+      </div>
+      <div class="flex gap-1" id="new-link">
+        <fieldset class="">
+          <label for="label" class="sr-only">
+            Label
+          </label>
+          <input
+            type="text"
+            name="label"
+            id="label"
+            class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            value={newLabel.value}
+            onChange$={async (event, currentTarget) => {
+              if (newUrl.value) {
+                await adder({
+                  id: location.params.event_id,
+                  url: newUrl.value,
+                  label: currentTarget.value,
+                })
+                newLabel.value = ''
+                newUrl.value = ''
+                navigate()
+              } else {
+                newLabel.value = currentTarget.value
+              }
+            }}
+          />
+        </fieldset>
+        <fieldset class="basis-auto grow">
+          <label for="label" class="sr-only">
+            Url
+          </label>
+          <textarea
+            name="url"
+            id="url"
+            class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            onChange$={async (event, currentTarget) => {
+              if (newLabel.value) {
+                await adder({
+                  id: location.params.event_id,
+                  url: currentTarget.value,
+                  label: newLabel.value,
+                })
+                newLabel.value = ''
+                newUrl.value = ''
+                navigate()
+              } else {
+                newUrl.value = currentTarget.value
+              }
+            }}
+            // make it one line high but user can enlarge it
+            rows="1"
+          >
+            {newUrl.value}
+          </textarea>
+        </fieldset>
+      </div>
     </>
   )
 })

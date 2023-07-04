@@ -84,7 +84,7 @@ const deleter = server$(async function ({ id, index }) {
   return true
 })
 
-export default component$(({ link, index }) => {
+export default component$(({ link, index }) => { 
   const navigate = useNavigate()
   const location = useLocation()
 
