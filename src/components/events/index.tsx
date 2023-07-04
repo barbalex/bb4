@@ -110,7 +110,7 @@ const dataFetcher = server$(async function (activeYear) {
           extract(month from datum)::int as month,
           extract(day from datum)::int as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
-          row_number() over (partition by extract(month from datum)::int order by datum desc)::int = 1 as is_last_of_month
+          row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int = 1 as is_last_of_month
         FROM
           EVENT
         where
@@ -172,9 +172,9 @@ export default component$(({ activeYear }) => {
 
         // DO NOT use a parent div, use a fragment instead
         // div prevents sticky month row
-        return rowsData.map((row) => (
+        return rowsData.map((row, index) => (
           <>
-            {row.isLastOfMonth && (
+            {(row.isLastOfMonth || index === 0) && (
               <MonthRow key={`${row.id}/month`} date={row.date} />
             )}
             {row.isLastOfMonth &&
