@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import dayjs from 'dayjs'
 
-import Event from './event'
+import Event from './listItem'
 
 export default component$(
   ({ date, migrationEvents, politicEvents, refetcher }) => {

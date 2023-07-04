@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 
-import Event from './event'
+import Event from './listItem'
 
 export default component$(({ migrationStats = [], politicStats = [] }) => (
   <div class="border-t border-solid border-slate-200 bg-slate-100 hover:bg-slate-200 event-row">
