@@ -33,10 +33,10 @@ const adder = server$(async function (id) {
   return true
 })
 
-export default component$(({ event, refetcher }) => {
+export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  // console.log('event links, running with event:', event)
+  console.log('event links, running with event:', event)
 
   return (
     <>
@@ -60,7 +60,6 @@ export default component$(({ event, refetcher }) => {
           // not sure if both are needed
           // either way: it does not work :(
           navigate()
-          refetcher.value++
         }}
       >
         Add Link
