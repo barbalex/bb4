@@ -17,14 +17,6 @@ export default component$(() => {
   const years19to22 = years.value.filter((y) => y >= 2019 && y <= 2022)
   const yearsAfter22 = years.value.filter((y) => y > 2022)
 
-  // console.log('years', {
-  //   years: years.value,
-  //   yearsToUse,
-  //   years15to18,
-  //   years19to22,
-  //   yearsAfter22,
-  // })
-
   return (
     <>
       <div>
@@ -88,7 +80,6 @@ export default component$(() => {
                       id={`listbox-option-${year}`}
                       role="option"
                       onClick$={() => {
-                        // console.log('click', year)
                         if (year < 2015) {
                           navigate(`/monthly-events/${year}/`)
                         } else {
