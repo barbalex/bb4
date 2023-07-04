@@ -108,7 +108,6 @@ const dataFetcher = server$(async function (activeYear) {
           extract(month from datum)::int as month,
           extract(day from datum)::int as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
-          (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum::date as is_end_of_month,
           row_number() over (partition by extract(month from datum)::int order by datum desc)::int = 1 as is_last_of_month
         FROM
           EVENT
@@ -131,7 +130,7 @@ const dataFetcher = server$(async function (activeYear) {
   const rowsData = dateRes.rows.map((date) => ({
     date: date.datum,
     day: date.day,
-    isEndOfMonth: date.is_end_of_month,
+    isLastOfMonth: date.is_last_of_month,
     migrationEvents: migrationEventRes.rows.filter(
       (e) => e.month === date.month && e.day === date.day,
     ),
@@ -173,10 +172,10 @@ export default component$(({ activeYear }) => {
         // div prevents sticky month row
         return rowsData.map((row, index) => (
           <>
-            {(row.isEndOfMonth || index === 0) && (
+            {(row.isLastOfMonth || index === 0) && (
               <MonthRow key={`${row.id}/month`} date={row.date} />
             )}
-            {row.isEndOfMonth &&
+            {row.isLastOfMonth &&
               (row.migrationStats?.length > 0 ||
                 row.politicStats?.length > 0) && (
                 <StatisticRow
