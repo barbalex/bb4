@@ -35,14 +35,8 @@ const adder = server$(async function ({ id, url, label }) {
 export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  const newUrl = useSignal('')
-  const newLabel = useSignal('')
-
-  console.log('event links', {
-    newUrl: newUrl.value,
-    newLabel: newLabel.value,
-    linksLength: event.value.links?.length,
-  })
+  const newUrl = useSignal()
+  const newLabel = useSignal()
 
   return (
     <>
@@ -79,7 +73,7 @@ export default component$(({ event }) => {
             name="label"
             id="label"
             class="block w-32 rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-            value={newLabel.value}
+            bind:value={newLabel}
             onChange$={async (event, currentTarget) => {
               if (newUrl.value) {
                 await adder({
@@ -87,11 +81,9 @@ export default component$(({ event }) => {
                   url: newUrl.value,
                   label: currentTarget.value,
                 })
-                newLabel.value = ''
-                newUrl.value = ''
+                newLabel.value = undefined
+                newUrl.value = undefined
                 navigate()
-              } else {
-                newLabel.value = currentTarget.value
               }
             }}
           />
@@ -104,6 +96,7 @@ export default component$(({ event }) => {
             name="url"
             id="url"
             class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            bind:value={newUrl}
             onChange$={async (event, currentTarget) => {
               if (newLabel.value) {
                 await adder({
@@ -111,18 +104,14 @@ export default component$(({ event }) => {
                   url: currentTarget.value,
                   label: newLabel.value,
                 })
-                newLabel.value = ''
-                newUrl.value = ''
+                newLabel.value = undefined
+                newUrl.value = undefined
                 navigate()
-              } else {
-                newUrl.value = currentTarget.value
               }
             }}
             // make it one line high but user can enlarge it
             rows="1"
-          >
-            {newUrl.value}
-          </textarea>
+          />
         </fieldset>
       </div>
     </>

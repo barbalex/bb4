@@ -121,8 +121,6 @@ const dataFetcher = server$(async function (activeYear) {
     console.error('query error', error.stack)
   }
 
-  console.log('dateRes.rows:', dateRes.rows)
-
   // comparing equality of dates did not work
   // so need to extract day and month
   // TODO: do this in PostgreSQL?
