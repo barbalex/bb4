@@ -99,12 +99,38 @@ a:hover {
   top: -2em;
   white-space: nowrap;
   box-shadow: 1px 1px 3px #00000075;
-  opacity: 0;
   /* one less than menus so they aren't hidden */
   z-index: 49;
   visibility: hidden;
 }
 [data-title] {
+  position: relative;
+}
+[data-title-below]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+[data-title-below]:after {
+  content: attr(data-title-below);
+  background-image: url(/oceanDark_4.webp);
+  outline: 1px solid white;
+  color: white;
+  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+    -2px 2px 3px black;
+  font-size: 1em;
+  position: absolute;
+  padding: 1px 3px 2px 3px;
+  border-radius: 4px;
+  left: -50%;
+  bottom: -2em;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #00000075;
+  /* one less than menus so they aren't hidden */
+  z-index: 49;
+  visibility: hidden;
+}
+[data-title-below] {
   position: relative;
 }
 

@@ -147,7 +147,7 @@ export default component$(() => {
                     <button
                       type="button"
                       class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      data-title="preview"
+                      data-title-below="preview"
                       aria-label="preview"
                       onClick$={() => (store.editing = false)}
                     >
@@ -167,7 +167,7 @@ export default component$(() => {
                     <button
                       type="button"
                       class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      data-title={
+                      data-title-below={
                         location.url.pathname.startsWith('/publications/')
                           ? 'edit publication'
                           : location.url.pathname.startsWith('/articles/')
@@ -209,7 +209,7 @@ export default component$(() => {
                 <button
                   type="button"
                   class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  data-title={
+                  data-title-below={
                     location.url.pathname.startsWith('/publications/')
                       ? 'new publication'
                       : location.url.pathname.startsWith('/articles/')
@@ -261,7 +261,7 @@ export default component$(() => {
               <button
                 type="button"
                 class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                data-title={store.user ? 'Log out' : 'Log in'}
+                data-title-below={store.user ? 'Log out' : 'Log in'}
                 aria-label={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
                   if (store.user) {
