@@ -36,7 +36,6 @@ const adder = server$(async function (id) {
 export default component$(({ event }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  console.log('event links, running with event:', event)
 
   return (
     <>
@@ -45,7 +44,7 @@ export default component$(({ event }) => {
         <label class=" ">Url</label>
       </div>
       <div class="space-y-1 w-full">
-        {(event.links ?? []).map((link, index) => (
+        {(event.value.links ?? []).map((link, index) => (
           <Link
             key={`${link.label}/${link.url}/${index}`}
             link={link}
@@ -57,8 +56,8 @@ export default component$(({ event }) => {
         class="mt-4 px-3 py-2 text-sm font-semibold text-black bg-white rounded-md outline outline-1 outline-slate-300 shadow-sm hover:bg-slate-100"
         onClick$={async () => {
           await adder(location.params.event_id)
-          // not sure if both are needed
-          // either way: it does not work :(
+          console.log('adder returned, calling navigate')
+          // TODO: does not work :(
           navigate()
         }}
       >
