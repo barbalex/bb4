@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik'
 import { server$, useLocation, useNavigate } from '@builder.io/qwik-city'
 import { BsXCircle as DeleteIcon } from '@qwikest/icons/bootstrap'
 
-import * as db from '../../../../db'
+import * as db from '~/db'
 
 const labelUpdater = server$(async function ({ id, index, label }) {
   try {
@@ -84,7 +84,7 @@ const deleter = server$(async function ({ id, index }) {
   return true
 })
 
-export default component$(({ link, index }) => { 
+export default component$(({ link, index }) => {
   const navigate = useNavigate()
   const location = useLocation()
 

@@ -1,10 +1,14 @@
 import { component$, useResource$, Resource, useSignal } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { server$, routeLoader$, useLocation } from '@builder.io/qwik-city'
 
 import EventRow from './eventRow'
 import MonthRow from './monthRow'
 import StatisticRow from './statisticRow'
 import * as db from '~/db'
+
+// export const useData = routeLoader$(async function (requestEvent) {
+//   // TODO:
+// })
 
 // select all articles: id, title, draft
 const dataFetcher = server$(async function (activeYear) {
@@ -150,11 +154,12 @@ const dataFetcher = server$(async function (activeYear) {
   return rowsData
 })
 
-export default component$(({ activeYear }) => {
+export default component$(() => {
+  const location = useLocation()
   const refetcher = useSignal(0)
 
   const data = useResource$(async ({ track }) => {
-    const year = track(() => activeYear.value)
+    const year = track(() => location.params.year)
     track(() => refetcher.value)
 
     return await dataFetcher(year)
@@ -166,7 +171,10 @@ export default component$(({ activeYear }) => {
     <Resource
       value={data}
       onPending={() => <div>Loading...</div>}
-      onRejected={(reason) => <div>Error: {reason}</div>}
+      onRejected={(reason) => {
+        console.error('events list resource error:', reason)
+        return <div>Error: {reason}</div>
+      }}
       onResolved={(rowsData) => {
         // console.log('events, rowsData:', rowsData)
 

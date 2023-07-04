@@ -5,7 +5,7 @@ import {
   $,
   // useVisibleTask$,
 } from '@builder.io/qwik'
-import { useNavigate, server$ } from '@builder.io/qwik-city'
+import { useNavigate, server$, useLocation } from '@builder.io/qwik-city'
 import {
   BsPencilFill as EditIcon,
   BsXCircle as DeleteIcon,
@@ -30,6 +30,7 @@ const deleter = server$(async function ({ id }) {
 
 export default component$(({ event, refetcher }) => {
   const navigate = useNavigate()
+  const location = useLocation()
   const store = useContext(CTX)
   const showEditingGlyphons = !!store.user
   const deleteMenuOpen = useSignal(false)
@@ -85,7 +86,9 @@ export default component$(({ event, refetcher }) => {
               type="button"
               class="rounded-full hover:bg-gray-200 ml-2 p-1"
               data-title="edit"
-              onClick$={() => navigate(`/events/${event.id}`)}
+              onClick$={() =>
+                navigate(`/events/${location.parama.year}/${event.id}`)
+              }
             >
               <EditIcon class="text-sm" />
             </button>

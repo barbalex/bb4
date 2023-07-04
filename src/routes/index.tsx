@@ -1,8 +1,8 @@
 import type { DocumentHead } from '@builder.io/qwik-city'
 
-import Events from './events'
-
-export default Events
+export const onGet = async ({ redirect }: RequestEvent) => {
+  throw redirect(308, `/events/${new Date().getFullYear()}/`)
+}
 
 // TODO: needed?
 export const head: DocumentHead = {

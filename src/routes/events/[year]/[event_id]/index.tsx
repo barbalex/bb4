@@ -9,10 +9,10 @@ import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(customParseFormat)
 
-import * as db from '../../../db'
+import * as db from '~/db'
 import dateFromInputForDb from '~/utils/dateFromInputForDb'
 import Links from './links'
-import Calendar from '../../../components/shared/calendar'
+import Calendar from '~/components/shared/calendar'
 
 export const useData = routeLoader$(async function (requestEvent) {
   let res

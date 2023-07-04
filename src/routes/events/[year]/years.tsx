@@ -1,7 +1,7 @@
 import { component$, useSignal, useResource$, Resource } from '@builder.io/qwik'
 import { server$, useNavigate, useLocation } from '@builder.io/qwik-city'
 
-import * as db from '../../db'
+import * as db from '~/db'
 
 // select all articles: id, title, draft
 export const dataFetcher = server$(async function () {
@@ -26,8 +26,8 @@ export const dataFetcher = server$(async function () {
 })
 
 export default component$(() => {
-  const navigate = useNavigate()
   const location = useLocation()
+  const navigate = useNavigate()
   const grouped15to18 = useSignal(true)
   const grouped19to22 = useSignal(true)
   const chooserFocused = useSignal(false)
