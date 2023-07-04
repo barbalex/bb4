@@ -1,5 +1,10 @@
 import { component$, useSignal, $ } from '@builder.io/qwik'
-import { server$, useNavigate, routeLoader$ } from '@builder.io/qwik-city'
+import {
+  server$,
+  useNavigate,
+  routeLoader$,
+  useLocation,
+} from '@builder.io/qwik-city'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(customParseFormat)
@@ -45,12 +50,12 @@ const updater = server$(async function ({ field, value, eventId }) {
 
 export default component$(() => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const dateIsOpen = useSignal(false)
   const dateElement = useSignal()
 
   const event = useData()
-  console.log('event', event.value)
 
   if (!event.value) return <div>Event not found</div>
 
@@ -81,7 +86,7 @@ export default component$(() => {
                   updater({
                     field: 'event_type',
                     value: 'migration',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
                 class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 hover:cursor-pointer"
@@ -104,7 +109,7 @@ export default component$(() => {
                   updater({
                     field: 'event_type',
                     value: 'politics',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
                 class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 hover:cursor-pointer"
@@ -133,7 +138,7 @@ export default component$(() => {
                 updater({
                   field: 'title',
                   value: currentTarget.value,
-                  eventId: event.value.id,
+                  eventId: location.params.event_id,
                 })
               }
             />
@@ -169,7 +174,7 @@ export default component$(() => {
               await updater({
                 field: 'datum',
                 value: dateFromInputForDb(currentTarget.value),
-                eventId: event.value.id,
+                eventId: location.params.event_id,
               })
               navigate()
             }}
@@ -189,7 +194,7 @@ export default component$(() => {
                 await updater({
                   field: 'datum',
                   value: datum,
-                  eventId: event.value.id,
+                  eventId: location.params.event_id,
                 })
                 navigate()
                 dateIsOpen.value = false
@@ -216,7 +221,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: 'weather',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -239,7 +244,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: 'victims',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -262,7 +267,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: 'highlighted',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -285,7 +290,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: 'statistics',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -308,7 +313,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: 'monthlyStatistics',
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -331,7 +336,7 @@ export default component$(() => {
                   updater({
                     field: 'tag',
                     value: null,
-                    eventId: event.value.id,
+                    eventId: location.params.event_id,
                   })
                 }
               />
@@ -349,7 +354,7 @@ export default component$(() => {
           <p class="text-sm leading-6 text-gray-600">
             Links will be listet after the title and open in a new tab.
           </p>
-          <Links event={event.value} />
+          <Links event={event} />
         </fieldset>
         <div class="flex items-center justify-end gap-x-6">
           <button
