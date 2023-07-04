@@ -101,10 +101,12 @@ const dataFetcher = server$(async function (activeYear) {
   let dateRes
   // need last_of_month, not end_of_month
   // reason: there may be no event on the last day of the month
+  // DANGER
+  // select distinct datum gives multiple month/day rows!!!!
   try {
     dateRes = await db.query(
-      `SELECT
-          distinct datum,
+      `SELECT distinct on (extract(month from datum)::int, extract(day from datum)::int)
+          datum,
           extract(month from datum)::int as month,
           extract(day from datum)::int as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date as end_of_month,
@@ -114,7 +116,7 @@ const dataFetcher = server$(async function (activeYear) {
         where
           datum between $1 and $2
         ORDER BY
-          datum desc`,
+        extract(month from datum)::int desc, extract(day from datum)::int desc`,
       [`${activeYear}-01-01`, `${activeYear}-12-31`],
     )
   } catch (error) {
@@ -127,6 +129,7 @@ const dataFetcher = server$(async function (activeYear) {
   // guess it would need jsonb arrays of rows
   const rowsData = dateRes.rows.map((date) => ({
     date: date.datum,
+    month: date.month,
     day: date.day,
     isLastOfMonth: date.is_last_of_month,
     migrationEvents: migrationEventRes.rows.filter(
@@ -142,6 +145,7 @@ const dataFetcher = server$(async function (activeYear) {
       (e) => e.month === date.month && e.day === date.day,
     ),
   }))
+  // console.log('rowsData:', rowsData)
 
   return rowsData
 })
@@ -168,9 +172,9 @@ export default component$(({ activeYear }) => {
 
         // DO NOT use a parent div, use a fragment instead
         // div prevents sticky month row
-        return rowsData.map((row, index) => (
+        return rowsData.map((row) => (
           <>
-            {(row.isLastOfMonth || index === 0) && (
+            {row.isLastOfMonth && (
               <MonthRow key={`${row.id}/month`} date={row.date} />
             )}
             {row.isLastOfMonth &&
