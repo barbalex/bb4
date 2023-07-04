@@ -19,7 +19,7 @@ export default component$(({ datum, updater, element }) => {
   // we will compare with an index, so we need to substract 1
   // thus: monday = 0, tuesday = 1, etc.
   const firstDayOfMonthWeekDayIndex = useComputed$(
-    () => dayjs(firstDayOfMonth.value).isoWeekday() - 1,
+    () => dayjs(firstDayOfMonth.value)?.isoWeekday?.() - 1,
   )
   const firstDayOfNextMonthIndex = useComputed$(
     () => daysInMonth.value + firstDayOfMonthWeekDayIndex.value,
@@ -47,7 +47,7 @@ export default component$(({ datum, updater, element }) => {
         dayObject.datum = dayjs(firstDayOfMonth.value)
           .subtract(firstDayOfMonthWeekDayIndex.value - i, 'day')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.weekNumber = dayjs(dayObject.datum)?.isoWeek?.()
         dayObject.day = dayjs(dayObject.datum).date()
       } else if (
         i >= firstDayOfMonthWeekDayIndex.value &&
@@ -56,7 +56,7 @@ export default component$(({ datum, updater, element }) => {
         dayObject.datum = dayjs(firstDayOfMonth.value)
           .add(i - firstDayOfMonthWeekDayIndex.value, 'day')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.weekNumber = dayjs(dayObject.datum)?.isoWeek?.()
         dayObject.day = dayjs(dayObject.datum).date()
         dayObject.isMonth = true
       } else {
@@ -64,7 +64,7 @@ export default component$(({ datum, updater, element }) => {
           .add(i - firstDayOfNextMonthIndex.value, 'day')
           .add(1, 'month')
           .format('YYYY-MM-DD')
-        dayObject.weekNumber = dayjs(dayObject.datum).isoWeek()
+        dayObject.weekNumber = dayjs(dayObject.datum)?.isoWeek?.()
         dayObject.day = dayjs(dayObject.datum).date()
       }
       dayObject.isChoosen = dayjs(dayObject.datum).isSame(
@@ -72,7 +72,7 @@ export default component$(({ datum, updater, element }) => {
         'day',
       )
       dayObject.isToday = dayjs(dayObject.datum).isSame(dayjs(), 'day')
-      dayObject.weekDay = dayjs(dayObject.datum).isoWeekday() - 1
+      dayObject.weekDay = dayjs(dayObject.datum)?.isoWeekday?.() - 1
       dayObjectArray.push(dayObject)
     }
     return dayObjectArray
