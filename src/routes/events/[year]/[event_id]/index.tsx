@@ -14,7 +14,7 @@ import dateFromInputForDb from '~/utils/dateFromInputForDb'
 import Links from './links'
 import Calendar from '~/components/shared/calendar'
 
-export const useData = routeLoader$(async function (requestEvent) {
+export const useEvent = routeLoader$(async function (requestEvent) {
   let res
   try {
     res = await db.query(
@@ -55,7 +55,7 @@ export default component$(() => {
   const dateIsOpen = useSignal(false)
   const dateElement = useSignal()
 
-  const event = useData()
+  const event = useEvent()
 
   if (!event.value) return <div>Event not found</div>
 
