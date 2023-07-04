@@ -2,7 +2,7 @@ import { component$, useSignal } from '@builder.io/qwik'
 
 import Years from '../../components/years'
 import EventHeader from './header'
-import Events from './eventList'
+import Events from './list'
 
 export default component$(() => {
   const activeYear = useSignal(new Date().getFullYear())
