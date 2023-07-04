@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import Event from './listItem'
 
 export default component$(
-  ({ date, migrationEvents, politicEvents, refetcher }) => {
+  ({ date, migrationEvents, politicEvents }) => {
     const day = dayjs(date).format('D')
     const dayWithEvents = migrationEvents.length > 0 || politicEvents.length > 0
 
@@ -15,14 +15,14 @@ export default component$(
         <div class="pr-2.5 break-words">
           <ul class="px-4">
             {migrationEvents.map((event) => (
-              <Event key={event.id} event={event} refetcher={refetcher} />
+              <Event key={event.id} event={event} />
             ))}
           </ul>
         </div>
         <div class="pr-2.5 break-words">
           <ul class="px-4">
             {politicEvents.map((event) => (
-              <Event key={event.id} event={event} refetcher={refetcher} />
+              <Event key={event.id} event={event} />
             ))}
           </ul>
         </div>

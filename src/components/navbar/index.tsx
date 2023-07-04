@@ -244,7 +244,8 @@ export default component$(() => {
                     ) {
                       const id = await eventAdder()
                       store.editing = true
-                      id && navigate(`/events/${id}`)
+                      id &&
+                        navigate(`/events/${new Date().getFullYear()}/${id}`)
                     }
                   }}
                 >

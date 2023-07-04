@@ -28,7 +28,7 @@ const deleter = server$(async function ({ id }) {
   return true
 })
 
-export default component$(({ event, refetcher }) => {
+export default component$(({ event }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const store = useContext(CTX)
@@ -87,7 +87,7 @@ export default component$(({ event, refetcher }) => {
               class="rounded-full hover:bg-gray-200 ml-2 p-1"
               data-title="edit"
               onClick$={() =>
-                navigate(`/events/${location.parama.year}/${event.id}`)
+                navigate(`/events/${location.params.year}/${event.id}`)
               }
             >
               <EditIcon class="text-sm" />
@@ -117,7 +117,7 @@ export default component$(({ event, refetcher }) => {
                   onYes={$(async () => {
                     deleteMenuOpen.value = false
                     await deleter({ id: event.id })
-                    refetcher.value++
+                    navigate()
                   })}
                   onNo={$(() => (deleteMenuOpen.value = false))}
                   subject="event"
