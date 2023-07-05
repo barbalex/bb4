@@ -33,8 +33,8 @@ const contentUpdater = server$(async function ({ content, id }) {
   return true
 })
 
-export default component$(({ data, refetcher }) => {
-  const { id, title, category, sort, content } = data
+export default component$(({ data }) => {
+  const { id, title, category, sort, content } = data.value
   const store = useContext(CTX)
   const navigate = useNavigate()
 
@@ -47,7 +47,7 @@ export default component$(({ data, refetcher }) => {
 
     window.editorChangeHandler = async (e) => {
       await contentUpdater({ id, content: e?.target?.getContent?.() })
-      refetcher.value++
+      navigate()
     }
   })
 
@@ -71,7 +71,7 @@ export default component$(({ data, refetcher }) => {
                   value: 'European Union',
                   id,
                 })
-                refetcher.value++
+                navigate()
                 store.publicationsRefetcher++
                 navigate(`/publications/eu/${id}`)
               }}
@@ -97,7 +97,7 @@ export default component$(({ data, refetcher }) => {
                   value: 'IOs & NGOs',
                   id,
                 })
-                refetcher.value++
+                navigate()
                 store.publicationsRefetcher++
                 navigate(`/publications/io-ngo/${id}`)
               }}
@@ -123,7 +123,7 @@ export default component$(({ data, refetcher }) => {
                   value: 'Academic',
                   id,
                 })
-                refetcher.value++
+                navigate()
                 store.publicationsRefetcher++
                 navigate(`/publications/academic/${id}`)
               }}
@@ -154,7 +154,7 @@ export default component$(({ data, refetcher }) => {
           autofocus
           onChange$={async (e) => {
             await updater({ id, field: 'title', value: e?.target?.value })
-            refetcher.value++
+            navigate()
             store.publicationsRefetcher++
           }}
         />
@@ -174,7 +174,7 @@ export default component$(({ data, refetcher }) => {
           value={sort}
           onChange$={async (e) => {
             await updater({ id, field: 'sort', value: e?.target?.value })
-            refetcher.value++
+            navigate()
             store.publicationsRefetcher++
           }}
         />
