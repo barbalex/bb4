@@ -98,7 +98,7 @@ export default component$(({ event }) => {
               aria-expanded={deleteMenuOpen.value}
             >
               <button
-                id="deleteButton"
+                id={`${event.id}/deleteButton`}
                 type="button"
                 class="rounded-full hover:bg-gray-200 ml-1 p-1"
                 data-title={deleteMenuOpen.value ? undefined : 'delete'}
