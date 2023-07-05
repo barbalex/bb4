@@ -17,7 +17,7 @@ It is being rebuilt from the ground up to:
 
 ## Technologies
 
-### [Qwick](https://qwik.builder.io)
+### [Qwik](https://qwik.builder.io)
 
 - Instantly-interactive web app.
 - Query and mutate data server side.<br/>
