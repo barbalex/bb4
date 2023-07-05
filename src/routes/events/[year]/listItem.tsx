@@ -106,23 +106,26 @@ export default component$(({ event }) => {
               >
                 <DeleteIcon class="text-red-600 font-bold text-sm" />
               </button>
-              <div
-                class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 ${
-                  deleteMenuOpen.value
-                    ? 'transition ease-in opacity-100 translate-y-0'
-                    : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
-                }`}
-              >
-                <ConfirmDeletion
-                  onYes={$(async () => {
-                    deleteMenuOpen.value = false
-                    await deleter({ id: event.id })
-                    navigate()
-                  })}
-                  onNo={$(() => (deleteMenuOpen.value = false))}
-                  subject="event"
-                />
-              </div>
+              {/* need to build only when open, otherwise every item will have it's dom */}
+              {deleteMenuOpen.value && (
+                <div
+                  class={`absolute left-1/2 z-50 flex -translate-x-1/2 px-4 ${
+                    deleteMenuOpen.value
+                      ? 'transition ease-in opacity-100 translate-y-0'
+                      : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
+                  }`}
+                >
+                  <ConfirmDeletion
+                    onYes={$(async () => {
+                      deleteMenuOpen.value = false
+                      await deleter({ id: event.id })
+                      navigate()
+                    })}
+                    onNo={$(() => (deleteMenuOpen.value = false))}
+                    subject="event"
+                  />
+                </div>
+              )}
             </div>
           </>
         )}
