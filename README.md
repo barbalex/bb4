@@ -20,9 +20,9 @@ It is being rebuilt from the ground up to:
 ### [Qwik](https://qwik.builder.io)
 
 - Instantly-interactive web app.
-- Query and mutate data server side.<br/>
-  Goodbye data fetching API...
-- State management with signals.
+- Query, mutate and massage data server side.<br/>
+  Goodbye data fetching API. Just wow.
+- State management with signals. Beats even mobx.
 - Only render what's on screen.
 - Simpler yet more powerfull than React.
 
