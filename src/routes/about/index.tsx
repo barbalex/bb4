@@ -1,11 +1,5 @@
-import {
-  component$,
-  useResource$,
-  Resource,
-  useContext,
-  useSignal,
-} from '@builder.io/qwik'
-import { server$, routeLoader$ } from '@builder.io/qwik-city'
+import { component$, useContext } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
 
 import * as db from '~/db'
 import { CTX } from '~/root'
