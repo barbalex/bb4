@@ -119,7 +119,8 @@ export default component$(({ event }) => {
                     onYes={$(async () => {
                       deleteMenuOpen.value = false
                       await deleter({ id: event.id })
-                      navigate()
+                      // with `navigate()`, list did not render correctly
+                      window.location.reload()
                     })}
                     onNo={$(() => (deleteMenuOpen.value = false))}
                     subject="event"
