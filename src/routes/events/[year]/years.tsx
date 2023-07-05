@@ -153,7 +153,7 @@ export default component$(() => {
                       href="#"
                       class={
                         +location.params.year === year
-                          ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                          ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                           : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
@@ -177,7 +177,7 @@ export default component$(() => {
                       href="#"
                       class={
                         +location.params.year === year
-                          ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                          ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                           : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
@@ -192,7 +192,7 @@ export default component$(() => {
                     href="#"
                     class={
                       +location.params.year === year
-                        ? `border-indigo-500 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                         : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                     }
                     onClick$={() => navigate(`/events/${year}/`)}
