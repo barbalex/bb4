@@ -28,7 +28,7 @@ EXPOSE 3000
 
 ENV NODE_ENV=production
 
-ENV ORIGIN=https://new.blue-borders.ch
+# ENV ORIGIN=https://new.blue-borders.ch
 
 USER node
 
