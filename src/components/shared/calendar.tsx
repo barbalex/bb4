@@ -107,7 +107,6 @@ export default component$(({ datum, updater, element }) => {
                 class="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                aria-hidden="true"
               >
                 <path
                   fillRule="evenodd"
@@ -141,7 +140,6 @@ export default component$(({ datum, updater, element }) => {
                 class="h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                aria-hidden="true"
               >
                 <path
                   fillRule="evenodd"
