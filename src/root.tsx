@@ -92,11 +92,15 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
-        <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@2/dist/tinymce-webcomponent.min.js"></script>
       </head>
       <body lang="en">
         <RouterOutlet />
         <ServiceWorkerRegister />
+        <script
+          defer
+          fetchpriority="low"
+          src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@2/dist/tinymce-webcomponent.min.js"
+        ></script>
       </body>
     </QwikCityProvider>
   )
