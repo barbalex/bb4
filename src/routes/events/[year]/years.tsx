@@ -1,5 +1,5 @@
 import { component$, useSignal, useComputed$ } from '@builder.io/qwik'
-import { useNavigate, useLocation } from '@builder.io/qwik-city'
+import { useNavigate, useLocation, Link } from '@builder.io/qwik-city'
 
 // select all articles: id, title, draft
 import { useYears } from './index.tsx'
@@ -131,24 +131,24 @@ export default component$(() => {
         <div class="hidden sm:block">
           <div class="border-b border-gray-200">
             <nav class="-mb-px flex" aria-label="Tabs">
-              <a
+              <Link
                 href="/monthly-events/2014/"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
               >
                 2011 - 2014
-              </a>
+              </Link>
               <>
                 {grouped15to18.value ? (
-                  <a
+                  <Link
                     href="#"
                     class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
                     onClick$={() => (grouped15to18.value = false)}
                   >
                     2015 - 2018
-                  </a>
+                  </Link>
                 ) : (
                   years15to18.value.map((year) => (
-                    <a
+                    <Link
                       key={year}
                       href="#"
                       class={
@@ -159,20 +159,20 @@ export default component$(() => {
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
                       {year}
-                    </a>
+                    </Link>
                   ))
                 )}
                 {grouped19to22.value ? (
-                  <a
+                  <Link
                     href="#"
                     class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
                     onClick$={() => (grouped19to22.value = false)}
                   >
                     2019 - 2022
-                  </a>
+                  </Link>
                 ) : (
                   years19to22.value.map((year) => (
-                    <a
+                    <Link
                       key={year}
                       href="#"
                       class={
@@ -183,11 +183,11 @@ export default component$(() => {
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
                       {year}
-                    </a>
+                    </Link>
                   ))
                 )}
                 {yearsAfter22.value.map((year) => (
-                  <a
+                  <Link
                     key={year}
                     href="#"
                     class={
@@ -198,7 +198,7 @@ export default component$(() => {
                     onClick$={() => navigate(`/events/${year}/`)}
                   >
                     {year}
-                  </a>
+                  </Link>
                 ))}
               </>
             </nav>
