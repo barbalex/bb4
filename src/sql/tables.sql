@@ -4,31 +4,10 @@ CREATE TABLE event(
   title text DEFAULT NULL,
   links jsonb DEFAULT NULL,
   event_type text,
-  -- tags is old way of doing this
-  -- TODO: remove after migrating to bb4
-  tags jsonb DEFAULT NULL,
-  tags_sort integer DEFAULT 99,
-  -- tag is new way of doing this
-  tag text DEFAULT NULL
+  tag text DEFAULT NULL,
+  tags_sort integer DEFAULT 99
 );
 
--- 1. find tags with multiple elements:
--- select datum, tags, jsonb_array_length(tags) as count from event where jsonb_array_length(tags) > 1;
--- helper queries:
--- select tags from event where tags::jsonb ? 'Italy';
--- select tags - 'Italy' from event where tags::jsonb ? 'Italy';
--- 2. remove superfluos tags:
--- update event set tags = tags - 'Italy';
--- update event set tags = tags - 'Greece';
--- update event set tags = tags - 'Libya';
--- update event set tags = tags - 'statistics' where jsonb_array_length(tags) > 1;
--- 3. update tag column with first (now only) element of tags array
--- UPDATE
---   event
--- SET
---   tag = tags::jsonb ->> 0
--- WHERE
---   tags IS NOT NULL;
 CREATE INDEX ON event USING btree(id);
 
 CREATE INDEX ON event USING btree(datum);
