@@ -1,5 +1,5 @@
 import { component$, useTask$ } from '@builder.io/qwik'
-import { server$ } from '@builder.io/qwik-city'
+import { server$, useNavigate } from '@builder.io/qwik-city'
 import { isServer } from '@builder.io/qwik/build'
 
 import * as db from '~/db'
@@ -18,7 +18,9 @@ const saver = server$(async function (content) {
   return true
 })
 
-export default component$(({ about, refetcher }) => {
+export default component$(({ about }) => {
+  const navigate = useNavigate()
+
   // useVisibleTask had issues on first render - code did not run reliably
   useTask$(() => {
     if (isServer) return
@@ -28,7 +30,7 @@ export default component$(({ about, refetcher }) => {
 
     window.editorChangeHandler = async (e) => {
       await saver(e?.target?.getContent?.())
-      refetcher.value++
+      navigate()
     }
   })
 
@@ -51,7 +53,7 @@ export default component$(({ about, refetcher }) => {
         resize="false"
         on-Change="editorChangeHandler"
       >
-        {about}
+        {about.value}
       </tinymce-editor>
     </div>
   )
