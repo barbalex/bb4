@@ -17,7 +17,6 @@ import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
 import 'core-js/actual/array/group'
 
 import { RouterHead } from './components/router-head/router-head'
-import getAuthToken from './utils/getAuthToken'
 import './global.css'
 
 export const CTX = createContextId<{
@@ -69,16 +68,7 @@ export default component$(() => {
     store.firebaseAuth = noSerialize(auth)
     const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
       // console.log('App, onAuthStateChanged, user:', user)
-      if (!user) {
-        store.user = ''
-        return
-      }
-
-      store.user = user?.uid
-      // TODO: how do this server side without needing separate server?
-      // somehow call server$?
-      // this call is needed to log in?
-      getAuthToken(user)
+      store.user = user?.uid ?? ''
     })
 
     cleanup(() => {
