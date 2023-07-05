@@ -3,6 +3,7 @@ import {
   useContext,
   useSignal,
   useVisibleTask$,
+  $,
 } from '@builder.io/qwik'
 import { Form, useNavigate } from '@builder.io/qwik-city'
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -48,7 +49,7 @@ export default component$(() => {
                 return
               }
               success.value = userCredential.user.email
-              setTimeout(() => navigate('/'), 3000)
+              setTimeout($(() => navigate('/'), 3000))
             }}
           >
             <div>
