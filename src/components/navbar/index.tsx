@@ -293,7 +293,7 @@ export default component$(() => {
               type="button"
               class="inline-flex items-center justify-center rounded-md p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={menuOpen.value}
               onClick$={() => {
                 menuOpen.value = !menuOpen.value
               }}
