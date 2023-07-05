@@ -77,6 +77,8 @@ export default component$(() => {
 
   const deleteMenuOpen = useSignal(false)
 
+  // cannot use a routeLoader here
+  // because need to track login state which exists only client side
   const publications = useResource$(async ({ track }) => {
     track(() => store.publicationsRefetcher)
     const isLoggedIn = track(() => !!store.user)

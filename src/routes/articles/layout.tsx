@@ -49,6 +49,8 @@ export default component$(() => {
   const store = useContext(CTX)
   const navigate = useNavigate()
 
+  // cannot use a routeLoader here
+  // because need to track login state which exists only client side
   const articles = useResource$(async ({ track }) => {
     track(() => store.articlesRefetcher)
     const isLoggedIn = track(() => !!store.user)
