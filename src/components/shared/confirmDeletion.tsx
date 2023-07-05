@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik'
 
 export default component$(({ onYes, onNo, subject }) => {
   return (
-    <div class="w-auto rounded-md p-2 pt-1 bg-white text-sm shadow-lg ring-1 ring-gray-900/5 select-none">
+    <div class="rounded-md p-2 pt-1 bg-white text-sm shadow-lg ring-1 ring-gray-900/5 select-none">
       <p class="font-semibold whitespace-nowrap select-none">{`Delete this ${subject}?`}</p>
       <div class="mt-1 flex justify-between">
         <button
