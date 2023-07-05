@@ -20,26 +20,6 @@ auth.blue-borders.ch {
 	}
 }
 
-# TODO: remove later
-www.new.blue-borders.ch {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
-}
-
-# TODO: remove later
-new.blue-borders.ch {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
-}
-
 www.blue-borders.ch {
 	encode gzip
   reverse_proxy * {
