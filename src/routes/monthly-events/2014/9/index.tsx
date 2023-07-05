@@ -5,7 +5,7 @@ export default component$(() => (
       <thead class="sticky top-14">
         <tr >
           <th
-            style="width: 276.45pt; background: #fabf8f; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; padding-right: 5.4pt; border: windowtext 1pt solid;"
+            style="width: 276.45pt; background: #fabf8f; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; padding-right: 5.4pt; border: 1px solid;"
             colspan="2"
             valign="top"
             width="369"
@@ -22,7 +22,7 @@ export default component$(() => (
             </p>
           </th>
           <th
-            style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 134.65pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+            style="border-top: 1px solid; border-right: 1px solid; width: 134.65pt; background: #fabf8f; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
             rowspan="2"
             valign="top"
             width="180"
@@ -49,7 +49,7 @@ export default component$(() => (
             </p>
           </th>
           <th
-            style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 163pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+            style="border-top: 1px solid; border-right: 1px solid; width: 163pt; background: #fabf8f; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
             rowspan="2"
             valign="top"
             width="217"
@@ -100,7 +100,7 @@ export default component$(() => (
             </p>
           </th>
           <th
-            style="border-top: windowtext 1pt solid; border-right: windowtext 1pt solid; width: 177.2pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+            style="border-top: 1px solid; border-right: 1px solid; width: 177.2pt; background: #fabf8f; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
             rowspan="2"
             valign="top"
             width="236"
@@ -150,7 +150,7 @@ export default component$(() => (
         </tr>
         <tr>
           <th
-            style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+            style="border-top: medium none; border-right: 1px solid; width: 120.5pt; background: #fabf8f; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
             valign="top"
             width="161"
           >
@@ -166,7 +166,7 @@ export default component$(() => (
             </p>
           </th>
           <th
-            style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; background: #fabf8f; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+            style="border-top: medium none; border-right: 1px solid; width: 155.95pt; background: #fabf8f; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
             valign="top"
             width="208"
           >
@@ -186,7 +186,7 @@ export default component$(() => (
     <tbody>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -241,7 +241,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -295,7 +295,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -345,7 +345,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -399,7 +399,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -452,7 +452,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -464,7 +464,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -672,7 +672,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -702,7 +702,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -775,7 +775,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -859,7 +859,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -871,7 +871,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -1035,7 +1035,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -1047,7 +1047,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -1128,7 +1128,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -1235,7 +1235,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -1247,7 +1247,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -1407,7 +1407,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -1504,7 +1504,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -1516,7 +1516,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -1631,7 +1631,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -1643,7 +1643,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -1860,7 +1860,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -2045,7 +2045,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -2130,7 +2130,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -2175,7 +2175,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -2187,7 +2187,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -2414,7 +2414,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -2426,7 +2426,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -2628,7 +2628,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >
@@ -2757,7 +2757,7 @@ export default component$(() => (
       </tr>
       <tr>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 120.5pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 120.5pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: 1px solid; padding-right: 5.4pt;"
           valign="top"
           width="161"
         >
@@ -2769,7 +2769,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 155.95pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 155.95pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="208"
         >
@@ -3032,7 +3032,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 134.65pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 134.65pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="180"
         >
@@ -3044,7 +3044,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 163pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 163pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="217"
         >
@@ -3207,7 +3207,7 @@ export default component$(() => (
           </p>
         </td>
         <td
-          style="border-top: medium none; border-right: windowtext 1pt solid; width: 177.2pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
+          style="border-top: medium none; border-right: 1px solid; width: 177.2pt; border-bottom: 1px solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: medium none; padding-right: 5.4pt;"
           valign="top"
           width="236"
         >

@@ -656,7 +656,7 @@ export default component$(() => {
             </ul>
           </nav>
         </div>
-        <div class="px-2 xl:flex-1">
+        <div class="px-2 xl:flex-1 monthly-events">
           <Slot />
         </div>
       </div>

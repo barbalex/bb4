@@ -13,7 +13,7 @@ export default component$(() => (
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
             paddingRight: '5.4pt',
-            border: 'windowtext 1pt solid',
+            border: '1pt solid',
           }}
           colSpan={2}
           valign="top"
@@ -41,12 +41,12 @@ export default component$(() => (
         </td>
         <td
           style={{
-            borderTop: 'windowtext 1pt solid',
+            borderTop: '1pt solid',
             height: '16.5pt',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '134.65pt',
             background: '#fabf8f',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -98,12 +98,12 @@ export default component$(() => (
         </td>
         <td
           style={{
-            borderTop: 'windowtext 1pt solid',
+            borderTop: '1pt solid',
             height: '16.5pt',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '163pt',
             background: '#fabf8f',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -174,12 +174,12 @@ export default component$(() => (
         </td>
         <td
           style={{
-            borderTop: 'windowtext 1pt solid',
+            borderTop: '1pt solid',
             height: '16.5pt',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '177.2pt',
             background: '#fabf8f',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -254,14 +254,14 @@ export default component$(() => (
           style={{
             borderTop: 'medium none',
             height: '16.45pt',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '120.5pt',
             background: '#fabf8f',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
-            borderLeft: 'windowtext 1pt solid',
+            borderLeft: '1pt solid',
             paddingRight: '5.4pt',
           }}
           valign="top"
@@ -291,10 +291,10 @@ export default component$(() => (
           style={{
             borderTop: 'medium none',
             height: '16.45pt',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '155.95pt',
             background: '#fabf8f',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -331,13 +331,13 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '120.5pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
-            borderLeft: 'windowtext 1pt solid',
+            borderLeft: '1pt solid',
             paddingRight: '5.4pt',
           }}
           valign="top"
@@ -402,9 +402,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '155.95pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -476,9 +476,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '134.65pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -546,9 +546,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '163pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -620,9 +620,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '177.2pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -710,13 +710,13 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '120.5pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
-            borderLeft: 'windowtext 1pt solid',
+            borderLeft: '1pt solid',
             paddingRight: '5.4pt',
           }}
           valign="top"
@@ -756,9 +756,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '155.95pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -957,9 +957,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '134.65pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -983,9 +983,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '163pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1129,9 +1129,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '177.2pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1370,13 +1370,13 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '120.5pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
-            borderLeft: 'windowtext 1pt solid',
+            borderLeft: '1pt solid',
             paddingRight: '5.4pt',
           }}
           valign="top"
@@ -1416,9 +1416,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '155.95pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1615,9 +1615,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '134.65pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1641,9 +1641,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '163pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1667,9 +1667,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '177.2pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -1867,13 +1867,13 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '120.5pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
-            borderLeft: 'windowtext 1pt solid',
+            borderLeft: '1pt solid',
             paddingRight: '5.4pt',
           }}
           valign="top"
@@ -1923,9 +1923,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '155.95pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -2154,9 +2154,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '134.65pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -2180,9 +2180,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '163pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',
@@ -2264,9 +2264,9 @@ export default component$(() => (
         <td
           style={{
             borderTop: 'medium none',
-            borderRight: 'windowtext 1pt solid',
+            borderRight: '1pt solid',
             width: '177.2pt',
-            borderBottom: 'windowtext 1pt solid',
+            borderBottom: '1pt solid',
             paddingBottom: '0cm',
             paddingTop: '0cm',
             paddingLeft: '5.4pt',

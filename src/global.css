@@ -20,9 +20,21 @@
 */
 html {
   font-size: 16px !important;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
 }
 
 body {
@@ -49,14 +61,20 @@ a:hover {
 
 .text-shadowed {
   color: #fff;
-  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+  text-shadow:
+    2px 2px 3px black,
+    -2px -2px 3px black,
+    2px -2px 3px black,
     -2px 2px 3px black;
 }
 
 @media (min-width: 640px) {
   .sm-text-shadowed {
     color: #fff;
-    text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+    text-shadow:
+      2px 2px 3px black,
+      -2px -2px 3px black,
+      2px -2px 3px black,
       -2px 2px 3px black;
   }
 }
@@ -89,7 +107,10 @@ a:hover {
   background-image: url(/oceanDark_4.webp);
   outline: 1px solid white;
   color: white;
-  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+  text-shadow:
+    2px 2px 3px black,
+    -2px -2px 3px black,
+    2px -2px 3px black,
     -2px 2px 3px black;
   font-size: 1em;
   position: absolute;
@@ -116,7 +137,10 @@ a:hover {
   background-image: url(/oceanDark_4.webp);
   outline: 1px solid white;
   color: white;
-  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+  text-shadow:
+    2px 2px 3px black,
+    -2px -2px 3px black,
+    2px -2px 3px black,
     -2px 2px 3px black;
   font-size: 1em;
   position: absolute;
@@ -341,4 +365,15 @@ h4.modal-title {
 
 .about .row .col-sm-5 {
   flex-basis: 300px;
+}
+
+/*--------------------------------*\
+    7. # Monthly events
+\*--------------------------------*/
+
+.monthly-events table td,
+.monthly-events table tr,
+.monthly-events thead {
+  border-color: black !important;
+  border-width: 1.5px !important;
 }
