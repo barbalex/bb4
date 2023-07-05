@@ -22,19 +22,6 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
-  graphql:
-    image: 'hasura/graphql-engine:v2.29.0'
-    container_name: bb_graphql
-    ports:
-      - '8080:8080'
-    depends_on:
-      - db
-    restart: always
-    env_file:
-      - ./.env
-    command:
-      - graphql-engine
-      - serve
   caddy:
     build:
       context: ./caddy
