@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "Demo App with Routing built-in (recommended)",
+  "name": "blue-borders",
+  "description": "Most migrants and refugees arriving in Europe cross the Mediterranean. The purpose of this website is to provide a rough overview by focusing mainly on the Central Med and by covering both maritime and political events.",
   "engines": {
     "node": ">=15.0.0"
   },
@@ -65,5 +65,16 @@
     "firebase": "9.23.0",
     "lexical": "0.11.1",
     "pg": "8.11.1"
-  }
+  },
+  "keywords": [
+    "migration",
+    "migrants",
+    "mediterranean",
+    "Italy",
+    "Malta",
+    "Tunisia",
+    "Libya"
+  ],
+  "author": "Alexander Gabriel",
+  "license": "ISC"
 }
