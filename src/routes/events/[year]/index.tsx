@@ -46,12 +46,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           links,
           event_type,
           tag,
-          extract(month from datum)::int as month,
-          extract(day from datum)::int as day
+          date_part('MONTH', datum) as month,
+          date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          datum between $1 and $2
+          date_part('YEAR', datum) = $1
           and event_type = 'migration'
           and (
             tag != 'monthlyStatistics'
@@ -59,7 +59,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -70,17 +70,17 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     migrationStatRes = await db.query(
       `SELECT
           *,
-          extract(month from datum)::int as month,
-          extract(day from datum)::int as day
+          date_part('MONTH', datum) as month,
+          date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          datum between $1 and $2
+          date_part('YEAR', datum) = $1
           and event_type = 'migration'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -91,12 +91,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     politicEventRes = await db.query(
       `SELECT
           *,
-          extract(month from datum)::int as month,
-          extract(day from datum)::int as day
+          date_part('MONTH', datum) as month,
+          date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          datum between $1 and $2
+          date_part('YEAR', datum) = $1
           and event_type = 'politics'
           and (
             tag != 'monthlyStatistics'
@@ -104,7 +104,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -115,17 +115,17 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     politicStatRes = await db.query(
       `SELECT
           *,
-          extract(month from datum)::int as month,
-          extract(day from datum)::int as day
+          date_part('MONTH', datum) as month,
+          date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          datum between $1 and $2
+          date_part('YEAR', datum) = $1
           and event_type = 'politics'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [`${activeYear}-01-01`, `${activeYear}-12-31`],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -138,21 +138,21 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   // select distinct datum gives multiple month/day rows!!!!
   try {
     dateRes = await db.query(
-      `SELECT distinct on (extract(month from datum)::int, extract(day from datum)::int)
+      `SELECT distinct on (date_part('MONTH', datum), date_part('DAY', datum))
           datum,
-          extract(month from datum)::int as month,
-          extract(day from datum)::int as day,
+          date_part('MONTH', datum) as month,
+          date_part('DAY', datum) as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum as is_end_of_month,
-          --row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int as rn,
-          row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int = 1 as is_last_of_month
+          --row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int as rn,
+          row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int = 1 as is_last_of_month
         from event
         where
-          extract(year from datum)::int = $1
+          date_part('YEAR', datum) = $1
         ORDER BY
-          extract(month from datum)::int desc,
-          extract(day from datum)::int desc,
+          date_part('MONTH', datum) desc,
+          date_part('DAY', datum) desc,
           -- need to ensure the rn 1 is choosen by distinct on
-          row_number() over (partition by extract(month from datum)::int order by extract(month from datum)::int, extract(day from datum)::int desc)::int asc`,
+          row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int asc`,
       [activeYear],
     )
   } catch (error) {
