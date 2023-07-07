@@ -143,7 +143,6 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum as is_end_of_month,
-          --row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int as rn,
           row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int = 1 as is_last_of_month
         from event
         where
