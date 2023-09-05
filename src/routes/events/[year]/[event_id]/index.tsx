@@ -187,19 +187,22 @@ export default component$(() => {
                 : 'transition duration-200 ease-out opacity-0 translate-y-1 h-0'
             }`}
           >
-            <Calendar
-              datum={event.value.datum}
-              element={dateElement}
-              updater={$(async (datum) => {
-                await updater({
-                  field: 'datum',
-                  value: datum,
-                  eventId: location.params.event_id,
-                })
-                navigate()
-                dateIsOpen.value = false
-              })}
-            />
+            {/* need to render Calendar only if date is open or it will cover statistics option of tag */}
+            {dateIsOpen.value && (
+              <Calendar
+                datum={event.value.datum}
+                element={dateElement}
+                updater={$(async (datum) => {
+                  await updater({
+                    field: 'datum',
+                    value: datum,
+                    eventId: location.params.event_id,
+                  })
+                  navigate()
+                  dateIsOpen.value = false
+                })}
+              />
+            )}
           </div>
         </fieldset>
         <fieldset class="select-none">
