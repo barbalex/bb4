@@ -356,15 +356,6 @@ export default component$(() => {
           </p>
           <Links event={event} />
         </fieldset>
-        <div class="flex items-center justify-end gap-x-6">
-          <button
-            type="button"
-            class={`rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300`}
-            onClick$={() => navigate('/')}
-          >
-            Close
-          </button>
-        </div>
       </form>
     </>
   )
