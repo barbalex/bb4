@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./package.json ./
 
-RUN npm install
+RUN npm install --force
 # need all app files for build, just like when building locally
 COPY ./ ./
 
