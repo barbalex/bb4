@@ -1,2 +1,14 @@
-node_modules
+**/node_modules
 npm-debug.log
+
+# Private keys can be in there
+#**/.env
+
+# Useless and heavy folders
+**/build
+**/dist
+
+# Other useless files in the image
+**/.git/
+**/.vscode
+**/backend

@@ -9,8 +9,8 @@ dependencies:
     specifier: 0.0.8
     version: 0.0.8(@builder.io/qwik@1.2.10)
   core-js:
-    specifier: 3.32.1
-    version: 3.32.1
+    specifier: 3.32.2
+    version: 3.32.2
   dayjs:
     specifier: 1.11.9
     version: 1.11.9
@@ -1685,8 +1685,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /core-js@3.32.1:
-    resolution: {integrity: sha512-lqufgNn9NLnESg5mQeYsxQP5w7wrViSj0jr/kv6ECQiByzQkrn1MKvV0L3acttpDqfQrHLwr2KCMgX5b8X+lyQ==}
+  /core-js@3.32.2:
+    resolution: {integrity: sha512-pxXSw1mYZPDGvTQqEc5vgIb83jGQKFGYWY76z4a7weZXUolw3G+OvpZqSRcfYOoOVUQJYEPsWeQK8pKEnUtWxQ==}
     requiresBuild: true
     dev: false
 
