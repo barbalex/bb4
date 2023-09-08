@@ -1,8 +1,5 @@
 **/node_modules
-npm-debug.log
-
-# Private keys can be in there
-#**/.env
+**/npm-debug.log
 
 # Useless and heavy folders
 **/build
