@@ -2,7 +2,7 @@
 # ------------------
 # 1. Tmp image
 # ------------------
-FROM node:lts-alpine as build
+FROM node:slim as build
 
 WORKDIR /app/tmp
 
@@ -29,7 +29,7 @@ RUN npm run build
 # ------------------
 # 2. Final image
 # ------------------
-FROM node:lts-alpine as production
+FROM node:slim as production
 
 # Do not use root to run the app to avoid privilege escalation, container escape, etc.
 USER node
