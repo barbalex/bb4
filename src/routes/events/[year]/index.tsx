@@ -25,7 +25,7 @@ export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
       console.error('query error', error.stack)
     }
 
-    const years = res?.rows?.map((r) => r.year)
+    const years = res?.rows?.map((r) => r.year) ?? []
     // need to add 2011-2014 to the list
     const yearsToUse = [...new Set([...[2011, 2012, 2013, 2014], ...years])]
 
@@ -131,7 +131,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     console.error('query error', error.stack)
   }
 
-  let dateRes
+  let dateRes = { rows: [] }
   // need last_of_month, not end_of_month
   // reason: there may be no event on the last day of the month
   // DANGER
@@ -157,10 +157,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  // console.log(
-  //   'july events',
-  //   dateRes.rows.filter((row) => [8, 7].includes(row.month)),
-  // )
+  // console.log('rows', dateRes?.rows)
 
   // comparing equality of dates did not work
   // so need to extract day and month
