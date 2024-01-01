@@ -28,6 +28,7 @@ export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
     const years = res?.rows?.map((r) => r.year) ?? []
     // need to add 2011-2014 to the list
     const yearsToUse = [...new Set([...[2011, 2012, 2013, 2014], ...years])]
+    // console.log('useYears', { yearsToUse, years })
 
     return yearsToUse
   },
