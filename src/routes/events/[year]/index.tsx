@@ -68,12 +68,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   } catch (error) {
     console.error('query error', error.stack)
   }
-  console.log('migrationEvent', {
-    activeYear,
-    currentYear,
-    previousYear,
-    orYear,
-  })
+  // console.log('migrationEvent', {
+  //   activeYear,
+  //   currentYear,
+  //   previousYear,
+  //   orYear,
+  // })
 
   let migrationStatRes
   try {
