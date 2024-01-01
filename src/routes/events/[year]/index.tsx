@@ -5,6 +5,7 @@ import Years from './years'
 import EventHeader from './header'
 import List from './list'
 import * as db from '~/db'
+import { currentYear, previousYear } from './years'
 
 export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
   async function () {
@@ -37,6 +38,7 @@ export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
 // select all articles: id, title, draft
 export const useEvents = routeLoader$(async function (requestEvent) {
   const activeYear = requestEvent.params.year
+  const orYear = +activeYear == currentYear ? previousYear : activeYear
   let migrationEventRes
   try {
     migrationEventRes = await db.query(
@@ -47,12 +49,13 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           links,
           event_type,
           tag,
+          date_part('YEAR', datum) as year,
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          date_part('YEAR', datum) = $1
+          date_part('YEAR', datum) in ($1, $2)
           and event_type = 'migration'
           and (
             tag != 'monthlyStatistics'
@@ -60,28 +63,35 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear],
+      [activeYear, orYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
   }
+  console.log('migrationEvent', {
+    activeYear,
+    currentYear,
+    previousYear,
+    orYear,
+  })
 
   let migrationStatRes
   try {
     migrationStatRes = await db.query(
       `SELECT
           *,
+          date_part('YEAR', datum) as year,
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          date_part('YEAR', datum) = $1
+          date_part('YEAR', datum) in ($1, $2)
           and event_type = 'migration'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear],
+      [activeYear, orYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -92,12 +102,13 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     politicEventRes = await db.query(
       `SELECT
           *,
+          date_part('YEAR', datum) as year,
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          date_part('YEAR', datum) = $1
+          date_part('YEAR', datum) in ($1, $2)
           and event_type = 'politics'
           and (
             tag != 'monthlyStatistics'
@@ -105,7 +116,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear],
+      [activeYear, orYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -116,17 +127,18 @@ export const useEvents = routeLoader$(async function (requestEvent) {
     politicStatRes = await db.query(
       `SELECT
           *,
+          date_part('YEAR', datum) as year,
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day
         FROM
           EVENT
         where
-          date_part('YEAR', datum) = $1
+          date_part('YEAR', datum) in ($1, $2)
           and event_type = 'politics'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear],
+      [activeYear, orYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -139,21 +151,23 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   // select distinct datum gives multiple month/day rows!!!!
   try {
     dateRes = await db.query(
-      `SELECT distinct on (date_part('MONTH', datum), date_part('DAY', datum))
+      `SELECT distinct on (date_part('YEAR', datum), date_part('MONTH', datum), date_part('DAY', datum))
           datum,
+          date_part('YEAR', datum) as year,
           date_part('MONTH', datum) as month,
           date_part('DAY', datum) as day,
           (date_trunc('month', datum) + interval '1 month - 1 day')::date = datum as is_end_of_month,
           row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int = 1 as is_last_of_month
         from event
         where
-          date_part('YEAR', datum) = $1
+          date_part('YEAR', datum) in ($1, $2)
         ORDER BY
+          date_part('YEAR', datum) desc,
           date_part('MONTH', datum) desc,
           date_part('DAY', datum) desc,
           -- need to ensure the rn 1 is choosen by distinct on
           row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int asc`,
-      [activeYear],
+      [activeYear, orYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -166,21 +180,26 @@ export const useEvents = routeLoader$(async function (requestEvent) {
   // guess it would need jsonb arrays of rows
   const rowsData = dateRes.rows.map((date) => ({
     date: date.datum,
+    year: date.year,
     month: date.month,
     day: date.day,
     isLastOfMonth: date.is_last_of_month,
     isEndOfMonth: date.is_end_of_month,
     migrationEvents: migrationEventRes.rows.filter(
-      (e) => e.month === date.month && e.day === date.day,
+      (e) =>
+        e.year === date.year && e.month === date.month && e.day === date.day,
     ),
     migrationStats: migrationStatRes.rows.filter(
-      (e) => e.month === date.month && e.day === date.day,
+      (e) =>
+        e.year === date.year && e.month === date.month && e.day === date.day,
     ),
     politicEvents: politicEventRes.rows.filter(
-      (e) => e.month === date.month && e.day === date.day,
+      (e) =>
+        e.year === date.year && e.month === date.month && e.day === date.day,
     ),
     politicStats: politicStatRes.rows.filter(
-      (e) => e.month === date.month && e.day === date.day,
+      (e) =>
+        e.year === date.year && e.month === date.month && e.day === date.day,
     ),
   }))
 

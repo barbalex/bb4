@@ -4,6 +4,10 @@ import { useNavigate, useLocation, Link } from '@builder.io/qwik-city'
 // select all articles: id, title, draft
 import { useYears } from './index.tsx'
 
+export const currentYear = new Date().getFullYear()
+export const previousYear = currentYear - 1
+export const currentYears = `${previousYear} - ${currentYear}`
+
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -16,7 +20,11 @@ export default component$(() => {
   const years19to22 = useComputed$(() =>
     years.value.filter((y) => y >= 2019 && y <= 2022),
   )
-  const yearsAfter22 = useComputed$(() => years.value.filter((y) => y > 2022))
+  const yearsAfter22 = useComputed$(() =>
+    years.value.filter(
+      (y) => y > 2022 && y !== currentYear && y !== previousYear,
+    ),
+  )
 
   // ungroup if is active
   const grouped15to18 = useSignal(
@@ -25,14 +33,14 @@ export default component$(() => {
   const grouped19to22 = useSignal(
     !years19to22.value.includes(+location.params.year),
   )
-  console.log('years', {
-    years: years.value,
-    years15to18: years15to18.value,
-    years19to22: years19to22.value,
-    yearsAfter22: yearsAfter22.value,
-    grouped15to18: grouped15to18.value,
-    grouped19to22: grouped19to22.value,
-  })
+  // console.log('years', {
+  //   years: years.value,
+  //   years15to18: years15to18.value,
+  //   years19to22: years19to22.value,
+  //   yearsAfter22: yearsAfter22.value,
+  //   grouped15to18: grouped15to18.value,
+  //   grouped19to22: grouped19to22.value,
+  // })
 
   return (
     <>
@@ -208,6 +216,19 @@ export default component$(() => {
                     {year}
                   </Link>
                 ))}
+                <Link
+                  key={currentYears}
+                  href="#"
+                  class={
+                    +location.params.year === currentYear ||
+                    +location.params.year === previousYear
+                      ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                      : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                  }
+                  onClick$={() => navigate(`/events/${currentYear}/`)}
+                >
+                  {currentYears}
+                </Link>
               </>
             </nav>
           </div>
