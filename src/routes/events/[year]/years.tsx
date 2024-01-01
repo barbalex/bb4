@@ -25,6 +25,14 @@ export default component$(() => {
   const grouped19to22 = useSignal(
     !years19to22.value.includes(+location.params.year),
   )
+  console.log('years', {
+    years: years.value,
+    years15to18: years15to18.value,
+    years19to22: years19to22.value,
+    yearsAfter22: yearsAfter22.value,
+    grouped15to18: grouped15to18.value,
+    grouped19to22: grouped19to22.value,
+  })
 
   return (
     <>
