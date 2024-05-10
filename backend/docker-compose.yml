@@ -1,4 +1,5 @@
 version: '3.7'
+name: bb4
 services:
   db:
     # specify container name to make it easier to run commands.
