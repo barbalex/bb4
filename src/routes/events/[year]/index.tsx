@@ -5,7 +5,6 @@ import Years from './years'
 import EventHeader from './header'
 import List from './list'
 import * as db from '~/db'
-import { currentYear, previousYear } from './years'
 
 export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
   async function () {
@@ -38,7 +37,6 @@ export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
 // select all articles: id, title, draft
 export const useEvents = routeLoader$(async function (requestEvent) {
   const activeYear = requestEvent.params.year
-  const orYear = +activeYear == currentYear ? previousYear : activeYear
   let migrationEventRes
   try {
     migrationEventRes = await db.query(
@@ -55,7 +53,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
         FROM
           EVENT
         where
-          date_part('YEAR', datum) in ($1, $2)
+          date_part('YEAR', datum) = $1
           and event_type = 'migration'
           and (
             tag != 'monthlyStatistics'
@@ -63,7 +61,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear, orYear],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -86,12 +84,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
         FROM
           EVENT
         where
-          date_part('YEAR', datum) in ($1, $2)
+          date_part('YEAR', datum) = $1
           and event_type = 'migration'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear, orYear],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -108,7 +106,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
         FROM
           EVENT
         where
-          date_part('YEAR', datum) in ($1, $2)
+          date_part('YEAR', datum) = $1
           and event_type = 'politics'
           and (
             tag != 'monthlyStatistics'
@@ -116,7 +114,7 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           )
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear, orYear],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -133,12 +131,12 @@ export const useEvents = routeLoader$(async function (requestEvent) {
         FROM
           EVENT
         where
-          date_part('YEAR', datum) in ($1, $2)
+          date_part('YEAR', datum) = $1
           and event_type = 'politics'
           and tag = 'monthlyStatistics'
         ORDER BY
           datum desc, tags_sort asc`,
-      [activeYear, orYear],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)
@@ -160,14 +158,14 @@ export const useEvents = routeLoader$(async function (requestEvent) {
           row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int = 1 as is_last_of_month
         from event
         where
-          date_part('YEAR', datum) in ($1, $2)
+          date_part('YEAR', datum) = $1
         ORDER BY
           date_part('YEAR', datum) desc,
           date_part('MONTH', datum) desc,
           date_part('DAY', datum) desc,
           -- need to ensure the rn 1 is choosen by distinct on
           row_number() over (partition by date_part('MONTH', datum) order by date_part('MONTH', datum), date_part('DAY', datum) desc)::int asc`,
-      [activeYear, orYear],
+      [activeYear],
     )
   } catch (error) {
     console.error('query error', error.stack)

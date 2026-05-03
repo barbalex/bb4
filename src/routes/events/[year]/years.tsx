@@ -4,27 +4,19 @@ import { useNavigate, useLocation, Link } from '@builder.io/qwik-city'
 // select all articles: id, title, draft
 import { useYears } from './index.tsx'
 
-export const currentYear = new Date().getFullYear()
-export const previousYear = currentYear - 1
-export const currentYears = `${previousYear} - ${currentYear}`
-
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
   const chooserFocused = useSignal(false)
 
   const years = useYears()
-  const years15to18: Array<number> = useComputed$(() =>
+  const years15to18: Array = useComputed$(() =>
     years.value.filter((y) => y >= 2015 && y <= 2018),
   )
   const years19to22 = useComputed$(() =>
     years.value.filter((y) => y >= 2019 && y <= 2022),
   )
-  const yearsAfter22 = useComputed$(() =>
-    years.value.filter(
-      (y) => y > 2022 && y !== currentYear && y !== previousYear,
-    ),
-  )
+  const yearsAfter22 = useComputed$(() => years.value.filter((y) => y > 2022))
 
   // ungroup if is active
   const grouped15to18 = useSignal(
@@ -46,7 +38,10 @@ export default component$(() => {
     <>
       <div>
         <div class="sm:hidden">
-          <label for="tabs" class="sr-only">
+          <label
+            for="tabs"
+            class="sr-only"
+          >
             Select a tab
           </label>
           <div>
@@ -83,9 +78,9 @@ export default component$(() => {
               </button>
               <ul
                 class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm ${
-                  chooserFocused.value
-                    ? 'transition ease-in opacity-100 z-30'
-                    : 'transition duration-200 ease-out opacity-0 z-0'
+                  chooserFocused.value ?
+                    'transition ease-in opacity-100 z-30'
+                  : 'transition duration-200 ease-out opacity-0 z-0'
                 }`}
                 tabIndex={-1}
                 role="listbox"
@@ -146,7 +141,10 @@ export default component$(() => {
         </div>
         <div class="hidden sm:block">
           <div class="border-b border-gray-200">
-            <nav class="-mb-px flex" aria-label="Tabs">
+            <nav
+              class="-mb-px flex"
+              aria-label="Tabs"
+            >
               <Link
                 href="/monthly-events/2014/"
                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
@@ -154,7 +152,7 @@ export default component$(() => {
                 2011 - 2014
               </Link>
               <>
-                {grouped15to18.value ? (
+                {grouped15to18.value ?
                   <Link
                     href="#"
                     class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
@@ -162,23 +160,22 @@ export default component$(() => {
                   >
                     2015 - 2018
                   </Link>
-                ) : (
-                  years15to18.value.map((year) => (
+                : years15to18.value.map((year) => (
                     <Link
                       key={year}
                       href="#"
                       class={
-                        +location.params.year === year
-                          ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                          : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        +location.params.year === year ?
+                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
                       {year}
                     </Link>
                   ))
-                )}
-                {grouped19to22.value ? (
+                }
+                {grouped19to22.value ?
                   <Link
                     href="#"
                     class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
@@ -186,49 +183,35 @@ export default component$(() => {
                   >
                     2019 - 2022
                   </Link>
-                ) : (
-                  years19to22.value.map((year) => (
+                : years19to22.value.map((year) => (
                     <Link
                       key={year}
                       href="#"
                       class={
-                        +location.params.year === year
-                          ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                          : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        +location.params.year === year ?
+                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
                       {year}
                     </Link>
                   ))
-                )}
+                }
                 {yearsAfter22.value.map((year) => (
                   <Link
                     key={year}
                     href="#"
                     class={
-                      +location.params.year === year
-                        ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                      +location.params.year === year ?
+                        `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                      : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
                     }
                     onClick$={() => navigate(`/events/${year}/`)}
                   >
                     {year}
                   </Link>
                 ))}
-                <Link
-                  key={currentYears}
-                  href="#"
-                  class={
-                    +location.params.year === currentYear ||
-                    +location.params.year === previousYear
-                      ? `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                      : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                  }
-                  onClick$={() => navigate(`/events/${currentYear}/`)}
-                >
-                  {currentYears}
-                </Link>
               </>
             </nav>
           </div>
