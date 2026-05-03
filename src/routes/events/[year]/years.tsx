@@ -59,7 +59,7 @@ export default component$(() => {
             <div class="relative mt-2">
               <button
                 type="button"
-                class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 aria-haspopup="listbox"
                 aria-expanded="true"
                 aria-labelledby="listbox-label"
@@ -82,7 +82,7 @@ export default component$(() => {
                 </span>
               </button>
               <ul
-                class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${
+                class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm ${
                   chooserFocused.value
                     ? 'transition ease-in opacity-100 z-30'
                     : 'transition duration-200 ease-out opacity-0 z-0'

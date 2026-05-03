@@ -77,7 +77,7 @@ export default component$(() => {
   })
 
   return (
-    <nav class="bg-white shadow sticky top-0 z-40 bg-[url(../../../oceanDark_4.webp)] border border-blue-800 sm-text-shadowed">
+    <nav class="bg-white shadow-sm sticky top-0 z-40 bg-[url('/oceanDark_4.webp')] border border-blue-800 sm-text-shadowed">
       <div class="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
         <div class="flex h-14 justify-between">
           <div class="flex">
@@ -85,10 +85,12 @@ export default component$(() => {
               <Link
                 href="/"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
-                  location.url.pathname === '/' ||
-                  location.url.pathname.startsWith('/events/')
-                    ? ' border-white font-extrabold '
-                    : ' border-transparent font-medium '
+                  (
+                    location.url.pathname === '/' ||
+                    location.url.pathname.startsWith('/events/')
+                  ) ?
+                    ' border-white font-extrabold '
+                  : ' border-transparent font-medium '
                 }`}
               >
                 Events
@@ -96,9 +98,9 @@ export default component$(() => {
               <Link
                 href="/sar"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
-                  location.url.pathname === '/sar/'
-                    ? ' border-white font-extrabold '
-                    : ' border-transparent font-medium '
+                  location.url.pathname === '/sar/' ?
+                    ' border-white font-extrabold '
+                  : ' border-transparent font-medium '
                 }`}
               >
                 SAR NGOs
@@ -106,9 +108,9 @@ export default component$(() => {
               <Link
                 href="/publications"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
-                  location.url.pathname.startsWith('/publications/')
-                    ? ' border-white font-extrabold '
-                    : ' border-transparent font-medium '
+                  location.url.pathname.startsWith('/publications/') ?
+                    ' border-white font-extrabold '
+                  : ' border-transparent font-medium '
                 }`}
               >
                 Publications
@@ -116,9 +118,9 @@ export default component$(() => {
               <Link
                 href="/articles"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
-                  location.url.pathname.startsWith('/articles/')
-                    ? ' border-white font-extrabold '
-                    : ' border-transparent font-medium '
+                  location.url.pathname.startsWith('/articles/') ?
+                    ' border-white font-extrabold '
+                  : ' border-transparent font-medium '
                 }`}
               >
                 Articles
@@ -126,9 +128,9 @@ export default component$(() => {
               <Link
                 href="/about"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
-                  location.url.pathname === '/about/'
-                    ? ' border-white font-extrabold '
-                    : ' border-transparent font-medium '
+                  location.url.pathname === '/about/' ?
+                    ' border-white font-extrabold '
+                  : ' border-transparent font-medium '
                 }`}
               >
                 About Us
@@ -143,10 +145,10 @@ export default component$(() => {
                 !!location.params.publication_id ||
                 location.url.pathname.startsWith('/about/')) && (
                 <>
-                  {store.editing ? (
+                  {store.editing ?
                     <button
                       type="button"
-                      class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       data-title-below="preview"
                       aria-label="preview"
                       onClick$={() => (store.editing = false)}
@@ -163,23 +165,22 @@ export default component$(() => {
                         />
                       </svg>
                     </button>
-                  ) : (
-                    <button
+                  : <button
                       type="button"
-                      class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       data-title-below={
-                        location.url.pathname.startsWith('/publications/')
-                          ? 'edit publication'
-                          : location.url.pathname.startsWith('/articles/')
-                          ? 'edit article'
-                          : 'edit event'
+                        location.url.pathname.startsWith('/publications/') ?
+                          'edit publication'
+                        : location.url.pathname.startsWith('/articles/') ?
+                          'edit article'
+                        : 'edit event'
                       }
                       aria-label={
-                        location.url.pathname.startsWith('/publications/')
-                          ? 'edit publication'
-                          : location.url.pathname.startsWith('/articles/')
-                          ? 'edit article'
-                          : 'edit event'
+                        location.url.pathname.startsWith('/publications/') ?
+                          'edit publication'
+                        : location.url.pathname.startsWith('/articles/') ?
+                          'edit article'
+                        : 'edit event'
                       }
                       onClick$={async () => {
                         store.editing = true
@@ -197,7 +198,7 @@ export default component$(() => {
                         />
                       </svg>
                     </button>
-                  )}
+                  }
                 </>
               )}
             {/* New event, article or publication. Only show on respective page */}
@@ -208,20 +209,20 @@ export default component$(() => {
                 location.url.pathname.startsWith('/publications/')) && (
                 <button
                   type="button"
-                  class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-white shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   data-title-below={
-                    location.url.pathname.startsWith('/publications/')
-                      ? 'new publication'
-                      : location.url.pathname.startsWith('/articles/')
-                      ? 'new article'
-                      : 'new event'
+                    location.url.pathname.startsWith('/publications/') ?
+                      'new publication'
+                    : location.url.pathname.startsWith('/articles/') ?
+                      'new article'
+                    : 'new event'
                   }
                   aria-label={
-                    location.url.pathname.startsWith('/publications/')
-                      ? 'new publication'
-                      : location.url.pathname.startsWith('/articles/')
-                      ? 'new article'
-                      : 'new event'
+                    location.url.pathname.startsWith('/publications/') ?
+                      'new publication'
+                    : location.url.pathname.startsWith('/articles/') ?
+                      'new article'
+                    : 'new event'
                   }
                   onClick$={async () => {
                     // 1. find what to create
@@ -249,7 +250,11 @@ export default component$(() => {
                     }
                   }}
                 >
-                  <svg class="block h-6 w-6" fill="#fff" viewBox="0 0 448 512">
+                  <svg
+                    class="block h-6 w-6"
+                    fill="#fff"
+                    viewBox="0 0 448 512"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -261,7 +266,7 @@ export default component$(() => {
             <div class="relative ml-3">
               <button
                 type="button"
-                class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-2 text-white hover:text-black shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 data-title-below={store.user ? 'Log out' : 'Log in'}
                 aria-label={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
@@ -275,15 +280,22 @@ export default component$(() => {
                   navigate('/login')
                 }}
               >
-                {store.user ? (
-                  <svg class="block h-5 w-5" fill="#fff" viewBox="0 0 512 512">
+                {store.user ?
+                  <svg
+                    class="block h-5 w-5"
+                    fill="#fff"
+                    viewBox="0 0 512 512"
+                  >
                     <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
                   </svg>
-                ) : (
-                  <svg class="block h-5 w-5" fill="#fff" viewBox="0 0 512 512">
+                : <svg
+                    class="block h-5 w-5"
+                    fill="#fff"
+                    viewBox="0 0 512 512"
+                  >
                     <path d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
                   </svg>
-                )}
+                }
               </button>
             </div>
           </div>
@@ -291,7 +303,7 @@ export default component$(() => {
             {/* Mobile menu button */}
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-md p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              class="inline-flex items-center justify-center rounded-md p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
               aria-controls="mobile-menu"
               aria-expanded={menuOpen.value}
               onClick$={() => {
@@ -299,7 +311,7 @@ export default component$(() => {
               }}
             >
               <span class="sr-only">Open main menu</span>
-              {menuOpen.value ? (
+              {menuOpen.value ?
                 <svg
                   class="block h-6 w-6"
                   fill="none"
@@ -313,8 +325,7 @@ export default component$(() => {
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-              ) : (
-                <svg
+              : <svg
                   class="block h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -327,22 +338,27 @@ export default component$(() => {
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                   />
                 </svg>
-              )}
+              }
             </button>
           </div>
         </div>
       </div>
       {/* Mobile menu, show/hide based on menu state. */}
       {menuOpen.value && (
-        <div class="sm:hidden" id="mobile-menu">
+        <div
+          class="sm:hidden"
+          id="mobile-menu"
+        >
           <div class="space-y-1 pb-3 pt-2">
             <Link
               href="/"
               class={
-                location.url.pathname === '/' ||
-                location.url.pathname.startsWith('/events/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                  : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                (
+                  location.url.pathname === '/' ||
+                  location.url.pathname.startsWith('/events/')
+                ) ?
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
               Events
@@ -350,9 +366,9 @@ export default component$(() => {
             <Link
               href="/sar"
               class={
-                location.url.pathname === '/sar/'
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                  : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                location.url.pathname === '/sar/' ?
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
               SAR NGOs
@@ -360,9 +376,9 @@ export default component$(() => {
             <Link
               href="/publications"
               class={
-                location.url.pathname.startsWith('/publications/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                  : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                location.url.pathname.startsWith('/publications/') ?
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
               Publications
@@ -370,9 +386,9 @@ export default component$(() => {
             <Link
               href="/articles"
               class={
-                location.url.pathname.startsWith('/articles/')
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                  : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                location.url.pathname.startsWith('/articles/') ?
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
               Articles
@@ -380,9 +396,9 @@ export default component$(() => {
             <Link
               href="/about"
               class={
-                location.url.pathname === '/about/'
-                  ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                  : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                location.url.pathname === '/about/' ?
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
               }
             >
               About Us

@@ -68,7 +68,7 @@ export default component$(() => {
               role="list"
               class="-mx-2 mt-3 mb-3 first:mt-0 border-collapse draft-parent"
             >
-              <li class="bg-[url(../../../oceanDark_4.webp)] font-bold  flex p-2 pl-3 text-sm text-white text-shadowed leading-6 border-collapse rounded-t-md">
+              <li class="bg-[url('/oceanDark_4.webp')] font-bold  flex p-2 pl-3 text-sm text-white text-shadowed leading-6 border-collapse rounded-t-md">
                 Articles
               </li>
               <Resource
@@ -110,7 +110,7 @@ export default component$(() => {
               >
                 <button
                   type="button"
-                  class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
+                  class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-black shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
                   data-title="delete"
                   aria-label="delete"
                   onClick$={() =>
