@@ -10,7 +10,10 @@
   line-height: 42px;
   text-align: center;
   color: #fff;
-  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+  text-shadow:
+    2px 2px 3px black,
+    -2px -2px 3px black,
+    2px -2px 3px black,
     -2px 2px 3px black;
 }
 
@@ -20,6 +23,9 @@
   font-weight: 700;
   line-height: 38px;
   color: #fff;
-  text-shadow: 2px 2px 3px black, -2px -2px 3px black, 2px -2px 3px black,
+  text-shadow:
+    2px 2px 3px black,
+    -2px -2px 3px black,
+    2px -2px 3px black,
     -2px 2px 3px black;
 }

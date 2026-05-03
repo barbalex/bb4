@@ -170,11 +170,9 @@ export default component$(({ datum, updater, element }) => {
                 key={o.datum}
                 type="button"
                 class={`${
-                  o.isChoosen
-                    ? 'bg-[url(../../../oceanDark_4.webp)]'
-                    : o.isMonth
-                    ? 'bg-white'
-                    : 'bg-gray-50'
+                  o.isChoosen ? "bg-[url('/oceanDark_4.webp')]"
+                  : o.isMonth ? 'bg-white'
+                  : 'bg-gray-50'
                 } py-1.5 text-gray-400 ${
                   o.isChoosen ? 'hover:bg-blue-800' : 'hover:bg-gray-100'
                 } ${o.isTopLeft && 'rounded-tl-lg'} ${
@@ -191,17 +189,13 @@ export default component$(({ datum, updater, element }) => {
                 <time
                   dateTime={o.datum}
                   class={`${(o.isToday || o.isChoosen) && 'font-bold'} ${
-                    o.isToday || o.isChoosen
-                      ? 'text-white'
-                      : o.isMonth
-                      ? 'text-gray-900'
-                      : 'text-gray-400'
+                    o.isToday || o.isChoosen ? 'text-white'
+                    : o.isMonth ? 'text-gray-900'
+                    : 'text-gray-400'
                   } ${
-                    o.isToday && o.isChoosen
-                      ? 'bg-blue-400'
-                      : o.isToday
-                      ? 'bg-blue-800'
-                      : ''
+                    o.isToday && o.isChoosen ? 'bg-blue-400'
+                    : o.isToday ? 'bg-blue-800'
+                    : ''
                   } mx-auto flex h-7 w-7 items-center justify-center rounded-full`}
                 >
                   {o.day}
