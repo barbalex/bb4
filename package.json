@@ -26,22 +26,22 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.5.4",
-    "@builder.io/qwik-city": "1.5.4",
+    "@builder.io/qwik": "1.19.2",
+    "@builder.io/qwik-city": "1.19.2",
     "@fastify/compress": "7.0.3",
     "@fastify/static": "7.0.4",
     "@types/eslint": "8.56.10",
     "@types/node": "20.12.11",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
-    "autoprefixer": "10.4.19",
+    "autoprefixer": "10.5.0",
     "cross-env": "7.0.3",
     "eslint": "8.57.1",
-    "eslint-plugin-qwik": "1.5.4",
+    "eslint-plugin-qwik": "1.19.2",
     "fastify": "4.27.0",
     "fastify-plugin": "4.5.1",
     "postcss": "8.4.38",
-    "prettier": "3.2.5",
+    "prettier": "3.8.3",
     "tailwindcss": "3.4.3",
     "tslint-config-prettier": "1.18.0",
     "typescript": "5.4.5",
@@ -50,10 +50,10 @@
   },
   "dependencies": {
     "@qwikest/icons": "0.0.13",
-    "core-js": "3.37.0",
-    "dayjs": "1.11.11",
+    "core-js": "3.49.0",
+    "dayjs": "1.11.20",
     "firebase": "10.11.1",
-    "pg": "8.11.5"
+    "pg": "8.20.0"
   },
   "keywords": [
     "migration",
