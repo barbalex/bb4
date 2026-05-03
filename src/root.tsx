@@ -55,6 +55,7 @@ export default component$(() => {
 
   // authenticate
   // this is client only
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     let fbApp
     // catch app already existing
