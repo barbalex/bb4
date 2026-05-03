@@ -66,7 +66,7 @@ export default component$(() => {
           <h2 class="text-xl font-semibold leading-7">Edit event</h2>
           <button
             type="button"
-            class="rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-sm hover:bg-slate-100 outline outline-1 outline-slate-300"
+            class="rounded-md bg-white px-3 py-2 text-sm text-black font-semibold shadow-xs hover:bg-slate-100 outline outline-1 outline-slate-300"
             onClick$={() => navigate('/')}
           >
             Close
@@ -132,7 +132,7 @@ export default component$(() => {
               type="text"
               name="title"
               id="title"
-              class="block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+              class="block w-full rounded-md border-0 py-1.5 px-3 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
               value={event.value.title}
               onChange$={(e, currentTarget) =>
                 updater({
@@ -164,7 +164,7 @@ export default component$(() => {
             type="text"
             name="datum"
             id="title"
-            class="block w-full rounded-md border-0 py-1.5 px-3 mt-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-0 py-1.5 px-3 mt-2 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
             value={
               event.value.datum
                 ? dayjs(event.value.datum).format('DD.MM.YYYY')
@@ -217,7 +217,7 @@ export default component$(() => {
                 id="weather"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === 'weather'}
                 value="weather"
                 onChange$={() =>
@@ -240,7 +240,7 @@ export default component$(() => {
                 id="victims"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === 'victims'}
                 value="victims"
                 onChange$={() =>
@@ -263,7 +263,7 @@ export default component$(() => {
                 id="highlighted"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === 'highlighted'}
                 value="highlighted"
                 onChange$={() =>
@@ -286,7 +286,7 @@ export default component$(() => {
                 id="statistics"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === 'statistics'}
                 value="statistics"
                 onChange$={() =>
@@ -309,7 +309,7 @@ export default component$(() => {
                 id="monthlyStatistics"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === 'monthlyStatistics'}
                 value="monthlyStatistics"
                 onChange$={() =>
@@ -332,7 +332,7 @@ export default component$(() => {
                 id="null"
                 name="tag"
                 type="radio"
-                class="w-4 rounded border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
+                class="w-4 rounded-sm border-gray-300 text-blue-800 focus:ring-blue-800 hover:cursor-pointer"
                 checked={event.value.tag === null}
                 value="null"
                 onChange$={() =>

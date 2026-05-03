@@ -93,7 +93,7 @@ export default component$(({ datum, updater, element }) => {
           >
             <button
               type="button"
-              class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
+              class="flex flex-none items-center justify-center rounded-sm p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
               onClick$={(event) => {
                 event.stopPropagation()
                 event.preventDefault() // may not be needed
@@ -126,7 +126,7 @@ export default component$(({ datum, updater, element }) => {
             </div>
             <button
               type="button"
-              class="flex flex-none items-center justify-center rounded p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
+              class="flex flex-none items-center justify-center rounded-sm p-1.5 text-gray-400 hover:text-gray-500 hover:bg-slate-50"
               onClick$={(event) => {
                 event.stopPropagation()
                 event.preventDefault() // may not be needed
@@ -164,7 +164,7 @@ export default component$(({ datum, updater, element }) => {
             <div>S</div>
             <div>S</div>
           </div>
-          <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm text-shadowed shadow ring-1 ring-gray-200">
+          <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm text-shadowed shadow-xs ring-1 ring-gray-200">
             {dayObjectArray.value.map((o) => (
               <button
                 key={o.datum}

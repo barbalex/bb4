@@ -1,10 +1,5 @@
-/**
- * Tailwind CSS imports
- * View the full documentation at https://tailwindcss.com
- */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
 
 /**
  * WHAT IS THIS FILE?
@@ -52,11 +47,13 @@ h3 {
   margin: 0;
 }
 
-a {
-  color: rgb(0, 76, 255);
-}
-a:hover {
-  text-decoration: underline;
+@layer base {
+  a {
+    color: rgb(0, 76, 255);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .text-shadowed {

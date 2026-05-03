@@ -14,7 +14,7 @@ export default component$(() => {
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://de.wikipedia.org/wiki/SOS M%C3%A9diterran%C3%A9e"
@@ -38,7 +38,7 @@ export default component$(() => {
           <div>Norwegian flag, 2019 –</div>
           <div>8 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/M%C3%A9decins Sans Fronti%C3%A8res"
@@ -62,7 +62,7 @@ export default component$(() => {
           <div>Norwegian flag, 2021 –</div>
           <div>6 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://sos-humanity.org/en/about-us/"
@@ -88,7 +88,7 @@ export default component$(() => {
           <div>German flag, Kiel 2021</div>
           <div>SAR operations start August 2022</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Watch"
@@ -124,7 +124,7 @@ export default component$(() => {
           <div>German flag, 2020 –</div>
           <div>4 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://de.wikipedia.org/wiki/Mission_Lifeline"
@@ -148,7 +148,7 @@ export default component$(() => {
           <div>‘Eleonore’ 2019 -</div>
           <div>‘Lifeline’ 2016 –</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/Emergency_(organization)#Italy"
@@ -171,7 +171,7 @@ export default component$(() => {
           <div>Italian flag (?)</div>
           <div>SAR December 2022 –</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Eye"
@@ -194,7 +194,7 @@ export default component$(() => {
           <div>German flag, 2021 –</div>
           <div>3 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/Proactiva_Open_Arms"
@@ -218,7 +218,7 @@ export default component$(() => {
           <div>Spanish flag, 2017 –</div>
           <div>3 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://www.infomigrants.net/en/post/26362/italian-migrant-rescue-boat-resqpeople-project-launched"
@@ -237,7 +237,7 @@ export default component$(() => {
           <div>Italian flag, 2020 –</div>
           <div>1 SAR operation in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/Salvamento_Mar%C3%ADtimo_Humanitario"
@@ -260,7 +260,7 @@ export default component$(() => {
           <div>Spanish flag, 2018 –</div>
           <div>1 SAR operation in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/Louise_Michel_(ship)"
@@ -285,7 +285,7 @@ export default component$(() => {
           <div>no SAR operation in 2021</div>
           <div>one in January 2022</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
           <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
             <a
               href="https://en.wikipedia.org/wiki/Mediterranea_Saving_Humans"

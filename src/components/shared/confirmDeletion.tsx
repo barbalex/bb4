@@ -7,14 +7,14 @@ export default component$(({ onYes, onNo, subject }) => {
       <div class="mt-1 flex justify-between">
         <button
           type="button"
-          class="rounded bg-red-600 px-4 py-2 text-xs font-bold text-white shadow-sm ring-1 ring-inset ring-gray-300 select-none hover:cursor-pointer hover:bg-red-800"
+          class="rounded-sm bg-red-600 px-4 py-2 text-xs font-bold text-white shadow-xs ring-1 ring-inset ring-gray-300 select-none hover:cursor-pointer hover:bg-red-800"
           onClick$={onYes}
         >
           Yes
         </button>
         <button
           type="button"
-          class="rounded bg-white px-4 py-2 text-xs font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 select-none hover:cursor-pointer hover:bg-gray-50"
+          class="rounded-sm bg-white px-4 py-2 text-xs font-bold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 select-none hover:cursor-pointer hover:bg-gray-50"
           onClick$={onNo}
         >
           No

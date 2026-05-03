@@ -110,7 +110,7 @@ export default component$(() => {
               >
                 <button
                   type="button"
-                  class="rounded-full shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
+                  class="rounded-full shadow-xs hover:ring-1 hover:ring-inset hover:ring-gray-300 p-1 text-black shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
                   data-title="delete"
                   aria-label="delete"
                   onClick$={() =>
