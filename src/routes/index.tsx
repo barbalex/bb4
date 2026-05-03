@@ -1,7 +1,7 @@
 import type { DocumentHead } from '@builder.io/qwik-city'
 
 export const onGet = async ({ redirect }: RequestEvent) => {
-  throw redirect(308, `/events/${new Date().getFullYear()}/`)
+  throw redirect(308, `/events/2024/`)
 }
 
 // TODO: needed?
