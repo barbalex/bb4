@@ -1,10 +1,6 @@
 **/node_modules
 **/npm-debug.log
 
-# Useless and heavy folders
-**/build
-**/dist
-
 # Other useless files in the image
 **/.git/
 **/.vscode
