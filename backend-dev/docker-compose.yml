@@ -7,7 +7,10 @@ services:
     environment:
       POSTGRES_PASSWORD: 3Q2ernEv51dr
     ports:
-      - "5432:5432"
+      # host port 5444 (not 5432): this stack must coexist with other local
+      # projects claiming 5432 (apf2). Update PG_CONNECTIONSTRING_DEV in the
+      # .env files when changing this.
+      - "5444:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d
