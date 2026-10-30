@@ -5,7 +5,7 @@ services:
     # for example, you could run docker exec -i postgres psql -U postgres postgres < schema.sql to run an SQL file against the Postgres database
     container_name: bb_db
     restart: always
-    image: db
+    image: bb4-db
     build:
       context: ./db
     env_file:
