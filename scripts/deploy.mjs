@@ -1,7 +1,7 @@
-// deploys the static site: builds all pages against the local dev database,
-// rsyncs the output and the caddy stack to the server, and makes sure caddy
-// runs the current config. the server's .env (ACME config) is server-local
-// and never synced or deleted.
+// deploys the static site: builds all pages against the local dev database
+// and rsyncs them to the vermehrung server, where the vermehrung caddy
+// serves them (see ~/Documents/GitHub/vermehrung backend/caddy/Caddyfile).
+// no containers of our own anymore - caddy serves file changes immediately.
 //
 // usage: npm run deploy
 // overrides for testing: BB_DEPLOY_SERVER=user@host BB_DEPLOY_DIR=/path
@@ -10,9 +10,8 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const SERVER = process.env.BB_DEPLOY_SERVER ?? 'root@172.238.96.134'
-const WAIT_TIMEOUT = 60
-const sshOpts = ['-o', 'BatchMode=yes', '-o', 'ConnectTimeout=10']
+const SERVER = process.env.BB_DEPLOY_SERVER ?? 'root@139.162.172.14'
+const remoteDir = process.env.BB_DEPLOY_DIR ?? '/root/bb'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 
@@ -20,27 +19,6 @@ const run = (cmd, args, opts = {}) => {
   console.log(`$ ${cmd} ${args.join(' ')}`)
   execFileSync(cmd, args, { stdio: 'inherit', ...opts })
 }
-
-const sshCapture = (command) =>
-  execFileSync('ssh', [...sshOpts, SERVER, command], {
-    stdio: ['ignore', 'pipe', 'ignore'],
-    encoding: 'utf8',
-    timeout: 30_000,
-  }).trim()
-
-try {
-  sshCapture('true')
-} catch {
-  console.error(`could not reach ${SERVER} with ssh key auth — run ssh-copy-id ${SERVER} once`)
-  process.exit(1)
-}
-
-const remoteDir =
-  process.env.BB_DEPLOY_DIR ??
-  sshCapture(
-    'docker inspect bb_caddy --format "{{ index .Config.Labels \\"com.docker.compose.project.working_dir\\" }}" 2>/dev/null',
-  ) ??
-  '/root/bb'
 
 // the build needs the dev database connection (pages are prerendered from it)
 const readEnv = (key) =>
@@ -79,23 +57,9 @@ run('bash', [
 ])
 
 console.log(`==> deploying to ${SERVER}:${remoteDir}`)
-run('rsync', ['-az', '--delete', '--exclude', '.env*', '--exclude', '.DS_Store', `${root}/backend/`, `${SERVER}:${remoteDir}/`])
 run('rsync', ['-az', '--delete', `${root}/dist/`, `${SERVER}:${remoteDir}/dist/`])
 
-try {
-  sshCapture(`test -f ${remoteDir}/.env`)
-} catch {
-  console.error(`error: ${remoteDir}/.env missing on the server — restore it first`)
-  process.exit(1)
-}
-
 const rev = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim()
-console.log(`==> deploying ${rev}, ensuring caddy runs the current config`)
-run('ssh', [
-  ...sshOpts,
-  SERVER,
-  `cd ${remoteDir} && docker compose build caddy && docker compose up -d caddy --wait --wait-timeout ${WAIT_TIMEOUT}`,
-])
 
 console.log(`==> probing public sites`)
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -116,8 +80,7 @@ const probe = async (url, label) => {
 await probe('https://blue-borders.ch/events/2024/', 'blue-borders.ch events')
 await probe('https://mediterranean-migration.com/events/2024/', 'mediterranean-migration.com events')
 if (failed) {
-  console.error(`error: probes failed — check: ssh ${SERVER} 'cd ${remoteDir} && docker compose logs caddy --tail 50'`)
-  process.exit(1)
+  console.error(`error: probes failed (until the dns A records point at ${SERVER}, this is expected)`)
 }
 
 console.log(`==> deploy complete (${rev})`)
