@@ -7,9 +7,11 @@ USER node
 
 WORKDIR /app
 
-COPY --chown=node:node ./package.json ./
+COPY --chown=node:node ./package.json ./package-lock.json ./
 
-RUN npm install --force
+# npm ci installs exactly what the lockfile pins (dev deps included: the
+# compiled server bundles fastify, @fastify/static, fastify-plugin)
+RUN npm ci
 
 COPY --chown=node:node ./ /app
 
