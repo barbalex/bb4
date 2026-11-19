@@ -1,4 +1,8 @@
-import { component$, useSignal, useComputed$ } from '@builder.io/qwik'
+import {
+  component$,
+  useSignal,
+  useComputed$,
+} from '@builder.io/qwik'
 import { useNavigate, useLocation, Link } from '@builder.io/qwik-city'
 
 // select all articles: id, title, draft
@@ -58,7 +62,15 @@ export default component$(() => {
             >
               Choose a year
             </label>
-            <div class="relative mt-2">
+            <div id="year-chooser" class="relative mt-2">
+              {/* invisible backdrop: collapse the popup when clicking
+                  anywhere outside of it (below the z-30 list) */}
+              {chooserOpen.value && (
+                <div
+                  class="fixed inset-0 z-20 cursor-default"
+                  onClick$={() => (chooserOpen.value = false)}
+                />
+              )}
               <button
                 type="button"
                 class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
