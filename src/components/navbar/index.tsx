@@ -22,7 +22,7 @@ export default component$(() => {
           <div class="flex">
             <div class="hidden sm:flex sm:space-x-8">
               <Link
-                href="/"
+                href="/events/2024/"
                 class={`inline-flex items-center border-b-2 px-1 pt-1 text-lg text-white leading-none hover:font-extrabold hover:border-white hover:no-underline ${
                   (
                     location.url.pathname === '/' ||
@@ -129,7 +129,7 @@ export default component$(() => {
         >
           <div class="space-y-1 pb-3 pt-2">
             <Link
-              href="/"
+              href="/events/2024/"
               class={
                 (
                   location.url.pathname === '/' ||

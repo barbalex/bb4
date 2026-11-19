@@ -69,6 +69,15 @@ run(
   },
 )
 
+// qwik 1.20's SSG emits the idle-prefetch script with a bare module
+// specifier (import("q-XYZ.js")) which fails to resolve in the browser;
+// rewrite it to the build base
+console.log(`==> fixing bare chunk specifiers in the preload scripts`)
+run('bash', [
+  '-c',
+  `grep -rl 'import("q-' ${root}/dist --include='*.html' | xargs -r sed -i 's|import("q-|import("/build/q-|g'`,
+])
+
 console.log(`==> deploying to ${SERVER}:${remoteDir}`)
 run('rsync', ['-az', '--delete', '--exclude', '.env*', '--exclude', '.DS_Store', `${root}/backend/`, `${SERVER}:${remoteDir}/`])
 run('rsync', ['-az', '--delete', `${root}/dist/`, `${SERVER}:${remoteDir}/dist/`])
