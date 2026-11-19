@@ -14,8 +14,8 @@ export default component$(() => {
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/SOS M%C3%A9diterran%C3%A9e"
               target="_blank"
@@ -26,7 +26,7 @@ export default component$(() => {
           </h3>
           <div>Internat. NGO, Marseille, 2015 –</div>
           <div>2019-2020 cooperation with MsF</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Ocean_Viking"
               target="_blank"
@@ -38,8 +38,8 @@ export default component$(() => {
           <div>Norwegian flag, 2019 –</div>
           <div>8 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/M%C3%A9decins Sans Fronti%C3%A8res"
               target="_blank"
@@ -50,7 +50,7 @@ export default component$(() => {
           </h3>
           <div>International NGO, SAR 2015 –</div>
           <div>2019-2020 coop. with SOS Mediterranée</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Geo_Barents"
               target="_blank"
@@ -62,8 +62,8 @@ export default component$(() => {
           <div>Norwegian flag, 2021 –</div>
           <div>6 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://sos-humanity.org/en/about-us/"
               target="_blank"
@@ -76,7 +76,7 @@ export default component$(() => {
           <div>{'2016-21 part of SOS Mediterranee Network'}</div>
           <div>{'with ‘Aquarius’ & ‘Ocean Viking’'}</div>
           <div>{'Now seeking EU coordination'}</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://sos-humanity.org/en/press/rescue-vessel-humanity-1-departed-for-central-mediterranean/"
               target="_blank"
@@ -88,8 +88,8 @@ export default component$(() => {
           <div>German flag, Kiel 2021</div>
           <div>SAR operations start August 2022</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Watch"
               target="_blank"
@@ -101,7 +101,7 @@ export default component$(() => {
           <div>German NGO, 2015 –</div>
           <div>{'coop. with Open Arms & Mediterranea (MSH)'}</div>
           <div>use of airplanes</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Watch_3"
               target="_blank"
@@ -112,7 +112,7 @@ export default component$(() => {
           </h3>
           <div>German flag, 2017 –</div>
           <div>4 SAR operations in 2021</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Watch_4"
               target="_blank"
@@ -124,8 +124,8 @@ export default component$(() => {
           <div>German flag, 2020 –</div>
           <div>4 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Mission_Lifeline"
               target="_blank"
@@ -135,7 +135,7 @@ export default component$(() => {
             </a>
           </h3>
           <div>German NGO, Dresden, 2016 -</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://mission-lifeline.de/das-jahr-der-rise-above"
               target="_blank"
@@ -148,8 +148,8 @@ export default component$(() => {
           <div>‘Eleonore’ 2019 -</div>
           <div>‘Lifeline’ 2016 –</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Emergency_(organization)#Italy"
               target="_blank"
@@ -159,7 +159,7 @@ export default component$(() => {
             </a>
           </h3>
           <div>International NGO, Milan, 1994 –</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://reliefweb.int/report/world/emergency-ngo-search-and-rescue-ship-life-support-embarks-inaugural-mission-central-mediterranean-sea"
               target="_blank"
@@ -171,8 +171,8 @@ export default component$(() => {
           <div>Italian flag (?)</div>
           <div>SAR December 2022 –</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Eye"
               target="_blank"
@@ -182,7 +182,7 @@ export default component$(() => {
             </a>
           </h3>
           <div>German NGO, 2015 –</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Sea-Eye_4"
               target="_blank"
@@ -194,8 +194,8 @@ export default component$(() => {
           <div>German flag, 2021 –</div>
           <div>3 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Proactiva_Open_Arms"
               target="_blank"
@@ -206,7 +206,7 @@ export default component$(() => {
           </h3>
           <div>Spanish NGO, 2015 –</div>
           <div>coop. with Sea Watch and Mediterranea (MSH)</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://de.wikipedia.org/wiki/Open_Arms"
               target="_blank"
@@ -218,8 +218,8 @@ export default component$(() => {
           <div>Spanish flag, 2017 –</div>
           <div>3 SAR operations in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://www.infomigrants.net/en/post/26362/italian-migrant-rescue-boat-resqpeople-project-launched"
               target="_blank"
@@ -229,7 +229,7 @@ export default component$(() => {
             </a>
           </h3>
           <div>Italian NGO, 2020 –</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a href="https://resq.it/progetto" target="_blank" rel="noreferrer">
               ResQ People
             </a>
@@ -237,8 +237,8 @@ export default component$(() => {
           <div>Italian flag, 2020 –</div>
           <div>1 SAR operation in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Salvamento_Mar%C3%ADtimo_Humanitario"
               target="_blank"
@@ -248,7 +248,7 @@ export default component$(() => {
             </a>
           </h3>
           <div>Spanish NGO, 2015 –</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Aita_Mari"
               target="_blank"
@@ -260,8 +260,8 @@ export default component$(() => {
           <div>Spanish flag, 2018 –</div>
           <div>1 SAR operation in 2021</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Louise_Michel_(ship)"
               target="_blank"
@@ -272,7 +272,7 @@ export default component$(() => {
           </h3>
           <div>British artist-activist, 2019/20 –</div>
           <div>{'coop. with Sea Watch & Mare Jonio'}</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Louise_Michel_(ship)"
               target="_blank"
@@ -285,8 +285,8 @@ export default component$(() => {
           <div>no SAR operation in 2021</div>
           <div>one in January 2022</div>
         </div>
-        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center">
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center">
+        <div class="relative flex flex-col items-center justify-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 text-center dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline text-center dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Mediterranea_Saving_Humans"
               target="_blank"
@@ -297,7 +297,7 @@ export default component$(() => {
           </h3>
           <div>Italian NGO, 2018 –</div>
           <div>coop. with Sea Watch and Open Arms</div>
-          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3">
+          <h3 class="text-2xl text-sky-800 no-underline hover:underline before:content-['⚓_\''] after:content-['\''] mt-3 dark:text-sky-300">
             <a
               href="https://en.wikipedia.org/wiki/Mare_Jonio_(rescue_ship)"
               target="_blank"

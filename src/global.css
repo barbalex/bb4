@@ -227,6 +227,19 @@ label.event-weather:before {
   width: 1.3em;
 }
 
+/* the tag icons are dark glyphs - invert them on dark surfaces.
+   victims.svg is white already and needs no inversion */
+html[data-theme='dark'] div.event-weather:before,
+label.event-weather:before,
+html[data-theme='dark'] div.event-statistics:before,
+html[data-theme='dark'] label.event-statistics:before,
+html[data-theme='dark'] div.event-monthlyStatistics:before,
+html[data-theme='dark'] label.event-monthlyStatistics:before,
+html[data-theme='dark'] div.event-highlighted:before,
+html[data-theme='dark'] label.event-highlighted:before {
+  filter: invert(1);
+}
+
 div.event-statistics:before,
 label.event-statistics:before,
 div.event-monthlyStatistics:before,
@@ -396,4 +409,11 @@ h4.modal-title {
 .monthly-events thead {
   border-color: black !important;
   border-width: 1.5px !important;
+}
+
+/* the 2011-2014 tables are unchanged word-html exports with their own
+   light inline styling: keep them on a white canvas in dark mode, only
+   the page around them darkens */
+html[data-theme='dark'] .monthly-events table {
+  background-color: #ffffff;
 }

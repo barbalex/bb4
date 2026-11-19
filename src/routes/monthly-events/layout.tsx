@@ -26,146 +26,146 @@ export default component$(() => {
               </li>
               {is2014 && (
                 <>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/12"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/12/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       December
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/11"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/11/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       November
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/10"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/10/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       Oktober
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/9"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/9/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       September
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/8"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/8/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       August
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/7"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/7/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       July
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/6"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/6/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       June
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/5"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/5/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       May
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/4"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/4/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       April
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/3"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/3/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       March
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/2"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/2/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       February
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2014/1"
                       class={`${
                         location.url.pathname === '/monthly-events/2014/1/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       January
                     </Link>
@@ -186,146 +186,146 @@ export default component$(() => {
               </li>
               {is2013 && (
                 <>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/12"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/12/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       December
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/11"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/11/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       November
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/10"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/10/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       Oktober
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/9"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/9/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       September
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/8"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/8/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       August
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/7"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/7/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       July
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/6"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/6/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       June
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/5"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/5/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       May
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/4"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/4/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       April
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/3"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/3/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       March
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/2"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/2/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       February
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2013/1"
                       class={`${
                         location.url.pathname === '/monthly-events/2013/1/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       January
                     </Link>
@@ -347,146 +347,146 @@ export default component$(() => {
               {is2012 && (
                 <>
                   {' '}
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/12"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/12/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       December
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/11"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/11/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       November
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/10"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/10/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       Oktober
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/9"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/9/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       September
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/8"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/8/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       August
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/7"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/7/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       July
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/6"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/6/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       June
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/5"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/5/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       May
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/4"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/4/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       April
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/3"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/3/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       March
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/2"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/2/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       February
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2012/1"
                       class={`${
                         location.url.pathname === '/monthly-events/2012/1/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       January
                     </Link>
@@ -507,146 +507,146 @@ export default component$(() => {
               </li>
               {is2011 && (
                 <>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/12"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/12/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       December
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/11"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/11/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       November
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/10"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/10/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       Oktober
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/9"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/9/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       September
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/8"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/8/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       August
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/7"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/7/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       July
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/6"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/6/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       June
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/5"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/5/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       May
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/4"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/4/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       April
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/3"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/3/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       March
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/2"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/2/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       February
                     </Link>
                   </li>
-                  <li class="border border-slate-200 last:rounded-b-md">
+                  <li class="border border-slate-200 last:rounded-b-md dark:border-gray-700">
                     <Link
                       href="/monthly-events/2011/1"
                       class={`${
                         location.url.pathname === '/monthly-events/2011/1/'
-                          ? 'font-extrabold bg-slate-100'
+                          ? 'font-extrabold bg-slate-100 dark:bg-gray-700'
                           : ''
-                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline`}
+                      } font-bold flex p-2 pl-3 text-sm text-inherit leading-6 hover:font-extrabold hover:bg-slate-100 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-800`}
                     >
                       January
                     </Link>
