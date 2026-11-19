@@ -1,6 +1,6 @@
 # Pre-built image: build locally with `npm run build.client && npm run build.server`
 # then rsync dist/ and server/ to the server together with the other project files.
-FROM node:slim
+FROM node:24.22.3-slim
 
 # Do not use root to run the app to avoid privilege escalation, container escape, etc.
 USER node

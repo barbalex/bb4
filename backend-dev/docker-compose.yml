@@ -1,7 +1,7 @@
 name: bb4-dev
 services:
   db:
-    image: postgres:14.8
+    image: postgres:14.24
     container_name: bb_dev_db
     restart: always
     environment:
@@ -21,7 +21,7 @@ services:
         max-file: "3"
 
   graphql:
-    image: hasura/graphql-engine:v2.39.1
+    image: hasura/graphql-engine:v2.51.8
     container_name: bb_dev_graphql
     ports:
       - "8080:8080"

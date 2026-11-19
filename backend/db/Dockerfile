@@ -1,5 +1,6 @@
 # https://hub.docker.com/_/postgres?tab=tags
-FROM postgres:14.8
+# stay within major 14: a major upgrade needs a dump/restore migration
+FROM postgres:14.24
 
 # for using cron, see https://www.cloudsavvyit.com/9033/how-to-use-cron-with-your-docker-containers/
 
