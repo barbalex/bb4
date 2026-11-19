@@ -7,7 +7,10 @@ import { useYears } from './index.tsx'
 export default component$(() => {
   const location = useLocation()
   const navigate = useNavigate()
-  const chooserFocused = useSignal(false)
+  // open/close on click, not on focus: focus-driven dropdowns break on
+  // touch devices (ios never focuses buttons on tap; tapping an option
+  // fires focusout first and closes the list before the click lands)
+  const chooserOpen = useSignal(false)
 
   const years = useYears()
   const years15to18: Array = useComputed$(() =>
@@ -17,6 +20,10 @@ export default component$(() => {
     years.value.filter((y) => y >= 2019 && y <= 2022),
   )
   const yearsAfter22 = useComputed$(() => years.value.filter((y) => y > 2022))
+  // newest first, without mutating the loader data in place
+  const yearsDescending = useComputed$(() =>
+    [...years.value].sort((a, b) => b - a),
+  )
 
   // ungroup if is active
   const grouped15to18 = useSignal(
@@ -56,10 +63,9 @@ export default component$(() => {
                 type="button"
                 class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 aria-haspopup="listbox"
-                aria-expanded="true"
+                aria-expanded={chooserOpen.value ? 'true' : 'false'}
                 aria-labelledby="listbox-label"
-                onFocusin$={() => (chooserFocused.value = true)}
-                onFocusout$={() => (chooserFocused.value = false)}
+                onClick$={() => (chooserOpen.value = !chooserOpen.value)}
               >
                 <span class="block truncate">{location.params.year}</span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -78,7 +84,7 @@ export default component$(() => {
               </button>
               <ul
                 class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm ${
-                  chooserFocused.value ?
+                  chooserOpen.value ?
                     'transition ease-in opacity-100 z-30'
                   : 'transition duration-200 ease-out opacity-0 z-0'
                 }`}
@@ -87,7 +93,7 @@ export default component$(() => {
                 aria-labelledby="listbox-label"
                 aria-activedescendant={`listbox-option-${location.params.year}`}
               >
-                {years.value.reverse().map((year) => {
+                {yearsDescending.value.map((year) => {
                   const selected = year === +location.params.year
 
                   return (
@@ -104,7 +110,7 @@ export default component$(() => {
                         } else {
                           navigate(`/events/${year}/`)
                         }
-                        chooserFocused.value = false
+                        chooserOpen.value = false
                       }}
                     >
                       <span
