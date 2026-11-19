@@ -58,66 +58,72 @@ export default component$(() => {
     ? 'IOs & NGOs'
     : 'European Union'
 
+  // group the publications by category without Array.group: the core-js
+  // polyfill is unreliable during client-side rendering
+  const publicationsByCategory = {}
+  for (const p of publications.value) {
+    const list = publicationsByCategory[p.category]
+    if (list) {
+      list.push(p)
+    } else {
+      publicationsByCategory[p.category] = [p]
+    }
+  }
+
   return (
     <div class="flex min-h-full flex-col">
       <div class="flex-1 min-[820px]:flex">
         <div class="px-2 min-[820px]:w-36 lg:w-52 xl:w-64 min-[820px]:shrink-0">
           <nav class="sticky top-24 flex flex-1 flex-col" aria-label="Sidebar">
-            {(() => {
-              const publicationsByCategory = publications.value.group(
-                ({ category }) => category,
-              )
+            {Object.entries(publicationsByCategory).map(
+              ([category, pubs]) => {
+                const isActive = activeCategory === category
+                const categoryUrl = urlByCategory[category]
 
-              return Object.entries(publicationsByCategory).map(
-                ([category, pubs]) => {
-                  const isActive = activeCategory === category
-                  const categoryUrl = urlByCategory[category]
-
-                  return (
-                    <ul
-                      key={category}
-                      class="-mx-2 mt-3 first:mt-0 border-collapse draft-parent"
-                      role="list"
+                return (
+                  <ul
+                    key={category}
+                    class="-mx-2 mt-3 first:mt-0 border-collapse draft-parent"
+                    role="list"
+                  >
+                    <li
+                      class={`bg-[url('/oceanDark_4.webp')] text-shadowed leading-6 border-collapse rounded-t-md ${
+                        !isActive && 'rounded-b-md'
+                      }`}
                     >
-                      <li
-                        class={`bg-[url('/oceanDark_4.webp')] text-shadowed leading-6 border-collapse rounded-t-md ${
-                          !isActive && 'rounded-b-md'
-                        }`}
+                      <Link
+                        href={categoryUrl}
+                        class={`${
+                          categoryUrl === location.url.pathname
+                            ? 'font-extrabold'
+                            : ''
+                        } font-bold flex p-2 pl-3 text-white text-sm text-inherit leading-6 hover:font-extrabold hover:no-underline`}
                       >
-                        <Link
-                          href={categoryUrl}
-                          class={`${
-                            categoryUrl === location.url.pathname
-                              ? 'font-extrabold'
-                              : ''
-                          } font-bold flex p-2 pl-3 text-white text-sm text-inherit leading-6 hover:font-extrabold hover:no-underline`}
+                        {`${category} (${pubs.length})`}
+                      </Link>
+                    </li>
+                    {isActive &&
+                      pubs.map((p) => (
+                        <li
+                          class="border border-slate-200 last:rounded-b-md"
+                          key={p.id}
                         >
-                          {`${category} (${pubs.length})`}
-                        </Link>
-                      </li>
-                      {isActive &&
-                        pubs.map((p) => (
-                          <li
-                            class="border border-slate-200 last:rounded-b-md"
-                            key={p.id}
+                          <Link
+                            href={`${categoryUrl}${p.id}`}
+                            class={`${
+                              location.params.publication_id === p.id
+                                ? 'font-extrabold content-item-selected'
+                                : ''
+                            } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
                           >
-                            <Link
-                              href={`${categoryUrl}${p.id}`}
-                              class={`${
-                                location.params.publication_id === p.id
-                                  ? 'font-extrabold content-item-selected'
-                                  : ''
-                              } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
-                            >
-                              {p.title || '(no title)'}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  )
-                },
-              )
-            })()}
+                            {p.title || '(no title)'}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                )
+              },
+            )}
           </nav>
         </div>
         <div class="px-2 py-2 md:flex-1 relative">

@@ -4,8 +4,6 @@ import {
   RouterOutlet,
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
-// need to polifill until well supported: https://caniuse.com/mdn-javascript_builtins_array_group
-import 'core-js/actual/array/group'
 
 import { RouterHead } from './components/router-head/router-head'
 import './global.css'

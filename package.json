@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "@qwikest/icons": "0.0.13",
-    "core-js": "3.51.0",
     "dayjs": "1.11.23",
     "pg": "8.23.1"
   },
