@@ -1,4 +1,3 @@
-/* eslint-disable qwik/jsx-img */
 import {
   component$,
   useContext,
@@ -233,19 +232,19 @@ export default component$(() => {
                       const id = await publicationAdder()
                       store.publicationsRefetcher++
                       store.editing = true
-                      id && navigate(`/publications/eu/${id}`)
+                      if (id) navigate(`/publications/eu/${id}`)
                     } else if (location.url.pathname.startsWith('/articles/')) {
                       const id = await articleAdder()
                       store.articlesRefetcher++
                       store.editing = true
-                      id && navigate(`/articles/${id}`)
+                      if (id) navigate(`/articles/${id}`)
                     } else if (
                       location.url.pathname === '/' ||
                       location.url.pathname.startsWith('/events')
                     ) {
                       const id = await eventAdder()
                       store.editing = true
-                      id &&
+                      if (id)
                         navigate(`/events/${new Date().getFullYear()}/${id}`)
                     }
                   }}
@@ -271,7 +270,7 @@ export default component$(() => {
                 aria-label={store.user ? 'Log out' : 'Log in'}
                 onClick$={() => {
                   if (store.user) {
-                    store.firebaseAuth && signOut(store.firebaseAuth)
+                    if (store.firebaseAuth) signOut(store.firebaseAuth)
                     window.localStorage.removeItem('token')
                     store.user = ''
                     store.firebaseAuth = noSerialize(undefined)
