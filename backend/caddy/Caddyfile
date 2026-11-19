@@ -1,56 +1,37 @@
 # https://github.com/caddyserver/caddy-docker
+# purely static site: caddy serves the prerendered files rsynced to ./dist
 {
 	email alex.barbalex@gmail.com
 	#acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 	#debug
 }
 
-api.blue-borders.ch {
-	reverse_proxy * {
-		to bb_graphql:8080
-		header_down Access-Control-Allow-Origin *
+(static) {
+	encode gzip
+	# the site is frozen documentation; the last documented year is 2024
+	redir / /events/2024/ 308
+	redir /events /events/2024/ 308
+	redir /events/ /events/2024/ 308
+	root * /srv
+	file_server
+	handle_errors {
+		rewrite * /404.html
+		file_server
 	}
 }
 
 www.blue-borders.ch {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
+	import static
 }
 
 blue-borders.ch {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
+	import static
 }
 
 www.mediterranean-migration.com {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
+	import static
 }
 
 mediterranean-migration.com {
-	encode gzip
-  reverse_proxy * {
-    to bb_app:3000
-    header_down Access-Control-Allow-Origin *
-    header_down Access-Control-Allow-Methods "HEAD, GET, POST, OPTIONS"
-  }
-}
-
-api.mediterranean-migration.com {
-	reverse_proxy * {
-		to bb_graphql:8080
-		header_down Access-Control-Allow-Origin *
-	}
+	import static
 }

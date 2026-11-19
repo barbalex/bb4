@@ -1,40 +1,14 @@
-import {
-  component$,
-  createContextId,
-  useStore,
-  useContextProvider,
-  useVisibleTask$,
-  noSerialize,
-} from '@builder.io/qwik'
+import { component$ } from '@builder.io/qwik'
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app'
 // need to polifill until well supported: https://caniuse.com/mdn-javascript_builtins_array_group
 import 'core-js/actual/array/group'
 
 import { RouterHead } from './components/router-head/router-head'
 import './global.css'
-
-export const CTX = createContextId<{
-  user: string
-  firebaseAuth: FirebaseApp
-  editing: boolean
-  eventsRefetcher: number
-  articlesRefetcher: number
-  publicationsRefetcher: number
-}>('root')
-
-// Configure Firebase
-const firebaseConfig = {
-  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
-  authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
-  appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
-}
 
 export default component$(() => {
   /**
@@ -43,40 +17,6 @@ export default component$(() => {
    *
    * Dont remove the `<head>` and `<body>` elements.
    */
-  const store = useStore({
-    user: '',
-    firebaseAuth: undefined,
-    editing: false,
-    eventsRefetcher: 0,
-    articlesRefetcher: 0,
-    publicationsRefetcher: 0,
-  })
-  useContextProvider(CTX, store)
-
-  // authenticate
-  // this is client only
-  // eslint-disable-next-line qwik/no-use-visible-task
-  useVisibleTask$(({ cleanup }) => {
-    let fbApp
-    // catch app already existing
-    // https://stackoverflow.com/a/48686803/712005
-    if (!getApps().length) {
-      fbApp = initializeApp(firebaseConfig)
-    } else {
-      fbApp = getApp() // if already initialized, use that one
-    }
-    const auth = getAuth(fbApp)
-    store.firebaseAuth = noSerialize(auth)
-    const unregisterAuthObserver = onAuthStateChanged(auth, async (user) => {
-      // console.log('App, onAuthStateChanged, user:', user)
-      store.user = user?.uid ?? ''
-    })
-
-    cleanup(() => {
-      unregisterAuthObserver()
-    })
-  })
-
   return (
     <QwikCityProvider>
       <head>
@@ -87,11 +27,6 @@ export default component$(() => {
       <body lang="en">
         <RouterOutlet />
         <ServiceWorkerRegister />
-        <script
-          defer
-          fetchpriority="low"
-          src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@2/dist/tinymce-webcomponent.min.js"
-        ></script>
       </body>
     </QwikCityProvider>
   )

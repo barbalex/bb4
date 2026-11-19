@@ -34,6 +34,32 @@ export const useYears: () => Readonly<Signal<number[]>> = routeLoader$(
   },
 )
 
+// static build: one page per year, mirroring useYears
+export const onStaticGenerate = async () => {
+  let res
+  try {
+    res = await db.query(
+      `SELECT
+          to_char(date_trunc('year', datum), 'yyyy')::int AS year
+        FROM
+          EVENT
+        where datum is not null
+        GROUP BY
+          year
+        ORDER BY
+          year ASC`,
+    )
+  } catch (error) {
+    console.error('query error', error.stack)
+  }
+
+  const years = [...new Set([...[2011, 2012, 2013, 2014], ...(res?.rows?.map((r) => r.year) ?? [])])]
+
+  return {
+    params: years.map((year) => ({ year: String(year) })),
+  }
+}
+
 // select all articles: id, title, draft
 export const useEvents = routeLoader$(async function (requestEvent) {
   const activeYear = requestEvent.params.year
