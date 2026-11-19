@@ -31,8 +31,11 @@ const qwikPlugin: FastifyPluginAsync<FastifyQwikOptions> = async (fastify, optio
   });
 
   fastify.setNotFoundHandler(async (request, response) => {
-    await router(request.raw, response.raw, fastify.log.error);
-    await notFound(request.raw, response.raw, fastify.log.error);
+    // bind: passing fastify.log.error directly detaches it from the logger
+    // instance and crashes pino the first time qwik city invokes it
+    const logError = fastify.log.error.bind(fastify.log);
+    await router(request.raw, response.raw, logError);
+    await notFound(request.raw, response.raw, logError);
   });
 };
 

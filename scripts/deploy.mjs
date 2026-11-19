@@ -118,14 +118,20 @@ run('ssh', [
 ])
 
 console.log(`==> probing public sites`)
+// retries absorb the moment right after `up -d --wait` when caddy may
+// still route into the just-recreated app container
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 let failed = false
 const probe = async (url, label) => {
   let ok = false
-  try {
-    const res = await fetch(url)
-    const body = res.status === 200 ? await res.text() : ''
-    ok = res.status === 200 && body.includes('Lampedusa')
-  } catch {}
+  for (let attempt = 1; attempt <= 5 && !ok; attempt++) {
+    try {
+      const res = await fetch(url)
+      const body = res.status === 200 ? await res.text() : ''
+      ok = res.status === 200 && body.includes('Lampedusa')
+    } catch {}
+    if (!ok && attempt < 5) await sleep(3000)
+  }
   console.log(`    ${ok ? 'ok  ' : 'FAIL'}  ${label}`)
   if (!ok) failed = true
 }
