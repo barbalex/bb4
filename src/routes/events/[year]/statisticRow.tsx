@@ -3,7 +3,7 @@ import { component$ } from '@builder.io/qwik'
 import Event from './listItem'
 
 export default component$(({ migrationStats = [], politicStats = [] }) => (
-  <div class="border-t border-solid border-slate-200 bg-slate-100 hover:bg-slate-200 event-row">
+  <div class="border-t border-solid border-slate-200 bg-slate-100 hover:bg-slate-200 event-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
     <p class="p-1.5 pr-5 text-right"></p>
     <div class="pr-2.5 break-words">
       <ul class="px-4">

@@ -105,7 +105,7 @@ export default component$(() => {
                     {isActive &&
                       pubs.map((p) => (
                         <li
-                          class="border border-slate-200 last:rounded-b-md"
+                          class="border border-slate-200 last:rounded-b-md dark:border-gray-700"
                           key={p.id}
                         >
                           <Link
@@ -114,7 +114,7 @@ export default component$(() => {
                               location.params.publication_id === p.id
                                 ? 'font-extrabold content-item-selected'
                                 : ''
-                            } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
+                            } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered dark:text-gray-200`}
                           >
                             {p.title || '(no title)'}
                           </Link>

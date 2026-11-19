@@ -36,7 +36,7 @@ export default component$(() => {
               {articles.value.map((a) => (
                 <li
                   key={a.id}
-                  class="border border-slate-200 last:rounded-b-md"
+                  class="border border-slate-200 last:rounded-b-md dark:border-gray-700"
                 >
                   <Link
                     href={`/articles/${a.id}`}
@@ -44,7 +44,7 @@ export default component$(() => {
                       location.params.article_id === a.id
                         ? 'font-extrabold content-item-selected'
                         : ''
-                    } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered`}
+                    } font-bold flex p-2 pl-3 text-sm text-inherit hover:no-underline leading-6 hover:font-extrabold content-item-hovered dark:text-gray-200`}
                   >
                     {a.title || '(kein Titel)'}
                   </Link>

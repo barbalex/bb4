@@ -21,6 +21,27 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
+        {/* resolves the stored theme mode ('system' | 'light' | 'dark')
+            against the OS preference and sets html[data-theme] +
+            color-scheme before first paint, so dark mode does not flash.
+            the toggle button keeps both in sync afterwards */}
+        <script
+          dangerouslySetInnerHTML={`;(() => {
+  let mode
+  try {
+    mode = localStorage.getItem('bb-theme-mode')
+  } catch {
+    mode = null
+  }
+  const isDark =
+    mode === 'dark' ||
+    (mode !== 'light' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const html = document.documentElement
+  html.dataset.theme = isDark ? 'dark' : 'light'
+  html.style.colorScheme = isDark ? 'dark' : 'light'
+})()`}
+        />
       </head>
       <body lang="en">
         <RouterOutlet />

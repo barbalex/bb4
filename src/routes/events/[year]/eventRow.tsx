@@ -8,7 +8,7 @@ export default component$(({ date, migrationEvents, politicEvents }) => {
   const dayWithEvents = migrationEvents.length > 0 || politicEvents.length > 0
 
   return (
-    <div class="border-t border-solid border-slate-200 hover:bg-slate-50 event-row">
+    <div class="border-t border-solid border-slate-200 hover:bg-slate-50 event-row dark:border-gray-700 dark:hover:bg-gray-800">
       {dayWithEvents && <p class="p-1.5 pr-5 text-right">{day}</p>}
       {!dayWithEvents && <p class="p-1.5 pr-5 text-right">{day}</p>}
       <div class="pr-2.5 break-words">

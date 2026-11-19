@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 
+/* class-based dark mode: html[data-theme] is set before first paint by the
+   script in root.tsx and toggled by the theme button in the navbar */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /**
  * WHAT IS THIS FILE?
  *
@@ -39,6 +43,17 @@ body {
   /* overflow-y: overlay; */
   /* scrollbar-gutter: stable;
   scrollbar-color: blue blue; */
+  background-color: #ffffff;
+  color: #374151;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+html[data-theme='dark'] body {
+  background-color: #111827;
+  color: #d1d5db;
 }
 
 h1,
@@ -53,6 +68,9 @@ h3 {
   }
   a:hover {
     text-decoration: underline;
+  }
+  html[data-theme='dark'] a {
+    color: rgb(129, 140, 248);
   }
 }
 
@@ -90,6 +108,11 @@ h3 {
 .content-item-hovered:hover,
 .content-item-selected {
   background-color: rgba(210, 233, 255, 0.7);
+}
+
+html[data-theme='dark'] .content-item-hovered:hover,
+html[data-theme='dark'] .content-item-selected {
+  background-color: rgba(49, 46, 129, 0.6);
 }
 
 /* enables styling titles */

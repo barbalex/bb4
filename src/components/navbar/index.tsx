@@ -1,6 +1,8 @@
 import { component$, useSignal, useTask$ } from '@builder.io/qwik'
 import { Link, useLocation } from '@builder.io/qwik-city'
 
+import ThemeToggle from '../theme-toggle'
+
 export default component$(() => {
   const location = useLocation()
   const menuOpen = useSignal(false)
@@ -74,11 +76,12 @@ export default component$(() => {
               </Link>
             </div>
           </div>
-          <div class="-mr-2 flex items-center sm:hidden">
+          <div class="-mr-2 flex items-center">
+            <ThemeToggle />
             {/* Mobile menu button */}
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-md p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              class="inline-flex items-center justify-center rounded-md p-2 mr-2 text-white hover:bg-gray-100 hover:text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:hidden"
               aria-controls="mobile-menu"
               aria-expanded={menuOpen.value}
               onClick$={() => {
@@ -132,8 +135,8 @@ export default component$(() => {
                   location.url.pathname === '/' ||
                   location.url.pathname.startsWith('/events/')
                 ) ?
-                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline dark:border-indigo-400 dark:bg-indigo-900 dark:text-indigo-200'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-500 dark:hover:bg-slate-700 dark:hover:text-orange-400'
               }
             >
               Events
@@ -142,8 +145,8 @@ export default component$(() => {
               href="/sar"
               class={
                 location.url.pathname === '/sar/' ?
-                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline dark:border-indigo-400 dark:bg-indigo-900 dark:text-indigo-200'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-500 dark:hover:bg-slate-700 dark:hover:text-orange-400'
               }
             >
               SAR NGOs
@@ -152,8 +155,8 @@ export default component$(() => {
               href="/publications"
               class={
                 location.url.pathname.startsWith('/publications/') ?
-                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline dark:border-indigo-400 dark:bg-indigo-900 dark:text-indigo-200'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-500 dark:hover:bg-slate-700 dark:hover:text-orange-400'
               }
             >
               Publications
@@ -162,8 +165,8 @@ export default component$(() => {
               href="/articles"
               class={
                 location.url.pathname.startsWith('/articles/') ?
-                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline dark:border-indigo-400 dark:bg-indigo-900 dark:text-indigo-200'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-500 dark:hover:bg-slate-700 dark:hover:text-orange-400'
               }
             >
               Articles
@@ -172,8 +175,8 @@ export default component$(() => {
               href="/about"
               class={
                 location.url.pathname === '/about/' ?
-                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline'
-                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline'
+                  'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-bold text-indigo-800 hover:no-underline dark:border-indigo-400 dark:bg-indigo-900 dark:text-indigo-200'
+                : 'block border-l-4 border-transparent bg-slate-50 py-2 pl-3 pr-4 text-base font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-700 hover:no-underline dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-500 dark:hover:bg-slate-700 dark:hover:text-orange-400'
               }
             >
               About Us

@@ -58,7 +58,7 @@ export default component$(() => {
           <div>
             <label
               id="listbox-label"
-              class="block text-sm font-medium leading-6 text-gray-900"
+              class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
             >
               Choose a year
             </label>
@@ -73,7 +73,7 @@ export default component$(() => {
               )}
               <button
                 type="button"
-                class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-100 dark:ring-gray-600"
                 aria-haspopup="listbox"
                 aria-expanded={chooserOpen.value ? 'true' : 'false'}
                 aria-labelledby="listbox-label"
@@ -95,7 +95,7 @@ export default component$(() => {
                 </span>
               </button>
               <ul
-                class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm ${
+                class={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm dark:bg-gray-800 dark:ring-black/40 ${
                   chooserOpen.value ?
                     'transition ease-in opacity-100 z-30'
                   : 'transition duration-200 ease-out opacity-0 z-0'
@@ -112,7 +112,7 @@ export default component$(() => {
                     <li
                       key={`${year}-option`}
                       class={`${
-                        selected ? 'bg-indigo-600 text-white' : 'text-gray-900'
+                        selected ? 'bg-indigo-600 text-white' : 'text-gray-900 dark:text-gray-100'
                       } relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white`}
                       id={`listbox-option-${year}`}
                       role="option"
@@ -165,7 +165,7 @@ export default component$(() => {
             >
               <Link
                 href="/monthly-events/2014/"
-                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
+                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200"
               >
                 2011 - 2014
               </Link>
@@ -173,7 +173,7 @@ export default component$(() => {
                 {grouped15to18.value ?
                   <Link
                     href="#"
-                    class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
+                    class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200"
                     onClick$={() => (grouped15to18.value = false)}
                   >
                     2015 - 2018
@@ -184,8 +184,8 @@ export default component$(() => {
                       href="#"
                       class={
                         +location.params.year === year ?
-                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:border-indigo-400 dark:text-indigo-400`
+                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
@@ -196,7 +196,7 @@ export default component$(() => {
                 {grouped19to22.value ?
                   <Link
                     href="#"
-                    class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline"
+                    class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200"
                     onClick$={() => (grouped19to22.value = false)}
                   >
                     2019 - 2022
@@ -207,8 +207,8 @@ export default component$(() => {
                       href="#"
                       class={
                         +location.params.year === year ?
-                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                          `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:border-indigo-400 dark:text-indigo-400`
+                        : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200`
                       }
                       onClick$={() => navigate(`/events/${year}/`)}
                     >
@@ -222,8 +222,8 @@ export default component$(() => {
                     href="#"
                     class={
                       +location.params.year === year ?
-                        `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
-                      : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline`
+                        `border-indigo-600 text-indigo-600 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:border-indigo-400 dark:text-indigo-400`
+                      : `border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 w-1/4 border-b-2 py-4 px-1 text-center text-base font-medium hover:no-underline dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200`
                     }
                     onClick$={() => navigate(`/events/${year}/`)}
                   >

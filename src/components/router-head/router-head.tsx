@@ -22,6 +22,8 @@ export const RouterHead = component$(() => {
         name="keywords"
         content="migration, politics, political-sciende, refugees, mediterranean"
       />
+      {/* updated live by the theme toggle; initial value matches light */}
+      <meta name="theme-color" content="#ffffff" />
       <link rel="icon" type="image/png" href="/favicon.png" />
 
       {head.links.map((l) => (
